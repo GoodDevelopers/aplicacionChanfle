@@ -1,0 +1,15 @@
+05334e,::1,GET,http://localhost/aplicacionChanfle/web/app_dev.php/,1458712227,,200
+749258,::1,GET,http://localhost/aplicacionChanfle/web/app_dev.php/,1458713059,,200
+c90507,::1,GET,http://localhost/aplicacionChanfle/web/app_dev.php/admin,1458713076,8c322a,200
+8c322a,::1,GET,http://localhost/aplicacionChanfle/web/app_dev.php/admin,1458713076,,404
+35bb8c,::1,GET,http://localhost/aplicacionChanfle/web/app_dev.php/admin(,1458713084,3c889d,200
+3c889d,::1,GET,http://localhost/aplicacionChanfle/web/app_dev.php/admin(,1458713084,,404
+5e7067,::1,GET,http://localhost/aplicacionChanfle/web/app_dev.php/admin/,1458713088,65ba6f,200
+65ba6f,::1,GET,http://localhost/aplicacionChanfle/web/app_dev.php/admin/,1458713088,,404
+28c27b,::1,GET,http://localhost/aplicacionChanfle/web/app_dev.php/,1458713108,,200
+9a1c4b,::1,GET,http://localhost/aplicacionChanfle/web/app_dev.php/login,1458713157,,200
+5dc3fc,::1,POST,http://localhost/aplicacionChanfle/web/app_dev.php/login_check,1458713170,,302
+abe539,::1,GET,http://localhost/aplicacionChanfle/web/app_dev.php/login,1458713170,,200
+32a2b5,::1,GET,http://localhost/aplicacionChanfle/web/app_dev.php/register,1458713190,,301
+c5ac07,::1,GET,http://localhost/aplicacionChanfle/web/app_dev.php/register/,1458713192,,200
+a8d2a5,::1,GET,http://localhost/aplicacionChanfle/web/app_dev.php/register/,1458715255,,200
