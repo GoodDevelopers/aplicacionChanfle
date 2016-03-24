@@ -17,6 +17,11 @@
       <parameter key="SensioFrameworkExtraBundle">Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle</parameter>
       <parameter key="AppBundle">AppBundle\AppBundle</parameter>
       <parameter key="FOSUserBundle">FOS\UserBundle\FOSUserBundle</parameter>
+      <parameter key="VentasBundle">VentasBundle\VentasBundle</parameter>
+      <parameter key="InventarioBundle">InventarioBundle\InventarioBundle</parameter>
+      <parameter key="UsuariosBundle">UsuariosBundle\UsuariosBundle</parameter>
+      <parameter key="CostosBundle">CostosBundle\CostosBundle</parameter>
+      <parameter key="JornadasLaboralesBundle">JornadasLaboralesBundle\JornadasLaboralesBundle</parameter>
       <parameter key="DebugBundle">Symfony\Bundle\DebugBundle\DebugBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
@@ -1862,7 +1867,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>56f231b81582a3.31609897</argument>
+            <argument>56f4263f5983e7.09055116</argument>
           </service>
         </argument>
       </argument>
@@ -2151,7 +2156,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>56f231b81582a3.31609897</argument>
+            <argument>56f4263f5983e7.09055116</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -2614,6 +2619,11 @@
           <call method="setEntityNamespaces">
             <argument type="collection">
               <argument key="AppBundle">AppBundle\Entity</argument>
+              <argument key="VentasBundle">VentasBundle\Entity</argument>
+              <argument key="InventarioBundle">InventarioBundle\Entity</argument>
+              <argument key="UsuariosBundle">UsuariosBundle\Entity</argument>
+              <argument key="CostosBundle">CostosBundle\Entity</argument>
+              <argument key="JornadasLaboralesBundle">JornadasLaboralesBundle\Entity</argument>
             </argument>
           </call>
           <call method="setMetadataCacheImpl">
@@ -2634,10 +2644,95 @@
                       <argument type="service" id="annotation_reader"/>
                       <argument type="collection">
                         <argument>C:\xampp\htdocs\aplicacionChanfle\src\AppBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\aplicacionChanfle\src\VentasBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\aplicacionChanfle\src\InventarioBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\aplicacionChanfle\src\UsuariosBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\aplicacionChanfle\src\CostosBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\aplicacionChanfle\src\JornadasLaboralesBundle\Entity</argument>
                       </argument>
                     </service>
                   </argument>
                   <argument>AppBundle\Entity</argument>
+                </call>
+                <call method="addDriver">
+                  <argument type="service">
+                    <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
+                      <argument type="service" id="annotation_reader"/>
+                      <argument type="collection">
+                        <argument>C:\xampp\htdocs\aplicacionChanfle\src\AppBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\aplicacionChanfle\src\VentasBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\aplicacionChanfle\src\InventarioBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\aplicacionChanfle\src\UsuariosBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\aplicacionChanfle\src\CostosBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\aplicacionChanfle\src\JornadasLaboralesBundle\Entity</argument>
+                      </argument>
+                    </service>
+                  </argument>
+                  <argument>VentasBundle\Entity</argument>
+                </call>
+                <call method="addDriver">
+                  <argument type="service">
+                    <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
+                      <argument type="service" id="annotation_reader"/>
+                      <argument type="collection">
+                        <argument>C:\xampp\htdocs\aplicacionChanfle\src\AppBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\aplicacionChanfle\src\VentasBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\aplicacionChanfle\src\InventarioBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\aplicacionChanfle\src\UsuariosBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\aplicacionChanfle\src\CostosBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\aplicacionChanfle\src\JornadasLaboralesBundle\Entity</argument>
+                      </argument>
+                    </service>
+                  </argument>
+                  <argument>InventarioBundle\Entity</argument>
+                </call>
+                <call method="addDriver">
+                  <argument type="service">
+                    <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
+                      <argument type="service" id="annotation_reader"/>
+                      <argument type="collection">
+                        <argument>C:\xampp\htdocs\aplicacionChanfle\src\AppBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\aplicacionChanfle\src\VentasBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\aplicacionChanfle\src\InventarioBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\aplicacionChanfle\src\UsuariosBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\aplicacionChanfle\src\CostosBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\aplicacionChanfle\src\JornadasLaboralesBundle\Entity</argument>
+                      </argument>
+                    </service>
+                  </argument>
+                  <argument>UsuariosBundle\Entity</argument>
+                </call>
+                <call method="addDriver">
+                  <argument type="service">
+                    <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
+                      <argument type="service" id="annotation_reader"/>
+                      <argument type="collection">
+                        <argument>C:\xampp\htdocs\aplicacionChanfle\src\AppBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\aplicacionChanfle\src\VentasBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\aplicacionChanfle\src\InventarioBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\aplicacionChanfle\src\UsuariosBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\aplicacionChanfle\src\CostosBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\aplicacionChanfle\src\JornadasLaboralesBundle\Entity</argument>
+                      </argument>
+                    </service>
+                  </argument>
+                  <argument>CostosBundle\Entity</argument>
+                </call>
+                <call method="addDriver">
+                  <argument type="service">
+                    <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
+                      <argument type="service" id="annotation_reader"/>
+                      <argument type="collection">
+                        <argument>C:\xampp\htdocs\aplicacionChanfle\src\AppBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\aplicacionChanfle\src\VentasBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\aplicacionChanfle\src\InventarioBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\aplicacionChanfle\src\UsuariosBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\aplicacionChanfle\src\CostosBundle\Entity</argument>
+                        <argument>C:\xampp\htdocs\aplicacionChanfle\src\JornadasLaboralesBundle\Entity</argument>
+                      </argument>
+                    </service>
+                  </argument>
+                  <argument>JornadasLaboralesBundle\Entity</argument>
                 </call>
                 <call method="addDriver">
                   <argument type="service">
@@ -3138,6 +3233,26 @@
       <call method="addPath">
         <argument>C:\xampp\htdocs\aplicacionChanfle\vendor\friendsofsymfony\user-bundle/Resources/views</argument>
         <argument>FOSUser</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\xampp\htdocs\aplicacionChanfle\src\VentasBundle/Resources/views</argument>
+        <argument>Ventas</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\xampp\htdocs\aplicacionChanfle\src\InventarioBundle/Resources/views</argument>
+        <argument>Inventario</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\xampp\htdocs\aplicacionChanfle\src\UsuariosBundle/Resources/views</argument>
+        <argument>Usuarios</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\xampp\htdocs\aplicacionChanfle\src\CostosBundle/Resources/views</argument>
+        <argument>Costos</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\xampp\htdocs\aplicacionChanfle\src\JornadasLaboralesBundle/Resources/views</argument>
+        <argument>JornadasLaborales</argument>
       </call>
       <call method="addPath">
         <argument>C:\xampp\htdocs\aplicacionChanfle\vendor\symfony\symfony\src\Symfony\Bundle\DebugBundle/Resources/views</argument>

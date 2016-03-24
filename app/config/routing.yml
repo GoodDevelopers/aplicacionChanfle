@@ -1,3 +1,28 @@
+jornadas_laborales:
+    resource: "@JornadasLaboralesBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+costos:
+    resource: "@CostosBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+usuarios:
+    resource: "@UsuariosBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+inventario:
+    resource: "@InventarioBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+ventas:
+    resource: "@VentasBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation

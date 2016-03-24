@@ -1,0 +1,122 @@
+<?php
+
+namespace InventarioBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * DetalleProducto
+ *
+ * @ORM\Table(name="detallesProducto")
+ * @ORM\Entity(repositoryClass="InventarioBundle\Repository\DetalleProductoRepository")
+ */
+class DetalleProducto
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="cantidadNecesaria", type="integer")
+     */
+    private $cantidadNecesaria;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set cantidadNecesaria
+     *
+     * @param integer $cantidadNecesaria
+     * @return DetalleProducto
+     */
+    public function setCantidadNecesaria($cantidadNecesaria)
+    {
+        $this->cantidadNecesaria = $cantidadNecesaria;
+    
+        return $this;
+    }
+
+    /**
+     * Get cantidadNecesaria
+     *
+     * @return integer 
+     */
+    public function getCantidadNecesaria()
+    {
+        return $this->cantidadNecesaria;
+    }
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Producto", inversedBy="detallesProducto")
+     * @ORM\JoinColumn(name="idProducto", referencedColumnName="id")
+     */
+    private $producto;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="MateriaPrima", inversedBy="detallesProductos")
+     * @ORM\JoinColumn(name="idMateriaPrima", referencedColumnName="id")
+     */
+    private $materiaPrima;
+
+    /**
+     * Set producto
+     *
+     * @param \InventarioBundle\Entity\Producto $producto
+     * @return DetalleProducto
+     */
+    public function setProducto(\InventarioBundle\Entity\Producto $producto = null)
+    {
+        $this->producto = $producto;
+    
+        return $this;
+    }
+
+    /**
+     * Get producto
+     *
+     * @return \InventarioBundle\Entity\Producto 
+     */
+    public function getProducto()
+    {
+        return $this->producto;
+    }
+
+    /**
+     * Set materiaPrima
+     *
+     * @param \InventarioBundle\Entity\MateriaPrima $materiaPrima
+     * @return DetalleProducto
+     */
+    public function setMateriaPrima(\InventarioBundle\Entity\MateriaPrima $materiaPrima = null)
+    {
+        $this->materiaPrima = $materiaPrima;
+    
+        return $this;
+    }
+
+    /**
+     * Get materiaPrima
+     *
+     * @return \InventarioBundle\Entity\MateriaPrima 
+     */
+    public function getMateriaPrima()
+    {
+        return $this->materiaPrima;
+    }
+}

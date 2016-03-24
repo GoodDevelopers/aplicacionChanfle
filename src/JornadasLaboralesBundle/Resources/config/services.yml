@@ -1,0 +1,4 @@
+services:
+#    jornadas_laborales.example:
+#        class: JornadasLaboralesBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
