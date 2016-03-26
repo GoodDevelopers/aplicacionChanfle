@@ -105,6 +105,113 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        // jornadaslaborales_default_index
+        if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'jornadaslaborales_default_index');
+            }
+
+            return array (  '_controller' => 'JornadasLaboralesBundle\\Controller\\DefaultController::indexAction',  '_route' => 'jornadaslaborales_default_index',);
+        }
+
+        // costos_default_index
+        if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'costos_default_index');
+            }
+
+            return array (  '_controller' => 'CostosBundle\\Controller\\DefaultController::indexAction',  '_route' => 'costos_default_index',);
+        }
+
+        if (0 === strpos($pathinfo, '/clientes')) {
+            // clientes_index
+            if (rtrim($pathinfo, '/') === '/clientes') {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_clientes_index;
+                }
+
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'clientes_index');
+                }
+
+                return array (  '_controller' => 'UsuariosBundle\\Controller\\ClienteController::indexAction',  '_route' => 'clientes_index',);
+            }
+            not_clientes_index:
+
+            // clientes_new
+            if ($pathinfo === '/clientes/new') {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_clientes_new;
+                }
+
+                return array (  '_controller' => 'UsuariosBundle\\Controller\\ClienteController::newAction',  '_route' => 'clientes_new',);
+            }
+            not_clientes_new:
+
+            // clientes_show
+            if (preg_match('#^/clientes/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_clientes_show;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'clientes_show')), array (  '_controller' => 'UsuariosBundle\\Controller\\ClienteController::showAction',));
+            }
+            not_clientes_show:
+
+            // clientes_edit
+            if (preg_match('#^/clientes/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_clientes_edit;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'clientes_edit')), array (  '_controller' => 'UsuariosBundle\\Controller\\ClienteController::editAction',));
+            }
+            not_clientes_edit:
+
+            // clientes_delete
+            if (preg_match('#^/clientes/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if ($this->context->getMethod() != 'DELETE') {
+                    $allow[] = 'DELETE';
+                    goto not_clientes_delete;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'clientes_delete')), array (  '_controller' => 'UsuariosBundle\\Controller\\ClienteController::deleteAction',));
+            }
+            not_clientes_delete:
+
+        }
+
+        // usuarios_default_index
+        if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'usuarios_default_index');
+            }
+
+            return array (  '_controller' => 'UsuariosBundle\\Controller\\DefaultController::indexAction',  '_route' => 'usuarios_default_index',);
+        }
+
+        // inventario_default_index
+        if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'inventario_default_index');
+            }
+
+            return array (  '_controller' => 'InventarioBundle\\Controller\\DefaultController::indexAction',  '_route' => 'inventario_default_index',);
+        }
+
+        // ventas_default_index
+        if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'ventas_default_index');
+            }
+
+            return array (  '_controller' => 'VentasBundle\\Controller\\DefaultController::indexAction',  '_route' => 'ventas_default_index',);
+        }
+
         // homepage
         if (rtrim($pathinfo, '/') === '') {
             if (substr($pathinfo, -1) !== '/') {

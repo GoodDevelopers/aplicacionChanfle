@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="h1 text-center" style="font-weight: bold;">Clientes <span class="glyphicon glyphicon-user"></span></h1>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 30px;">
+            <div class="col-md-3">
+                <ul style="list-style-type: none; padding: 0px;">
+                    <li>
+                        <a href="{{ path('clientes_new') }}" class="btn btn-lg btn-success">Registrar Cliente <span class="glyphicon glyphicon-floppy-saved"></span></a>
+                    </li>
+                </ul>
+            </div>
+                    
+            <div class="col-md-9">
+                <form action="" class="form-inline">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon" style="font-weight: bold;">Cliente</div>
+                            <input type="number" class="form-control" placeholder="No. de identificacion">
+                        </div>
+                        <button class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Buscar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-condensed text-center">
+                        <thead>
+                            <tr class="active info">
+                                <th>ID</th>
+                                <th>NUIP</th>
+                                <th>NOMBRE</th>
+                                <th>FECHA DE NACIMIENTO</th>
+                                <th>PUNTOS ACUMULADOS</th>
+                                <th>EMAIL</th>
+                                <th>ACCIONES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for cliente in clientes %}
+                                <tr>
+                                    <td>
+                                        <a href="{{ path('clientes_show', { 'id': cliente.id }) }}">{{ cliente.id }}</a>
+                                    </td>
+                                    <td>{{ cliente.nuip }}</td>
+                                    <td>{{ cliente.nombre }}</td>
+                                    <td>{% if cliente.fechaDeNacimiento %}{{ cliente.fechaDeNacimiento|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                    <td>{{ cliente.puntosAcumulados }}</td>
+                                    <td>{{ cliente.email }}</td>
+                                    <td>
+                                        <ul style="list-style-type: none;" class="list-inline text-center">
+                                            <li>
+                                                <a href="{{ path('clientes_show', { 'id': cliente.id }) }}" class="btn btn-info" role="button">Ver <span class="glyphicon glyphicon-eye-open"></span></a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ path('clientes_edit', { 'id': cliente.id }) }}" class="btn btn-warning" role="button">Editar <span class="glyphicon glyphicon-edit"></span></a>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
