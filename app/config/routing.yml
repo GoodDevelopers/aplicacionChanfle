@@ -1,3 +1,35 @@
+costos_costo:
+    resource: "@CostosBundle/Controller/CostoController.php"
+    type:     annotation
+
+inventario_ingreso_materia_prima:
+    resource: "@InventarioBundle/Controller/IngresoMateriaPrimaController.php"
+    type:     annotation
+
+inventario_materia_prima:
+    resource: "@InventarioBundle/Controller/MateriaPrimaController.php"
+    type:     annotation
+
+inventario_tipo_producto:
+    resource: "@InventarioBundle/Controller/TipoProductoController.php"
+    type:     annotation
+
+inventario_proveedor:
+    resource: "@InventarioBundle/Controller/ProveedorController.php"
+    type:     annotation
+
+inventario_producto:
+    resource: "@InventarioBundle/Controller/ProductoController.php"
+    type:     annotation
+
+usuarios_empleado:
+    resource: "@UsuariosBundle/Controller/EmpleadoController.php"
+    type:     annotation
+
+jornadas_laborales_caja:
+    resource: "@JornadasLaboralesBundle/Controller/CajaController.php"
+    type:     annotation
+
 usuarios_cliente:
     resource: "@UsuariosBundle/Controller/ClienteController.php"
     type:     annotation

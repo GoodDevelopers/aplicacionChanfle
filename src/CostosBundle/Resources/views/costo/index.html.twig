@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Costo list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Fecha</th>
+                <th>Tipocosto</th>
+                <th>Valor</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for costo in costos %}
+            <tr>
+                <td><a href="{{ path('costo_show', { 'id': costo.id }) }}">{{ costo.id }}</a></td>
+                <td>{% if costo.fecha %}{{ costo.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ costo.tipoCosto }}</td>
+                <td>{{ costo.valor }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('costo_show', { 'id': costo.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('costo_edit', { 'id': costo.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('costo_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

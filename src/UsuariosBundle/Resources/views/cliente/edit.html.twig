@@ -1,21 +1,60 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Cliente edit</h1>
+    <div class="container">
+        <div class="row">
+            <h1 class="h1 text-center marginTitulo">Editar cliente <span class="glyphicon glyphicon-user"></span></h1>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-4">
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+                {{ form_start(edit_form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('clientes_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+                <div class="form-group">
+                    {{ form_label(edit_form.nuip, 'No. de identificacion:')}}
+                    {{ form_widget(edit_form.nuip, {'attr':{'class' : 'form-control', 'placeholder' : 'Numero de cedula del cliente'}})}}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(edit_form.nombre, 'Nombre y apellidos:')}}
+                    {{ form_widget(edit_form.nombre, {'attr':{'class' : 'form-control', 'placeholder' : 'Nombre y apellidos completos del cliente'}})}}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(edit_form.fechaDeNacimiento, 'Fecha de nacimiento:')}}
+                    {{ form_widget(edit_form.fechaDeNacimiento, {'attr':{'class' : 'form-control', 'placeholder' : 'dd/MM/yyyy'}})}}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(edit_form.puntosAcumulados, 'Puntos acumulados:')}}
+                    {{ form_widget(edit_form.puntosAcumulados, {'attr':{'class' : 'form-control'}})}}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(edit_form.email, 'Email:')}}
+                    {{ form_widget(edit_form.email, {'attr':{'class' : 'form-control', 'placeholder' : 'Correo personal'}})}}
+                </div>
+
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-lg btn-warning active">Editar <span class="glyphicon glyphicon-edit"></span></button>
+                </div>
+                {#            <input type="submit" value="Edit" />#}
+
+                {{ form_end(edit_form) }}
+
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="{{ path('clientes_index') }}" class="btn btn-info">Lista <span class="glyphicon glyphicon-th-list"></span></a>
+                    </li>
+                    <li>
+                        {{ form_start(delete_form) }}
+                        {#                    <input type="submit" value="Delete">#}
+                        <button type="submit" class="btn btn-danger">Eliminar <span class="glyphicon glyphicon-floppy-remove"></span></button>
+                            {{ form_end(delete_form) }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+                            
 {% endblock %}

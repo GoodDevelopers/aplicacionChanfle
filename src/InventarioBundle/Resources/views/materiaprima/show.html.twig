@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>MateriaPrima</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ materiaPrima.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ materiaPrima.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Unidaddemedida</th>
+                <td>{{ materiaPrima.unidadDeMedida }}</td>
+            </tr>
+            <tr>
+                <th>Cantidad</th>
+                <td>{{ materiaPrima.cantidad }}</td>
+            </tr>
+            <tr>
+                <th>Precio</th>
+                <td>{{ materiaPrima.precio }}</td>
+            </tr>
+            <tr>
+                <th>Stockminimo</th>
+                <td>{{ materiaPrima.stockMinimo }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('materiaprima_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('materiaprima_edit', { 'id': materiaPrima.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

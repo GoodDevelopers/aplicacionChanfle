@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>MateriaPrima list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Unidaddemedida</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+                <th>Stockminimo</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for materiaPrima in materiaPrimas %}
+            <tr>
+                <td><a href="{{ path('materiaprima_show', { 'id': materiaPrima.id }) }}">{{ materiaPrima.id }}</a></td>
+                <td>{{ materiaPrima.nombre }}</td>
+                <td>{{ materiaPrima.unidadDeMedida }}</td>
+                <td>{{ materiaPrima.cantidad }}</td>
+                <td>{{ materiaPrima.precio }}</td>
+                <td>{{ materiaPrima.stockMinimo }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('materiaprima_show', { 'id': materiaPrima.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('materiaprima_edit', { 'id': materiaPrima.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('materiaprima_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Empleado list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nuip</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Telefono</th>
+                <th>Esusuario</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for empleado in empleados %}
+            <tr>
+                <td><a href="{{ path('UsuariosBundle_empleado_show', { 'id': empleado.id }) }}">{{ empleado.id }}</a></td>
+                <td>{{ empleado.nuip }}</td>
+                <td>{{ empleado.nombre }}</td>
+                <td>{{ empleado.apellido }}</td>
+                <td>{{ empleado.telefono }}</td>
+                <td>{% if empleado.esUsuario %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('UsuariosBundle_empleado_show', { 'id': empleado.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('UsuariosBundle_empleado_edit', { 'id': empleado.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('UsuariosBundle_empleado_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

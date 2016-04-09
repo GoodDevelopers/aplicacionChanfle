@@ -1,0 +1,40 @@
+.list-inline{
+    margin-left: 0px;
+}
+
+.btn{
+    font-weight: bold;
+}
+
+.h1{
+    font-weight: bold;
+}
+
+/*Titulos de tabla*/
+tr > th{
+    text-align: center;
+}
+
+.row ul{
+    list-style-type: none;
+    padding: 0px;
+}
+
+.btn{
+    margin-bottom: 5px;
+}
+
+.table{
+    background-color: white;
+}
+
+/*Nueva clase para el espacio entre titulo y el contenido*/
+.marginTitulo{
+    margin-bottom: 30px;
+}
+
+body{
+    background-image: url(../img/fondo.png);
+    background-size: 100% 100%;
+    background-attachment: fixed;
+}

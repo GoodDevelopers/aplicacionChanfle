@@ -1,48 +1,62 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Cliente</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="h1 text-center marginTitulo">Cliente <span class="glyphicon glyphicon-user"></span></h1>
+            </div>
+        </div>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ cliente.id }}</td>
-            </tr>
-            <tr>
-                <th>Nuip</th>
-                <td>{{ cliente.nuip }}</td>
-            </tr>
-            <tr>
-                <th>Nombre</th>
-                <td>{{ cliente.nombre }}</td>
-            </tr>
-            <tr>
-                <th>Fechadenacimiento</th>
-                <td>{% if cliente.fechaDeNacimiento %}{{ cliente.fechaDeNacimiento|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Puntosacumulados</th>
-                <td>{{ cliente.puntosAcumulados }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ cliente.email }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4">
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <th class="text-right">ID:</th>
+                            <td>{{ cliente.id }}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">No. de identificacion:</th>
+                            <td>{{ cliente.nuip }}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">Nombre:</th>
+                            <td>{{ cliente.nombre }}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">Fecha de nacimiento:</th>
+                            <td>{% if cliente.fechaDeNacimiento %}{{ cliente.fechaDeNacimiento|date('d-m-Y') }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">Puntos acumulados:</th>
+                            <td>{{ cliente.puntosAcumulados }}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">Email:</th>
+                            <td>{{ cliente.email }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('clientes_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('clientes_edit', { 'id': cliente.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4">
+                <ul class="text-center list-inline">
+                    <li>
+                        <a href="{{ path('clientes_index') }}"class="btn btn-info">Lista <span class="glyphicon glyphicon-th-list"></span></a>
+                    </li>
+                    <li>
+                        <a href="{{ path('clientes_edit', { 'id': cliente.id }) }}" class="btn btn-warning" role="button">Editar <span class="glyphicon glyphicon-edit"></span></a>
+                    </li>
+                    <li>
+                        {{ form_start(delete_form) }}
+                        <button type="submit" class="btn btn-danger">Eliminar <span class="glyphicon glyphicon-floppy-remove"></span></button>
+                        {{ form_end(delete_form) }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -10,114 +10,178 @@ class __TwigTemplate_8ba3aa92f5f35983b208f8e9b0065d148f1147d3fe02e32941ad2a70bed
         $this->parent = false;
 
         $this->blocks = array(
+            'stylesheets' => array($this, 'block_stylesheets'),
             'fos_user_content' => array($this, 'block_fos_user_content'),
+            'javascripts' => array($this, 'block_javascripts'),
         );
     }
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_e56225fd59c987499b2b979fd8940582f705cf2d3fa81dc5c9f11eeb48e9c986 = $this->env->getExtension("native_profiler");
-        $__internal_e56225fd59c987499b2b979fd8940582f705cf2d3fa81dc5c9f11eeb48e9c986->enter($__internal_e56225fd59c987499b2b979fd8940582f705cf2d3fa81dc5c9f11eeb48e9c986_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FOSUserBundle::layout.html.twig"));
+        $__internal_bb4e6de0051dadd39a876440f890b8672bde5317da5b49e2e2e13f687af7eaf4 = $this->env->getExtension("native_profiler");
+        $__internal_bb4e6de0051dadd39a876440f890b8672bde5317da5b49e2e2e13f687af7eaf4->enter($__internal_bb4e6de0051dadd39a876440f890b8672bde5317da5b49e2e2e13f687af7eaf4_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FOSUserBundle::layout.html.twig"));
 
         // line 1
         echo "<!DOCTYPE html>
 <html>
     <head>
         <meta charset=\"UTF-8\" />
-    </head>
-    <body>
-        <div>
-            ";
-        // line 8
-        if ($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
-            // line 9
-            echo "                ";
-            echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("layout.logged_in_as", array("%username%" => $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()), "username", array())), "FOSUserBundle"), "html", null, true);
-            echo " |
-                <a href=\"";
-            // line 10
-            echo $this->env->getExtension('routing')->getPath("fos_user_security_logout");
-            echo "\">
-                    ";
-            // line 11
-            echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("layout.logout", array(), "FOSUserBundle"), "html", null, true);
-            echo "
-                </a>
-            ";
-        } else {
-            // line 14
-            echo "                <a href=\"";
-            echo $this->env->getExtension('routing')->getPath("fos_user_security_login");
-            echo "\">";
-            echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("layout.login", array(), "FOSUserBundle"), "html", null, true);
-            echo "</a>
-            ";
-        }
-        // line 16
-        echo "        </div>
-
         ";
-        // line 18
+        // line 5
+        $this->displayBlock('stylesheets', $context, $blocks);
+        // line 9
+        echo "    </head>
+    <body>
+        <div class=\"container\">
+
+            <div class=\"row\">
+                <div class=\"col-md-4 col-md-offset-4\" style=\"margin-bottom: 20px;\">
+                    <img src=\"";
+        // line 15
+        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("bundles/app/img/login.png"), "html", null, true);
+        echo "\" alt=\"imgLogin\" class=\"img-responsive center-block\">
+                </div>
+            </div>
+
+            <div class=\"row\">
+                <div class=\"col-lg-12\">
+                    ";
+        // line 21
+        if ($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
+            // line 22
+            echo "                        <p>
+                            <span style=\"font-weight: bold;\">Sesion abierta como: ";
+            // line 23
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()), "username", array()), "html", null, true);
+            echo "</span>
+                            <a href=\"";
+            // line 24
+            echo $this->env->getExtension('routing')->getPath("fos_user_security_logout");
+            echo "\" style=\"float: right;\">
+                                Cerrar sesion
+                            </a>
+                        </p>
+                    ";
+        } else {
+            // line 29
+            echo "                        ";
+            // line 30
+            echo "                    ";
+        }
+        // line 31
+        echo "
+
+                    ";
+        // line 33
         if ($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "request", array()), "hasPreviousSession", array())) {
-            // line 19
-            echo "            ";
+            // line 34
+            echo "                        ";
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "session", array()), "flashbag", array()), "all", array(), "method"));
             foreach ($context['_seq'] as $context["type"] => $context["messages"]) {
-                // line 20
-                echo "                ";
+                // line 35
+                echo "                            ";
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable($context["messages"]);
                 foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
-                    // line 21
-                    echo "                    <div class=\"flash-";
+                    // line 36
+                    echo "                                <div class=\"flash-";
                     echo twig_escape_filter($this->env, $context["type"], "html", null, true);
                     echo "\">
-                        ";
-                    // line 22
+                                    ";
+                    // line 37
                     echo twig_escape_filter($this->env, $context["message"], "html", null, true);
                     echo "
-                    </div>
-                ";
+                                </div>
+                            ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 25
-                echo "            ";
+                // line 40
+                echo "                        ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['type'], $context['messages'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 26
-            echo "        ";
+            // line 41
+            echo "                    ";
         }
-        // line 27
+        // line 42
         echo "
-        <div>
-            ";
-        // line 29
+                    ";
+        // line 44
+        echo "                    ";
         $this->displayBlock('fos_user_content', $context, $blocks);
-        // line 31
-        echo "        </div>
-    </body>
+        // line 46
+        echo "                    ";
+        // line 47
+        echo "                </div>
+            </div>
+        </div>
+
+        ";
+        // line 51
+        $this->displayBlock('javascripts', $context, $blocks);
+        // line 55
+        echo "    </body>
 </html>
 ";
         
-        $__internal_e56225fd59c987499b2b979fd8940582f705cf2d3fa81dc5c9f11eeb48e9c986->leave($__internal_e56225fd59c987499b2b979fd8940582f705cf2d3fa81dc5c9f11eeb48e9c986_prof);
+        $__internal_bb4e6de0051dadd39a876440f890b8672bde5317da5b49e2e2e13f687af7eaf4->leave($__internal_bb4e6de0051dadd39a876440f890b8672bde5317da5b49e2e2e13f687af7eaf4_prof);
 
     }
 
-    // line 29
+    // line 5
+    public function block_stylesheets($context, array $blocks = array())
+    {
+        $__internal_0ee14fdd77f425c79be6b8a21ed62fdad18fea63e94e7a974bff5b48ebb3818d = $this->env->getExtension("native_profiler");
+        $__internal_0ee14fdd77f425c79be6b8a21ed62fdad18fea63e94e7a974bff5b48ebb3818d->enter($__internal_0ee14fdd77f425c79be6b8a21ed62fdad18fea63e94e7a974bff5b48ebb3818d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheets"));
+
+        // line 6
+        echo "            <link rel=\"stylesheet\" href=\"";
+        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("bundles/app/css/bootstrap.css"), "html", null, true);
+        echo "\" />
+            <link rel=\"stylesheet\" href=\"";
+        // line 7
+        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("bundles/app/css/style.css"), "html", null, true);
+        echo "\" />
+        ";
+        
+        $__internal_0ee14fdd77f425c79be6b8a21ed62fdad18fea63e94e7a974bff5b48ebb3818d->leave($__internal_0ee14fdd77f425c79be6b8a21ed62fdad18fea63e94e7a974bff5b48ebb3818d_prof);
+
+    }
+
+    // line 44
     public function block_fos_user_content($context, array $blocks = array())
     {
-        $__internal_7058cb1579ace798f713bd932dcb250d98a2a4ad0cadbcc3bd42dd7333b1cc47 = $this->env->getExtension("native_profiler");
-        $__internal_7058cb1579ace798f713bd932dcb250d98a2a4ad0cadbcc3bd42dd7333b1cc47->enter($__internal_7058cb1579ace798f713bd932dcb250d98a2a4ad0cadbcc3bd42dd7333b1cc47_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "fos_user_content"));
+        $__internal_f285e4c137231936b7069954010ca7adb9902774fe24612d619fee81ae18a315 = $this->env->getExtension("native_profiler");
+        $__internal_f285e4c137231936b7069954010ca7adb9902774fe24612d619fee81ae18a315->enter($__internal_f285e4c137231936b7069954010ca7adb9902774fe24612d619fee81ae18a315_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "fos_user_content"));
 
-        // line 30
-        echo "            ";
+        // line 45
+        echo "                    ";
         
-        $__internal_7058cb1579ace798f713bd932dcb250d98a2a4ad0cadbcc3bd42dd7333b1cc47->leave($__internal_7058cb1579ace798f713bd932dcb250d98a2a4ad0cadbcc3bd42dd7333b1cc47_prof);
+        $__internal_f285e4c137231936b7069954010ca7adb9902774fe24612d619fee81ae18a315->leave($__internal_f285e4c137231936b7069954010ca7adb9902774fe24612d619fee81ae18a315_prof);
+
+    }
+
+    // line 51
+    public function block_javascripts($context, array $blocks = array())
+    {
+        $__internal_a76a8f301d541c673351607f16430d1fff3c6f0c48f62192bafdf763304db0a3 = $this->env->getExtension("native_profiler");
+        $__internal_a76a8f301d541c673351607f16430d1fff3c6f0c48f62192bafdf763304db0a3->enter($__internal_a76a8f301d541c673351607f16430d1fff3c6f0c48f62192bafdf763304db0a3_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
+
+        // line 52
+        echo "            <script src=\"";
+        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("bundles/app/js/jquery.js"), "html", null, true);
+        echo "\"></script>
+            <script src=\"";
+        // line 53
+        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("bundles/app/js/bootstrap.js"), "html", null, true);
+        echo "\"></script>
+        ";
+        
+        $__internal_a76a8f301d541c673351607f16430d1fff3c6f0c48f62192bafdf763304db0a3->leave($__internal_a76a8f301d541c673351607f16430d1fff3c6f0c48f62192bafdf763304db0a3_prof);
 
     }
 
@@ -133,40 +197,63 @@ class __TwigTemplate_8ba3aa92f5f35983b208f8e9b0065d148f1147d3fe02e32941ad2a70bed
 
     public function getDebugInfo()
     {
-        return array (  118 => 30,  112 => 29,  102 => 31,  100 => 29,  96 => 27,  93 => 26,  87 => 25,  78 => 22,  73 => 21,  68 => 20,  63 => 19,  61 => 18,  57 => 16,  49 => 14,  43 => 11,  39 => 10,  34 => 9,  32 => 8,  23 => 1,);
+        return array (  180 => 53,  175 => 52,  169 => 51,  162 => 45,  156 => 44,  147 => 7,  142 => 6,  136 => 5,  127 => 55,  125 => 51,  119 => 47,  117 => 46,  114 => 44,  111 => 42,  108 => 41,  102 => 40,  93 => 37,  88 => 36,  83 => 35,  78 => 34,  76 => 33,  72 => 31,  69 => 30,  67 => 29,  59 => 24,  55 => 23,  52 => 22,  50 => 21,  41 => 15,  33 => 9,  31 => 5,  25 => 1,);
     }
 }
 /* <!DOCTYPE html>*/
 /* <html>*/
 /*     <head>*/
 /*         <meta charset="UTF-8" />*/
+/*         {% block stylesheets %}*/
+/*             <link rel="stylesheet" href="{{ asset('bundles/app/css/bootstrap.css') }}" />*/
+/*             <link rel="stylesheet" href="{{ asset('bundles/app/css/style.css') }}" />*/
+/*         {% endblock %}*/
 /*     </head>*/
 /*     <body>*/
-/*         <div>*/
-/*             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}*/
-/*                 {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |*/
-/*                 <a href="{{ path('fos_user_security_logout') }}">*/
-/*                     {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}*/
-/*                 </a>*/
-/*             {% else %}*/
-/*                 <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>*/
-/*             {% endif %}*/
+/*         <div class="container">*/
+/* */
+/*             <div class="row">*/
+/*                 <div class="col-md-4 col-md-offset-4" style="margin-bottom: 20px;">*/
+/*                     <img src="{{ asset('bundles/app/img/login.png') }}" alt="imgLogin" class="img-responsive center-block">*/
+/*                 </div>*/
+/*             </div>*/
+/* */
+/*             <div class="row">*/
+/*                 <div class="col-lg-12">*/
+/*                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}*/
+/*                         <p>*/
+/*                             <span style="font-weight: bold;">Sesion abierta como: {{app.user.username}}</span>*/
+/*                             <a href="{{ path('fos_user_security_logout') }}" style="float: right;">*/
+/*                                 Cerrar sesion*/
+/*                             </a>*/
+/*                         </p>*/
+/*                     {% else %}*/
+/*                         {#                <a href="{{ path('fos_user_security_login') }}">Iniciar sesion</a>#}*/
+/*                     {% endif %}*/
+/* */
+/* */
+/*                     {% if app.request.hasPreviousSession %}*/
+/*                         {% for type, messages in app.session.flashbag.all() %}*/
+/*                             {% for message in messages %}*/
+/*                                 <div class="flash-{{ type }}">*/
+/*                                     {{ message }}*/
+/*                                 </div>*/
+/*                             {% endfor %}*/
+/*                         {% endfor %}*/
+/*                     {% endif %}*/
+/* */
+/*                     {#            <div>#}*/
+/*                     {% block fos_user_content %}*/
+/*                     {% endblock fos_user_content %}*/
+/*                     {#            </div>#}*/
+/*                 </div>*/
+/*             </div>*/
 /*         </div>*/
 /* */
-/*         {% if app.request.hasPreviousSession %}*/
-/*             {% for type, messages in app.session.flashbag.all() %}*/
-/*                 {% for message in messages %}*/
-/*                     <div class="flash-{{ type }}">*/
-/*                         {{ message }}*/
-/*                     </div>*/
-/*                 {% endfor %}*/
-/*             {% endfor %}*/
-/*         {% endif %}*/
-/* */
-/*         <div>*/
-/*             {% block fos_user_content %}*/
-/*             {% endblock fos_user_content %}*/
-/*         </div>*/
+/*         {% block javascripts %}*/
+/*             <script src="{{ asset('bundles/app/js/jquery.js') }}"></script>*/
+/*             <script src="{{ asset('bundles/app/js/bootstrap.js') }}"></script>*/
+/*         {% endblock %}*/
 /*     </body>*/
 /* </html>*/
 /* */

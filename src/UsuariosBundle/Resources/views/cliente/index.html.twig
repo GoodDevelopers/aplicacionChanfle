@@ -2,14 +2,13 @@
 
 {% block body %}
     <div class="container">
-
         <div class="row">
             <div class="col-md-12">
-                <h1 class="h1 text-center" style="font-weight: bold;">Clientes <span class="glyphicon glyphicon-user"></span></h1>
+                <h1 class="h1 text-center marginTitulo" style="font-weight: bold;">Clientes <span class="glyphicon glyphicon-user"></span></h1>
             </div>
         </div>
 
-        <div class="row" style="margin-top: 30px;">
+        <div class="row">
             <div class="col-md-3">
                 <ul style="list-style-type: none; padding: 0px;">
                     <li>
@@ -17,17 +16,26 @@
                     </li>
                 </ul>
             </div>
-                    
+
             <div class="col-md-9">
-                <form action="" class="form-inline">
+                <form action="" method="GET" class="form-inline">
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-addon" style="font-weight: bold;">Cliente</div>
-                            <input type="number" class="form-control" placeholder="No. de identificacion">
+                            <input type="number" class="form-control" placeholder="No. de identificacion" id="idCliente">
                         </div>
-                        <button class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Buscar</button>
+                        <button type="button" id="btnBuscar" data-loading-text="Buscando" autocomplete="off" class="btn btn-primary" onclick="buscar()"><span class="glyphicon glyphicon-search"></span> Buscar</button>
                     </div>
                 </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-warning alert-dismissible" role="alert" id="bloqueMensaje" style="display: none;">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <span id="mensaje"><strong>No</strong> se ha encontrado un cliente con el dato ingresado.</span>
+                </div>
             </div>
         </div>
 
@@ -46,7 +54,7 @@
                                 <th>ACCIONES</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="cuerpoTabla">
                             {% for cliente in clientes %}
                                 <tr>
                                     <td>
@@ -54,16 +62,16 @@
                                     </td>
                                     <td>{{ cliente.nuip }}</td>
                                     <td>{{ cliente.nombre }}</td>
-                                    <td>{% if cliente.fechaDeNacimiento %}{{ cliente.fechaDeNacimiento|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                    <td>{% if cliente.fechaDeNacimiento %}{{ cliente.fechaDeNacimiento|date('d-m-Y') }}{% endif %}</td>
                                     <td>{{ cliente.puntosAcumulados }}</td>
                                     <td>{{ cliente.email }}</td>
                                     <td>
                                         <ul style="list-style-type: none;" class="list-inline text-center">
                                             <li>
-                                                <a href="{{ path('clientes_show', { 'id': cliente.id }) }}" class="btn btn-info" role="button">Ver <span class="glyphicon glyphicon-eye-open"></span></a>
+                                                <a href="{{ path('clientes_edit', { 'id': cliente.id }) }}" class="btn btn-warning" role="button">Editar <span class="glyphicon glyphicon-edit"></span></a>
                                             </li>
                                             <li>
-                                                <a href="{{ path('clientes_edit', { 'id': cliente.id }) }}" class="btn btn-warning" role="button">Editar <span class="glyphicon glyphicon-edit"></span></a>
+                                                <a href="{{ path('clientes_show', { 'id': cliente.id }) }}" class="btn btn-danger" role="button">Eliminar <span class="glyphicon glyphicon-floppy-remove"></span></a>
                                             </li>
                                         </ul>
                                     </td>
@@ -74,6 +82,87 @@
                 </div>
             </div>
         </div>
-
     </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        function buscar() {
+            var valor = $('#idCliente').val();
+            var btn = $('#btnBuscar');
+            var bloqueMsj = $('#bloqueMensaje');
+            var msj = $('#mensaje');
+            //Esto es cuando no se ingresa ningun dato en el input
+            if (valor.trim() == "") {
+                bloqueMsj.removeClass('alert-warning');
+                bloqueMsj.addClass('alert-danger');
+                msj.html("<strong>Debe</strong> ingresar un dato para realizar la busqueda.");
+                bloqueMsj.css('display', 'block');
+                btn.blur();
+                return;
+            }
+            $.ajax({
+                url: "{{ path('buscarCliente') }}",
+                data: ({id: valor}),
+                method: 'POST',
+                dataType: "json",
+                //Esto sucede antes que empiece la busqueda
+                beforeSend: function () {
+                    btn.addClass('disabled');
+                    btn.html("<span class='fa fa-spinner fa-pulse'></span> Buscando");
+                },
+                //Esto es cuando ya hay una respuesta
+                success: function (data) {
+                    console.log('DATA:');
+                    console.log(data);
+                    console.log('------');
+                    //Esto es cuando no encuentra ningun cliente
+                    if (data === -1) {
+                        console.log('No encontro nada');
+                        bloqueMsj.removeClass('alert-danger');
+                        bloqueMsj.addClass('alert-warning');
+                        msj.html("<strong>No</strong> se ha encontrado un cliente con el dato ingresado.");
+                        bloqueMsj.css('display', 'block');
+                    } else {
+                        bloqueMsj.css('display', 'none');
+                        //Rutas para los botones edit y delete
+                        var url1 = "{{path('clientes_edit', {'id':'parametro_cualquiera'})}}";
+                        var url2 = "{{path('clientes_show', {'id': 'parametro_cualquiera1'})}}";
+                        url1 = url1.replace('parametro_cualquiera', data['id']);
+                        url2 = url2.replace('parametro_cualquiera1', data['id']);
+                        //Limpiamos la tabla
+                        $('#cuerpoTabla').empty();
+                        //Llenamos la tabla nuevamente
+                        $('#cuerpoTabla').append(llenarTabla(data, url1, url2));
+                        bloqueMsj.css('display', 'none');
+                    }
+                    btn.removeClass('disabled');
+                    btn.html("<span id='iconoBuscar' class='glyphicon glyphicon-search'></span> Buscar");
+                    btn.blur();
+                },
+                error: function (jqXHR, estado, error) {
+                    console.log('ERROR');
+                    console.log(estado);
+                    console.log(error);
+                    console.log('------');
+                }
+            });
+        }
+        function llenarTabla(data, url1, url2) {
+            var PersonaProcesar;
+            PersonaProcesar =
+                    "<tr>" +
+                    "<td>" +
+                    "<a href='" + url2 + "'>" + data['id'] + "</a>" +
+                    "</td>" +
+                    "<td>" +
+                    data['nuip'] +
+                    "</td>" +
+                    "</tr>"
+                    ;
+            return PersonaProcesar;
+        }
+    </script>
 {% endblock %}

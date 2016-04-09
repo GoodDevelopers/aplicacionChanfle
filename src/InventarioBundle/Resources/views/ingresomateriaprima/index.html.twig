@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>IngresoMateriaPrima list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Fecha</th>
+                <th>Cantidad</th>
+                <th>Valor</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ingresoMateriaPrima in ingresoMateriaPrimas %}
+            <tr>
+                <td><a href="{{ path('ingresomateriaprima_show', { 'id': ingresoMateriaPrima.id }) }}">{{ ingresoMateriaPrima.id }}</a></td>
+                <td>{% if ingresoMateriaPrima.fecha %}{{ ingresoMateriaPrima.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ ingresoMateriaPrima.cantidad }}</td>
+                <td>{{ ingresoMateriaPrima.valor }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('ingresomateriaprima_show', { 'id': ingresoMateriaPrima.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('ingresomateriaprima_edit', { 'id': ingresoMateriaPrima.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('ingresomateriaprima_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

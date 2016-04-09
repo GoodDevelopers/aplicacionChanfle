@@ -21,101 +21,115 @@ class __TwigTemplate_3899a877a1ef8e7a7141492075b5271b961655f01e33738fc3e9eefc9bc
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_3c75c26697639a3f3dc14c716fd5f5321d766308bf5e87d13bbde76b98d17c75 = $this->env->getExtension("native_profiler");
-        $__internal_3c75c26697639a3f3dc14c716fd5f5321d766308bf5e87d13bbde76b98d17c75->enter($__internal_3c75c26697639a3f3dc14c716fd5f5321d766308bf5e87d13bbde76b98d17c75_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UsuariosBundle:Cliente:show.html.twig"));
+        $__internal_790de2cf3293429251ce7770cf71eab91788232258e347b0e616b26dbe76f325 = $this->env->getExtension("native_profiler");
+        $__internal_790de2cf3293429251ce7770cf71eab91788232258e347b0e616b26dbe76f325->enter($__internal_790de2cf3293429251ce7770cf71eab91788232258e347b0e616b26dbe76f325_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UsuariosBundle:Cliente:show.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_3c75c26697639a3f3dc14c716fd5f5321d766308bf5e87d13bbde76b98d17c75->leave($__internal_3c75c26697639a3f3dc14c716fd5f5321d766308bf5e87d13bbde76b98d17c75_prof);
+        $__internal_790de2cf3293429251ce7770cf71eab91788232258e347b0e616b26dbe76f325->leave($__internal_790de2cf3293429251ce7770cf71eab91788232258e347b0e616b26dbe76f325_prof);
 
     }
 
     // line 3
     public function block_body($context, array $blocks = array())
     {
-        $__internal_026f37dac361fdfc87ed729d19cea3b7b25fe4613c099f812f5516ef33ebc7f6 = $this->env->getExtension("native_profiler");
-        $__internal_026f37dac361fdfc87ed729d19cea3b7b25fe4613c099f812f5516ef33ebc7f6->enter($__internal_026f37dac361fdfc87ed729d19cea3b7b25fe4613c099f812f5516ef33ebc7f6_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_0e1ab00017e9fc23d1a04bb67a1198a3ac2452cc15d7eadf6d49303eac63a958 = $this->env->getExtension("native_profiler");
+        $__internal_0e1ab00017e9fc23d1a04bb67a1198a3ac2452cc15d7eadf6d49303eac63a958->enter($__internal_0e1ab00017e9fc23d1a04bb67a1198a3ac2452cc15d7eadf6d49303eac63a958_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
-        echo "    <h1>Cliente</h1>
+        echo "    <div class=\"container\">
+        <div class=\"row\">
+            <div class=\"col-md-12\">
+                <h1 class=\"h1 text-center marginTitulo\">Cliente <span class=\"glyphicon glyphicon-user\"></span></h1>
+            </div>
+        </div>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>";
-        // line 10
+        <div class=\"row\">
+            <div class=\"col-lg-4 col-lg-offset-4\">
+                <table class=\"table table-hover\">
+                    <tbody>
+                        <tr>
+                            <th class=\"text-right\">ID:</th>
+                            <td>";
+        // line 17
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["cliente"]) ? $context["cliente"] : $this->getContext($context, "cliente")), "id", array()), "html", null, true);
         echo "</td>
-            </tr>
-            <tr>
-                <th>Nuip</th>
-                <td>";
-        // line 14
+                        </tr>
+                        <tr>
+                            <th class=\"text-right\">No. de identificacion:</th>
+                            <td>";
+        // line 21
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["cliente"]) ? $context["cliente"] : $this->getContext($context, "cliente")), "nuip", array()), "html", null, true);
         echo "</td>
-            </tr>
-            <tr>
-                <th>Nombre</th>
-                <td>";
-        // line 18
+                        </tr>
+                        <tr>
+                            <th class=\"text-right\">Nombre:</th>
+                            <td>";
+        // line 25
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["cliente"]) ? $context["cliente"] : $this->getContext($context, "cliente")), "nombre", array()), "html", null, true);
         echo "</td>
-            </tr>
-            <tr>
-                <th>Fechadenacimiento</th>
-                <td>";
-        // line 22
+                        </tr>
+                        <tr>
+                            <th class=\"text-right\">Fecha de nacimiento:</th>
+                            <td>";
+        // line 29
         if ($this->getAttribute((isset($context["cliente"]) ? $context["cliente"] : $this->getContext($context, "cliente")), "fechaDeNacimiento", array())) {
-            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute((isset($context["cliente"]) ? $context["cliente"] : $this->getContext($context, "cliente")), "fechaDeNacimiento", array()), "Y-m-d H:i:s"), "html", null, true);
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute((isset($context["cliente"]) ? $context["cliente"] : $this->getContext($context, "cliente")), "fechaDeNacimiento", array()), "d-m-Y"), "html", null, true);
         }
         echo "</td>
-            </tr>
-            <tr>
-                <th>Puntosacumulados</th>
-                <td>";
-        // line 26
+                        </tr>
+                        <tr>
+                            <th class=\"text-right\">Puntos acumulados:</th>
+                            <td>";
+        // line 33
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["cliente"]) ? $context["cliente"] : $this->getContext($context, "cliente")), "puntosAcumulados", array()), "html", null, true);
         echo "</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>";
-        // line 30
+                        </tr>
+                        <tr>
+                            <th class=\"text-right\">Email:</th>
+                            <td>";
+        // line 37
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["cliente"]) ? $context["cliente"] : $this->getContext($context, "cliente")), "email", array()), "html", null, true);
         echo "</td>
-            </tr>
-        </tbody>
-    </table>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-    <ul>
-        <li>
-            <a href=\"";
-        // line 37
+        <div class=\"row\">
+            <div class=\"col-lg-4 col-lg-offset-4\">
+                <ul class=\"text-center list-inline\">
+                    <li>
+                        <a href=\"";
+        // line 48
         echo $this->env->getExtension('routing')->getPath("clientes_index");
-        echo "\">Back to the list</a>
-        </li>
-        <li>
-            <a href=\"";
-        // line 40
+        echo "\"class=\"btn btn-info\">Lista <span class=\"glyphicon glyphicon-th-list\"></span></a>
+                    </li>
+                    <li>
+                        <a href=\"";
+        // line 51
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("clientes_edit", array("id" => $this->getAttribute((isset($context["cliente"]) ? $context["cliente"] : $this->getContext($context, "cliente")), "id", array()))), "html", null, true);
-        echo "\">Edit</a>
-        </li>
-        <li>
-            ";
-        // line 43
+        echo "\" class=\"btn btn-warning\" role=\"button\">Editar <span class=\"glyphicon glyphicon-edit\"></span></a>
+                    </li>
+                    <li>
+                        ";
+        // line 54
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["delete_form"]) ? $context["delete_form"] : $this->getContext($context, "delete_form")), 'form_start');
         echo "
-                <input type=\"submit\" value=\"Delete\">
-            ";
-        // line 45
+                        <button type=\"submit\" class=\"btn btn-danger\">Eliminar <span class=\"glyphicon glyphicon-floppy-remove\"></span></button>
+                        ";
+        // line 56
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["delete_form"]) ? $context["delete_form"] : $this->getContext($context, "delete_form")), 'form_end');
         echo "
-        </li>
-    </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 ";
         
-        $__internal_026f37dac361fdfc87ed729d19cea3b7b25fe4613c099f812f5516ef33ebc7f6->leave($__internal_026f37dac361fdfc87ed729d19cea3b7b25fe4613c099f812f5516ef33ebc7f6_prof);
+        $__internal_0e1ab00017e9fc23d1a04bb67a1198a3ac2452cc15d7eadf6d49303eac63a958->leave($__internal_0e1ab00017e9fc23d1a04bb67a1198a3ac2452cc15d7eadf6d49303eac63a958_prof);
 
     }
 
@@ -131,55 +145,69 @@ class __TwigTemplate_3899a877a1ef8e7a7141492075b5271b961655f01e33738fc3e9eefc9bc
 
     public function getDebugInfo()
     {
-        return array (  112 => 45,  107 => 43,  101 => 40,  95 => 37,  85 => 30,  78 => 26,  69 => 22,  62 => 18,  55 => 14,  48 => 10,  40 => 4,  34 => 3,  11 => 1,);
+        return array (  123 => 56,  118 => 54,  112 => 51,  106 => 48,  92 => 37,  85 => 33,  76 => 29,  69 => 25,  62 => 21,  55 => 17,  40 => 4,  34 => 3,  11 => 1,);
     }
 }
 /* {% extends 'base.html.twig' %}*/
 /* */
 /* {% block body %}*/
-/*     <h1>Cliente</h1>*/
+/*     <div class="container">*/
+/*         <div class="row">*/
+/*             <div class="col-md-12">*/
+/*                 <h1 class="h1 text-center marginTitulo">Cliente <span class="glyphicon glyphicon-user"></span></h1>*/
+/*             </div>*/
+/*         </div>*/
 /* */
-/*     <table>*/
-/*         <tbody>*/
-/*             <tr>*/
-/*                 <th>Id</th>*/
-/*                 <td>{{ cliente.id }}</td>*/
-/*             </tr>*/
-/*             <tr>*/
-/*                 <th>Nuip</th>*/
-/*                 <td>{{ cliente.nuip }}</td>*/
-/*             </tr>*/
-/*             <tr>*/
-/*                 <th>Nombre</th>*/
-/*                 <td>{{ cliente.nombre }}</td>*/
-/*             </tr>*/
-/*             <tr>*/
-/*                 <th>Fechadenacimiento</th>*/
-/*                 <td>{% if cliente.fechaDeNacimiento %}{{ cliente.fechaDeNacimiento|date('Y-m-d H:i:s') }}{% endif %}</td>*/
-/*             </tr>*/
-/*             <tr>*/
-/*                 <th>Puntosacumulados</th>*/
-/*                 <td>{{ cliente.puntosAcumulados }}</td>*/
-/*             </tr>*/
-/*             <tr>*/
-/*                 <th>Email</th>*/
-/*                 <td>{{ cliente.email }}</td>*/
-/*             </tr>*/
-/*         </tbody>*/
-/*     </table>*/
+/*         <div class="row">*/
+/*             <div class="col-lg-4 col-lg-offset-4">*/
+/*                 <table class="table table-hover">*/
+/*                     <tbody>*/
+/*                         <tr>*/
+/*                             <th class="text-right">ID:</th>*/
+/*                             <td>{{ cliente.id }}</td>*/
+/*                         </tr>*/
+/*                         <tr>*/
+/*                             <th class="text-right">No. de identificacion:</th>*/
+/*                             <td>{{ cliente.nuip }}</td>*/
+/*                         </tr>*/
+/*                         <tr>*/
+/*                             <th class="text-right">Nombre:</th>*/
+/*                             <td>{{ cliente.nombre }}</td>*/
+/*                         </tr>*/
+/*                         <tr>*/
+/*                             <th class="text-right">Fecha de nacimiento:</th>*/
+/*                             <td>{% if cliente.fechaDeNacimiento %}{{ cliente.fechaDeNacimiento|date('d-m-Y') }}{% endif %}</td>*/
+/*                         </tr>*/
+/*                         <tr>*/
+/*                             <th class="text-right">Puntos acumulados:</th>*/
+/*                             <td>{{ cliente.puntosAcumulados }}</td>*/
+/*                         </tr>*/
+/*                         <tr>*/
+/*                             <th class="text-right">Email:</th>*/
+/*                             <td>{{ cliente.email }}</td>*/
+/*                         </tr>*/
+/*                     </tbody>*/
+/*                 </table>*/
+/*             </div>*/
+/*         </div>*/
 /* */
-/*     <ul>*/
-/*         <li>*/
-/*             <a href="{{ path('clientes_index') }}">Back to the list</a>*/
-/*         </li>*/
-/*         <li>*/
-/*             <a href="{{ path('clientes_edit', { 'id': cliente.id }) }}">Edit</a>*/
-/*         </li>*/
-/*         <li>*/
-/*             {{ form_start(delete_form) }}*/
-/*                 <input type="submit" value="Delete">*/
-/*             {{ form_end(delete_form) }}*/
-/*         </li>*/
-/*     </ul>*/
+/*         <div class="row">*/
+/*             <div class="col-lg-4 col-lg-offset-4">*/
+/*                 <ul class="text-center list-inline">*/
+/*                     <li>*/
+/*                         <a href="{{ path('clientes_index') }}"class="btn btn-info">Lista <span class="glyphicon glyphicon-th-list"></span></a>*/
+/*                     </li>*/
+/*                     <li>*/
+/*                         <a href="{{ path('clientes_edit', { 'id': cliente.id }) }}" class="btn btn-warning" role="button">Editar <span class="glyphicon glyphicon-edit"></span></a>*/
+/*                     </li>*/
+/*                     <li>*/
+/*                         {{ form_start(delete_form) }}*/
+/*                         <button type="submit" class="btn btn-danger">Eliminar <span class="glyphicon glyphicon-floppy-remove"></span></button>*/
+/*                         {{ form_end(delete_form) }}*/
+/*                     </li>*/
+/*                 </ul>*/
+/*             </div>*/
+/*         </div>*/
+/*     </div>*/
 /* {% endblock %}*/
 /* */

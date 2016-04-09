@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Costo</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ costo.id }}</td>
+            </tr>
+            <tr>
+                <th>Fecha</th>
+                <td>{% if costo.fecha %}{{ costo.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Tipocosto</th>
+                <td>{{ costo.tipoCosto }}</td>
+            </tr>
+            <tr>
+                <th>Valor</th>
+                <td>{{ costo.valor }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('costo_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('costo_edit', { 'id': costo.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

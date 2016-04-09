@@ -103,6 +103,12 @@ class Producto
      */
     private $detallesProducto;
     
+    /**
+     * @ORM\ManyToOne(targetEntity="TipoProducto", inversedBy="productos")
+     * @ORM\JoinColumn(name="tipoProducto", referencedColumnName="id")
+     */
+    private $tipoProducto;
+    
     function __construct() {
         $this->detallesVentas = new ArrayCollection();
         $this->detallesProducto = new ArrayCollection();
@@ -173,5 +179,28 @@ class Producto
     public function getDetallesProducto()
     {
         return $this->detallesProducto;
+    }
+
+    /**
+     * Set tipoProducto
+     *
+     * @param \InventarioBundle\Entity\TipoProducto $tipoProducto
+     * @return Producto
+     */
+    public function setTipoProducto(\InventarioBundle\Entity\TipoProducto $tipoProducto = null)
+    {
+        $this->tipoProducto = $tipoProducto;
+    
+        return $this;
+    }
+
+    /**
+     * Get tipoProducto
+     *
+     * @return \InventarioBundle\Entity\TipoProducto 
+     */
+    public function getTipoProducto()
+    {
+        return $this->tipoProducto;
     }
 }

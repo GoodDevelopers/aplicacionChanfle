@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>IngresoMateriaPrima</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ ingresoMateriaPrima.id }}</td>
+            </tr>
+            <tr>
+                <th>Fecha</th>
+                <td>{% if ingresoMateriaPrima.fecha %}{{ ingresoMateriaPrima.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Cantidad</th>
+                <td>{{ ingresoMateriaPrima.cantidad }}</td>
+            </tr>
+            <tr>
+                <th>Valor</th>
+                <td>{{ ingresoMateriaPrima.valor }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('ingresomateriaprima_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('ingresomateriaprima_edit', { 'id': ingresoMateriaPrima.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Proveedor list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nit</th>
+                <th>Nombre</th>
+                <th>Telefono</th>
+                <th>Correo</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for proveedor in proveedors %}
+            <tr>
+                <td><a href="{{ path('yes_show', { 'id': proveedor.id }) }}">{{ proveedor.id }}</a></td>
+                <td>{{ proveedor.nit }}</td>
+                <td>{{ proveedor.nombre }}</td>
+                <td>{{ proveedor.telefono }}</td>
+                <td>{{ proveedor.correo }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('yes_show', { 'id': proveedor.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('yes_edit', { 'id': proveedor.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('yes_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

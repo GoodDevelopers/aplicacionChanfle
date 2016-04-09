@@ -53,7 +53,7 @@ class Cliente
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=40)
+     * @ORM\Column(name="email", type="string", length=40, unique=true)
      */
     private $email;
 

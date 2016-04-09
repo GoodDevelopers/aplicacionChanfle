@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Caja</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ caja.id }}</td>
+            </tr>
+            <tr>
+                <th>Fecha</th>
+                <td>{% if caja.fecha %}{{ caja.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Cajainicial</th>
+                <td>{{ caja.cajaInicial }}</td>
+            </tr>
+            <tr>
+                <th>Cajainicialjustificacion</th>
+                <td>{{ caja.cajaInicialJustificacion }}</td>
+            </tr>
+            <tr>
+                <th>Cajafinal</th>
+                <td>{{ caja.cajaFinal }}</td>
+            </tr>
+            <tr>
+                <th>Cajafinaljustificacion</th>
+                <td>{{ caja.cajaFinalJustificacion }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('caja_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('caja_edit', { 'id': caja.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
