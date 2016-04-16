@@ -10,6 +10,7 @@ class __TwigTemplate_03ee07667025c5f008b1816f3e6970c2ed0a6fd4488cde960ae637392c9
         // line 1
         $this->parent = $this->loadTemplate("base.html.twig", "InventarioBundle:IngresoMateriaPrima:index.html.twig", 1);
         $this->blocks = array(
+            'stylesheets' => array($this, 'block_stylesheets'),
             'body' => array($this, 'block_body'),
         );
     }
@@ -21,99 +22,143 @@ class __TwigTemplate_03ee07667025c5f008b1816f3e6970c2ed0a6fd4488cde960ae637392c9
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_893cdac5a08526d1b31789ea4ce5ffa1982f5fffb1597382a3ca220314ea14a2 = $this->env->getExtension("native_profiler");
-        $__internal_893cdac5a08526d1b31789ea4ce5ffa1982f5fffb1597382a3ca220314ea14a2->enter($__internal_893cdac5a08526d1b31789ea4ce5ffa1982f5fffb1597382a3ca220314ea14a2_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "InventarioBundle:IngresoMateriaPrima:index.html.twig"));
+        $__internal_13927170a0607c42a98784504eac11d44621a89b027b2ae14673ffbf4feed678 = $this->env->getExtension("native_profiler");
+        $__internal_13927170a0607c42a98784504eac11d44621a89b027b2ae14673ffbf4feed678->enter($__internal_13927170a0607c42a98784504eac11d44621a89b027b2ae14673ffbf4feed678_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "InventarioBundle:IngresoMateriaPrima:index.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_893cdac5a08526d1b31789ea4ce5ffa1982f5fffb1597382a3ca220314ea14a2->leave($__internal_893cdac5a08526d1b31789ea4ce5ffa1982f5fffb1597382a3ca220314ea14a2_prof);
+        $__internal_13927170a0607c42a98784504eac11d44621a89b027b2ae14673ffbf4feed678->leave($__internal_13927170a0607c42a98784504eac11d44621a89b027b2ae14673ffbf4feed678_prof);
 
     }
 
     // line 3
-    public function block_body($context, array $blocks = array())
+    public function block_stylesheets($context, array $blocks = array())
     {
-        $__internal_313e77f4a5c01290650c21e8d68980458d9932a4958a0657c9a1f1431cf1e7eb = $this->env->getExtension("native_profiler");
-        $__internal_313e77f4a5c01290650c21e8d68980458d9932a4958a0657c9a1f1431cf1e7eb->enter($__internal_313e77f4a5c01290650c21e8d68980458d9932a4958a0657c9a1f1431cf1e7eb_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_8503c36fb4acd7df9b083623393c1e08d42feea58c6c3f988b6adc982e4e6840 = $this->env->getExtension("native_profiler");
+        $__internal_8503c36fb4acd7df9b083623393c1e08d42feea58c6c3f988b6adc982e4e6840->enter($__internal_8503c36fb4acd7df9b083623393c1e08d42feea58c6c3f988b6adc982e4e6840_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheets"));
 
         // line 4
-        echo "    <h1>IngresoMateriaPrima list</h1>
+        echo "    ";
+        $this->displayParentBlock("stylesheets", $context, $blocks);
+        echo "
+    <link rel=\"stylesheet\" href=\"";
+        // line 5
+        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("bundles/app/css/otrosIconos.css"), "html", null, true);
+        echo "\">
+";
+        
+        $__internal_8503c36fb4acd7df9b083623393c1e08d42feea58c6c3f988b6adc982e4e6840->leave($__internal_8503c36fb4acd7df9b083623393c1e08d42feea58c6c3f988b6adc982e4e6840_prof);
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Fecha</th>
-                <th>Cantidad</th>
-                <th>Valor</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        ";
-        // line 17
+    }
+
+    // line 8
+    public function block_body($context, array $blocks = array())
+    {
+        $__internal_1e9805e5ea3a14d91e5c2e2d727d9808ad223191d494ee2cd2221e85c37aa97c = $this->env->getExtension("native_profiler");
+        $__internal_1e9805e5ea3a14d91e5c2e2d727d9808ad223191d494ee2cd2221e85c37aa97c->enter($__internal_1e9805e5ea3a14d91e5c2e2d727d9808ad223191d494ee2cd2221e85c37aa97c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+
+        // line 9
+        echo "    <div class=\"container\">
+        <div class=\"row\">
+            <div class=\"col-md-12\">
+                <h1 class=\"h1 text-center marginTitulo\">Ingresos Materia Prima <span class=\"icon-listaIngresosMateria\"></span></h1>
+            </div>
+        </div>
+
+        <div class=\"row\">
+            <div class=\"col-md-12\">
+                <div class=\"table-responsive\">
+                    <table class=\"table table-bordered table-hover table-condensed text-center\">
+                        <thead>
+                            <tr class=\"active info\">
+                                <th>ID</th>
+                                <th>MATERIA PRIMA</th>
+                                <th>FECHA</th>
+                                <th>CANTIDAD</th>
+                                <th>VALOR UNT.</th>
+                                <th>VALOR TOTAL</th>
+                                <th>ACCIONES</th>
+                            </tr>
+                        </thead>
+                        <tbody id=\"cuerpoTabla\">
+                            ";
+        // line 32
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["ingresoMateriaPrimas"]) ? $context["ingresoMateriaPrimas"] : $this->getContext($context, "ingresoMateriaPrimas")));
         foreach ($context['_seq'] as $context["_key"] => $context["ingresoMateriaPrima"]) {
-            // line 18
-            echo "            <tr>
-                <td><a href=\"";
-            // line 19
+            // line 33
+            echo "                                <tr>
+                                    <td><a href=\"";
+            // line 34
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("ingresomateriaprima_show", array("id" => $this->getAttribute($context["ingresoMateriaPrima"], "id", array()))), "html", null, true);
             echo "\">";
             echo twig_escape_filter($this->env, $this->getAttribute($context["ingresoMateriaPrima"], "id", array()), "html", null, true);
             echo "</a></td>
-                <td>";
-            // line 20
+                                    <td>";
+            // line 35
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["ingresoMateriaPrima"], "materiaPrima", array()), "nombre", array()), "html", null, true);
+            echo "</td>
+                                    <td>";
+            // line 36
             if ($this->getAttribute($context["ingresoMateriaPrima"], "fecha", array())) {
                 echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["ingresoMateriaPrima"], "fecha", array()), "Y-m-d H:i:s"), "html", null, true);
             }
             echo "</td>
-                <td>";
-            // line 21
+                                    <td>";
+            // line 37
             echo twig_escape_filter($this->env, $this->getAttribute($context["ingresoMateriaPrima"], "cantidad", array()), "html", null, true);
-            echo "</td>
-                <td>";
-            // line 22
+            echo " ";
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["ingresoMateriaPrima"], "materiaPrima", array()), "unidadDeMedida", array()), "html", null, true);
+            echo "s</td>
+                                    <td>";
+            // line 38
             echo twig_escape_filter($this->env, $this->getAttribute($context["ingresoMateriaPrima"], "valor", array()), "html", null, true);
             echo "</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href=\"";
-            // line 26
-            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("ingresomateriaprima_show", array("id" => $this->getAttribute($context["ingresoMateriaPrima"], "id", array()))), "html", null, true);
-            echo "\">show</a>
-                        </li>
-                        <li>
-                            <a href=\"";
-            // line 29
+                                    <td>";
+            // line 39
+            echo twig_escape_filter($this->env, ($this->getAttribute($context["ingresoMateriaPrima"], "valor", array()) * $this->getAttribute($context["ingresoMateriaPrima"], "cantidad", array())), "html", null, true);
+            echo "</td>
+                                    <td>
+                                        <ul class=\"list-inline text-center\">
+                                            <li>
+                                                <a href=\"";
+            // line 43
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("ingresomateriaprima_edit", array("id" => $this->getAttribute($context["ingresoMateriaPrima"], "id", array()))), "html", null, true);
-            echo "\">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        ";
+            echo "\" class=\"btn btn-warning\" role=\"button\">Editar <span class=\"glyphicon glyphicon-edit\"></span></a>
+                                            </li>
+                                            <li>
+                                                <a href=\"";
+            // line 46
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("ingresomateriaprima_show", array("id" => $this->getAttribute($context["ingresoMateriaPrima"], "id", array()))), "html", null, true);
+            echo "\"class=\"btn btn-danger\" role=\"button\">Eliminar <span class=\"glyphicon glyphicon-floppy-remove\"></span></a>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['ingresoMateriaPrima'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 35
-        echo "        </tbody>
-    </table>
+        // line 52
+        echo "                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
 
-    <ul>
-        <li>
-            <a href=\"";
-        // line 40
+        <ul>
+            <li>
+                <a href=\"";
+        // line 60
         echo $this->env->getExtension('routing')->getPath("ingresomateriaprima_new");
         echo "\">Create a new entry</a>
-        </li>
-    </ul>
+            </li>
+        </ul>
+    </div>
 ";
         
-        $__internal_313e77f4a5c01290650c21e8d68980458d9932a4958a0657c9a1f1431cf1e7eb->leave($__internal_313e77f4a5c01290650c21e8d68980458d9932a4958a0657c9a1f1431cf1e7eb_prof);
+        $__internal_1e9805e5ea3a14d91e5c2e2d727d9808ad223191d494ee2cd2221e85c37aa97c->leave($__internal_1e9805e5ea3a14d91e5c2e2d727d9808ad223191d494ee2cd2221e85c37aa97c_prof);
 
     }
 
@@ -129,50 +174,71 @@ class __TwigTemplate_03ee07667025c5f008b1816f3e6970c2ed0a6fd4488cde960ae637392c9
 
     public function getDebugInfo()
     {
-        return array (  110 => 40,  103 => 35,  91 => 29,  85 => 26,  78 => 22,  74 => 21,  68 => 20,  62 => 19,  59 => 18,  55 => 17,  40 => 4,  34 => 3,  11 => 1,);
+        return array (  154 => 60,  144 => 52,  132 => 46,  126 => 43,  119 => 39,  115 => 38,  109 => 37,  103 => 36,  99 => 35,  93 => 34,  90 => 33,  86 => 32,  61 => 9,  55 => 8,  46 => 5,  41 => 4,  35 => 3,  11 => 1,);
     }
 }
 /* {% extends 'base.html.twig' %}*/
 /* */
+/* {% block stylesheets %}*/
+/*     {{ parent() }}*/
+/*     <link rel="stylesheet" href="{{ asset('bundles/app/css/otrosIconos.css')}}">*/
+/* {% endblock %}*/
+/* */
 /* {% block body %}*/
-/*     <h1>IngresoMateriaPrima list</h1>*/
+/*     <div class="container">*/
+/*         <div class="row">*/
+/*             <div class="col-md-12">*/
+/*                 <h1 class="h1 text-center marginTitulo">Ingresos Materia Prima <span class="icon-listaIngresosMateria"></span></h1>*/
+/*             </div>*/
+/*         </div>*/
 /* */
-/*     <table>*/
-/*         <thead>*/
-/*             <tr>*/
-/*                 <th>Id</th>*/
-/*                 <th>Fecha</th>*/
-/*                 <th>Cantidad</th>*/
-/*                 <th>Valor</th>*/
-/*                 <th>Actions</th>*/
-/*             </tr>*/
-/*         </thead>*/
-/*         <tbody>*/
-/*         {% for ingresoMateriaPrima in ingresoMateriaPrimas %}*/
-/*             <tr>*/
-/*                 <td><a href="{{ path('ingresomateriaprima_show', { 'id': ingresoMateriaPrima.id }) }}">{{ ingresoMateriaPrima.id }}</a></td>*/
-/*                 <td>{% if ingresoMateriaPrima.fecha %}{{ ingresoMateriaPrima.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>*/
-/*                 <td>{{ ingresoMateriaPrima.cantidad }}</td>*/
-/*                 <td>{{ ingresoMateriaPrima.valor }}</td>*/
-/*                 <td>*/
-/*                     <ul>*/
-/*                         <li>*/
-/*                             <a href="{{ path('ingresomateriaprima_show', { 'id': ingresoMateriaPrima.id }) }}">show</a>*/
-/*                         </li>*/
-/*                         <li>*/
-/*                             <a href="{{ path('ingresomateriaprima_edit', { 'id': ingresoMateriaPrima.id }) }}">edit</a>*/
-/*                         </li>*/
-/*                     </ul>*/
-/*                 </td>*/
-/*             </tr>*/
-/*         {% endfor %}*/
-/*         </tbody>*/
-/*     </table>*/
+/*         <div class="row">*/
+/*             <div class="col-md-12">*/
+/*                 <div class="table-responsive">*/
+/*                     <table class="table table-bordered table-hover table-condensed text-center">*/
+/*                         <thead>*/
+/*                             <tr class="active info">*/
+/*                                 <th>ID</th>*/
+/*                                 <th>MATERIA PRIMA</th>*/
+/*                                 <th>FECHA</th>*/
+/*                                 <th>CANTIDAD</th>*/
+/*                                 <th>VALOR UNT.</th>*/
+/*                                 <th>VALOR TOTAL</th>*/
+/*                                 <th>ACCIONES</th>*/
+/*                             </tr>*/
+/*                         </thead>*/
+/*                         <tbody id="cuerpoTabla">*/
+/*                             {% for ingresoMateriaPrima in ingresoMateriaPrimas %}*/
+/*                                 <tr>*/
+/*                                     <td><a href="{{ path('ingresomateriaprima_show', { 'id': ingresoMateriaPrima.id }) }}">{{ ingresoMateriaPrima.id }}</a></td>*/
+/*                                     <td>{{ ingresoMateriaPrima.materiaPrima.nombre }}</td>*/
+/*                                     <td>{% if ingresoMateriaPrima.fecha %}{{ ingresoMateriaPrima.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>*/
+/*                                     <td>{{ ingresoMateriaPrima.cantidad }} {{ ingresoMateriaPrima.materiaPrima.unidadDeMedida }}s</td>*/
+/*                                     <td>{{ ingresoMateriaPrima.valor }}</td>*/
+/*                                     <td>{{ ingresoMateriaPrima.valor * ingresoMateriaPrima.cantidad}}</td>*/
+/*                                     <td>*/
+/*                                         <ul class="list-inline text-center">*/
+/*                                             <li>*/
+/*                                                 <a href="{{ path('ingresomateriaprima_edit', { 'id': ingresoMateriaPrima.id }) }}" class="btn btn-warning" role="button">Editar <span class="glyphicon glyphicon-edit"></span></a>*/
+/*                                             </li>*/
+/*                                             <li>*/
+/*                                                 <a href="{{ path('ingresomateriaprima_show', { 'id': ingresoMateriaPrima.id }) }}"class="btn btn-danger" role="button">Eliminar <span class="glyphicon glyphicon-floppy-remove"></span></a>*/
+/*                                             </li>*/
+/*                                         </ul>*/
+/*                                     </td>*/
+/*                                 </tr>*/
+/*                             {% endfor %}*/
+/*                         </tbody>*/
+/*                     </table>*/
+/*                 </div>*/
+/*             </div>*/
+/*         </div>*/
 /* */
-/*     <ul>*/
-/*         <li>*/
-/*             <a href="{{ path('ingresomateriaprima_new') }}">Create a new entry</a>*/
-/*         </li>*/
-/*     </ul>*/
+/*         <ul>*/
+/*             <li>*/
+/*                 <a href="{{ path('ingresomateriaprima_new') }}">Create a new entry</a>*/
+/*             </li>*/
+/*         </ul>*/
+/*     </div>*/
 /* {% endblock %}*/
 /* */

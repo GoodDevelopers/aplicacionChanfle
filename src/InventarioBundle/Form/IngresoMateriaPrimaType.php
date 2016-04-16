@@ -16,7 +16,8 @@ class IngresoMateriaPrimaType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-                ->add('fecha', 'datetime')
+                //La fecha la debe dar el sistema
+//                ->add('fecha', 'datetime')
                 ->add('cantidad')
                 ->add('valor')
                 ->add('materiaPrima', EntityType::class, array(
@@ -27,8 +28,16 @@ class IngresoMateriaPrimaType extends AbstractType {
                     },
                     'placeholder' => 'Seleccione una opcion',
                     'choice_label' => 'nombre',))
-                ->add('empleado')
-                ->add('proveedor')
+                //El empleado es el que esta logueado
+//                ->add('empleado')
+                ->add('proveedor', EntityType::class, array(
+                    'class' => 'InventarioBundle:Proveedor',
+                    'query_builder' => function (EntityRepository $er) {
+                        return $er->createQueryBuilder('proveedor')
+                                ->orderBy('proveedor.nombre', 'ASC');
+                    },
+                    'placeholder' => 'Seleccione una opcion',
+                    'choice_label' => 'nombre',))
         ;
     }
 

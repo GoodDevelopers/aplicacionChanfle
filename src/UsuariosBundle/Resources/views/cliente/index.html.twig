@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="h1 text-center marginTitulo" style="font-weight: bold;">Clientes <span class="glyphicon glyphicon-user"></span></h1>
+                <h1 class="h1 text-center marginTitulo">Clientes <span class="glyphicon glyphicon-user"></span></h1>
             </div>
         </div>
 
@@ -66,7 +66,7 @@
                                     <td>{{ cliente.puntosAcumulados }}</td>
                                     <td>{{ cliente.email }}</td>
                                     <td>
-                                        <ul style="list-style-type: none;" class="list-inline text-center">
+                                        <ul class="list-inline text-center">
                                             <li>
                                                 <a href="{{ path('clientes_edit', { 'id': cliente.id }) }}" class="btn btn-warning" role="button">Editar <span class="glyphicon glyphicon-edit"></span></a>
                                             </li>
@@ -159,6 +159,28 @@
                     "</td>" +
                     "<td>" +
                     data['nuip'] +
+                    "</td>" +
+                    "<td>" +
+                    data['nombre'] +
+                    "</td>" +
+                    "<td>" +
+                    data['fechaDeNacimiento'] +
+                    "</td>" +
+                    "<td>" +
+                    data['puntos'] +
+                    "</td>" +
+                    "<td>" +
+                    data['email'] +
+                    "</td>" +
+                    "<td>" +
+                    "<ul style='list-style-type: none;' class='list-inline text-center'>" +
+                    "<li>" +
+                    "<a href='" + url1 + "' class='btn btn-warning' role='button'>Editar <span class='glyphicon glyphicon-edit'></span></a>" +
+                    "</li>" +
+                    "<li>" +
+                    "<a href='" + url2 + "' class='btn btn-danger' role='button'>Eliminar <span class='glyphicon glyphicon-floppy-remove'></span></a>" +
+                    "</li>" +
+                    "</ul>" +
                     "</td>" +
                     "</tr>"
                     ;

@@ -1,43 +1,64 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/otrosIconos.css')}}">
+{% endblock %}
+
 {% block body %}
-    <h1>IngresoMateriaPrima list</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="h1 text-center marginTitulo">Ingresos Materia Prima <span class="icon-listaIngresosMateria"></span></h1>
+            </div>
+        </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Fecha</th>
-                <th>Cantidad</th>
-                <th>Valor</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for ingresoMateriaPrima in ingresoMateriaPrimas %}
-            <tr>
-                <td><a href="{{ path('ingresomateriaprima_show', { 'id': ingresoMateriaPrima.id }) }}">{{ ingresoMateriaPrima.id }}</a></td>
-                <td>{% if ingresoMateriaPrima.fecha %}{{ ingresoMateriaPrima.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ ingresoMateriaPrima.cantidad }}</td>
-                <td>{{ ingresoMateriaPrima.valor }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('ingresomateriaprima_show', { 'id': ingresoMateriaPrima.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('ingresomateriaprima_edit', { 'id': ingresoMateriaPrima.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-condensed text-center">
+                        <thead>
+                            <tr class="active info">
+                                <th>ID</th>
+                                <th>MATERIA PRIMA</th>
+                                <th>FECHA</th>
+                                <th>CANTIDAD</th>
+                                <th>VALOR UNT.</th>
+                                <th>VALOR TOTAL</th>
+                                <th>ACCIONES</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cuerpoTabla">
+                            {% for ingresoMateriaPrima in ingresoMateriaPrimas %}
+                                <tr>
+                                    <td><a href="{{ path('ingresomateriaprima_show', { 'id': ingresoMateriaPrima.id }) }}">{{ ingresoMateriaPrima.id }}</a></td>
+                                    <td>{{ ingresoMateriaPrima.materiaPrima.nombre }}</td>
+                                    <td>{% if ingresoMateriaPrima.fecha %}{{ ingresoMateriaPrima.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                    <td>{{ ingresoMateriaPrima.cantidad }} {{ ingresoMateriaPrima.materiaPrima.unidadDeMedida }}s</td>
+                                    <td>{{ ingresoMateriaPrima.valor }}</td>
+                                    <td>{{ ingresoMateriaPrima.valor * ingresoMateriaPrima.cantidad}}</td>
+                                    <td>
+                                        <ul class="list-inline text-center">
+                                            <li>
+                                                <a href="{{ path('ingresomateriaprima_edit', { 'id': ingresoMateriaPrima.id }) }}" class="btn btn-warning" role="button">Editar <span class="glyphicon glyphicon-edit"></span></a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ path('ingresomateriaprima_show', { 'id': ingresoMateriaPrima.id }) }}"class="btn btn-danger" role="button">Eliminar <span class="glyphicon glyphicon-floppy-remove"></span></a>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('ingresomateriaprima_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+        <ul>
+            <li>
+                <a href="{{ path('ingresomateriaprima_new') }}">Create a new entry</a>
+            </li>
+        </ul>
+    </div>
 {% endblock %}

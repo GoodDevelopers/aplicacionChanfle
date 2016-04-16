@@ -22,26 +22,26 @@ class __TwigTemplate_9416d4cd0df71deb4a21541a87e48d5294b7b2b9016022f187b0c7229f1
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_ac177c311bc49120f4ab4f53279c205aa26190f04620aab0d68fcf1960e1bcfa = $this->env->getExtension("native_profiler");
-        $__internal_ac177c311bc49120f4ab4f53279c205aa26190f04620aab0d68fcf1960e1bcfa->enter($__internal_ac177c311bc49120f4ab4f53279c205aa26190f04620aab0d68fcf1960e1bcfa_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UsuariosBundle:Cliente:index.html.twig"));
+        $__internal_e6e5c48495865b8dd044e9b9299485ef5930ba03cf48188f2b0bedc030cd6b32 = $this->env->getExtension("native_profiler");
+        $__internal_e6e5c48495865b8dd044e9b9299485ef5930ba03cf48188f2b0bedc030cd6b32->enter($__internal_e6e5c48495865b8dd044e9b9299485ef5930ba03cf48188f2b0bedc030cd6b32_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UsuariosBundle:Cliente:index.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_ac177c311bc49120f4ab4f53279c205aa26190f04620aab0d68fcf1960e1bcfa->leave($__internal_ac177c311bc49120f4ab4f53279c205aa26190f04620aab0d68fcf1960e1bcfa_prof);
+        $__internal_e6e5c48495865b8dd044e9b9299485ef5930ba03cf48188f2b0bedc030cd6b32->leave($__internal_e6e5c48495865b8dd044e9b9299485ef5930ba03cf48188f2b0bedc030cd6b32_prof);
 
     }
 
     // line 3
     public function block_body($context, array $blocks = array())
     {
-        $__internal_030bcf9e8bb8d33bdc26d1a8f6948b5cda1dab4994ed7be95260e64f49619e35 = $this->env->getExtension("native_profiler");
-        $__internal_030bcf9e8bb8d33bdc26d1a8f6948b5cda1dab4994ed7be95260e64f49619e35->enter($__internal_030bcf9e8bb8d33bdc26d1a8f6948b5cda1dab4994ed7be95260e64f49619e35_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_ec1e2452a9497e5483142be39fdf5c1b83a07e8c2735a4f0871ff63977ac8f88 = $this->env->getExtension("native_profiler");
+        $__internal_ec1e2452a9497e5483142be39fdf5c1b83a07e8c2735a4f0871ff63977ac8f88->enter($__internal_ec1e2452a9497e5483142be39fdf5c1b83a07e8c2735a4f0871ff63977ac8f88_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
         echo "    <div class=\"container\">
         <div class=\"row\">
             <div class=\"col-md-12\">
-                <h1 class=\"h1 text-center marginTitulo\" style=\"font-weight: bold;\">Clientes <span class=\"glyphicon glyphicon-user\"></span></h1>
+                <h1 class=\"h1 text-center marginTitulo\">Clientes <span class=\"glyphicon glyphicon-user\"></span></h1>
             </div>
         </div>
 
@@ -133,7 +133,7 @@ class __TwigTemplate_9416d4cd0df71deb4a21541a87e48d5294b7b2b9016022f187b0c7229f1
             echo twig_escape_filter($this->env, $this->getAttribute($context["cliente"], "email", array()), "html", null, true);
             echo "</td>
                                     <td>
-                                        <ul style=\"list-style-type: none;\" class=\"list-inline text-center\">
+                                        <ul class=\"list-inline text-center\">
                                             <li>
                                                 <a href=\"";
             // line 71
@@ -164,15 +164,15 @@ class __TwigTemplate_9416d4cd0df71deb4a21541a87e48d5294b7b2b9016022f187b0c7229f1
 
 ";
         
-        $__internal_030bcf9e8bb8d33bdc26d1a8f6948b5cda1dab4994ed7be95260e64f49619e35->leave($__internal_030bcf9e8bb8d33bdc26d1a8f6948b5cda1dab4994ed7be95260e64f49619e35_prof);
+        $__internal_ec1e2452a9497e5483142be39fdf5c1b83a07e8c2735a4f0871ff63977ac8f88->leave($__internal_ec1e2452a9497e5483142be39fdf5c1b83a07e8c2735a4f0871ff63977ac8f88_prof);
 
     }
 
     // line 89
     public function block_javascripts($context, array $blocks = array())
     {
-        $__internal_c50bb9d728438cc92af7e22e806e7dd0bb97f58a22ad25efd5ddad6376bef8a9 = $this->env->getExtension("native_profiler");
-        $__internal_c50bb9d728438cc92af7e22e806e7dd0bb97f58a22ad25efd5ddad6376bef8a9->enter($__internal_c50bb9d728438cc92af7e22e806e7dd0bb97f58a22ad25efd5ddad6376bef8a9_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
+        $__internal_4bccb067e6a8d45fefc794faebf36c55b46b83c5e69693e9cffe9b4402907508 = $this->env->getExtension("native_profiler");
+        $__internal_4bccb067e6a8d45fefc794faebf36c55b46b83c5e69693e9cffe9b4402907508->enter($__internal_4bccb067e6a8d45fefc794faebf36c55b46b83c5e69693e9cffe9b4402907508_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
         // line 90
         echo "    ";
@@ -259,6 +259,28 @@ class __TwigTemplate_9416d4cd0df71deb4a21541a87e48d5294b7b2b9016022f187b0c7229f1
                     \"<td>\" +
                     data['nuip'] +
                     \"</td>\" +
+                    \"<td>\" +
+                    data['nombre'] +
+                    \"</td>\" +
+                    \"<td>\" +
+                    data['fechaDeNacimiento'] +
+                    \"</td>\" +
+                    \"<td>\" +
+                    data['puntos'] +
+                    \"</td>\" +
+                    \"<td>\" +
+                    data['email'] +
+                    \"</td>\" +
+                    \"<td>\" +
+                    \"<ul style='list-style-type: none;' class='list-inline text-center'>\" +
+                    \"<li>\" +
+                    \"<a href='\" + url1 + \"' class='btn btn-warning' role='button'>Editar <span class='glyphicon glyphicon-edit'></span></a>\" +
+                    \"</li>\" +
+                    \"<li>\" +
+                    \"<a href='\" + url2 + \"' class='btn btn-danger' role='button'>Eliminar <span class='glyphicon glyphicon-floppy-remove'></span></a>\" +
+                    \"</li>\" +
+                    \"</ul>\" +
+                    \"</td>\" +
                     \"</tr>\"
                     ;
             return PersonaProcesar;
@@ -266,7 +288,7 @@ class __TwigTemplate_9416d4cd0df71deb4a21541a87e48d5294b7b2b9016022f187b0c7229f1
     </script>
 ";
         
-        $__internal_c50bb9d728438cc92af7e22e806e7dd0bb97f58a22ad25efd5ddad6376bef8a9->leave($__internal_c50bb9d728438cc92af7e22e806e7dd0bb97f58a22ad25efd5ddad6376bef8a9_prof);
+        $__internal_4bccb067e6a8d45fefc794faebf36c55b46b83c5e69693e9cffe9b4402907508->leave($__internal_4bccb067e6a8d45fefc794faebf36c55b46b83c5e69693e9cffe9b4402907508_prof);
 
     }
 
@@ -291,7 +313,7 @@ class __TwigTemplate_9416d4cd0df71deb4a21541a87e48d5294b7b2b9016022f187b0c7229f1
 /*     <div class="container">*/
 /*         <div class="row">*/
 /*             <div class="col-md-12">*/
-/*                 <h1 class="h1 text-center marginTitulo" style="font-weight: bold;">Clientes <span class="glyphicon glyphicon-user"></span></h1>*/
+/*                 <h1 class="h1 text-center marginTitulo">Clientes <span class="glyphicon glyphicon-user"></span></h1>*/
 /*             </div>*/
 /*         </div>*/
 /* */
@@ -353,7 +375,7 @@ class __TwigTemplate_9416d4cd0df71deb4a21541a87e48d5294b7b2b9016022f187b0c7229f1
 /*                                     <td>{{ cliente.puntosAcumulados }}</td>*/
 /*                                     <td>{{ cliente.email }}</td>*/
 /*                                     <td>*/
-/*                                         <ul style="list-style-type: none;" class="list-inline text-center">*/
+/*                                         <ul class="list-inline text-center">*/
 /*                                             <li>*/
 /*                                                 <a href="{{ path('clientes_edit', { 'id': cliente.id }) }}" class="btn btn-warning" role="button">Editar <span class="glyphicon glyphicon-edit"></span></a>*/
 /*                                             </li>*/
@@ -446,6 +468,28 @@ class __TwigTemplate_9416d4cd0df71deb4a21541a87e48d5294b7b2b9016022f187b0c7229f1
 /*                     "</td>" +*/
 /*                     "<td>" +*/
 /*                     data['nuip'] +*/
+/*                     "</td>" +*/
+/*                     "<td>" +*/
+/*                     data['nombre'] +*/
+/*                     "</td>" +*/
+/*                     "<td>" +*/
+/*                     data['fechaDeNacimiento'] +*/
+/*                     "</td>" +*/
+/*                     "<td>" +*/
+/*                     data['puntos'] +*/
+/*                     "</td>" +*/
+/*                     "<td>" +*/
+/*                     data['email'] +*/
+/*                     "</td>" +*/
+/*                     "<td>" +*/
+/*                     "<ul style='list-style-type: none;' class='list-inline text-center'>" +*/
+/*                     "<li>" +*/
+/*                     "<a href='" + url1 + "' class='btn btn-warning' role='button'>Editar <span class='glyphicon glyphicon-edit'></span></a>" +*/
+/*                     "</li>" +*/
+/*                     "<li>" +*/
+/*                     "<a href='" + url2 + "' class='btn btn-danger' role='button'>Eliminar <span class='glyphicon glyphicon-floppy-remove'></span></a>" +*/
+/*                     "</li>" +*/
+/*                     "</ul>" +*/
 /*                     "</td>" +*/
 /*                     "</tr>"*/
 /*                     ;*/

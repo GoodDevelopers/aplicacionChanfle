@@ -12,6 +12,7 @@ class __TwigTemplate_8eaaeb4e5c3b9091fa66139c482ea004f0d608f4c1f18a95dd9e97d6f59
         $this->blocks = array(
             'stylesheets' => array($this, 'block_stylesheets'),
             'body' => array($this, 'block_body'),
+            'javascripts' => array($this, 'block_javascripts'),
         );
     }
 
@@ -22,20 +23,20 @@ class __TwigTemplate_8eaaeb4e5c3b9091fa66139c482ea004f0d608f4c1f18a95dd9e97d6f59
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_6fa36673aab0aca27741fa69c4c586c906accb55434e98b10c581561c2dd267f = $this->env->getExtension("native_profiler");
-        $__internal_6fa36673aab0aca27741fa69c4c586c906accb55434e98b10c581561c2dd267f->enter($__internal_6fa36673aab0aca27741fa69c4c586c906accb55434e98b10c581561c2dd267f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "AppBundle:Default:index.html.twig"));
+        $__internal_9f44fd5151adf74403f3f984c328d541151a2c014955b638eb9712c66695978f = $this->env->getExtension("native_profiler");
+        $__internal_9f44fd5151adf74403f3f984c328d541151a2c014955b638eb9712c66695978f->enter($__internal_9f44fd5151adf74403f3f984c328d541151a2c014955b638eb9712c66695978f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "AppBundle:Default:index.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_6fa36673aab0aca27741fa69c4c586c906accb55434e98b10c581561c2dd267f->leave($__internal_6fa36673aab0aca27741fa69c4c586c906accb55434e98b10c581561c2dd267f_prof);
+        $__internal_9f44fd5151adf74403f3f984c328d541151a2c014955b638eb9712c66695978f->leave($__internal_9f44fd5151adf74403f3f984c328d541151a2c014955b638eb9712c66695978f_prof);
 
     }
 
     // line 3
     public function block_stylesheets($context, array $blocks = array())
     {
-        $__internal_4d7c603ccac5e181a4929d1a0d3e70a3783cbab8a56ae767f2d597978475f7da = $this->env->getExtension("native_profiler");
-        $__internal_4d7c603ccac5e181a4929d1a0d3e70a3783cbab8a56ae767f2d597978475f7da->enter($__internal_4d7c603ccac5e181a4929d1a0d3e70a3783cbab8a56ae767f2d597978475f7da_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheets"));
+        $__internal_c4aa0ebd1508edc99b5fd04c2b1dc8ef189427c967a252f6c3e80bdbabb8f791 = $this->env->getExtension("native_profiler");
+        $__internal_c4aa0ebd1508edc99b5fd04c2b1dc8ef189427c967a252f6c3e80bdbabb8f791->enter($__internal_c4aa0ebd1508edc99b5fd04c2b1dc8ef189427c967a252f6c3e80bdbabb8f791_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheets"));
 
         // line 4
         echo "    ";
@@ -43,7 +44,7 @@ class __TwigTemplate_8eaaeb4e5c3b9091fa66139c482ea004f0d608f4c1f18a95dd9e97d6f59
         echo "
     <link rel=\"stylesheet\" href=\"";
         // line 5
-        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("bundles/app/css/iconoEmpleado.css"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("bundles/app/css/otrosIconos.css"), "html", null, true);
         echo "\">
     <style>
         h1, h2{
@@ -103,15 +104,15 @@ class __TwigTemplate_8eaaeb4e5c3b9091fa66139c482ea004f0d608f4c1f18a95dd9e97d6f59
     </style>
 ";
         
-        $__internal_4d7c603ccac5e181a4929d1a0d3e70a3783cbab8a56ae767f2d597978475f7da->leave($__internal_4d7c603ccac5e181a4929d1a0d3e70a3783cbab8a56ae767f2d597978475f7da_prof);
+        $__internal_c4aa0ebd1508edc99b5fd04c2b1dc8ef189427c967a252f6c3e80bdbabb8f791->leave($__internal_c4aa0ebd1508edc99b5fd04c2b1dc8ef189427c967a252f6c3e80bdbabb8f791_prof);
 
     }
 
     // line 64
     public function block_body($context, array $blocks = array())
     {
-        $__internal_0f136dcd445414c538962715379460dbab08ac91f4d8220bb5748e2947ecf556 = $this->env->getExtension("native_profiler");
-        $__internal_0f136dcd445414c538962715379460dbab08ac91f4d8220bb5748e2947ecf556->enter($__internal_0f136dcd445414c538962715379460dbab08ac91f4d8220bb5748e2947ecf556_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_69c5f8a265319e15615931e481f5303cc633d0a820272309359ca955db89986b = $this->env->getExtension("native_profiler");
+        $__internal_69c5f8a265319e15615931e481f5303cc633d0a820272309359ca955db89986b->enter($__internal_69c5f8a265319e15615931e481f5303cc633d0a820272309359ca955db89986b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 65
         echo "    ";
@@ -134,7 +135,10 @@ class __TwigTemplate_8eaaeb4e5c3b9091fa66139c482ea004f0d608f4c1f18a95dd9e97d6f59
                 <ul class=\"nav navbar-nav navbar-right\">
                     <li class=\"dropdown\" style=\"font-size: 16px;\">
                         <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\" style=\"color: white;\">
-                            <span class=\"icon-empleado\"></span> Usuario <span class=\"caret\"></span>
+                            <span class=\"icon-empleado\"></span> ";
+        // line 97
+        echo twig_escape_filter($this->env, (isset($context["usuario"]) ? $context["usuario"] : $this->getContext($context, "usuario")), "html", null, true);
+        echo " <span class=\"caret\"></span>
                         </a>
                         <ul class=\"dropdown-menu\">
                             <li><a href=\"#\">Perfil</a></li>
@@ -228,7 +232,29 @@ class __TwigTemplate_8eaaeb4e5c3b9091fa66139c482ea004f0d608f4c1f18a95dd9e97d6f59
     </div>
 ";
         
-        $__internal_0f136dcd445414c538962715379460dbab08ac91f4d8220bb5748e2947ecf556->leave($__internal_0f136dcd445414c538962715379460dbab08ac91f4d8220bb5748e2947ecf556_prof);
+        $__internal_69c5f8a265319e15615931e481f5303cc633d0a820272309359ca955db89986b->leave($__internal_69c5f8a265319e15615931e481f5303cc633d0a820272309359ca955db89986b_prof);
+
+    }
+
+    // line 184
+    public function block_javascripts($context, array $blocks = array())
+    {
+        $__internal_392c4458875412f5d6d5274eee44b763b4050739ecc14a8073442faab3a91c45 = $this->env->getExtension("native_profiler");
+        $__internal_392c4458875412f5d6d5274eee44b763b4050739ecc14a8073442faab3a91c45->enter($__internal_392c4458875412f5d6d5274eee44b763b4050739ecc14a8073442faab3a91c45_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
+
+        // line 185
+        echo "    ";
+        $this->displayParentBlock("javascripts", $context, $blocks);
+        echo "
+    <script>
+        console.log('";
+        // line 187
+        echo twig_escape_filter($this->env, (isset($context["usuario"]) ? $context["usuario"] : $this->getContext($context, "usuario")), "html", null, true);
+        echo "');
+    </script>
+";
+        
+        $__internal_392c4458875412f5d6d5274eee44b763b4050739ecc14a8073442faab3a91c45->leave($__internal_392c4458875412f5d6d5274eee44b763b4050739ecc14a8073442faab3a91c45_prof);
 
     }
 
@@ -244,14 +270,14 @@ class __TwigTemplate_8eaaeb4e5c3b9091fa66139c482ea004f0d608f4c1f18a95dd9e97d6f59
 
     public function getDebugInfo()
     {
-        return array (  198 => 153,  194 => 152,  119 => 79,  117 => 65,  111 => 64,  46 => 5,  41 => 4,  35 => 3,  11 => 1,);
+        return array (  252 => 187,  246 => 185,  240 => 184,  202 => 153,  198 => 152,  140 => 97,  120 => 79,  118 => 65,  112 => 64,  47 => 5,  42 => 4,  36 => 3,  11 => 1,);
     }
 }
 /* {% extends 'base.html.twig' %}*/
 /* */
 /* {% block stylesheets %}*/
 /*     {{ parent() }}*/
-/*     <link rel="stylesheet" href="{{ asset('bundles/app/css/iconoEmpleado.css')}}">*/
+/*     <link rel="stylesheet" href="{{ asset('bundles/app/css/otrosIconos.css')}}">*/
 /*     <style>*/
 /*         h1, h2{*/
 /*             color: black;*/
@@ -343,7 +369,7 @@ class __TwigTemplate_8eaaeb4e5c3b9091fa66139c482ea004f0d608f4c1f18a95dd9e97d6f59
 /*                 <ul class="nav navbar-nav navbar-right">*/
 /*                     <li class="dropdown" style="font-size: 16px;">*/
 /*                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: white;">*/
-/*                             <span class="icon-empleado"></span> Usuario <span class="caret"></span>*/
+/*                             <span class="icon-empleado"></span> {{ usuario }} <span class="caret"></span>*/
 /*                         </a>*/
 /*                         <ul class="dropdown-menu">*/
 /*                             <li><a href="#">Perfil</a></li>*/
@@ -430,5 +456,12 @@ class __TwigTemplate_8eaaeb4e5c3b9091fa66139c482ea004f0d608f4c1f18a95dd9e97d6f59
 /*         </div>*/
 /*     </div>*/
 /* {% endblock %}*/
+/* {% block javascripts %}*/
+/*     {{ parent() }}*/
+/*     <script>*/
+/*         console.log('{{ usuario }}');*/
+/*     </script>*/
+/* {% endblock %}*/
+/*     */
 /* */
 /* */

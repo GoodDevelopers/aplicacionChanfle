@@ -175,7 +175,7 @@ class ClienteController extends Controller {
         } else {
 
             $clienteResponse = (array("id" => $cliente->getId(), "nuip" => $cliente->getNuip(), "nombre" => $cliente->getNombre(),
-                "fechaDeNacimiento" => $cliente->getFechaDeNacimiento(), "puntos" => $cliente->getPuntosAcumulados(),
+                "fechaDeNacimiento" => $cliente->getFechaDeNacimiento()->format('d-m-Y'), "puntos" => $cliente->getPuntosAcumulados(),
                 "email" => $cliente->getEmail()));
 
             $response = new Response(\json_encode($clienteResponse));

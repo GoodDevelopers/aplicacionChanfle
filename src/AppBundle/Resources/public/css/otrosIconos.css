@@ -1,0 +1,36 @@
+@font-face {
+    font-family: 'empleado';
+    src:    url('../fonts/empleado.eot?ovf99c');
+    src:    url('../fonts/empleado.eot?ovf99c#iefix') format('embedded-opentype'),
+        url('../fonts/empleado.ttf?ovf99c') format('truetype'),
+        url('../fonts/empleado.woff?ovf99c') format('woff'),
+        url('../fonts/empleado.svg?ovf99c#empleado') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'empleado' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-listaIngresosMateria:before {
+    content: "\e901";
+}
+.icon-ingresoMateria:before {
+    content: "\e902";
+}
+.icon-empleado:before {
+    content: "\e900";
+}
+

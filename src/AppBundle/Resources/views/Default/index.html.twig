@@ -2,7 +2,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('bundles/app/css/iconoEmpleado.css')}}">
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/otrosIconos.css')}}">
     <style>
         h1, h2{
             color: black;
@@ -94,7 +94,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown" style="font-size: 16px;">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: white;">
-                            <span class="icon-empleado"></span> Usuario <span class="caret"></span>
+                            <span class="icon-empleado"></span> {{ usuario }} <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="#">Perfil</a></li>
@@ -181,4 +181,11 @@
         </div>
     </div>
 {% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        console.log('{{ usuario }}');
+    </script>
+{% endblock %}
+    
 

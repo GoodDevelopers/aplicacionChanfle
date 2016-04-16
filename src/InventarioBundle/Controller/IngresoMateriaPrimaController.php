@@ -46,6 +46,8 @@ class IngresoMateriaPrimaController extends Controller {
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $ingresoMateriaPrima->setEmpleado($this->getEmpleadoLogueado());
+            $ingresoMateriaPrima->setFecha(new \DateTime());
             $em = $this->getDoctrine()->getManager();
             $em->persist($ingresoMateriaPrima);
             $em->flush();
@@ -134,6 +136,17 @@ class IngresoMateriaPrimaController extends Controller {
                         ->setMethod('DELETE')
                         ->getForm()
         ;
+    }
+    
+    public function getEmpleadoLogueado() {
+        $nuip = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
+        $usuario = $em->getRepository('UsuariosBundle:Empleado')->findOneBy(array('nuip' => $nuip->getUsername()));
+        if ($usuario == null) {
+            return $nuip;
+        } else {
+            return $usuario;
+        }
     }
 
 }

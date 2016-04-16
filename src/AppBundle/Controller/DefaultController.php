@@ -8,16 +8,29 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-class DefaultController extends Controller
-{
+class DefaultController extends Controller {
+
     /**
      * @Route("/", name="homepage")
      * @Method("GET")
      * @Template()
      */
-    public function indexAction(Request $request)
-    {
-        // replace this example code with whatever you need
-        
+    public function indexAction(Request $request) {
+        return array(
+            'usuario' => $this->buscarLogin(),
+        );
     }
+
+    public function buscarLogin() {
+        $nuip = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
+        //Esto se debe cambiar por buscar en los empleados, no en los clientes
+        $usuario = $em->getRepository('UsuariosBundle:Cliente')->findOneBy(array('nuip' => $nuip->getUsername()));
+        if ($usuario == null) {
+            return $nuip;
+        } else {
+            return $usuario->getNombre();
+        }
+    }
+
 }

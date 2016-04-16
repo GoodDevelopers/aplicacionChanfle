@@ -1,7 +1,12 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/otrosIconos.css')}}">
+{% endblock %}
+
 {% block body %}
-    <h1>IngresoMateriaPrima creation</h1>
+    <h1>Registrar Ingreso Materia Prima <span class="icon-ingresoMateria"></span></h1>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
