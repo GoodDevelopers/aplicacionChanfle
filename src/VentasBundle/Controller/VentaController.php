@@ -185,7 +185,7 @@ class VentaController extends Controller
      * @Route("/buscarCliente", name="buscar_cliente_venta")
      * 
      */
-    public function BuscarCliente(Request $request) {
+    public function buscarCliente(Request $request) {
 
         if (!$request->isXmlHttpRequest()) {
             throw new \Exception($id);
