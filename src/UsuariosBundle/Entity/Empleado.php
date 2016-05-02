@@ -31,16 +31,9 @@ class Empleado
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre", type="string", length=40)
+     * @ORM\Column(name="nombre", type="string", length=45)
      */
     private $nombre;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="apellido", type="string", length=45)
-     */
-    private $apellido;
 
     /**
      * @var string
@@ -111,29 +104,6 @@ class Empleado
     public function getNombre()
     {
         return $this->nombre;
-    }
-
-    /**
-     * Set apellido
-     *
-     * @param string $apellido
-     * @return Empleado
-     */
-    public function setApellido($apellido)
-    {
-        $this->apellido = $apellido;
-    
-        return $this;
-    }
-
-    /**
-     * Get apellido
-     *
-     * @return string 
-     */
-    public function getApellido()
-    {
-        return $this->apellido;
     }
 
     /**

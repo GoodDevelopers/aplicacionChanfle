@@ -16,8 +16,13 @@ class DefaultController extends Controller {
      * @Template()
      */
     public function indexAction(Request $request) {
+        //Creamos una variable de sesion con el nombre del usuario logueado para usarlo en todas las vistas y controladores
+        $session = $request->getSession();
+        $usuario = $this->buscarLogin();
+        $session->set('user', $usuario);
+        
         return array(
-            'usuario' => $this->buscarLogin(),
+            'usuario' => $session->get('user'),
         );
     }
 
@@ -25,7 +30,7 @@ class DefaultController extends Controller {
         $nuip = $this->getUser();
         $em = $this->getDoctrine()->getManager();
         //Esto se debe cambiar por buscar en los empleados, no en los clientes
-        $usuario = $em->getRepository('UsuariosBundle:Cliente')->findOneBy(array('nuip' => $nuip->getUsername()));
+        $usuario = $em->getRepository('UsuariosBundle:Empleado')->findOneBy(array('nuip' => $nuip->getUsername()));
         if ($usuario == null) {
             return $nuip;
         } else {

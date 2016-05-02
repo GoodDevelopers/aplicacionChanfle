@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * IngresoMateriaPrima controller.
  *
- * @Route("/ingresomateriaprima")
+ * @Route("/ingresosmateriaprima")
  */
 class IngresoMateriaPrimaController extends Controller {
 
@@ -23,12 +23,15 @@ class IngresoMateriaPrimaController extends Controller {
      * @Method("GET")
      * @Template()
      */
-    public function indexAction() {
+    public function indexAction(Request $request) {
+        $session = $request->getSession();
+        
         $em = $this->getDoctrine()->getManager();
 
         $ingresoMateriaPrimas = $em->getRepository('InventarioBundle:IngresoMateriaPrima')->findAll();
 
         return array(
+            'usuario' => $session->get('user'),
             'ingresoMateriaPrimas' => $ingresoMateriaPrimas,
         );
     }
@@ -41,6 +44,8 @@ class IngresoMateriaPrimaController extends Controller {
      * @Template()
      */
     public function newAction(Request $request) {
+        $session = $request->getSession();
+        
         $ingresoMateriaPrima = new IngresoMateriaPrima();
         $form = $this->createForm('InventarioBundle\Form\IngresoMateriaPrimaType', $ingresoMateriaPrima);
         $form->handleRequest($request);
@@ -56,6 +61,7 @@ class IngresoMateriaPrimaController extends Controller {
         }
 
         return array(
+            'usuario' => $session->get('user'),
             'ingresoMateriaPrima' => $ingresoMateriaPrima,
             'form' => $form->createView(),
         );
@@ -68,10 +74,13 @@ class IngresoMateriaPrimaController extends Controller {
      * @Method("GET")
      * @Template()
      */
-    public function showAction(IngresoMateriaPrima $ingresoMateriaPrima) {
+    public function showAction(IngresoMateriaPrima $ingresoMateriaPrima, Request $request) {
+        $session = $request->getSession();
+        
         $deleteForm = $this->createDeleteForm($ingresoMateriaPrima);
 
         return array(
+            'usuario' => $session->get('user'),
             'ingresoMateriaPrima' => $ingresoMateriaPrima,
             'delete_form' => $deleteForm->createView(),
         );
@@ -85,6 +94,8 @@ class IngresoMateriaPrimaController extends Controller {
      * @Template()
      */
     public function editAction(Request $request, IngresoMateriaPrima $ingresoMateriaPrima) {
+        $session = $request->getSession();
+        
         $deleteForm = $this->createDeleteForm($ingresoMateriaPrima);
         $editForm = $this->createForm('InventarioBundle\Form\IngresoMateriaPrimaType', $ingresoMateriaPrima);
         $editForm->handleRequest($request);
@@ -98,6 +109,7 @@ class IngresoMateriaPrimaController extends Controller {
         }
 
         return array(
+            'usuario' => $session->get('user'),
             'ingresoMateriaPrima' => $ingresoMateriaPrima,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

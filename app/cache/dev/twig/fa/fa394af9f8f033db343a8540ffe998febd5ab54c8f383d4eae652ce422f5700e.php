@@ -19,8 +19,8 @@ class __TwigTemplate_333aa9fce1da284636c3b28f9ec34add94b5b6eefabeb706dcb1d0ffbc3
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_c605d1188cf5ef62ac423fd27c66d477b3cc7ecdc2547eb0ca3ca5d72e74d6fb = $this->env->getExtension("native_profiler");
-        $__internal_c605d1188cf5ef62ac423fd27c66d477b3cc7ecdc2547eb0ca3ca5d72e74d6fb->enter($__internal_c605d1188cf5ef62ac423fd27c66d477b3cc7ecdc2547eb0ca3ca5d72e74d6fb_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "base.html.twig"));
+        $__internal_8d98472e29c3364e559fb07eb23146c140594767f8e957a6eba69aeada0a0ef0 = $this->env->getExtension("native_profiler");
+        $__internal_8d98472e29c3364e559fb07eb23146c140594767f8e957a6eba69aeada0a0ef0->enter($__internal_8d98472e29c3364e559fb07eb23146c140594767f8e957a6eba69aeada0a0ef0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "base.html.twig"));
 
         // line 1
         echo "<!DOCTYPE html>
@@ -35,45 +35,45 @@ class __TwigTemplate_333aa9fce1da284636c3b28f9ec34add94b5b6eefabeb706dcb1d0ffbc3
         ";
         // line 7
         $this->displayBlock('stylesheets', $context, $blocks);
-        // line 12
+        // line 42
         echo "        <link rel=\"icon\" type=\"image/x-icon\" href=\"";
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("favicon.ico"), "html", null, true);
         echo "\" />
     </head>
     <body>
-";
-        // line 16
-        echo "            ";
+        ";
+        // line 77
+        echo "        ";
         $this->displayBlock('body', $context, $blocks);
-        // line 19
+        // line 79
         echo "        ";
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 23
+        // line 83
         echo "    </body>
 </html>
 ";
         
-        $__internal_c605d1188cf5ef62ac423fd27c66d477b3cc7ecdc2547eb0ca3ca5d72e74d6fb->leave($__internal_c605d1188cf5ef62ac423fd27c66d477b3cc7ecdc2547eb0ca3ca5d72e74d6fb_prof);
+        $__internal_8d98472e29c3364e559fb07eb23146c140594767f8e957a6eba69aeada0a0ef0->leave($__internal_8d98472e29c3364e559fb07eb23146c140594767f8e957a6eba69aeada0a0ef0_prof);
 
     }
 
     // line 5
     public function block_title($context, array $blocks = array())
     {
-        $__internal_dbba9726e88290b5087dfc01eecfbd2438fd5771fdd4660eedcbaf5048588655 = $this->env->getExtension("native_profiler");
-        $__internal_dbba9726e88290b5087dfc01eecfbd2438fd5771fdd4660eedcbaf5048588655->enter($__internal_dbba9726e88290b5087dfc01eecfbd2438fd5771fdd4660eedcbaf5048588655_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_e08ccb7fff317193df284423367aceda69c5c858facb3ee633f9b0791f7a0aca = $this->env->getExtension("native_profiler");
+        $__internal_e08ccb7fff317193df284423367aceda69c5c858facb3ee633f9b0791f7a0aca->enter($__internal_e08ccb7fff317193df284423367aceda69c5c858facb3ee633f9b0791f7a0aca_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         echo "Welcome!";
         
-        $__internal_dbba9726e88290b5087dfc01eecfbd2438fd5771fdd4660eedcbaf5048588655->leave($__internal_dbba9726e88290b5087dfc01eecfbd2438fd5771fdd4660eedcbaf5048588655_prof);
+        $__internal_e08ccb7fff317193df284423367aceda69c5c858facb3ee633f9b0791f7a0aca->leave($__internal_e08ccb7fff317193df284423367aceda69c5c858facb3ee633f9b0791f7a0aca_prof);
 
     }
 
     // line 7
     public function block_stylesheets($context, array $blocks = array())
     {
-        $__internal_29234df2a25f872725f53ddf6a2f794453e237543bd8894b37b94c2d2d06d67e = $this->env->getExtension("native_profiler");
-        $__internal_29234df2a25f872725f53ddf6a2f794453e237543bd8894b37b94c2d2d06d67e->enter($__internal_29234df2a25f872725f53ddf6a2f794453e237543bd8894b37b94c2d2d06d67e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheets"));
+        $__internal_5650c6f2132edaa553f9024de586c17f511459ba6c92ad57e50fe84fde884aba = $this->env->getExtension("native_profiler");
+        $__internal_5650c6f2132edaa553f9024de586c17f511459ba6c92ad57e50fe84fde884aba->enter($__internal_5650c6f2132edaa553f9024de586c17f511459ba6c92ad57e50fe84fde884aba_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheets"));
 
         // line 8
         echo "            <link rel=\"stylesheet\" href=\"";
@@ -87,42 +87,75 @@ class __TwigTemplate_333aa9fce1da284636c3b28f9ec34add94b5b6eefabeb706dcb1d0ffbc3
         // line 10
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("bundles/app/css/font-awesome.css"), "html", null, true);
         echo "\" />
+            <link rel=\"stylesheet\" href=\"";
+        // line 11
+        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("bundles/app/css/otrosIconos.css"), "html", null, true);
+        echo "\">
+            <style>
+                .navbar-default{
+                    background-color: #f0ad4e;
+                    border-color: #eea236;
+                }
+                .navbar-default:hover{
+                    background-color: #ec971f;
+                    border-color: #d58512;
+                }
+                .navbar-default .navbar-toggle .icon-bar {
+                    background-color: white;
+                }
+                .nav .open > a, .nav .open > a:hover, .nav .open > a:focus,
+                .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus,
+                .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus{
+                    background-color: #e26d1e;
+                }
+
+                @media (max-width: 767px){
+                    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+                        color: black;
+                    }
+                    .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+                    .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+                        color: white;
+                        background-color: transparent;
+                    }
+                }
+            </style>
         ";
         
-        $__internal_29234df2a25f872725f53ddf6a2f794453e237543bd8894b37b94c2d2d06d67e->leave($__internal_29234df2a25f872725f53ddf6a2f794453e237543bd8894b37b94c2d2d06d67e_prof);
+        $__internal_5650c6f2132edaa553f9024de586c17f511459ba6c92ad57e50fe84fde884aba->leave($__internal_5650c6f2132edaa553f9024de586c17f511459ba6c92ad57e50fe84fde884aba_prof);
 
     }
 
-    // line 16
+    // line 77
     public function block_body($context, array $blocks = array())
     {
-        $__internal_bddeb615ad4a326e0401f4c4b28e22a0f4ee3a08627defdd0154c57d68bbb081 = $this->env->getExtension("native_profiler");
-        $__internal_bddeb615ad4a326e0401f4c4b28e22a0f4ee3a08627defdd0154c57d68bbb081->enter($__internal_bddeb615ad4a326e0401f4c4b28e22a0f4ee3a08627defdd0154c57d68bbb081_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_9fc9bd800639506af26db5ad5700ab7e99156816fe2eb21bcced7081ba6db2b7 = $this->env->getExtension("native_profiler");
+        $__internal_9fc9bd800639506af26db5ad5700ab7e99156816fe2eb21bcced7081ba6db2b7->enter($__internal_9fc9bd800639506af26db5ad5700ab7e99156816fe2eb21bcced7081ba6db2b7_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
-        // line 17
-        echo "            ";
+        // line 78
+        echo "        ";
         
-        $__internal_bddeb615ad4a326e0401f4c4b28e22a0f4ee3a08627defdd0154c57d68bbb081->leave($__internal_bddeb615ad4a326e0401f4c4b28e22a0f4ee3a08627defdd0154c57d68bbb081_prof);
+        $__internal_9fc9bd800639506af26db5ad5700ab7e99156816fe2eb21bcced7081ba6db2b7->leave($__internal_9fc9bd800639506af26db5ad5700ab7e99156816fe2eb21bcced7081ba6db2b7_prof);
 
     }
 
-    // line 19
+    // line 79
     public function block_javascripts($context, array $blocks = array())
     {
-        $__internal_2483ab9793f86b4b9dbf7a7edb90f59c073dc827794d09a74b3d7e6c9a5ffa55 = $this->env->getExtension("native_profiler");
-        $__internal_2483ab9793f86b4b9dbf7a7edb90f59c073dc827794d09a74b3d7e6c9a5ffa55->enter($__internal_2483ab9793f86b4b9dbf7a7edb90f59c073dc827794d09a74b3d7e6c9a5ffa55_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
+        $__internal_da9ab6f736416fb2aa6cbc252d612587214de7af4f52416aae8424cf85887475 = $this->env->getExtension("native_profiler");
+        $__internal_da9ab6f736416fb2aa6cbc252d612587214de7af4f52416aae8424cf85887475->enter($__internal_da9ab6f736416fb2aa6cbc252d612587214de7af4f52416aae8424cf85887475_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 20
+        // line 80
         echo "            <script src=\"";
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("bundles/app/js/jquery.js"), "html", null, true);
         echo "\"></script>
             <script src=\"";
-        // line 21
+        // line 81
         echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("bundles/app/js/bootstrap.js"), "html", null, true);
         echo "\"></script>
         ";
         
-        $__internal_2483ab9793f86b4b9dbf7a7edb90f59c073dc827794d09a74b3d7e6c9a5ffa55->leave($__internal_2483ab9793f86b4b9dbf7a7edb90f59c073dc827794d09a74b3d7e6c9a5ffa55_prof);
+        $__internal_da9ab6f736416fb2aa6cbc252d612587214de7af4f52416aae8424cf85887475->leave($__internal_da9ab6f736416fb2aa6cbc252d612587214de7af4f52416aae8424cf85887475_prof);
 
     }
 
@@ -138,7 +171,7 @@ class __TwigTemplate_333aa9fce1da284636c3b28f9ec34add94b5b6eefabeb706dcb1d0ffbc3
 
     public function getDebugInfo()
     {
-        return array (  121 => 21,  116 => 20,  110 => 19,  103 => 17,  97 => 16,  88 => 10,  84 => 9,  79 => 8,  73 => 7,  61 => 5,  52 => 23,  49 => 19,  46 => 16,  39 => 12,  37 => 7,  32 => 5,  26 => 1,);
+        return array (  154 => 81,  149 => 80,  143 => 79,  136 => 78,  130 => 77,  92 => 11,  88 => 10,  84 => 9,  79 => 8,  73 => 7,  61 => 5,  52 => 83,  49 => 79,  46 => 77,  39 => 42,  37 => 7,  32 => 5,  26 => 1,);
     }
 }
 /* <!DOCTYPE html>*/
@@ -151,14 +184,74 @@ class __TwigTemplate_333aa9fce1da284636c3b28f9ec34add94b5b6eefabeb706dcb1d0ffbc3
 /*             <link rel="stylesheet" href="{{ asset('bundles/app/css/bootstrap.css') }}" />*/
 /*             <link rel="stylesheet" href="{{ asset('bundles/app/css/style.css') }}" />*/
 /*             <link rel="stylesheet" href="{{ asset('bundles/app/css/font-awesome.css') }}" />*/
+/*             <link rel="stylesheet" href="{{ asset('bundles/app/css/otrosIconos.css')}}">*/
+/*             <style>*/
+/*                 .navbar-default{*/
+/*                     background-color: #f0ad4e;*/
+/*                     border-color: #eea236;*/
+/*                 }*/
+/*                 .navbar-default:hover{*/
+/*                     background-color: #ec971f;*/
+/*                     border-color: #d58512;*/
+/*                 }*/
+/*                 .navbar-default .navbar-toggle .icon-bar {*/
+/*                     background-color: white;*/
+/*                 }*/
+/*                 .nav .open > a, .nav .open > a:hover, .nav .open > a:focus,*/
+/*                 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus,*/
+/*                 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus{*/
+/*                     background-color: #e26d1e;*/
+/*                 }*/
+/* */
+/*                 @media (max-width: 767px){*/
+/*                     .navbar-default .navbar-nav .open .dropdown-menu > li > a {*/
+/*                         color: black;*/
+/*                     }*/
+/*                     .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,*/
+/*                     .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {*/
+/*                         color: white;*/
+/*                         background-color: transparent;*/
+/*                     }*/
+/*                 }*/
+/*             </style>*/
 /*         {% endblock %}*/
 /*         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />*/
 /*     </head>*/
 /*     <body>*/
-/* {#        <div class="container">#}*/
-/*             {% block body %}*/
-/*             {% endblock %}*/
-/* {#        </div>#}*/
+/*         {#<nav class="navbar navbar-default">*/
+/*             <div class="container-fluid">*/
+/*                 <!-- Brand and toggle get grouped for better mobile display -->*/
+/*                 <div class="navbar-header">*/
+/*                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">*/
+/*                         <span class="sr-only">Menu</span>*/
+/*                         <span class="icon-bar"></span>*/
+/*                         <span class="icon-bar"></span>*/
+/*                         <span class="icon-bar"></span>*/
+/*                     </button>*/
+/*                     <a class="navbar-brand" href="{{ path('homepage') }}" style="color: black; font-weight: bold;"><span class="glyphicon glyphicon-home"></span> Inicio</a>*/
+/*                 </div>*/
+/* */
+/*                 <!-- Collect the nav links, forms, and other content for toggling -->*/
+/*                 <div class="collapse navbar-collapse" id="menu">*/
+/*                     <ul class="nav navbar-nav navbar-right">*/
+/*                         <li class="dropdown" style="font-size: 16px;">*/
+/*                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: white;">*/
+/*                                 <span class="icon-empleado"></span> {{ usuario }} <span class="caret"></span>*/
+/*                             </a>*/
+/*                             <ul class="dropdown-menu">*/
+/*                                 <li><a href="#">Perfil</a></li>*/
+/*                                 <li><a href="#">Opcion</a></li>*/
+/*                                 <li><a href="#">Opcion</a></li>*/
+/*                                 <li role="separator" class="divider"></li>*/
+/*                                 <li><a href="#">Cerrar sesion</a></li>*/
+/*                             </ul>*/
+/*                         </li>*/
+/*                     </ul>*/
+/*                 </div><!-- /.navbar-collapse -->*/
+/*             </div><!-- /.container-fluid -->*/
+/*         </nav>#}*/
+/*         {% block body %}*/
+/*         {% endblock %}*/
 /*         {% block javascripts %}*/
 /*             <script src="{{ asset('bundles/app/js/jquery.js') }}"></script>*/
 /*             <script src="{{ asset('bundles/app/js/bootstrap.js') }}"></script>*/

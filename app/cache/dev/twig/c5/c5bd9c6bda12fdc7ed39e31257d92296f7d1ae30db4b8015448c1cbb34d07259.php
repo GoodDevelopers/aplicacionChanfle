@@ -21,20 +21,20 @@ class __TwigTemplate_3899a877a1ef8e7a7141492075b5271b961655f01e33738fc3e9eefc9bc
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_790de2cf3293429251ce7770cf71eab91788232258e347b0e616b26dbe76f325 = $this->env->getExtension("native_profiler");
-        $__internal_790de2cf3293429251ce7770cf71eab91788232258e347b0e616b26dbe76f325->enter($__internal_790de2cf3293429251ce7770cf71eab91788232258e347b0e616b26dbe76f325_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UsuariosBundle:Cliente:show.html.twig"));
+        $__internal_69edad7e0629faa3c98f1c464190ee49c47faae7a059df00d6c68929628eb384 = $this->env->getExtension("native_profiler");
+        $__internal_69edad7e0629faa3c98f1c464190ee49c47faae7a059df00d6c68929628eb384->enter($__internal_69edad7e0629faa3c98f1c464190ee49c47faae7a059df00d6c68929628eb384_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UsuariosBundle:Cliente:show.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_790de2cf3293429251ce7770cf71eab91788232258e347b0e616b26dbe76f325->leave($__internal_790de2cf3293429251ce7770cf71eab91788232258e347b0e616b26dbe76f325_prof);
+        $__internal_69edad7e0629faa3c98f1c464190ee49c47faae7a059df00d6c68929628eb384->leave($__internal_69edad7e0629faa3c98f1c464190ee49c47faae7a059df00d6c68929628eb384_prof);
 
     }
 
     // line 3
     public function block_body($context, array $blocks = array())
     {
-        $__internal_0e1ab00017e9fc23d1a04bb67a1198a3ac2452cc15d7eadf6d49303eac63a958 = $this->env->getExtension("native_profiler");
-        $__internal_0e1ab00017e9fc23d1a04bb67a1198a3ac2452cc15d7eadf6d49303eac63a958->enter($__internal_0e1ab00017e9fc23d1a04bb67a1198a3ac2452cc15d7eadf6d49303eac63a958_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_2e6eb6254f22cc72719355ec6f6906b54f6a0f1094e04b023e2f88fcdcd02ecf = $this->env->getExtension("native_profiler");
+        $__internal_2e6eb6254f22cc72719355ec6f6906b54f6a0f1094e04b023e2f88fcdcd02ecf->enter($__internal_2e6eb6254f22cc72719355ec6f6906b54f6a0f1094e04b023e2f88fcdcd02ecf_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
         echo "    <div class=\"container\">
@@ -104,7 +104,7 @@ class __TwigTemplate_3899a877a1ef8e7a7141492075b5271b961655f01e33738fc3e9eefc9bc
                         <a href=\"";
         // line 48
         echo $this->env->getExtension('routing')->getPath("clientes_index");
-        echo "\"class=\"btn btn-info\">Lista <span class=\"glyphicon glyphicon-th-list\"></span></a>
+        echo "\" class=\"btn btn-info\">Lista <span class=\"glyphicon glyphicon-th-list\"></span></a>
                     </li>
                     <li>
                         <a href=\"";
@@ -129,7 +129,7 @@ class __TwigTemplate_3899a877a1ef8e7a7141492075b5271b961655f01e33738fc3e9eefc9bc
     </div>
 ";
         
-        $__internal_0e1ab00017e9fc23d1a04bb67a1198a3ac2452cc15d7eadf6d49303eac63a958->leave($__internal_0e1ab00017e9fc23d1a04bb67a1198a3ac2452cc15d7eadf6d49303eac63a958_prof);
+        $__internal_2e6eb6254f22cc72719355ec6f6906b54f6a0f1094e04b023e2f88fcdcd02ecf->leave($__internal_2e6eb6254f22cc72719355ec6f6906b54f6a0f1094e04b023e2f88fcdcd02ecf_prof);
 
     }
 
@@ -195,7 +195,7 @@ class __TwigTemplate_3899a877a1ef8e7a7141492075b5271b961655f01e33738fc3e9eefc9bc
 /*             <div class="col-lg-4 col-lg-offset-4">*/
 /*                 <ul class="text-center list-inline">*/
 /*                     <li>*/
-/*                         <a href="{{ path('clientes_index') }}"class="btn btn-info">Lista <span class="glyphicon glyphicon-th-list"></span></a>*/
+/*                         <a href="{{ path('clientes_index') }}" class="btn btn-info">Lista <span class="glyphicon glyphicon-th-list"></span></a>*/
 /*                     </li>*/
 /*                     <li>*/
 /*                         <a href="{{ path('clientes_edit', { 'id': cliente.id }) }}" class="btn btn-warning" role="button">Editar <span class="glyphicon glyphicon-edit"></span></a>*/

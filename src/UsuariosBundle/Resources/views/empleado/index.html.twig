@@ -1,47 +1,76 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Empleado list</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="h1 text-center marginTitulo">Empleados <span class="icon-empleado"></span></h1>
+            </div>
+        </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nuip</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Telefono</th>
-                <th>Esusuario</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for empleado in empleados %}
-            <tr>
-                <td><a href="{{ path('UsuariosBundle_empleado_show', { 'id': empleado.id }) }}">{{ empleado.id }}</a></td>
-                <td>{{ empleado.nuip }}</td>
-                <td>{{ empleado.nombre }}</td>
-                <td>{{ empleado.apellido }}</td>
-                <td>{{ empleado.telefono }}</td>
-                <td>{% if empleado.esUsuario %}Yes{% else %}No{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('UsuariosBundle_empleado_show', { 'id': empleado.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('UsuariosBundle_empleado_edit', { 'id': empleado.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <div class="row">
+            <div class="col-md-3">
+                <ul>
+                    <li>
+                        <a href="{{ path('UsuariosBundle_empleado_new') }}" class="btn btn-lg btn-success">Registrar Empleado <span class="glyphicon glyphicon-floppy-saved"></span></a>
+                    </li>
+                </ul>
+            </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('UsuariosBundle_empleado_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+            <div class="col-md-9">
+                <form action="" method="GET" class="form-inline">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">Empleado</div>
+                            <input type="number" class="form-control" placeholder="No. de identificacion" id="idCliente">
+                        </div>
+                        <button type="button" id="btnBuscar" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Buscar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="margenTopTablas">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-condensed text-center">
+                            <thead>
+                                <tr class="active info">
+                                    <th>ID</th>
+                                    <th>NUIP</th>
+                                    <th>NOMBRE</th>
+                                    <th>TELEFONO</th>
+                                    <th>¿CON LOGIN?</th>
+                                    <th>ACCIONES</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for empleado in empleados %}
+                                    <tr>
+                                        <td><a href="{{ path('UsuariosBundle_empleado_show', { 'id': empleado.id }) }}">{{ empleado.id }}</a></td>
+                                        <td>{{ empleado.nuip }}</td>
+                                        <td>{{ empleado.nombre }}</td>
+                                        <td>{{ empleado.telefono }}</td>
+                                        <td>{% if empleado.esUsuario %}Yes{% else %}No{% endif %}</td>
+                                        <td>
+                                            <ul class="list-inline text-center">
+                                                <li>
+                                                    <a href="{{ path('UsuariosBundle_empleado_edit', { 'id': empleado.id }) }}" class="btn btn-warning" role="button">Editar <span class="glyphicon glyphicon-edit"></span></a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ path('UsuariosBundle_empleado_show', { 'id': empleado.id }) }}" class="btn btn-danger" role="button">Eliminar <span class="glyphicon glyphicon-floppy-remove"></span></a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

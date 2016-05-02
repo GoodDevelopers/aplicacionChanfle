@@ -3,6 +3,7 @@
 namespace UsuariosBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,10 +16,9 @@ class EmpleadoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nuip')
+            ->add('nuip', IntegerType::class)
             ->add('nombre')
-            ->add('apellido')
-            ->add('telefono')
+            ->add('telefono', IntegerType::class)
             ->add('esUsuario')
         ;
     }

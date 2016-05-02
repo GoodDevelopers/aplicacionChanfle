@@ -21,26 +21,26 @@ class __TwigTemplate_916d153f8db838fc4e567ca5593cb79e05680405ccbe9f2bea2c77d5826
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_afb3e8549a4a7e960cc6a852b2f11b445c8b7e8127ac8de431b367ed103b623a = $this->env->getExtension("native_profiler");
-        $__internal_afb3e8549a4a7e960cc6a852b2f11b445c8b7e8127ac8de431b367ed103b623a->enter($__internal_afb3e8549a4a7e960cc6a852b2f11b445c8b7e8127ac8de431b367ed103b623a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UsuariosBundle:Cliente:new.html.twig"));
+        $__internal_9aabe3b7a744a617e2329dcfa49f037dfa9612c18dc6a5655cc9da8c76bd25d7 = $this->env->getExtension("native_profiler");
+        $__internal_9aabe3b7a744a617e2329dcfa49f037dfa9612c18dc6a5655cc9da8c76bd25d7->enter($__internal_9aabe3b7a744a617e2329dcfa49f037dfa9612c18dc6a5655cc9da8c76bd25d7_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UsuariosBundle:Cliente:new.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_afb3e8549a4a7e960cc6a852b2f11b445c8b7e8127ac8de431b367ed103b623a->leave($__internal_afb3e8549a4a7e960cc6a852b2f11b445c8b7e8127ac8de431b367ed103b623a_prof);
+        $__internal_9aabe3b7a744a617e2329dcfa49f037dfa9612c18dc6a5655cc9da8c76bd25d7->leave($__internal_9aabe3b7a744a617e2329dcfa49f037dfa9612c18dc6a5655cc9da8c76bd25d7_prof);
 
     }
 
     // line 3
     public function block_body($context, array $blocks = array())
     {
-        $__internal_207d115f8f7ae92df4f928bc2a89a1cad7ffd9cacde4283781bc963b0f43f6ed = $this->env->getExtension("native_profiler");
-        $__internal_207d115f8f7ae92df4f928bc2a89a1cad7ffd9cacde4283781bc963b0f43f6ed->enter($__internal_207d115f8f7ae92df4f928bc2a89a1cad7ffd9cacde4283781bc963b0f43f6ed_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_69fa888cd02f6e8b53c9e8d3fc002854f2d664a5b33b0dfacbbf762346fdf35e = $this->env->getExtension("native_profiler");
+        $__internal_69fa888cd02f6e8b53c9e8d3fc002854f2d664a5b33b0dfacbbf762346fdf35e->enter($__internal_69fa888cd02f6e8b53c9e8d3fc002854f2d664a5b33b0dfacbbf762346fdf35e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
         echo "    <div class=\"container\">
         <div class=\"row\">
             <div class=\"col-md-12\">
-                <h1 class=\"h1 text-center marginTitulo\" style=\"font-weight: bold;\">Registrar Cliente <span class=\"glyphicon glyphicon-user\"></span></h1>
+                <h1 class=\"h1 text-center marginTitulo\">Registrar Cliente <span class=\"glyphicon glyphicon-user\"></span></h1>
             </div>
         </div>
 
@@ -113,7 +113,7 @@ class __TwigTemplate_916d153f8db838fc4e567ca5593cb79e05680405ccbe9f2bea2c77d5826
                 <div class=\"form-group text-center\">
                     ";
         // line 45
-        echo "                    <button type=\"submit\" class=\"btn btn-lg btn-success active\">Registrar <span class=\"glyphicon glyphicon-floppy-saved\"></span></button>
+        echo "                    <button type=\"submit\" class=\"btn btn-lg btn-success\">Registrar <span class=\"glyphicon glyphicon-floppy-saved\"></span></button>
                 </div>
                 ";
         // line 47
@@ -136,7 +136,7 @@ class __TwigTemplate_916d153f8db838fc4e567ca5593cb79e05680405ccbe9f2bea2c77d5826
 
 ";
         
-        $__internal_207d115f8f7ae92df4f928bc2a89a1cad7ffd9cacde4283781bc963b0f43f6ed->leave($__internal_207d115f8f7ae92df4f928bc2a89a1cad7ffd9cacde4283781bc963b0f43f6ed_prof);
+        $__internal_69fa888cd02f6e8b53c9e8d3fc002854f2d664a5b33b0dfacbbf762346fdf35e->leave($__internal_69fa888cd02f6e8b53c9e8d3fc002854f2d664a5b33b0dfacbbf762346fdf35e_prof);
 
     }
 
@@ -161,7 +161,7 @@ class __TwigTemplate_916d153f8db838fc4e567ca5593cb79e05680405ccbe9f2bea2c77d5826
 /*     <div class="container">*/
 /*         <div class="row">*/
 /*             <div class="col-md-12">*/
-/*                 <h1 class="h1 text-center marginTitulo" style="font-weight: bold;">Registrar Cliente <span class="glyphicon glyphicon-user"></span></h1>*/
+/*                 <h1 class="h1 text-center marginTitulo">Registrar Cliente <span class="glyphicon glyphicon-user"></span></h1>*/
 /*             </div>*/
 /*         </div>*/
 /* */
@@ -199,7 +199,7 @@ class __TwigTemplate_916d153f8db838fc4e567ca5593cb79e05680405ccbe9f2bea2c77d5826
 /* */
 /*                 <div class="form-group text-center">*/
 /*                     {#                    <input type="submit" value="Registrar" class="btn btn-lg btn-success"/>#}*/
-/*                     <button type="submit" class="btn btn-lg btn-success active">Registrar <span class="glyphicon glyphicon-floppy-saved"></span></button>*/
+/*                     <button type="submit" class="btn btn-lg btn-success">Registrar <span class="glyphicon glyphicon-floppy-saved"></span></button>*/
 /*                 </div>*/
 /*                 {{ form_end(form) }}*/
 /* */

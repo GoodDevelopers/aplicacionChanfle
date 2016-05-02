@@ -1,16 +1,98 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/usuarios/css/bootstrap-toggle.css')}}">
+{% endblock %}
+
 {% block body %}
-    <h1>Empleado creation</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="h1 text-center marginTitulo">Registrar Empleado <span class="icon-empleado"></span></h1>
+            </div>
+        </div>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-4">
 
-    <ul>
-        <li>
-            <a href="{{ path('UsuariosBundle_empleado_index') }}">Back to the list</a>
-        </li>
-    </ul>
+                {{ form_start(form) }}
+
+                <div class="form-group">
+                    {{ form_label(form.nuip, 'No. de identificacion:')}}
+                    {{ form_widget(form.nuip, {'attr':{'class' : 'form-control', 'placeholder' : 'Numero de cedula del cliente'}})}}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.nombre, 'Nombre y apellidos:')}}
+                    {{ form_widget(form.nombre, {'attr':{'class' : 'form-control', 'placeholder' : 'Nombre y apellidos completos del cliente'}})}}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.telefono, 'Telefono:')}}
+                    {{ form_widget(form.telefono, {'attr':{'class' : 'form-control', 'placeholder' : 'Telefono fijo o celular'}})}}
+                </div>
+
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            {{ form_widget(form.esUsuario, {'attr':{'type' : 'checkbox'}}) }} <strong>Crear cuenta para loguearse en el sistema</strong>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group" style="display: none;" id="bloqueCheckAdmin">
+                    <label class="checkbox2-inline">
+                        <input type="checkbox2" data-toggle="toggle" id="checkAdmin" name="checkAdmin" value="0">
+                        Privilegios de administrador
+                    </label>
+                </div>
+
+                {#                {{ form_widget(form) }}#}
+                <div class="form-group text-center">
+                    {#                    <input type="submit" value="Create" />#}
+                    <button type="submit" class="btn btn-lg btn-success">Registrar <span class="glyphicon glyphicon-floppy-saved"></span></button>
+                </div>
+                {{ form_end(form) }}
+
+                <div class="form-group text-center">
+                    <ul>
+                        <li>
+                            <a href="{{ path('UsuariosBundle_empleado_index') }}" class="btn btn-info">Lista <span class="glyphicon glyphicon-th-list"></span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/usuarios/js/bootstrap-toggle.js') }}"></script>
+    <script>
+        /* Esta funcion es para mostrar el check de admin */
+        $(function () {
+            $('#empleado_esUsuario').click(function () {
+                if ($(this).is(':checked')) {
+                    $('#checkAdmin').bootstrapToggle('off');
+                    $('#bloqueCheckAdmin').css('display', 'block');
+                } else {
+                    $('#bloqueCheckAdmin').css('display', 'none');
+                }
+                $('#checkAdmin').attr('value', 0);
+            });
+        });
+        /* Esta funcion es para ponerle el valor al checkAdmin cuando este seleccionado, para que el 
+         controlador lo interprete y sepa que rol ponerle */
+        $(function () {
+            $('#checkAdmin').change(function () {
+                if ($(this).prop('checked')) {
+                    $('#checkAdmin').attr('value', 1);
+                } else {
+                    $('#checkAdmin').attr('value', 0);
+                }
+            });
+        });
+    </script>
 {% endblock %}

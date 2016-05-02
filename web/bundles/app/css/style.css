@@ -1,18 +1,17 @@
+/* ------------- MODIFICACIONES BOOTSTRAP ------------- */
+
 .list-inline{
     margin-left: 0px;
 }
 
 .btn{
     font-weight: bold;
+    margin-bottom: 0px;
 }
 
-.h1{
+.h1, .h2{
     font-weight: bold;
-}
-
-/*Titulos de tabla*/
-tr > th{
-    text-align: center;
+    color: black;
 }
 
 .row ul{
@@ -20,12 +19,19 @@ tr > th{
     padding: 0px;
 }
 
-.btn{
-    margin-bottom: 5px;
-}
-
 .table{
     background-color: white;
+}
+/* Para los addons de buscar de cada pagina */
+.input-group-addon{
+    font-weight: bold;
+}
+
+/* ------------- AGREGADAS ------------- */
+
+/*Titulos de tabla*/
+tr > th{
+    text-align: center;
 }
 
 /*Nueva clase para el espacio entre titulo y el contenido*/
@@ -42,4 +48,8 @@ body{
 /* Quitando la margen del bootstrap */
 ul, ol{
     margin-bottom: 0px;
+}
+
+.margenTopTablas{
+    margin-top: 10px;
 }

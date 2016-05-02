@@ -3,11 +3,11 @@
 {% block body %}
     <div class="container">
         <div class="row">
-            <h1 class="h1 text-center marginTitulo">Editar cliente <span class="glyphicon glyphicon-user"></span></h1>
+            <h1 class="h1 text-center marginTitulo">Editar Cliente <span class="glyphicon glyphicon-user"></span></h1>
         </div>
+
         <div class="row">
             <div class="col-sm-4 col-sm-offset-4">
-
                 {{ form_start(edit_form) }}
 
                 <div class="form-group">
@@ -36,25 +36,27 @@
                 </div>
 
                 <div class="form-group text-center">
-                    <button type="submit" class="btn btn-lg btn-warning active">Editar <span class="glyphicon glyphicon-edit"></span></button>
+                    <button type="submit" class="btn btn-lg btn-warning">Editar <span class="glyphicon glyphicon-edit"></span></button>
                 </div>
                 {#            <input type="submit" value="Edit" />#}
 
                 {{ form_end(edit_form) }}
-
-                <ul class="list-inline text-center">
-                    <li>
-                        <a href="{{ path('clientes_index') }}" class="btn btn-info">Lista <span class="glyphicon glyphicon-th-list"></span></a>
-                    </li>
-                    <li>
-                        {{ form_start(delete_form) }}
-                        {#                    <input type="submit" value="Delete">#}
-                        <button type="submit" class="btn btn-danger">Eliminar <span class="glyphicon glyphicon-floppy-remove"></span></button>
-                            {{ form_end(delete_form) }}
-                    </li>
-                </ul>
+                
+                <div>
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="{{ path('clientes_index') }}" class="btn btn-info">Lista <span class="glyphicon glyphicon-th-list"></span></a>
+                        </li>
+                        <li>
+                            {{ form_start(delete_form) }}
+                            {#                    <input type="submit" value="Delete">#}
+                            <button type="submit" class="btn btn-danger">Eliminar <span class="glyphicon glyphicon-floppy-remove"></span></button>
+                                {{ form_end(delete_form) }}
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-                            
+
 {% endblock %}

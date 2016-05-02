@@ -309,9 +309,9 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        if (0 === strpos($pathinfo, '/empleado')) {
+        if (0 === strpos($pathinfo, '/empleados')) {
             // UsuariosBundle_empleado_index
-            if (rtrim($pathinfo, '/') === '/empleado') {
+            if (rtrim($pathinfo, '/') === '/empleados') {
                 if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
                     $allow = array_merge($allow, array('GET', 'HEAD'));
                     goto not_UsuariosBundle_empleado_index;
@@ -326,7 +326,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             not_UsuariosBundle_empleado_index:
 
             // UsuariosBundle_empleado_new
-            if ($pathinfo === '/empleado/new') {
+            if ($pathinfo === '/empleados/new') {
                 if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
                     $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
                     goto not_UsuariosBundle_empleado_new;
@@ -337,7 +337,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             not_UsuariosBundle_empleado_new:
 
             // UsuariosBundle_empleado_show
-            if (preg_match('#^/empleado/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            if (preg_match('#^/empleados/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
                 if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
                     $allow = array_merge($allow, array('GET', 'HEAD'));
                     goto not_UsuariosBundle_empleado_show;
@@ -348,7 +348,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             not_UsuariosBundle_empleado_show:
 
             // UsuariosBundle_empleado_edit
-            if (preg_match('#^/empleado/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+            if (preg_match('#^/empleados/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
                 if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
                     $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
                     goto not_UsuariosBundle_empleado_edit;
@@ -359,7 +359,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             not_UsuariosBundle_empleado_edit:
 
             // UsuariosBundle_empleado_delete
-            if (preg_match('#^/empleado/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            if (preg_match('#^/empleados/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
                 if ($this->context->getMethod() != 'DELETE') {
                     $allow[] = 'DELETE';
                     goto not_UsuariosBundle_empleado_delete;
@@ -377,9 +377,9 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'InventarioBundle\\Controller\\DefaultController::indexAction',  '_route' => 'inventario_default_index',);
             }
 
-            if (0 === strpos($pathinfo, '/ingresomateriaprima')) {
+            if (0 === strpos($pathinfo, '/ingresosmateriaprima')) {
                 // ingresomateriaprima_index
-                if (rtrim($pathinfo, '/') === '/ingresomateriaprima') {
+                if (rtrim($pathinfo, '/') === '/ingresosmateriaprima') {
                     if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
                         $allow = array_merge($allow, array('GET', 'HEAD'));
                         goto not_ingresomateriaprima_index;
@@ -394,7 +394,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 not_ingresomateriaprima_index:
 
                 // ingresomateriaprima_new
-                if ($pathinfo === '/ingresomateriaprima/new') {
+                if ($pathinfo === '/ingresosmateriaprima/new') {
                     if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
                         $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
                         goto not_ingresomateriaprima_new;
@@ -405,7 +405,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 not_ingresomateriaprima_new:
 
                 // ingresomateriaprima_show
-                if (preg_match('#^/ingresomateriaprima/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if (preg_match('#^/ingresosmateriaprima/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
                     if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
                         $allow = array_merge($allow, array('GET', 'HEAD'));
                         goto not_ingresomateriaprima_show;
@@ -416,7 +416,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 not_ingresomateriaprima_show:
 
                 // ingresomateriaprima_edit
-                if (preg_match('#^/ingresomateriaprima/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                if (preg_match('#^/ingresosmateriaprima/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
                     if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
                         $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
                         goto not_ingresomateriaprima_edit;
@@ -427,7 +427,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 not_ingresomateriaprima_edit:
 
                 // ingresomateriaprima_delete
-                if (preg_match('#^/ingresomateriaprima/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if (preg_match('#^/ingresosmateriaprima/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
                     if ($this->context->getMethod() != 'DELETE') {
                         $allow[] = 'DELETE';
                         goto not_ingresomateriaprima_delete;

@@ -2,6 +2,7 @@
 
 namespace UsuariosBundle\Controller;
 
+use AppBundle\Entity\RolesUsuarios;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -16,7 +17,7 @@ use UsuariosBundle\Entity\Cliente;
  * @Route("/clientes")
  */
 class ClienteController extends Controller {
-
+    
     /**
      * Lists all Cliente entities.
      *
@@ -24,12 +25,14 @@ class ClienteController extends Controller {
      * @Method("GET")
      * @Template()
      */
-    public function indexAction() {
+    public function indexAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
-
         $clientes = $em->getRepository('UsuariosBundle:Cliente')->findAll();
 
+        $session = $request->getSession();
+        
         return array(
+            'usuario' => $session->get('user'),
             'clientes' => $clientes,
         );
     }
@@ -42,6 +45,8 @@ class ClienteController extends Controller {
      * @Template()
      */
     public function newAction(Request $request) {
+        $session = $request->getSession();
+        
         $cliente = new Cliente();
         $form = $this->createForm('UsuariosBundle\Form\ClienteType', $cliente);
         $form->handleRequest($request);
@@ -59,7 +64,7 @@ class ClienteController extends Controller {
             $user->setEmailCanonical($cliente->getEmail());
             $user->setEnabled(true);
 
-            $user->setRoles(array($user::ROLE_DEFAULT));
+            $user->setRoles(array(RolesUsuarios::RolCliente));
             $fosUserManager->updateUser($user);
 
             $em->flush();
@@ -68,6 +73,7 @@ class ClienteController extends Controller {
         }
 
         return array(
+            'usuario' => $session->get('user'),
             'cliente' => $cliente,
             'form' => $form->createView(),
         );
@@ -80,10 +86,13 @@ class ClienteController extends Controller {
      * @Method("GET")
      * @Template()
      */
-    public function showAction(Cliente $cliente) {
+    public function showAction(Cliente $cliente, Request $request) {
+        $session = $request->getSession();
+        
         $deleteForm = $this->createDeleteForm($cliente);
 
         return array(
+            'usuario' => $session->get('user'),
             'cliente' => $cliente,
             'delete_form' => $deleteForm->createView(),
         );
@@ -97,6 +106,8 @@ class ClienteController extends Controller {
      * @Template()
      */
     public function editAction(Request $request, Cliente $cliente) {
+        $session = $request->getSession();
+        
         $deleteForm = $this->createDeleteForm($cliente);
         $editForm = $this->createForm('UsuariosBundle\Form\ClienteType', $cliente);
         $editForm->handleRequest($request);
@@ -110,6 +121,7 @@ class ClienteController extends Controller {
         }
 
         return array(
+            'usuario' => $session->get('user'),
             'cliente' => $cliente,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

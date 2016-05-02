@@ -6,16 +6,49 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Registrar Ingreso Materia Prima <span class="icon-ingresoMateria"></span></h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="h1 marginTitulo text-center">Registrar Ingreso Materia Prima <span class="icon-listaIngresosMateria"></span></h1>
+            </div>
+        </div>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+                {{ form_start(form) }}
+                {#                {{ form_widget(form) }}#}
+                <div class="form-group">
+                    {{ form_label(form.cantidad, "Cantidad") }}
+                    {{ form_widget(form.cantidad, {'attr':{'class' : 'form-control', 'placeholder' : 'Cantidad ingresada'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.valor, "Valor") }}
+                    {{ form_widget(form.valor, {'attr':{'class' : 'form-control', 'placeholder' : 'Valor total'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.materiaPrima, "Materia prima") }}
+                    {{ form_widget(form.materiaPrima, {'attr':{'class' : 'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.proveedor, "Proveedor") }}
+                    {{ form_widget(form.proveedor, {'attr':{'class' : 'form-control'}}) }}
+                </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('ingresomateriaprima_index') }}">Back to the list</a>
-        </li>
-    </ul>
+
+                <div class="form-group text-center">
+                    {#                    <input type="submit" value="Registrar" />#}
+                    <button type="submit" class="btn btn-lg btn-success">Registrar <span class="glyphicon glyphicon-floppy-saved"></span></button>
+                </div>
+                {{ form_end(form) }}
+
+                <div>
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="{{ path('ingresomateriaprima_index') }}" class="btn btn-info">Lista <span class="glyphicon glyphicon-th-list"></span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

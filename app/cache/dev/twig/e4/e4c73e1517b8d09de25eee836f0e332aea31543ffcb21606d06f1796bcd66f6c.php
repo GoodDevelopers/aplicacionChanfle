@@ -22,20 +22,20 @@ class __TwigTemplate_9416d4cd0df71deb4a21541a87e48d5294b7b2b9016022f187b0c7229f1
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_e6e5c48495865b8dd044e9b9299485ef5930ba03cf48188f2b0bedc030cd6b32 = $this->env->getExtension("native_profiler");
-        $__internal_e6e5c48495865b8dd044e9b9299485ef5930ba03cf48188f2b0bedc030cd6b32->enter($__internal_e6e5c48495865b8dd044e9b9299485ef5930ba03cf48188f2b0bedc030cd6b32_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UsuariosBundle:Cliente:index.html.twig"));
+        $__internal_32d68b52d761d6124adc94c50254bce6084217225542f289bce404596eee33a6 = $this->env->getExtension("native_profiler");
+        $__internal_32d68b52d761d6124adc94c50254bce6084217225542f289bce404596eee33a6->enter($__internal_32d68b52d761d6124adc94c50254bce6084217225542f289bce404596eee33a6_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UsuariosBundle:Cliente:index.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_e6e5c48495865b8dd044e9b9299485ef5930ba03cf48188f2b0bedc030cd6b32->leave($__internal_e6e5c48495865b8dd044e9b9299485ef5930ba03cf48188f2b0bedc030cd6b32_prof);
+        $__internal_32d68b52d761d6124adc94c50254bce6084217225542f289bce404596eee33a6->leave($__internal_32d68b52d761d6124adc94c50254bce6084217225542f289bce404596eee33a6_prof);
 
     }
 
     // line 3
     public function block_body($context, array $blocks = array())
     {
-        $__internal_ec1e2452a9497e5483142be39fdf5c1b83a07e8c2735a4f0871ff63977ac8f88 = $this->env->getExtension("native_profiler");
-        $__internal_ec1e2452a9497e5483142be39fdf5c1b83a07e8c2735a4f0871ff63977ac8f88->enter($__internal_ec1e2452a9497e5483142be39fdf5c1b83a07e8c2735a4f0871ff63977ac8f88_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_9cb53feaa13eb3d2873c32aab5303d92aa2433beb6378132909f26f77b3b8bab = $this->env->getExtension("native_profiler");
+        $__internal_9cb53feaa13eb3d2873c32aab5303d92aa2433beb6378132909f26f77b3b8bab->enter($__internal_9cb53feaa13eb3d2873c32aab5303d92aa2433beb6378132909f26f77b3b8bab_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
         echo "    <div class=\"container\">
@@ -47,7 +47,7 @@ class __TwigTemplate_9416d4cd0df71deb4a21541a87e48d5294b7b2b9016022f187b0c7229f1
 
         <div class=\"row\">
             <div class=\"col-md-3\">
-                <ul style=\"list-style-type: none; padding: 0px;\">
+                <ul>
                     <li>
                         <a href=\"";
         // line 15
@@ -58,105 +58,107 @@ class __TwigTemplate_9416d4cd0df71deb4a21541a87e48d5294b7b2b9016022f187b0c7229f1
             </div>
 
             <div class=\"col-md-9\">
-                <form action=\"\" method=\"GET\" class=\"form-inline\">
+                <form action=\"\" method=\"GET\" class=\"form-inline\" onsubmit=\"buscar(); return false;\">
                     <div class=\"form-group\">
                         <div class=\"input-group\">
-                            <div class=\"input-group-addon\" style=\"font-weight: bold;\">Cliente</div>
+                            <div class=\"input-group-addon\">Cliente</div>
                             <input type=\"number\" class=\"form-control\" placeholder=\"No. de identificacion\" id=\"idCliente\">
                         </div>
-                        <button type=\"button\" id=\"btnBuscar\" data-loading-text=\"Buscando\" autocomplete=\"off\" class=\"btn btn-primary\" onclick=\"buscar()\"><span class=\"glyphicon glyphicon-search\"></span> Buscar</button>
+                        <button type=\"button\" id=\"btnBuscar\" class=\"btn btn-primary\" onclick=\"buscar();\"><span class=\"glyphicon glyphicon-search\"></span> Buscar</button>
                     </div>
                 </form>
             </div>
         </div>
 
-        <div class=\"row\">
-            <div class=\"col-md-12\">
-                <div class=\"alert alert-warning alert-dismissible\" role=\"alert\" id=\"bloqueMensaje\" style=\"display: none;\">
-                    <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>
-                    <span id=\"mensaje\"><strong>No</strong> se ha encontrado un cliente con el dato ingresado.</span>
+        <div class=\"margenTopTablas\">
+            <div class=\"row\">
+                <div class=\"col-md-12\">
+                    <div class=\"alert alert-warning alert-dismissible\" role=\"alert\" id=\"bloqueMensaje\" style=\"display: none;\">
+                        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>
+                        <span id=\"mensaje\"><strong>No</strong> se ha encontrado un cliente con el dato ingresado.</span>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class=\"row\">
-            <div class=\"col-md-12\">
-                <div class=\"table-responsive\">
-                    <table class=\"table table-bordered table-hover table-condensed text-center\">
-                        <thead>
-                            <tr class=\"active info\">
-                                <th>ID</th>
-                                <th>NUIP</th>
-                                <th>NOMBRE</th>
-                                <th>FECHA DE NACIMIENTO</th>
-                                <th>PUNTOS ACUMULADOS</th>
-                                <th>EMAIL</th>
-                                <th>ACCIONES</th>
-                            </tr>
-                        </thead>
-                        <tbody id=\"cuerpoTabla\">
-                            ";
-        // line 58
+            <div class=\"row\">
+                <div class=\"col-md-12\">
+                    <div class=\"table-responsive\">
+                        <table class=\"table table-bordered table-hover table-condensed text-center\">
+                            <thead>
+                                <tr class=\"active info\">
+                                    <th>ID</th>
+                                    <th>NUIP</th>
+                                    <th>NOMBRE</th>
+                                    <th>FECHA DE NACIMIENTO</th>
+                                    <th>PUNTOS ACUMULADOS</th>
+                                    <th>EMAIL</th>
+                                    <th>ACCIONES</th>
+                                </tr>
+                            </thead>
+                            <tbody id=\"cuerpoTabla\">
+                                ";
+        // line 59
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["clientes"]) ? $context["clientes"] : $this->getContext($context, "clientes")));
         foreach ($context['_seq'] as $context["_key"] => $context["cliente"]) {
-            // line 59
-            echo "                                <tr>
-                                    <td>
-                                        <a href=\"";
-            // line 61
+            // line 60
+            echo "                                    <tr>
+                                        <td>
+                                            <a href=\"";
+            // line 62
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("clientes_show", array("id" => $this->getAttribute($context["cliente"], "id", array()))), "html", null, true);
             echo "\">";
             echo twig_escape_filter($this->env, $this->getAttribute($context["cliente"], "id", array()), "html", null, true);
             echo "</a>
-                                    </td>
-                                    <td>";
-            // line 63
+                                        </td>
+                                        <td>";
+            // line 64
             echo twig_escape_filter($this->env, $this->getAttribute($context["cliente"], "nuip", array()), "html", null, true);
             echo "</td>
-                                    <td>";
-            // line 64
+                                        <td>";
+            // line 65
             echo twig_escape_filter($this->env, $this->getAttribute($context["cliente"], "nombre", array()), "html", null, true);
             echo "</td>
-                                    <td>";
-            // line 65
+                                        <td>";
+            // line 66
             if ($this->getAttribute($context["cliente"], "fechaDeNacimiento", array())) {
                 echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["cliente"], "fechaDeNacimiento", array()), "d-m-Y"), "html", null, true);
             }
             echo "</td>
-                                    <td>";
-            // line 66
+                                        <td>";
+            // line 67
             echo twig_escape_filter($this->env, $this->getAttribute($context["cliente"], "puntosAcumulados", array()), "html", null, true);
             echo "</td>
-                                    <td>";
-            // line 67
+                                        <td>";
+            // line 68
             echo twig_escape_filter($this->env, $this->getAttribute($context["cliente"], "email", array()), "html", null, true);
             echo "</td>
-                                    <td>
-                                        <ul class=\"list-inline text-center\">
-                                            <li>
-                                                <a href=\"";
-            // line 71
+                                        <td>
+                                            <ul class=\"list-inline text-center\">
+                                                <li>
+                                                    <a href=\"";
+            // line 72
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("clientes_edit", array("id" => $this->getAttribute($context["cliente"], "id", array()))), "html", null, true);
             echo "\" class=\"btn btn-warning\" role=\"button\">Editar <span class=\"glyphicon glyphicon-edit\"></span></a>
-                                            </li>
-                                            <li>
-                                                <a href=\"";
-            // line 74
+                                                </li>
+                                                <li>
+                                                    <a href=\"";
+            // line 75
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("clientes_show", array("id" => $this->getAttribute($context["cliente"], "id", array()))), "html", null, true);
             echo "\" class=\"btn btn-danger\" role=\"button\">Eliminar <span class=\"glyphicon glyphicon-floppy-remove\"></span></a>
-                                            </li>
-                                        </ul>
-                                    </td>
-                                </tr>
-                            ";
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['cliente'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 80
-        echo "                        </tbody>
-                    </table>
+        // line 81
+        echo "                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -164,17 +166,17 @@ class __TwigTemplate_9416d4cd0df71deb4a21541a87e48d5294b7b2b9016022f187b0c7229f1
 
 ";
         
-        $__internal_ec1e2452a9497e5483142be39fdf5c1b83a07e8c2735a4f0871ff63977ac8f88->leave($__internal_ec1e2452a9497e5483142be39fdf5c1b83a07e8c2735a4f0871ff63977ac8f88_prof);
+        $__internal_9cb53feaa13eb3d2873c32aab5303d92aa2433beb6378132909f26f77b3b8bab->leave($__internal_9cb53feaa13eb3d2873c32aab5303d92aa2433beb6378132909f26f77b3b8bab_prof);
 
     }
 
-    // line 89
+    // line 91
     public function block_javascripts($context, array $blocks = array())
     {
-        $__internal_4bccb067e6a8d45fefc794faebf36c55b46b83c5e69693e9cffe9b4402907508 = $this->env->getExtension("native_profiler");
-        $__internal_4bccb067e6a8d45fefc794faebf36c55b46b83c5e69693e9cffe9b4402907508->enter($__internal_4bccb067e6a8d45fefc794faebf36c55b46b83c5e69693e9cffe9b4402907508_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
+        $__internal_129a45d3b34be30a42012f7441b565e0f17df46c121ce492a7e4aaf7163268e1 = $this->env->getExtension("native_profiler");
+        $__internal_129a45d3b34be30a42012f7441b565e0f17df46c121ce492a7e4aaf7163268e1->enter($__internal_129a45d3b34be30a42012f7441b565e0f17df46c121ce492a7e4aaf7163268e1_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 90
+        // line 92
         echo "    ";
         $this->displayParentBlock("javascripts", $context, $blocks);
         echo "
@@ -195,7 +197,7 @@ class __TwigTemplate_9416d4cd0df71deb4a21541a87e48d5294b7b2b9016022f187b0c7229f1
             }
             \$.ajax({
                 url: \"";
-        // line 107
+        // line 109
         echo $this->env->getExtension('routing')->getPath("buscarCliente");
         echo "\",
                 data: ({id: valor}),
@@ -222,11 +224,11 @@ class __TwigTemplate_9416d4cd0df71deb4a21541a87e48d5294b7b2b9016022f187b0c7229f1
                         bloqueMsj.css('display', 'none');
                         //Rutas para los botones edit y delete
                         var url1 = \"";
-        // line 131
+        // line 133
         echo $this->env->getExtension('routing')->getPath("clientes_edit", array("id" => "parametro_cualquiera"));
         echo "\";
                         var url2 = \"";
-        // line 132
+        // line 134
         echo $this->env->getExtension('routing')->getPath("clientes_show", array("id" => "parametro_cualquiera1"));
         echo "\";
                         url1 = url1.replace('parametro_cualquiera', data['id']);
@@ -288,7 +290,7 @@ class __TwigTemplate_9416d4cd0df71deb4a21541a87e48d5294b7b2b9016022f187b0c7229f1
     </script>
 ";
         
-        $__internal_4bccb067e6a8d45fefc794faebf36c55b46b83c5e69693e9cffe9b4402907508->leave($__internal_4bccb067e6a8d45fefc794faebf36c55b46b83c5e69693e9cffe9b4402907508_prof);
+        $__internal_129a45d3b34be30a42012f7441b565e0f17df46c121ce492a7e4aaf7163268e1->leave($__internal_129a45d3b34be30a42012f7441b565e0f17df46c121ce492a7e4aaf7163268e1_prof);
 
     }
 
@@ -304,7 +306,7 @@ class __TwigTemplate_9416d4cd0df71deb4a21541a87e48d5294b7b2b9016022f187b0c7229f1
 
     public function getDebugInfo()
     {
-        return array (  230 => 132,  226 => 131,  199 => 107,  178 => 90,  172 => 89,  158 => 80,  146 => 74,  140 => 71,  133 => 67,  129 => 66,  123 => 65,  119 => 64,  115 => 63,  108 => 61,  104 => 59,  100 => 58,  54 => 15,  41 => 4,  35 => 3,  11 => 1,);
+        return array (  232 => 134,  228 => 133,  201 => 109,  180 => 92,  174 => 91,  159 => 81,  147 => 75,  141 => 72,  134 => 68,  130 => 67,  124 => 66,  120 => 65,  116 => 64,  109 => 62,  105 => 60,  101 => 59,  54 => 15,  41 => 4,  35 => 3,  11 => 1,);
     }
 }
 /* {% extends 'base.html.twig' %}*/
@@ -319,7 +321,7 @@ class __TwigTemplate_9416d4cd0df71deb4a21541a87e48d5294b7b2b9016022f187b0c7229f1
 /* */
 /*         <div class="row">*/
 /*             <div class="col-md-3">*/
-/*                 <ul style="list-style-type: none; padding: 0px;">*/
+/*                 <ul>*/
 /*                     <li>*/
 /*                         <a href="{{ path('clientes_new') }}" class="btn btn-lg btn-success">Registrar Cliente <span class="glyphicon glyphicon-floppy-saved"></span></a>*/
 /*                     </li>*/
@@ -327,67 +329,69 @@ class __TwigTemplate_9416d4cd0df71deb4a21541a87e48d5294b7b2b9016022f187b0c7229f1
 /*             </div>*/
 /* */
 /*             <div class="col-md-9">*/
-/*                 <form action="" method="GET" class="form-inline">*/
+/*                 <form action="" method="GET" class="form-inline" onsubmit="buscar(); return false;">*/
 /*                     <div class="form-group">*/
 /*                         <div class="input-group">*/
-/*                             <div class="input-group-addon" style="font-weight: bold;">Cliente</div>*/
+/*                             <div class="input-group-addon">Cliente</div>*/
 /*                             <input type="number" class="form-control" placeholder="No. de identificacion" id="idCliente">*/
 /*                         </div>*/
-/*                         <button type="button" id="btnBuscar" data-loading-text="Buscando" autocomplete="off" class="btn btn-primary" onclick="buscar()"><span class="glyphicon glyphicon-search"></span> Buscar</button>*/
+/*                         <button type="button" id="btnBuscar" class="btn btn-primary" onclick="buscar();"><span class="glyphicon glyphicon-search"></span> Buscar</button>*/
 /*                     </div>*/
 /*                 </form>*/
 /*             </div>*/
 /*         </div>*/
 /* */
-/*         <div class="row">*/
-/*             <div class="col-md-12">*/
-/*                 <div class="alert alert-warning alert-dismissible" role="alert" id="bloqueMensaje" style="display: none;">*/
-/*                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>*/
-/*                     <span id="mensaje"><strong>No</strong> se ha encontrado un cliente con el dato ingresado.</span>*/
+/*         <div class="margenTopTablas">*/
+/*             <div class="row">*/
+/*                 <div class="col-md-12">*/
+/*                     <div class="alert alert-warning alert-dismissible" role="alert" id="bloqueMensaje" style="display: none;">*/
+/*                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>*/
+/*                         <span id="mensaje"><strong>No</strong> se ha encontrado un cliente con el dato ingresado.</span>*/
+/*                     </div>*/
 /*                 </div>*/
 /*             </div>*/
-/*         </div>*/
 /* */
-/*         <div class="row">*/
-/*             <div class="col-md-12">*/
-/*                 <div class="table-responsive">*/
-/*                     <table class="table table-bordered table-hover table-condensed text-center">*/
-/*                         <thead>*/
-/*                             <tr class="active info">*/
-/*                                 <th>ID</th>*/
-/*                                 <th>NUIP</th>*/
-/*                                 <th>NOMBRE</th>*/
-/*                                 <th>FECHA DE NACIMIENTO</th>*/
-/*                                 <th>PUNTOS ACUMULADOS</th>*/
-/*                                 <th>EMAIL</th>*/
-/*                                 <th>ACCIONES</th>*/
-/*                             </tr>*/
-/*                         </thead>*/
-/*                         <tbody id="cuerpoTabla">*/
-/*                             {% for cliente in clientes %}*/
-/*                                 <tr>*/
-/*                                     <td>*/
-/*                                         <a href="{{ path('clientes_show', { 'id': cliente.id }) }}">{{ cliente.id }}</a>*/
-/*                                     </td>*/
-/*                                     <td>{{ cliente.nuip }}</td>*/
-/*                                     <td>{{ cliente.nombre }}</td>*/
-/*                                     <td>{% if cliente.fechaDeNacimiento %}{{ cliente.fechaDeNacimiento|date('d-m-Y') }}{% endif %}</td>*/
-/*                                     <td>{{ cliente.puntosAcumulados }}</td>*/
-/*                                     <td>{{ cliente.email }}</td>*/
-/*                                     <td>*/
-/*                                         <ul class="list-inline text-center">*/
-/*                                             <li>*/
-/*                                                 <a href="{{ path('clientes_edit', { 'id': cliente.id }) }}" class="btn btn-warning" role="button">Editar <span class="glyphicon glyphicon-edit"></span></a>*/
-/*                                             </li>*/
-/*                                             <li>*/
-/*                                                 <a href="{{ path('clientes_show', { 'id': cliente.id }) }}" class="btn btn-danger" role="button">Eliminar <span class="glyphicon glyphicon-floppy-remove"></span></a>*/
-/*                                             </li>*/
-/*                                         </ul>*/
-/*                                     </td>*/
+/*             <div class="row">*/
+/*                 <div class="col-md-12">*/
+/*                     <div class="table-responsive">*/
+/*                         <table class="table table-bordered table-hover table-condensed text-center">*/
+/*                             <thead>*/
+/*                                 <tr class="active info">*/
+/*                                     <th>ID</th>*/
+/*                                     <th>NUIP</th>*/
+/*                                     <th>NOMBRE</th>*/
+/*                                     <th>FECHA DE NACIMIENTO</th>*/
+/*                                     <th>PUNTOS ACUMULADOS</th>*/
+/*                                     <th>EMAIL</th>*/
+/*                                     <th>ACCIONES</th>*/
 /*                                 </tr>*/
-/*                             {% endfor %}*/
-/*                         </tbody>*/
-/*                     </table>*/
+/*                             </thead>*/
+/*                             <tbody id="cuerpoTabla">*/
+/*                                 {% for cliente in clientes %}*/
+/*                                     <tr>*/
+/*                                         <td>*/
+/*                                             <a href="{{ path('clientes_show', { 'id': cliente.id }) }}">{{ cliente.id }}</a>*/
+/*                                         </td>*/
+/*                                         <td>{{ cliente.nuip }}</td>*/
+/*                                         <td>{{ cliente.nombre }}</td>*/
+/*                                         <td>{% if cliente.fechaDeNacimiento %}{{ cliente.fechaDeNacimiento|date('d-m-Y') }}{% endif %}</td>*/
+/*                                         <td>{{ cliente.puntosAcumulados }}</td>*/
+/*                                         <td>{{ cliente.email }}</td>*/
+/*                                         <td>*/
+/*                                             <ul class="list-inline text-center">*/
+/*                                                 <li>*/
+/*                                                     <a href="{{ path('clientes_edit', { 'id': cliente.id }) }}" class="btn btn-warning" role="button">Editar <span class="glyphicon glyphicon-edit"></span></a>*/
+/*                                                 </li>*/
+/*                                                 <li>*/
+/*                                                     <a href="{{ path('clientes_show', { 'id': cliente.id }) }}" class="btn btn-danger" role="button">Eliminar <span class="glyphicon glyphicon-floppy-remove"></span></a>*/
+/*                                                 </li>*/
+/*                                             </ul>*/
+/*                                         </td>*/
+/*                                     </tr>*/
+/*                                 {% endfor %}*/
+/*                             </tbody>*/
+/*                         </table>*/
+/*                     </div>*/
 /*                 </div>*/
 /*             </div>*/
 /*         </div>*/

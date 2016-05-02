@@ -64,10 +64,10 @@ class Empleado extends \UsuariosBundle\Entity\Empleado implements \Doctrine\ORM\
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'UsuariosBundle\\Entity\\Empleado' . "\0" . 'id', '' . "\0" . 'UsuariosBundle\\Entity\\Empleado' . "\0" . 'nuip', '' . "\0" . 'UsuariosBundle\\Entity\\Empleado' . "\0" . 'nombre', '' . "\0" . 'UsuariosBundle\\Entity\\Empleado' . "\0" . 'apellido', '' . "\0" . 'UsuariosBundle\\Entity\\Empleado' . "\0" . 'telefono', '' . "\0" . 'UsuariosBundle\\Entity\\Empleado' . "\0" . 'esUsuario');
+            return array('__isInitialized__', '' . "\0" . 'UsuariosBundle\\Entity\\Empleado' . "\0" . 'id', '' . "\0" . 'UsuariosBundle\\Entity\\Empleado' . "\0" . 'nuip', '' . "\0" . 'UsuariosBundle\\Entity\\Empleado' . "\0" . 'nombre', '' . "\0" . 'UsuariosBundle\\Entity\\Empleado' . "\0" . 'telefono', '' . "\0" . 'UsuariosBundle\\Entity\\Empleado' . "\0" . 'esUsuario');
         }
 
-        return array('__isInitialized__', '' . "\0" . 'UsuariosBundle\\Entity\\Empleado' . "\0" . 'id', '' . "\0" . 'UsuariosBundle\\Entity\\Empleado' . "\0" . 'nuip', '' . "\0" . 'UsuariosBundle\\Entity\\Empleado' . "\0" . 'nombre', '' . "\0" . 'UsuariosBundle\\Entity\\Empleado' . "\0" . 'apellido', '' . "\0" . 'UsuariosBundle\\Entity\\Empleado' . "\0" . 'telefono', '' . "\0" . 'UsuariosBundle\\Entity\\Empleado' . "\0" . 'esUsuario');
+        return array('__isInitialized__', '' . "\0" . 'UsuariosBundle\\Entity\\Empleado' . "\0" . 'id', '' . "\0" . 'UsuariosBundle\\Entity\\Empleado' . "\0" . 'nuip', '' . "\0" . 'UsuariosBundle\\Entity\\Empleado' . "\0" . 'nombre', '' . "\0" . 'UsuariosBundle\\Entity\\Empleado' . "\0" . 'telefono', '' . "\0" . 'UsuariosBundle\\Entity\\Empleado' . "\0" . 'esUsuario');
     }
 
     /**
@@ -230,28 +230,6 @@ class Empleado extends \UsuariosBundle\Entity\Empleado implements \Doctrine\ORM\
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNombre', array());
 
         return parent::getNombre();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setApellido($apellido)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setApellido', array($apellido));
-
-        return parent::setApellido($apellido);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getApellido()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getApellido', array());
-
-        return parent::getApellido();
     }
 
     /**

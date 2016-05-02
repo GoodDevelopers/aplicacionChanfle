@@ -21,29 +21,29 @@ class __TwigTemplate_cfda2fa1af1ab0b92297342d1f6f690ec2d69f24e02f76282431b27afce
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_156b8c9fb9b0973bdad5bb8a89e99b372d33947163e285d618263f69d57e7f64 = $this->env->getExtension("native_profiler");
-        $__internal_156b8c9fb9b0973bdad5bb8a89e99b372d33947163e285d618263f69d57e7f64->enter($__internal_156b8c9fb9b0973bdad5bb8a89e99b372d33947163e285d618263f69d57e7f64_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UsuariosBundle:Cliente:edit.html.twig"));
+        $__internal_2e1d098c54067ac7306a55b03fee28294ea269e77d64996962f137813c721ccb = $this->env->getExtension("native_profiler");
+        $__internal_2e1d098c54067ac7306a55b03fee28294ea269e77d64996962f137813c721ccb->enter($__internal_2e1d098c54067ac7306a55b03fee28294ea269e77d64996962f137813c721ccb_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UsuariosBundle:Cliente:edit.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_156b8c9fb9b0973bdad5bb8a89e99b372d33947163e285d618263f69d57e7f64->leave($__internal_156b8c9fb9b0973bdad5bb8a89e99b372d33947163e285d618263f69d57e7f64_prof);
+        $__internal_2e1d098c54067ac7306a55b03fee28294ea269e77d64996962f137813c721ccb->leave($__internal_2e1d098c54067ac7306a55b03fee28294ea269e77d64996962f137813c721ccb_prof);
 
     }
 
     // line 3
     public function block_body($context, array $blocks = array())
     {
-        $__internal_9896a6337970c71b647f929ad27fea3213ba704b417b9ceb93f9ab9f676d65ba = $this->env->getExtension("native_profiler");
-        $__internal_9896a6337970c71b647f929ad27fea3213ba704b417b9ceb93f9ab9f676d65ba->enter($__internal_9896a6337970c71b647f929ad27fea3213ba704b417b9ceb93f9ab9f676d65ba_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_9db98edb4131e8e83b8a10a82b102f28faa9280f3695d3b9ba16b2cdf8fe29b6 = $this->env->getExtension("native_profiler");
+        $__internal_9db98edb4131e8e83b8a10a82b102f28faa9280f3695d3b9ba16b2cdf8fe29b6->enter($__internal_9db98edb4131e8e83b8a10a82b102f28faa9280f3695d3b9ba16b2cdf8fe29b6_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
         echo "    <div class=\"container\">
         <div class=\"row\">
-            <h1 class=\"h1 text-center marginTitulo\">Editar cliente <span class=\"glyphicon glyphicon-user\"></span></h1>
+            <h1 class=\"h1 text-center marginTitulo\">Editar Cliente <span class=\"glyphicon glyphicon-user\"></span></h1>
         </div>
+
         <div class=\"row\">
             <div class=\"col-sm-4 col-sm-offset-4\">
-
                 ";
         // line 11
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["edit_form"]) ? $context["edit_form"] : $this->getContext($context, "edit_form")), 'form_start');
@@ -105,7 +105,7 @@ class __TwigTemplate_cfda2fa1af1ab0b92297342d1f6f690ec2d69f24e02f76282431b27afce
                 </div>
 
                 <div class=\"form-group text-center\">
-                    <button type=\"submit\" class=\"btn btn-lg btn-warning active\">Editar <span class=\"glyphicon glyphicon-edit\"></span></button>
+                    <button type=\"submit\" class=\"btn btn-lg btn-warning\">Editar <span class=\"glyphicon glyphicon-edit\"></span></button>
                 </div>
                 ";
         // line 42
@@ -114,35 +114,37 @@ class __TwigTemplate_cfda2fa1af1ab0b92297342d1f6f690ec2d69f24e02f76282431b27afce
         // line 43
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["edit_form"]) ? $context["edit_form"] : $this->getContext($context, "edit_form")), 'form_end');
         echo "
-
-                <ul class=\"list-inline text-center\">
-                    <li>
-                        <a href=\"";
-        // line 47
+                
+                <div>
+                    <ul class=\"list-inline text-center\">
+                        <li>
+                            <a href=\"";
+        // line 48
         echo $this->env->getExtension('routing')->getPath("clientes_index");
         echo "\" class=\"btn btn-info\">Lista <span class=\"glyphicon glyphicon-th-list\"></span></a>
-                    </li>
-                    <li>
-                        ";
-        // line 50
+                        </li>
+                        <li>
+                            ";
+        // line 51
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["delete_form"]) ? $context["delete_form"] : $this->getContext($context, "delete_form")), 'form_start');
         echo "
-                        ";
-        // line 52
-        echo "                        <button type=\"submit\" class=\"btn btn-danger\">Eliminar <span class=\"glyphicon glyphicon-floppy-remove\"></span></button>
                             ";
         // line 53
+        echo "                            <button type=\"submit\" class=\"btn btn-danger\">Eliminar <span class=\"glyphicon glyphicon-floppy-remove\"></span></button>
+                                ";
+        // line 54
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["delete_form"]) ? $context["delete_form"] : $this->getContext($context, "delete_form")), 'form_end');
         echo "
-                    </li>
-                </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-                            
+
 ";
         
-        $__internal_9896a6337970c71b647f929ad27fea3213ba704b417b9ceb93f9ab9f676d65ba->leave($__internal_9896a6337970c71b647f929ad27fea3213ba704b417b9ceb93f9ab9f676d65ba_prof);
+        $__internal_9db98edb4131e8e83b8a10a82b102f28faa9280f3695d3b9ba16b2cdf8fe29b6->leave($__internal_9db98edb4131e8e83b8a10a82b102f28faa9280f3695d3b9ba16b2cdf8fe29b6_prof);
 
     }
 
@@ -158,7 +160,7 @@ class __TwigTemplate_cfda2fa1af1ab0b92297342d1f6f690ec2d69f24e02f76282431b27afce
 
     public function getDebugInfo()
     {
-        return array (  135 => 53,  132 => 52,  128 => 50,  122 => 47,  115 => 43,  112 => 42,  103 => 35,  99 => 34,  92 => 30,  88 => 29,  81 => 25,  77 => 24,  70 => 20,  66 => 19,  59 => 15,  55 => 14,  49 => 11,  40 => 4,  34 => 3,  11 => 1,);
+        return array (  136 => 54,  133 => 53,  129 => 51,  123 => 48,  115 => 43,  112 => 42,  103 => 35,  99 => 34,  92 => 30,  88 => 29,  81 => 25,  77 => 24,  70 => 20,  66 => 19,  59 => 15,  55 => 14,  49 => 11,  40 => 4,  34 => 3,  11 => 1,);
     }
 }
 /* {% extends 'base.html.twig' %}*/
@@ -166,11 +168,11 @@ class __TwigTemplate_cfda2fa1af1ab0b92297342d1f6f690ec2d69f24e02f76282431b27afce
 /* {% block body %}*/
 /*     <div class="container">*/
 /*         <div class="row">*/
-/*             <h1 class="h1 text-center marginTitulo">Editar cliente <span class="glyphicon glyphicon-user"></span></h1>*/
+/*             <h1 class="h1 text-center marginTitulo">Editar Cliente <span class="glyphicon glyphicon-user"></span></h1>*/
 /*         </div>*/
+/* */
 /*         <div class="row">*/
 /*             <div class="col-sm-4 col-sm-offset-4">*/
-/* */
 /*                 {{ form_start(edit_form) }}*/
 /* */
 /*                 <div class="form-group">*/
@@ -199,26 +201,28 @@ class __TwigTemplate_cfda2fa1af1ab0b92297342d1f6f690ec2d69f24e02f76282431b27afce
 /*                 </div>*/
 /* */
 /*                 <div class="form-group text-center">*/
-/*                     <button type="submit" class="btn btn-lg btn-warning active">Editar <span class="glyphicon glyphicon-edit"></span></button>*/
+/*                     <button type="submit" class="btn btn-lg btn-warning">Editar <span class="glyphicon glyphicon-edit"></span></button>*/
 /*                 </div>*/
 /*                 {#            <input type="submit" value="Edit" />#}*/
 /* */
 /*                 {{ form_end(edit_form) }}*/
-/* */
-/*                 <ul class="list-inline text-center">*/
-/*                     <li>*/
-/*                         <a href="{{ path('clientes_index') }}" class="btn btn-info">Lista <span class="glyphicon glyphicon-th-list"></span></a>*/
-/*                     </li>*/
-/*                     <li>*/
-/*                         {{ form_start(delete_form) }}*/
-/*                         {#                    <input type="submit" value="Delete">#}*/
-/*                         <button type="submit" class="btn btn-danger">Eliminar <span class="glyphicon glyphicon-floppy-remove"></span></button>*/
-/*                             {{ form_end(delete_form) }}*/
-/*                     </li>*/
-/*                 </ul>*/
+/*                 */
+/*                 <div>*/
+/*                     <ul class="list-inline text-center">*/
+/*                         <li>*/
+/*                             <a href="{{ path('clientes_index') }}" class="btn btn-info">Lista <span class="glyphicon glyphicon-th-list"></span></a>*/
+/*                         </li>*/
+/*                         <li>*/
+/*                             {{ form_start(delete_form) }}*/
+/*                             {#                    <input type="submit" value="Delete">#}*/
+/*                             <button type="submit" class="btn btn-danger">Eliminar <span class="glyphicon glyphicon-floppy-remove"></span></button>*/
+/*                                 {{ form_end(delete_form) }}*/
+/*                         </li>*/
+/*                     </ul>*/
+/*                 </div>*/
 /*             </div>*/
 /*         </div>*/
 /*     </div>*/
-/*                             */
+/* */
 /* {% endblock %}*/
 /* */

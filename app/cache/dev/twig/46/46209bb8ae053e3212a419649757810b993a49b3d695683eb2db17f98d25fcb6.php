@@ -21,111 +21,137 @@ class __TwigTemplate_1ccd92b4b530ce2906a20668a2c99ebd19f7159a10a2e2703ae5e2c8eb4
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_6a3241b0f4be2b1c7562719a41f35d6d98530737d1457c3a87b6b93405428540 = $this->env->getExtension("native_profiler");
-        $__internal_6a3241b0f4be2b1c7562719a41f35d6d98530737d1457c3a87b6b93405428540->enter($__internal_6a3241b0f4be2b1c7562719a41f35d6d98530737d1457c3a87b6b93405428540_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UsuariosBundle:Empleado:index.html.twig"));
+        $__internal_af706c88830b852921772cf8140e807cf968385aaf6a3932b8581024e5ad637b = $this->env->getExtension("native_profiler");
+        $__internal_af706c88830b852921772cf8140e807cf968385aaf6a3932b8581024e5ad637b->enter($__internal_af706c88830b852921772cf8140e807cf968385aaf6a3932b8581024e5ad637b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UsuariosBundle:Empleado:index.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_6a3241b0f4be2b1c7562719a41f35d6d98530737d1457c3a87b6b93405428540->leave($__internal_6a3241b0f4be2b1c7562719a41f35d6d98530737d1457c3a87b6b93405428540_prof);
+        $__internal_af706c88830b852921772cf8140e807cf968385aaf6a3932b8581024e5ad637b->leave($__internal_af706c88830b852921772cf8140e807cf968385aaf6a3932b8581024e5ad637b_prof);
 
     }
 
     // line 3
     public function block_body($context, array $blocks = array())
     {
-        $__internal_20a6a93b6a8dca5f29a635717e2b6205f2c18ddbbd1b9bd46a35310094d2b1c8 = $this->env->getExtension("native_profiler");
-        $__internal_20a6a93b6a8dca5f29a635717e2b6205f2c18ddbbd1b9bd46a35310094d2b1c8->enter($__internal_20a6a93b6a8dca5f29a635717e2b6205f2c18ddbbd1b9bd46a35310094d2b1c8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_4138320ca54c2f712043a94cb07e2b90c57d2594d58fca3734df1e3c3a1bd2dc = $this->env->getExtension("native_profiler");
+        $__internal_4138320ca54c2f712043a94cb07e2b90c57d2594d58fca3734df1e3c3a1bd2dc->enter($__internal_4138320ca54c2f712043a94cb07e2b90c57d2594d58fca3734df1e3c3a1bd2dc_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
-        echo "    <h1>Empleado list</h1>
+        echo "    <div class=\"container\">
+        <div class=\"row\">
+            <div class=\"col-md-12\">
+                <h1 class=\"h1 text-center marginTitulo\">Empleados <span class=\"icon-empleado\"></span></h1>
+            </div>
+        </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nuip</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Telefono</th>
-                <th>Esusuario</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        ";
-        // line 19
+        <div class=\"row\">
+            <div class=\"col-md-3\">
+                <ul>
+                    <li>
+                        <a href=\"";
+        // line 15
+        echo $this->env->getExtension('routing')->getPath("UsuariosBundle_empleado_new");
+        echo "\" class=\"btn btn-lg btn-success\">Registrar Empleado <span class=\"glyphicon glyphicon-floppy-saved\"></span></a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class=\"col-md-9\">
+                <form action=\"\" method=\"GET\" class=\"form-inline\">
+                    <div class=\"form-group\">
+                        <div class=\"input-group\">
+                            <div class=\"input-group-addon\">Empleado</div>
+                            <input type=\"number\" class=\"form-control\" placeholder=\"No. de identificacion\" id=\"idCliente\">
+                        </div>
+                        <button type=\"button\" id=\"btnBuscar\" class=\"btn btn-primary\"><span class=\"glyphicon glyphicon-search\"></span> Buscar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class=\"margenTopTablas\">
+            <div class=\"row\">
+                <div class=\"col-md-12\">
+                    <div class=\"table-responsive\">
+                        <table class=\"table table-bordered table-hover table-condensed text-center\">
+                            <thead>
+                                <tr class=\"active info\">
+                                    <th>ID</th>
+                                    <th>NUIP</th>
+                                    <th>NOMBRE</th>
+                                    <th>TELEFONO</th>
+                                    <th>¿CON LOGIN?</th>
+                                    <th>ACCIONES</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ";
+        // line 49
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["empleados"]) ? $context["empleados"] : $this->getContext($context, "empleados")));
         foreach ($context['_seq'] as $context["_key"] => $context["empleado"]) {
-            // line 20
-            echo "            <tr>
-                <td><a href=\"";
-            // line 21
+            // line 50
+            echo "                                    <tr>
+                                        <td><a href=\"";
+            // line 51
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("UsuariosBundle_empleado_show", array("id" => $this->getAttribute($context["empleado"], "id", array()))), "html", null, true);
             echo "\">";
             echo twig_escape_filter($this->env, $this->getAttribute($context["empleado"], "id", array()), "html", null, true);
             echo "</a></td>
-                <td>";
-            // line 22
+                                        <td>";
+            // line 52
             echo twig_escape_filter($this->env, $this->getAttribute($context["empleado"], "nuip", array()), "html", null, true);
             echo "</td>
-                <td>";
-            // line 23
+                                        <td>";
+            // line 53
             echo twig_escape_filter($this->env, $this->getAttribute($context["empleado"], "nombre", array()), "html", null, true);
             echo "</td>
-                <td>";
-            // line 24
-            echo twig_escape_filter($this->env, $this->getAttribute($context["empleado"], "apellido", array()), "html", null, true);
-            echo "</td>
-                <td>";
-            // line 25
+                                        <td>";
+            // line 54
             echo twig_escape_filter($this->env, $this->getAttribute($context["empleado"], "telefono", array()), "html", null, true);
             echo "</td>
-                <td>";
-            // line 26
+                                        <td>";
+            // line 55
             if ($this->getAttribute($context["empleado"], "esUsuario", array())) {
                 echo "Yes";
             } else {
                 echo "No";
             }
             echo "</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href=\"";
-            // line 30
-            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("UsuariosBundle_empleado_show", array("id" => $this->getAttribute($context["empleado"], "id", array()))), "html", null, true);
-            echo "\">show</a>
-                        </li>
-                        <li>
-                            <a href=\"";
-            // line 33
+                                        <td>
+                                            <ul class=\"list-inline text-center\">
+                                                <li>
+                                                    <a href=\"";
+            // line 59
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("UsuariosBundle_empleado_edit", array("id" => $this->getAttribute($context["empleado"], "id", array()))), "html", null, true);
-            echo "\">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        ";
+            echo "\" class=\"btn btn-warning\" role=\"button\">Editar <span class=\"glyphicon glyphicon-edit\"></span></a>
+                                                </li>
+                                                <li>
+                                                    <a href=\"";
+            // line 62
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("UsuariosBundle_empleado_show", array("id" => $this->getAttribute($context["empleado"], "id", array()))), "html", null, true);
+            echo "\" class=\"btn btn-danger\" role=\"button\">Eliminar <span class=\"glyphicon glyphicon-floppy-remove\"></span></a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['empleado'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 39
-        echo "        </tbody>
-    </table>
+        // line 68
+        echo "                            </tbody>
+                        </table>
 
-    <ul>
-        <li>
-            <a href=\"";
-        // line 44
-        echo $this->env->getExtension('routing')->getPath("UsuariosBundle_empleado_new");
-        echo "\">Create a new entry</a>
-        </li>
-    </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 ";
         
-        $__internal_20a6a93b6a8dca5f29a635717e2b6205f2c18ddbbd1b9bd46a35310094d2b1c8->leave($__internal_20a6a93b6a8dca5f29a635717e2b6205f2c18ddbbd1b9bd46a35310094d2b1c8_prof);
+        $__internal_4138320ca54c2f712043a94cb07e2b90c57d2594d58fca3734df1e3c3a1bd2dc->leave($__internal_4138320ca54c2f712043a94cb07e2b90c57d2594d58fca3734df1e3c3a1bd2dc_prof);
 
     }
 
@@ -141,54 +167,83 @@ class __TwigTemplate_1ccd92b4b530ce2906a20668a2c99ebd19f7159a10a2e2703ae5e2c8eb4
 
     public function getDebugInfo()
     {
-        return array (  122 => 44,  115 => 39,  103 => 33,  97 => 30,  86 => 26,  82 => 25,  78 => 24,  74 => 23,  70 => 22,  64 => 21,  61 => 20,  57 => 19,  40 => 4,  34 => 3,  11 => 1,);
+        return array (  144 => 68,  132 => 62,  126 => 59,  115 => 55,  111 => 54,  107 => 53,  103 => 52,  97 => 51,  94 => 50,  90 => 49,  53 => 15,  40 => 4,  34 => 3,  11 => 1,);
     }
 }
 /* {% extends 'base.html.twig' %}*/
 /* */
 /* {% block body %}*/
-/*     <h1>Empleado list</h1>*/
+/*     <div class="container">*/
+/*         <div class="row">*/
+/*             <div class="col-md-12">*/
+/*                 <h1 class="h1 text-center marginTitulo">Empleados <span class="icon-empleado"></span></h1>*/
+/*             </div>*/
+/*         </div>*/
 /* */
-/*     <table>*/
-/*         <thead>*/
-/*             <tr>*/
-/*                 <th>Id</th>*/
-/*                 <th>Nuip</th>*/
-/*                 <th>Nombre</th>*/
-/*                 <th>Apellido</th>*/
-/*                 <th>Telefono</th>*/
-/*                 <th>Esusuario</th>*/
-/*                 <th>Actions</th>*/
-/*             </tr>*/
-/*         </thead>*/
-/*         <tbody>*/
-/*         {% for empleado in empleados %}*/
-/*             <tr>*/
-/*                 <td><a href="{{ path('UsuariosBundle_empleado_show', { 'id': empleado.id }) }}">{{ empleado.id }}</a></td>*/
-/*                 <td>{{ empleado.nuip }}</td>*/
-/*                 <td>{{ empleado.nombre }}</td>*/
-/*                 <td>{{ empleado.apellido }}</td>*/
-/*                 <td>{{ empleado.telefono }}</td>*/
-/*                 <td>{% if empleado.esUsuario %}Yes{% else %}No{% endif %}</td>*/
-/*                 <td>*/
-/*                     <ul>*/
-/*                         <li>*/
-/*                             <a href="{{ path('UsuariosBundle_empleado_show', { 'id': empleado.id }) }}">show</a>*/
-/*                         </li>*/
-/*                         <li>*/
-/*                             <a href="{{ path('UsuariosBundle_empleado_edit', { 'id': empleado.id }) }}">edit</a>*/
-/*                         </li>*/
-/*                     </ul>*/
-/*                 </td>*/
-/*             </tr>*/
-/*         {% endfor %}*/
-/*         </tbody>*/
-/*     </table>*/
+/*         <div class="row">*/
+/*             <div class="col-md-3">*/
+/*                 <ul>*/
+/*                     <li>*/
+/*                         <a href="{{ path('UsuariosBundle_empleado_new') }}" class="btn btn-lg btn-success">Registrar Empleado <span class="glyphicon glyphicon-floppy-saved"></span></a>*/
+/*                     </li>*/
+/*                 </ul>*/
+/*             </div>*/
 /* */
-/*     <ul>*/
-/*         <li>*/
-/*             <a href="{{ path('UsuariosBundle_empleado_new') }}">Create a new entry</a>*/
-/*         </li>*/
-/*     </ul>*/
+/*             <div class="col-md-9">*/
+/*                 <form action="" method="GET" class="form-inline">*/
+/*                     <div class="form-group">*/
+/*                         <div class="input-group">*/
+/*                             <div class="input-group-addon">Empleado</div>*/
+/*                             <input type="number" class="form-control" placeholder="No. de identificacion" id="idCliente">*/
+/*                         </div>*/
+/*                         <button type="button" id="btnBuscar" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Buscar</button>*/
+/*                     </div>*/
+/*                 </form>*/
+/*             </div>*/
+/*         </div>*/
+/* */
+/*         <div class="margenTopTablas">*/
+/*             <div class="row">*/
+/*                 <div class="col-md-12">*/
+/*                     <div class="table-responsive">*/
+/*                         <table class="table table-bordered table-hover table-condensed text-center">*/
+/*                             <thead>*/
+/*                                 <tr class="active info">*/
+/*                                     <th>ID</th>*/
+/*                                     <th>NUIP</th>*/
+/*                                     <th>NOMBRE</th>*/
+/*                                     <th>TELEFONO</th>*/
+/*                                     <th>¿CON LOGIN?</th>*/
+/*                                     <th>ACCIONES</th>*/
+/*                                 </tr>*/
+/*                             </thead>*/
+/*                             <tbody>*/
+/*                                 {% for empleado in empleados %}*/
+/*                                     <tr>*/
+/*                                         <td><a href="{{ path('UsuariosBundle_empleado_show', { 'id': empleado.id }) }}">{{ empleado.id }}</a></td>*/
+/*                                         <td>{{ empleado.nuip }}</td>*/
+/*                                         <td>{{ empleado.nombre }}</td>*/
+/*                                         <td>{{ empleado.telefono }}</td>*/
+/*                                         <td>{% if empleado.esUsuario %}Yes{% else %}No{% endif %}</td>*/
+/*                                         <td>*/
+/*                                             <ul class="list-inline text-center">*/
+/*                                                 <li>*/
+/*                                                     <a href="{{ path('UsuariosBundle_empleado_edit', { 'id': empleado.id }) }}" class="btn btn-warning" role="button">Editar <span class="glyphicon glyphicon-edit"></span></a>*/
+/*                                                 </li>*/
+/*                                                 <li>*/
+/*                                                     <a href="{{ path('UsuariosBundle_empleado_show', { 'id': empleado.id }) }}" class="btn btn-danger" role="button">Eliminar <span class="glyphicon glyphicon-floppy-remove"></span></a>*/
+/*                                                 </li>*/
+/*                                             </ul>*/
+/*                                         </td>*/
+/*                                     </tr>*/
+/*                                 {% endfor %}*/
+/*                             </tbody>*/
+/*                         </table>*/
+/* */
+/*                     </div>*/
+/*                 </div>*/
+/*             </div>*/
+/*         </div>*/
+/*     </div>*/
 /* {% endblock %}*/
 /* */

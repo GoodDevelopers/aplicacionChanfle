@@ -54,5 +54,6 @@ security:
         - { path: ^/resetting, role: ROLE_ADMIN }
         - { path: ^/admin/, role: ROLE_ADMIN }
 #        - { path: ^/clientes/new, role: ROLE_ADMIN }
-        - { path: ^/clientes/, role: ROLE_CLIENTE }
+        - { path: ^/clientes/, role: ROLE_USER }
+        - { path: ^/empleados/, role: ROLE_ADMIN }
         - { path: ^/, role: ROLE_CLIENTE }

@@ -2,6 +2,7 @@
 
 namespace UsuariosBundle\Controller;
 
+use AppBundle\Entity\RolesUsuarios;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -12,7 +13,7 @@ use UsuariosBundle\Entity\Empleado;
 /**
  * Empleado controller.
  *
- * @Route("/empleado")
+ * @Route("/empleados")
  */
 class EmpleadoController extends Controller {
 
@@ -23,12 +24,15 @@ class EmpleadoController extends Controller {
      * @Method("GET")
      * @Template()
      */
-    public function indexAction() {
+    public function indexAction(Request $request) {
+        $session = $request->getSession();
+        
         $em = $this->getDoctrine()->getManager();
 
         $empleados = $em->getRepository('UsuariosBundle:Empleado')->findAll();
 
         return array(
+            'usuario' => $session->get('user'),
             'empleados' => $empleados,
         );
     }
@@ -41,6 +45,8 @@ class EmpleadoController extends Controller {
      * @Template()
      */
     public function newAction(Request $request) {
+        $session = $request->getSession();
+        
         $empleado = new Empleado();
         $form = $this->createForm('UsuariosBundle\Form\EmpleadoType', $empleado);
         $form->handleRequest($request);
@@ -50,10 +56,32 @@ class EmpleadoController extends Controller {
             $em->persist($empleado);
             $em->flush();
 
+            //Verificamos si el checkbox esta seleccionado para crear o no el usuario en el fos_user
+            $crearCuenta = $_POST['empleado'];  //empleado es el nombre del array que contiene todos los campos de la view
+            if (array_values($crearCuenta)[3] == 1) {   //y la 3 posicion es la del checkbox; 1 significa que se envio
+//                echo "<h1>Checkeado</h1>";
+                $fosUserManager = $this->container->get('fos_user.user_manager');
+                $user = $fosUserManager->createUser();
+                $user->setUsername($empleado->getNuip());
+                $user->setPlainPassword($empleado->getNuip());
+                $user->setEmail("null" . $empleado->getNuip() ."@correo.com");
+                $user->setEmailCanonical("null". $empleado->getNuip() ."@correo.com");
+                $user->setEnabled(true);
+                //Revisamos si esta chequeado los privilegios de admin
+                $admin = $_POST['checkAdmin'];  //checkAdmin es el id del checkbox
+                if ($admin == 1) {  //1 significa que esta chequeado
+                    $user->setRoles(array(RolesUsuarios::RolAdmin));
+                } else {
+                    $user->setRoles(array(RolesUsuarios::RolEmpleado));
+                }
+                $fosUserManager->updateUser($user);
+            }
+
             return $this->redirectToRoute('UsuariosBundle_empleado_show', array('id' => $empleado->getId()));
         }
 
         return array(
+            'usuario' => $session->get('user'),
             'empleado' => $empleado,
             'form' => $form->createView(),
         );
@@ -66,10 +94,13 @@ class EmpleadoController extends Controller {
      * @Method("GET")
      * @Template()
      */
-    public function showAction(Empleado $empleado) {
+    public function showAction(Empleado $empleado, Request $request) {
+        $session = $request->getSession();
+        
         $deleteForm = $this->createDeleteForm($empleado);
 
         return array(
+            'usuario' => $session->get('user'),
             'empleado' => $empleado,
             'delete_form' => $deleteForm->createView(),
         );
@@ -83,6 +114,8 @@ class EmpleadoController extends Controller {
      * @Template()
      */
     public function editAction(Request $request, Empleado $empleado) {
+        $session = $request->getSession();
+        
         $deleteForm = $this->createDeleteForm($empleado);
         $editForm = $this->createForm('UsuariosBundle\Form\EmpleadoType', $empleado);
         $editForm->handleRequest($request);
@@ -96,6 +129,7 @@ class EmpleadoController extends Controller {
         }
 
         return array(
+            'usuario' => $session->get('user'),
             'empleado' => $empleado,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
