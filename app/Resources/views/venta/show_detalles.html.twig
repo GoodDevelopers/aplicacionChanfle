@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <h1>DetalleVenta list</h1>
+
+    <table class="table table-striped">
+        <thead >
+            <tr>
+                <th>Id</th>
+                <th>Fecha</th>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Valordetalle</th>
+              
+            </tr>
+        </thead>
+        <tbody>
+        {% for detalleVentum in detalleVentas %}
+            <tr>
+                <td><a href="{{ path('detalleventa_show', { 'id': detalleVentum.id }) }}">{{ detalleVentum.id }}</a></td>
+                <td>{% if detalleVentum.fecha %}{{ detalleVentum.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td> {{detalleVentum.producto.nombre}} </td>
+                <td>{{ detalleVentum.cantidad }}</td>
+                <td>{{ detalleVentum.valorDetalle }}</td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+           
+        </li>
+    </ul>
+{% endblock %}

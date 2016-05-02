@@ -1,0 +1,83 @@
+
+
+#div_title{
+     background-color: #000000;
+     border: solid 10px;
+     border-color: #000000;
+     margin: 0px 0px 20px 0px;
+ }
+ 
+ h1{
+     font-family:Arial;
+     color: #ffffff;
+     margin: 0.5px 0.5px 0 2px;
+ }
+ 
+
+ 
+ .form-group{
+     width: 15%;
+     margin: 0px 10px 20px 0px;
+     /*float: left;*/
+     /*border: solid 30px;*/
+     /*border-color:  #ccccff;*/
+    /*text-height: max-size;*/
+  
+ }
+ 
+label{
+      font-size: 16px;
+      color: #000000;
+      
+}
+ 
+ 
+ .form-control{
+     width: 100%;
+     margin: 30px 10px 10px 20px;
+     border-color: white;
+     
+     
+ }
+ 
+ .btn-default{
+     color: #6666ff;
+     margin: 5px 5px 5px 30px;
+ }
+ 
+/* .bloque_izquierdo{
+    background: white;
+    width: 30%;
+    color: white;
+ }*/
+ 
+/*  .bloque_derecho{
+    background: white;
+    width: 20%;
+    color: white;
+    
+ }*/
+/* .centro{
+     width: 50%;
+ }*/
+ 
+/* .bloque_derecho, .centro, .bloque_izquierdo{
+     float: left;
+ }*/
+ 
+ .nav-tabs{
+     background-color: black;
+     
+ }
+ nav, li,a{
+     color: white; 
+ }
+ .EnlaceBoton{
+     color: #3333ff;
+ }
+ 
+ .table-striped{
+     margin: 10px 5px 5px 5px;
+ }
+ 
+ 

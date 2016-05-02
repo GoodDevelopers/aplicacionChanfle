@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Producto controller.
@@ -135,5 +136,34 @@ class ProductoController extends Controller {
                         ->getForm()
         ;
     }
+    
+    /**
+     *
+     *
+     * @Route("/buscar/producto", name="buscar_producto")
+     * 
+     */
+    public function buscarProdcuto(Request $request)
+    {
+        $nombre = $request->get("nombre_p");
+        $em = $this->getDoctrine()->getManager();
 
+        $producto = $em->getRepository('InventarioBundle:Producto')->findOneBy(array("nombre"=> $nombre));
+        
+
+
+
+        $producto_response = (array('precio'=> $producto->getPrecio()));
+        
+        $response = new Response(\json_encode($producto_response));
+        $response->headers->set('Content-Type', 'application/json');
+        
+
+
+        return $response;
+
+       
+    }
 }
+
+

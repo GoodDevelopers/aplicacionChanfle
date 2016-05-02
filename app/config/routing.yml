@@ -1,3 +1,11 @@
+ventas_detalle_venta:
+    resource: "@VentasBundle/Controller/DetalleVentaController.php"
+    type:     annotation
+
+ventas_venta:
+    resource: "@VentasBundle/Controller/VentaController.php"
+    type:     annotation
+
 costos_costo:
     resource: "@CostosBundle/Controller/CostoController.php"
     type:     annotation

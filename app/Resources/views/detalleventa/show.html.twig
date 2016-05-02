@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>DetalleVenta</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ detalleVentum.id }}</td>
+            </tr>
+            <tr>
+                <th>Fecha</th>
+                <td>{% if detalleVentum.fecha %}{{ detalleVentum.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Cantidad</th>
+                <td>{{ detalleVentum.cantidad }}</td>
+            </tr>
+            <tr>
+                <th>Valordetalle</th>
+                <td>{{ detalleVentum.valorDetalle }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('detalleventa_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

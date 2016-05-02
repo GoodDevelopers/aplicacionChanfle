@@ -24,7 +24,7 @@ class DetalleVenta {
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha", type="datetime", unique=true)
+     * @ORM\Column(name="fecha", type="datetime", unique=false)
      */
     private $fecha;
 
@@ -99,8 +99,8 @@ class DetalleVenta {
      * @param integer $valorDetalle
      * @return DetalleVenta
      */
-    public function setValorDetalle($valorDetalle) {
-        $this->valorDetalle = $valorDetalle;
+    public function setValorDetalle() {
+       $this->valorDetalle = $this->getProducto()->getPrecio() * $this->getCantidad();
 
         return $this;
     }

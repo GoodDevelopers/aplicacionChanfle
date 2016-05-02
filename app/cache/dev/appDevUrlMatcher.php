@@ -563,6 +563,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
             not_producto_delete:
 
+            // buscar_producto
+            if ($pathinfo === '/producto/buscar/producto') {
+                return array (  '_controller' => 'InventarioBundle\\Controller\\ProductoController::buscarProdcuto',  '_route' => 'buscar_producto',);
+            }
+
         }
 
         if (0 === strpos($pathinfo, '/yes')) {
@@ -689,9 +694,111 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        // ventas_default_index
-        if ($pathinfo === '/ventas') {
-            return array (  '_controller' => 'VentasBundle\\Controller\\DefaultController::indexAction',  '_route' => 'ventas_default_index',);
+        if (0 === strpos($pathinfo, '/detalleventa')) {
+            // detalleventa_index
+            if (rtrim($pathinfo, '/') === '/detalleventa') {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_detalleventa_index;
+                }
+
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'detalleventa_index');
+                }
+
+                return array (  '_controller' => 'VentasBundle\\Controller\\DetalleVentaController::indexAction',  '_route' => 'detalleventa_index',);
+            }
+            not_detalleventa_index:
+
+            // detalleventa_show
+            if (preg_match('#^/detalleventa/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_detalleventa_show;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'detalleventa_show')), array (  '_controller' => 'VentasBundle\\Controller\\DetalleVentaController::showAction',));
+            }
+            not_detalleventa_show:
+
+        }
+
+        if (0 === strpos($pathinfo, '/venta')) {
+            // venta_index
+            if (rtrim($pathinfo, '/') === '/venta') {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_venta_index;
+                }
+
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'venta_index');
+                }
+
+                return array (  '_controller' => 'VentasBundle\\Controller\\VentaController::indexAction',  '_route' => 'venta_index',);
+            }
+            not_venta_index:
+
+            // venta_new
+            if ($pathinfo === '/venta/new') {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_venta_new;
+                }
+
+                return array (  '_controller' => 'VentasBundle\\Controller\\VentaController::newAction',  '_route' => 'venta_new',);
+            }
+            not_venta_new:
+
+            // venta_show
+            if (preg_match('#^/venta/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_venta_show;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'venta_show')), array (  '_controller' => 'VentasBundle\\Controller\\VentaController::showAction',));
+            }
+            not_venta_show:
+
+            // venta_edit
+            if (preg_match('#^/venta/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_venta_edit;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'venta_edit')), array (  '_controller' => 'VentasBundle\\Controller\\VentaController::editAction',));
+            }
+            not_venta_edit:
+
+            // venta_delete
+            if (preg_match('#^/venta/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if ($this->context->getMethod() != 'DELETE') {
+                    $allow[] = 'DELETE';
+                    goto not_venta_delete;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'venta_delete')), array (  '_controller' => 'VentasBundle\\Controller\\VentaController::deleteAction',));
+            }
+            not_venta_delete:
+
+            // buscar_cliente_venta
+            if ($pathinfo === '/venta/buscarCliente') {
+                return array (  '_controller' => 'VentasBundle\\Controller\\VentaController::BuscarCliente',  '_route' => 'buscar_cliente_venta',);
+            }
+
+            // venta_detalles
+            if (preg_match('#^/venta/(?P<id>[^/]++)/mostrarDetalles$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_venta_detalles;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'venta_detalles')), array (  '_controller' => 'VentasBundle\\Controller\\VentaController::mostrarDetalles',));
+            }
+            not_venta_detalles:
+
         }
 
         // homepage
