@@ -21,26 +21,26 @@ class __TwigTemplate_0f2151dbab2896013d6a582fb8af26909e05deebed52b284b8b77c28cf9
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_74ba67e717f8a79a420a9f5289ccc461d25c0a2b5a88e298e15dd2d6e7f356fc = $this->env->getExtension("native_profiler");
-        $__internal_74ba67e717f8a79a420a9f5289ccc461d25c0a2b5a88e298e15dd2d6e7f356fc->enter($__internal_74ba67e717f8a79a420a9f5289ccc461d25c0a2b5a88e298e15dd2d6e7f356fc_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UsuariosBundle:cliente:new.html.twig"));
+        $__internal_cae8493d928564af875a18afc24ec339d9eed9b1bafe478a7bc54ac717e83ace = $this->env->getExtension("native_profiler");
+        $__internal_cae8493d928564af875a18afc24ec339d9eed9b1bafe478a7bc54ac717e83ace->enter($__internal_cae8493d928564af875a18afc24ec339d9eed9b1bafe478a7bc54ac717e83ace_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UsuariosBundle:cliente:new.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_74ba67e717f8a79a420a9f5289ccc461d25c0a2b5a88e298e15dd2d6e7f356fc->leave($__internal_74ba67e717f8a79a420a9f5289ccc461d25c0a2b5a88e298e15dd2d6e7f356fc_prof);
+        $__internal_cae8493d928564af875a18afc24ec339d9eed9b1bafe478a7bc54ac717e83ace->leave($__internal_cae8493d928564af875a18afc24ec339d9eed9b1bafe478a7bc54ac717e83ace_prof);
 
     }
 
     // line 3
     public function block_body($context, array $blocks = array())
     {
-        $__internal_efa43c26da35374b8c7cc327c8592341e938404336d63d606722d82470e346a7 = $this->env->getExtension("native_profiler");
-        $__internal_efa43c26da35374b8c7cc327c8592341e938404336d63d606722d82470e346a7->enter($__internal_efa43c26da35374b8c7cc327c8592341e938404336d63d606722d82470e346a7_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_66197cceaa01e0ca851604e680a22007503662a04120efe32da155ef033b0494 = $this->env->getExtension("native_profiler");
+        $__internal_66197cceaa01e0ca851604e680a22007503662a04120efe32da155ef033b0494->enter($__internal_66197cceaa01e0ca851604e680a22007503662a04120efe32da155ef033b0494_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
         echo "    <div class=\"container\">
         <div class=\"row\">
             <div class=\"col-md-12\">
-                <h1 class=\"h1 text-center marginTitulo\" style=\"font-weight: bold;\">Registrar Cliente <span class=\"glyphicon glyphicon-user\"></span></h1>
+                <h1 class=\"h1 text-center marginTitulo\">Registrar Cliente <span class=\"glyphicon glyphicon-user\"></span></h1>
             </div>
         </div>
 
@@ -70,7 +70,7 @@ class __TwigTemplate_0f2151dbab2896013d6a582fb8af26909e05deebed52b284b8b77c28cf9
         echo "
                     ";
         // line 23
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "nombre", array()), 'widget', array("attr" => array("class" => "form-control", "placeholder" => "Nombre y apellidos completos del cliente")));
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "nombre", array()), 'widget', array("attr" => array("class" => "form-control", "placeholder" => "Nombre y apellidos completos del cliente", "maxlength" => "45")));
         echo "
                 </div>
 
@@ -113,7 +113,7 @@ class __TwigTemplate_0f2151dbab2896013d6a582fb8af26909e05deebed52b284b8b77c28cf9
                 <div class=\"form-group text-center\">
                     ";
         // line 45
-        echo "                    <button type=\"submit\" class=\"btn btn-lg btn-success active\">Registrar <span class=\"glyphicon glyphicon-floppy-saved\"></span></button>
+        echo "                    <button type=\"submit\" class=\"btn btn-lg btn-success\">Registrar <span class=\"glyphicon glyphicon-floppy-saved\"></span></button>
                 </div>
                 ";
         // line 47
@@ -136,7 +136,7 @@ class __TwigTemplate_0f2151dbab2896013d6a582fb8af26909e05deebed52b284b8b77c28cf9
 
 ";
         
-        $__internal_efa43c26da35374b8c7cc327c8592341e938404336d63d606722d82470e346a7->leave($__internal_efa43c26da35374b8c7cc327c8592341e938404336d63d606722d82470e346a7_prof);
+        $__internal_66197cceaa01e0ca851604e680a22007503662a04120efe32da155ef033b0494->leave($__internal_66197cceaa01e0ca851604e680a22007503662a04120efe32da155ef033b0494_prof);
 
     }
 
@@ -161,7 +161,7 @@ class __TwigTemplate_0f2151dbab2896013d6a582fb8af26909e05deebed52b284b8b77c28cf9
 /*     <div class="container">*/
 /*         <div class="row">*/
 /*             <div class="col-md-12">*/
-/*                 <h1 class="h1 text-center marginTitulo" style="font-weight: bold;">Registrar Cliente <span class="glyphicon glyphicon-user"></span></h1>*/
+/*                 <h1 class="h1 text-center marginTitulo">Registrar Cliente <span class="glyphicon glyphicon-user"></span></h1>*/
 /*             </div>*/
 /*         </div>*/
 /* */
@@ -177,7 +177,7 @@ class __TwigTemplate_0f2151dbab2896013d6a582fb8af26909e05deebed52b284b8b77c28cf9
 /* */
 /*                 <div class="form-group">*/
 /*                     {{ form_label(form.nombre, 'Nombre y apellidos:')}}*/
-/*                     {{ form_widget(form.nombre, {'attr':{'class' : 'form-control', 'placeholder' : 'Nombre y apellidos completos del cliente'}})}}*/
+/*                     {{ form_widget(form.nombre, {'attr':{'class' : 'form-control', 'placeholder' : 'Nombre y apellidos completos del cliente', 'maxlength' : '45'}})}}*/
 /*                 </div>*/
 /* */
 /*                 <div class="form-group">*/
@@ -199,7 +199,7 @@ class __TwigTemplate_0f2151dbab2896013d6a582fb8af26909e05deebed52b284b8b77c28cf9
 /* */
 /*                 <div class="form-group text-center">*/
 /*                     {#                    <input type="submit" value="Registrar" class="btn btn-lg btn-success"/>#}*/
-/*                     <button type="submit" class="btn btn-lg btn-success active">Registrar <span class="glyphicon glyphicon-floppy-saved"></span></button>*/
+/*                     <button type="submit" class="btn btn-lg btn-success">Registrar <span class="glyphicon glyphicon-floppy-saved"></span></button>*/
 /*                 </div>*/
 /*                 {{ form_end(form) }}*/
 /* */

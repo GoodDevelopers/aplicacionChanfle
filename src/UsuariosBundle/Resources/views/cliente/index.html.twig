@@ -18,7 +18,8 @@
             </div>
 
             <div class="col-md-9">
-                <form action="" method="GET" class="form-inline" onsubmit="buscar(); return false;">
+                <form action="" method="GET" class="form-inline" onsubmit="buscar();
+                        return false;">
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-addon">Cliente</div>
@@ -34,7 +35,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="alert alert-warning alert-dismissible" role="alert" id="bloqueMensaje" style="display: none;">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        {#                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>#}
                         <span id="mensaje"><strong>No</strong> se ha encontrado un cliente con el dato ingresado.</span>
                     </div>
                 </div>
@@ -98,10 +99,7 @@
             var msj = $('#mensaje');
             //Esto es cuando no se ingresa ningun dato en el input
             if (valor.trim() == "") {
-                bloqueMsj.removeClass('alert-warning');
-                bloqueMsj.addClass('alert-danger');
-                msj.html("<strong>Debe</strong> ingresar un dato para realizar la busqueda.");
-                bloqueMsj.css('display', 'block');
+                mensajeError(bloqueMsj, msj);
                 btn.blur();
                 return;
             }
@@ -123,10 +121,7 @@
                     //Esto es cuando no encuentra ningun cliente
                     if (data === -1) {
                         console.log('No encontro nada');
-                        bloqueMsj.removeClass('alert-danger');
-                        bloqueMsj.addClass('alert-warning');
-                        msj.html("<strong>No</strong> se ha encontrado un cliente con el dato ingresado.");
-                        bloqueMsj.css('display', 'block');
+                        mensajeWarning(bloqueMsj, msj);
                     } else {
                         bloqueMsj.css('display', 'none');
                         //Rutas para los botones edit y delete
@@ -152,6 +147,7 @@
                 }
             });
         }
+
         function llenarTabla(data, url1, url2) {
             var PersonaProcesar;
             PersonaProcesar =
@@ -188,5 +184,28 @@
                     ;
             return PersonaProcesar;
         }
+
+        function mensajeError(bloqueMsj, msj) {
+            bloqueMsj.removeClass('alert-warning');
+            bloqueMsj.addClass('alert-danger');
+            msj.html("<strong>Debe</strong> ingresar un dato para realizar la busqueda.");
+            bloqueMsj.css('display', 'block');
+            asignarTiempo(bloqueMsj);
+        }
+
+        function mensajeWarning(bloqueMsj, msj) {
+            bloqueMsj.removeClass('alert-danger');
+            bloqueMsj.addClass('alert-warning');
+            msj.html("<strong>No</strong> se ha encontrado un cliente con el dato ingresado.");
+            bloqueMsj.css('display', 'block');
+            asignarTiempo(bloqueMsj);
+        }
+
+        function asignarTiempo(elemento) {
+            setTimeout(function () {
+                elemento.fadeOut(1000);
+            }, 3000);
+        }
+
     </script>
 {% endblock %}

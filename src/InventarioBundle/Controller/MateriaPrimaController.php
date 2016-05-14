@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * MateriaPrima controller.
@@ -134,6 +135,35 @@ class MateriaPrimaController extends Controller {
                         ->setMethod('DELETE')
                         ->getForm()
         ;
+    }
+
+    /**
+     *
+     * @Route("/buscarMateria", name="buscarMateria")
+     */
+    public function buscarAction(Request $request) {
+        //Esto como que esta malo xD
+        if (!$request->isXmlHttpRequest()) {
+            throw new \Exception($id);
+        }
+
+        $id = $request->get('id');
+
+        $em = $this->getDoctrine()->getManager();
+
+        $materia = $em->getRepository('InventarioBundle:MateriaPrima')->findOneBy(array('id' => $id));
+
+        if ($materia === null) {
+            $response = new Response(-1);
+            return $response;
+        } else {
+            $materiaResponse = (array("id" => $materia->getId(), "nombre" => $materia->getNombre(),
+                "unidadDeMedida" => $materia->getUnidadDeMedida()));
+            $response = new Response(\json_encode($materiaResponse));
+            $response->headers->set('Content-Type', 'application/json');
+
+            return $response;
+        }
     }
 
 }

@@ -15,14 +15,14 @@ class __TwigTemplate_547f1c588ad7f80c8513c18073ae6443d9c52f93d1979592017669cb763
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_891c2f3de3fb05b9154de0ca3ff6d98c38db2d7f5bd30f892b25045fb68e60c2 = $this->env->getExtension("native_profiler");
-        $__internal_891c2f3de3fb05b9154de0ca3ff6d98c38db2d7f5bd30f892b25045fb68e60c2->enter($__internal_891c2f3de3fb05b9154de0ca3ff6d98c38db2d7f5bd30f892b25045fb68e60c2_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@Ventas/Default/index.html.twig"));
+        $__internal_d2c3c70eeea0b902af6126f0b6923bc2a6798fbd2f6118276266780c2a3fb5fa = $this->env->getExtension("native_profiler");
+        $__internal_d2c3c70eeea0b902af6126f0b6923bc2a6798fbd2f6118276266780c2a3fb5fa->enter($__internal_d2c3c70eeea0b902af6126f0b6923bc2a6798fbd2f6118276266780c2a3fb5fa_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@Ventas/Default/index.html.twig"));
 
         // line 1
         echo "Hello Ventas!
 ";
         
-        $__internal_891c2f3de3fb05b9154de0ca3ff6d98c38db2d7f5bd30f892b25045fb68e60c2->leave($__internal_891c2f3de3fb05b9154de0ca3ff6d98c38db2d7f5bd30f892b25045fb68e60c2_prof);
+        $__internal_d2c3c70eeea0b902af6126f0b6923bc2a6798fbd2f6118276266780c2a3fb5fa->leave($__internal_d2c3c70eeea0b902af6126f0b6923bc2a6798fbd2f6118276266780c2a3fb5fa_prof);
 
     }
 

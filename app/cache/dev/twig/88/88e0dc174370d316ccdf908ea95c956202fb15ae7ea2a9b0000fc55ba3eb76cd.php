@@ -23,20 +23,20 @@ class __TwigTemplate_f891700a856f3cc2b5e18bdba1e47fa28c414fdd91f803cd423d4d5046b
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_d95f868aed23b3eea9cb40db1d1bf1af4594ad4c4e6f96db1b6542f26bfc0917 = $this->env->getExtension("native_profiler");
-        $__internal_d95f868aed23b3eea9cb40db1d1bf1af4594ad4c4e6f96db1b6542f26bfc0917->enter($__internal_d95f868aed23b3eea9cb40db1d1bf1af4594ad4c4e6f96db1b6542f26bfc0917_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "venta/new.html.twig"));
+        $__internal_73f3304d6d9bbd31f177932f82d88859daf049e99bb06e5186285868d04ee730 = $this->env->getExtension("native_profiler");
+        $__internal_73f3304d6d9bbd31f177932f82d88859daf049e99bb06e5186285868d04ee730->enter($__internal_73f3304d6d9bbd31f177932f82d88859daf049e99bb06e5186285868d04ee730_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "venta/new.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_d95f868aed23b3eea9cb40db1d1bf1af4594ad4c4e6f96db1b6542f26bfc0917->leave($__internal_d95f868aed23b3eea9cb40db1d1bf1af4594ad4c4e6f96db1b6542f26bfc0917_prof);
+        $__internal_73f3304d6d9bbd31f177932f82d88859daf049e99bb06e5186285868d04ee730->leave($__internal_73f3304d6d9bbd31f177932f82d88859daf049e99bb06e5186285868d04ee730_prof);
 
     }
 
     // line 3
     public function block_stylesheets($context, array $blocks = array())
     {
-        $__internal_b026df4de74701db9c46748bcb514b988d135cdfb3111088880aa24ad1211304 = $this->env->getExtension("native_profiler");
-        $__internal_b026df4de74701db9c46748bcb514b988d135cdfb3111088880aa24ad1211304->enter($__internal_b026df4de74701db9c46748bcb514b988d135cdfb3111088880aa24ad1211304_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheets"));
+        $__internal_b289878f2229ee44ee7ed33c3ad5e740e5daf69f6e783ed15e308ae2de32c9fd = $this->env->getExtension("native_profiler");
+        $__internal_b289878f2229ee44ee7ed33c3ad5e740e5daf69f6e783ed15e308ae2de32c9fd->enter($__internal_b289878f2229ee44ee7ed33c3ad5e740e5daf69f6e783ed15e308ae2de32c9fd_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheets"));
 
         // line 4
         echo "    ";
@@ -49,15 +49,15 @@ class __TwigTemplate_f891700a856f3cc2b5e18bdba1e47fa28c414fdd91f803cd423d4d5046b
         echo "\" />
 ";
         
-        $__internal_b026df4de74701db9c46748bcb514b988d135cdfb3111088880aa24ad1211304->leave($__internal_b026df4de74701db9c46748bcb514b988d135cdfb3111088880aa24ad1211304_prof);
+        $__internal_b289878f2229ee44ee7ed33c3ad5e740e5daf69f6e783ed15e308ae2de32c9fd->leave($__internal_b289878f2229ee44ee7ed33c3ad5e740e5daf69f6e783ed15e308ae2de32c9fd_prof);
 
     }
 
     // line 9
     public function block_body($context, array $blocks = array())
     {
-        $__internal_c45eabe52a199b2dccd1168bfacd58605d0aa43da71faf81fe817812b599d354 = $this->env->getExtension("native_profiler");
-        $__internal_c45eabe52a199b2dccd1168bfacd58605d0aa43da71faf81fe817812b599d354->enter($__internal_c45eabe52a199b2dccd1168bfacd58605d0aa43da71faf81fe817812b599d354_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_8c39a0ae605e6abefe50276617a969eb500439a83b34f0bf364c9230da29ac7b = $this->env->getExtension("native_profiler");
+        $__internal_8c39a0ae605e6abefe50276617a969eb500439a83b34f0bf364c9230da29ac7b->enter($__internal_8c39a0ae605e6abefe50276617a969eb500439a83b34f0bf364c9230da29ac7b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 10
         echo "    <div id=\"div_title\" class=\"panel-primary\"><h1>Nueva Venta</h1></div>
@@ -121,7 +121,7 @@ class __TwigTemplate_f891700a856f3cc2b5e18bdba1e47fa28c414fdd91f803cd423d4d5046b
         <button type=\"button\" onclick=\"buscarProducto();\">Buscar Producto</button>
         <label>Precio:</label> <input type=\"number\" placeholder=\"Precio\" id=\"PrecioProducto\" disabled=\"true\"/>
         <label>Cantidad:</label><input type=\"number\" placeholder=\"Cantidad\" id=\"CantidadProducto\"/>
-        <button class=\"btn-success\" type=\"button\" onclick=\"Agregar();\">Agregar Producto</button>
+        <button class=\"btn-success\" type=\"button\" onclick=\"agregarProductoLogica();\">Agregar Producto</button>
 
     </div>
 
@@ -184,15 +184,15 @@ class __TwigTemplate_f891700a856f3cc2b5e18bdba1e47fa28c414fdd91f803cd423d4d5046b
 
 ";
         
-        $__internal_c45eabe52a199b2dccd1168bfacd58605d0aa43da71faf81fe817812b599d354->leave($__internal_c45eabe52a199b2dccd1168bfacd58605d0aa43da71faf81fe817812b599d354_prof);
+        $__internal_8c39a0ae605e6abefe50276617a969eb500439a83b34f0bf364c9230da29ac7b->leave($__internal_8c39a0ae605e6abefe50276617a969eb500439a83b34f0bf364c9230da29ac7b_prof);
 
     }
 
     // line 79
     public function block_javascripts($context, array $blocks = array())
     {
-        $__internal_99a959df2b0a74498e2dae60a30fe4d2e6d99bad928fad2d264d271326982e3e = $this->env->getExtension("native_profiler");
-        $__internal_99a959df2b0a74498e2dae60a30fe4d2e6d99bad928fad2d264d271326982e3e->enter($__internal_99a959df2b0a74498e2dae60a30fe4d2e6d99bad928fad2d264d271326982e3e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
+        $__internal_d85356b873fef782c618d9d22c02972054f7ad4225cb58a46321a801e38dea6b = $this->env->getExtension("native_profiler");
+        $__internal_d85356b873fef782c618d9d22c02972054f7ad4225cb58a46321a801e38dea6b->enter($__internal_d85356b873fef782c618d9d22c02972054f7ad4225cb58a46321a801e38dea6b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
         echo "    
     ";
@@ -201,13 +201,16 @@ class __TwigTemplate_f891700a856f3cc2b5e18bdba1e47fa28c414fdd91f803cd423d4d5046b
         echo "
 
     <script type=\"text/javascript\">
-
+//variables que se usan durante todo el proceso de ventas
+// arrays asociativos que guardan los productos y cantidades agregados, se usan para recuperar rapidamente los datos y obtenerlos
         var Productos = [];
         var Cantidades = [];
         var Precio = [];
         var total = 0;
+ //numero de productos y cantidades que se han agregado
         var NumeroP = \$('#productos').length;
         var NumeroC = \$('#cantidades').length;
+ //numero que sirve para crear el id de serie de los procutos
         var numeroProducto = 1;
 
 
@@ -217,7 +220,7 @@ class __TwigTemplate_f891700a856f3cc2b5e18bdba1e47fa28c414fdd91f803cd423d4d5046b
 
             \$.ajax({
                 url: \"";
-        // line 98
+        // line 101
         echo $this->env->getExtension('routing')->getPath("buscar_cliente_venta");
         echo "\",
                 data: ({id: id}),
@@ -245,7 +248,7 @@ class __TwigTemplate_f891700a856f3cc2b5e18bdba1e47fa28c414fdd91f803cd423d4d5046b
 
             \$.ajax({
                 url: \"";
-        // line 123
+        // line 126
         echo $this->env->getExtension('routing')->getPath("buscar_producto");
         echo "\",
                 data: ({nombre_p: nombre}),
@@ -262,25 +265,31 @@ class __TwigTemplate_f891700a856f3cc2b5e18bdba1e47fa28c414fdd91f803cd423d4d5046b
             });
         }
 
-        function Agregar() {
+        function agregarProductoLogica() {
 
             var nombreProducto = \$('#NombreProducto').val();
             var cantidad = \$('#CantidadProducto').val();
-            var precio = \$('#PrecioProducto').val(); 
+            var precio = \$('#PrecioProducto').val();
+            //obtiene las listas ocultas de productos y cantidades
             var ListaProductos = \$('#productos');
             var ListaCantidades = \$('#cantidades');   
-            
+            //se crea la identificacion que tendra cada producto y campo
             var NumeroSerie = \"\" + nombreProducto + numeroProducto;
+            //se agrega la nueva fila a la tabla
             \$('#CuerpoTabla').append(agregarProductoTabla(NumeroSerie,nombreProducto, precio, cantidad));
+            //se suma el valor de los productos añadidos
             total = \$('#venta_valorTotal').val();
             total = parseInt(total) + parseInt(precio) * parseInt(cantidad);
             \$('#venta_valorTotal').val(total);
+            //se limpian los campos
             \$('#NombreProducto').val(\"\");
             \$('#PrecioProducto').val(\"\");
             \$('#CantidadProducto').val(\"\");
             \$('#NombreProducto').focus();
+            //se asigna el nuevo protoype,numero de serie y valor que tendra el campo
             ListaProductos.data('prototype', '<input class=\"hidden\" type=\"text\" id=\"'+ NumeroSerie +'\" name=\"venta[detalles][__name__][producto][nombre]\" value=\"' + nombreProducto + '\"/>');
             ListaCantidades.data('prototype', '<input class=\"hidden\" type=\"text\" id=\"venta_type2_detalles___name___cantidad\" name=\"venta[detalles][__name__][cantidad]\" value=\"' + cantidad + '\"/>');
+            //se obtiene el prototipo creado y se reemplazan las claves \"name\" con el indice 
             var prototype = ListaProductos.data('prototype');
             var prototype2 = ListaCantidades.data('prototype');
             var newform = prototype.replace(/__name__/g, NumeroP);
@@ -288,11 +297,12 @@ class __TwigTemplate_f891700a856f3cc2b5e18bdba1e47fa28c414fdd91f803cd423d4d5046b
 
             NumeroP++;
             NumeroC++;
+            //se asigna los campos creados a las listas ocultas de cantidades y productos
             var NewLi = \$('<li class=\"hidden\"></li>').append(newform);
             var NewLi2 = \$('<li class=\"hidden\"></li>').append(newform2);
             NewLi.appendTo(ListaProductos);
             NewLi2.appendTo(ListaCantidades);
-         
+            //se guardan las cantidades con los identificadores de cada producto     
             Cantidades[NumeroSerie] = cantidad;
             Precio[NumeroSerie] = precio;
             numeroProducto ++;
@@ -312,10 +322,13 @@ class __TwigTemplate_f891700a856f3cc2b5e18bdba1e47fa28c414fdd91f803cd423d4d5046b
         }
 
         function quitarTablaProducto(clicked_id) {
+            //se obtiene el id del boton presionado, que es igual al campo y a la fila que se va a remover
             var id = clicked_id;
+            //removiendpo fila
             \$('#producto' + id).remove();
+            //removiendo campo con el id
             \$('#productos :input[id=' + id + ']').remove();
-
+            // se resta las cantidades de los productos eliminados, seleccionandolo del array que ayuda a recuperar datos
             var valorActual = \$('#venta_valorTotal').val();
             \$(\"#venta_valorTotal\").val(valorActual - Precio[id] * Cantidades[id]);
             \$(\"#CantidadProducto\").focus();
@@ -327,7 +340,7 @@ class __TwigTemplate_f891700a856f3cc2b5e18bdba1e47fa28c414fdd91f803cd423d4d5046b
 
 ";
         
-        $__internal_99a959df2b0a74498e2dae60a30fe4d2e6d99bad928fad2d264d271326982e3e->leave($__internal_99a959df2b0a74498e2dae60a30fe4d2e6d99bad928fad2d264d271326982e3e_prof);
+        $__internal_d85356b873fef782c618d9d22c02972054f7ad4225cb58a46321a801e38dea6b->leave($__internal_d85356b873fef782c618d9d22c02972054f7ad4225cb58a46321a801e38dea6b_prof);
 
     }
 
@@ -343,7 +356,7 @@ class __TwigTemplate_f891700a856f3cc2b5e18bdba1e47fa28c414fdd91f803cd423d4d5046b
 
     public function getDebugInfo()
     {
-        return array (  249 => 123,  221 => 98,  200 => 80,  192 => 79,  181 => 75,  175 => 72,  167 => 67,  163 => 66,  159 => 65,  155 => 64,  134 => 46,  130 => 45,  117 => 35,  110 => 31,  106 => 30,  101 => 28,  97 => 27,  93 => 26,  89 => 25,  78 => 17,  74 => 16,  69 => 14,  63 => 10,  57 => 9,  48 => 6,  42 => 4,  36 => 3,  11 => 1,);
+        return array (  252 => 126,  224 => 101,  200 => 80,  192 => 79,  181 => 75,  175 => 72,  167 => 67,  163 => 66,  159 => 65,  155 => 64,  134 => 46,  130 => 45,  117 => 35,  110 => 31,  106 => 30,  101 => 28,  97 => 27,  93 => 26,  89 => 25,  78 => 17,  74 => 16,  69 => 14,  63 => 10,  57 => 9,  48 => 6,  42 => 4,  36 => 3,  11 => 1,);
     }
 }
 /* {% extends 'base.html.twig' %}*/
@@ -386,7 +399,7 @@ class __TwigTemplate_f891700a856f3cc2b5e18bdba1e47fa28c414fdd91f803cd423d4d5046b
 /*         <button type="button" onclick="buscarProducto();">Buscar Producto</button>*/
 /*         <label>Precio:</label> <input type="number" placeholder="Precio" id="PrecioProducto" disabled="true"/>*/
 /*         <label>Cantidad:</label><input type="number" placeholder="Cantidad" id="CantidadProducto"/>*/
-/*         <button class="btn-success" type="button" onclick="Agregar();">Agregar Producto</button>*/
+/*         <button class="btn-success" type="button" onclick="agregarProductoLogica();">Agregar Producto</button>*/
 /* */
 /*     </div>*/
 /* */
@@ -428,13 +441,16 @@ class __TwigTemplate_f891700a856f3cc2b5e18bdba1e47fa28c414fdd91f803cd423d4d5046b
 /*     {{ parent() }}*/
 /* */
 /*     <script type="text/javascript">*/
-/* */
+/* //variables que se usan durante todo el proceso de ventas*/
+/* // arrays asociativos que guardan los productos y cantidades agregados, se usan para recuperar rapidamente los datos y obtenerlos*/
 /*         var Productos = [];*/
 /*         var Cantidades = [];*/
 /*         var Precio = [];*/
 /*         var total = 0;*/
+/*  //numero de productos y cantidades que se han agregado*/
 /*         var NumeroP = $('#productos').length;*/
 /*         var NumeroC = $('#cantidades').length;*/
+/*  //numero que sirve para crear el id de serie de los procutos*/
 /*         var numeroProducto = 1;*/
 /* */
 /* */
@@ -483,25 +499,31 @@ class __TwigTemplate_f891700a856f3cc2b5e18bdba1e47fa28c414fdd91f803cd423d4d5046b
 /*             });*/
 /*         }*/
 /* */
-/*         function Agregar() {*/
+/*         function agregarProductoLogica() {*/
 /* */
 /*             var nombreProducto = $('#NombreProducto').val();*/
 /*             var cantidad = $('#CantidadProducto').val();*/
-/*             var precio = $('#PrecioProducto').val(); */
+/*             var precio = $('#PrecioProducto').val();*/
+/*             //obtiene las listas ocultas de productos y cantidades*/
 /*             var ListaProductos = $('#productos');*/
 /*             var ListaCantidades = $('#cantidades');   */
-/*             */
+/*             //se crea la identificacion que tendra cada producto y campo*/
 /*             var NumeroSerie = "" + nombreProducto + numeroProducto;*/
+/*             //se agrega la nueva fila a la tabla*/
 /*             $('#CuerpoTabla').append(agregarProductoTabla(NumeroSerie,nombreProducto, precio, cantidad));*/
+/*             //se suma el valor de los productos añadidos*/
 /*             total = $('#venta_valorTotal').val();*/
 /*             total = parseInt(total) + parseInt(precio) * parseInt(cantidad);*/
 /*             $('#venta_valorTotal').val(total);*/
+/*             //se limpian los campos*/
 /*             $('#NombreProducto').val("");*/
 /*             $('#PrecioProducto').val("");*/
 /*             $('#CantidadProducto').val("");*/
 /*             $('#NombreProducto').focus();*/
+/*             //se asigna el nuevo protoype,numero de serie y valor que tendra el campo*/
 /*             ListaProductos.data('prototype', '<input class="hidden" type="text" id="'+ NumeroSerie +'" name="venta[detalles][__name__][producto][nombre]" value="' + nombreProducto + '"/>');*/
 /*             ListaCantidades.data('prototype', '<input class="hidden" type="text" id="venta_type2_detalles___name___cantidad" name="venta[detalles][__name__][cantidad]" value="' + cantidad + '"/>');*/
+/*             //se obtiene el prototipo creado y se reemplazan las claves "name" con el indice */
 /*             var prototype = ListaProductos.data('prototype');*/
 /*             var prototype2 = ListaCantidades.data('prototype');*/
 /*             var newform = prototype.replace(/__name__/g, NumeroP);*/
@@ -509,11 +531,12 @@ class __TwigTemplate_f891700a856f3cc2b5e18bdba1e47fa28c414fdd91f803cd423d4d5046b
 /* */
 /*             NumeroP++;*/
 /*             NumeroC++;*/
+/*             //se asigna los campos creados a las listas ocultas de cantidades y productos*/
 /*             var NewLi = $('<li class="hidden"></li>').append(newform);*/
 /*             var NewLi2 = $('<li class="hidden"></li>').append(newform2);*/
 /*             NewLi.appendTo(ListaProductos);*/
 /*             NewLi2.appendTo(ListaCantidades);*/
-/*          */
+/*             //se guardan las cantidades con los identificadores de cada producto     */
 /*             Cantidades[NumeroSerie] = cantidad;*/
 /*             Precio[NumeroSerie] = precio;*/
 /*             numeroProducto ++;*/
@@ -533,10 +556,13 @@ class __TwigTemplate_f891700a856f3cc2b5e18bdba1e47fa28c414fdd91f803cd423d4d5046b
 /*         }*/
 /* */
 /*         function quitarTablaProducto(clicked_id) {*/
+/*             //se obtiene el id del boton presionado, que es igual al campo y a la fila que se va a remover*/
 /*             var id = clicked_id;*/
+/*             //removiendpo fila*/
 /*             $('#producto' + id).remove();*/
+/*             //removiendo campo con el id*/
 /*             $('#productos :input[id=' + id + ']').remove();*/
-/* */
+/*             // se resta las cantidades de los productos eliminados, seleccionandolo del array que ayuda a recuperar datos*/
 /*             var valorActual = $('#venta_valorTotal').val();*/
 /*             $("#venta_valorTotal").val(valorActual - Precio[id] * Cantidades[id]);*/
 /*             $("#CantidadProducto").focus();*/

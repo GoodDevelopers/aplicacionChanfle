@@ -501,6 +501,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
             not_materiaprima_delete:
 
+            // buscarMateria
+            if ($pathinfo === '/materiaprima/buscarMateria') {
+                return array (  '_controller' => 'InventarioBundle\\Controller\\MateriaPrimaController::buscarAction',  '_route' => 'buscarMateria',);
+            }
+
         }
 
         if (0 === strpos($pathinfo, '/producto')) {
@@ -785,7 +790,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
             // buscar_cliente_venta
             if ($pathinfo === '/venta/buscarCliente') {
-                return array (  '_controller' => 'VentasBundle\\Controller\\VentaController::BuscarCliente',  '_route' => 'buscar_cliente_venta',);
+                return array (  '_controller' => 'VentasBundle\\Controller\\VentaController::buscarCliente',  '_route' => 'buscar_cliente_venta',);
             }
 
             // venta_detalles

@@ -17,7 +17,7 @@ use UsuariosBundle\Entity\Cliente;
  * @Route("/clientes")
  */
 class ClienteController extends Controller {
-    
+
     /**
      * Lists all Cliente entities.
      *
@@ -30,7 +30,7 @@ class ClienteController extends Controller {
         $clientes = $em->getRepository('UsuariosBundle:Cliente')->findAll();
 
         $session = $request->getSession();
-        
+
         return array(
             'usuario' => $session->get('user'),
             'clientes' => $clientes,
@@ -46,7 +46,7 @@ class ClienteController extends Controller {
      */
     public function newAction(Request $request) {
         $session = $request->getSession();
-        
+
         $cliente = new Cliente();
         $form = $this->createForm('UsuariosBundle\Form\ClienteType', $cliente);
         $form->handleRequest($request);
@@ -88,7 +88,7 @@ class ClienteController extends Controller {
      */
     public function showAction(Cliente $cliente, Request $request) {
         $session = $request->getSession();
-        
+
         $deleteForm = $this->createDeleteForm($cliente);
 
         return array(
@@ -107,7 +107,7 @@ class ClienteController extends Controller {
      */
     public function editAction(Request $request, Cliente $cliente) {
         $session = $request->getSession();
-        
+
         $deleteForm = $this->createDeleteForm($cliente);
         $editForm = $this->createForm('UsuariosBundle\Form\ClienteType', $cliente);
         $editForm->handleRequest($request);
@@ -143,8 +143,10 @@ class ClienteController extends Controller {
             $em->remove($cliente);
             $em->flush();
 
-//            $fosUserManager = $this->container->get('fos_user.user_manager');
-//            $fosUserManager->
+
+            $fosUserManager = $this->container->get('fos_user.user_manager');
+            $user = $fosUserManager->findUserByUsername($cliente->getNuip());
+            $fosUserManager->deleteUser($user);
         }
 
         return $this->redirectToRoute('clientes_index');

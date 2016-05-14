@@ -18,7 +18,7 @@ class ClienteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nuip', IntegerType::class)
+            ->add('nuip', IntegerType::class, array('attr' => array('maxlength' => 11)))
             ->add('nombre')
             ->add('fechaDeNacimiento', DateType::class, array('label' => 'Fecha de nacimiento:', 'widget' => 'single_text','format' => 'yyyy-MM-dd'))
             ->add('puntosAcumulados', IntegerType::class, array('label' => 'Puntos acumulados:'))

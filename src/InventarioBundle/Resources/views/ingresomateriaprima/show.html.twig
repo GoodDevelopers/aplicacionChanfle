@@ -26,8 +26,12 @@
                             <td>{% if ingresoMateriaPrima.fecha %}{{ ingresoMateriaPrima.fecha|date('d-m-Y H:i:s') }}{% endif %}</td>
                         </tr>
                         <tr>
+                            <th class="text-right">Materia Prima:</th>
+                            <td>{{ ingresoMateriaPrima.materiaPrima.nombre }}</td>
+                        </tr>
+                        <tr>
                             <th class="text-right">Cantidad:</th>
-                            <td>{{ ingresoMateriaPrima.cantidad }}</td>
+                            <td>{{ ingresoMateriaPrima.cantidad }} {{ ingresoMateriaPrima.materiaPrima.unidadDeMedida }}</td>
                         </tr>
                         <tr>
                             <th class="text-right">Valor:</th>

@@ -5,6 +5,7 @@ namespace InventarioBundle\Form;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -18,9 +19,10 @@ class IngresoMateriaPrimaType extends AbstractType {
         $builder
                 //La fecha la debe dar el sistema
 //                ->add('fecha', 'datetime')
-                ->add('cantidad')
-                ->add('valor')
+                ->add('cantidad', IntegerType::class, array('label' => 'Cantidad:'))
+                ->add('valor', IntegerType::class, array('label' => 'Valor:'))
                 ->add('materiaPrima', EntityType::class, array(
+                    'label' => 'Materia Prima:',
                     'class' => 'InventarioBundle:MateriaPrima',
                     'query_builder' => function (EntityRepository $er) {
                         return $er->createQueryBuilder('materia')
@@ -31,6 +33,7 @@ class IngresoMateriaPrimaType extends AbstractType {
                 //El empleado es el que esta logueado
 //                ->add('empleado')
                 ->add('proveedor', EntityType::class, array(
+                    'label' => 'Proveedor:',
                     'class' => 'InventarioBundle:Proveedor',
                     'query_builder' => function (EntityRepository $er) {
                         return $er->createQueryBuilder('proveedor')

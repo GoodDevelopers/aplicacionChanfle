@@ -9,7 +9,7 @@ namespace AppBundle\Entity;
  */
 class RolesUsuarios {
 
-    const RolCliente = "ROLE_CLIENTE";
+    const RolCliente = "ROLE_CLIENT";
     const RolEmpleado = "ROLE_USER";
     const RolAdmin = "ROLE_ADMIN";
 

@@ -18,19 +18,20 @@
                 {{ form_start(form) }}
                 {#                {{ form_widget(form) }}#}
                 <div class="form-group">
-                    {{ form_label(form.cantidad, "Cantidad") }}
-                    {{ form_widget(form.cantidad, {'attr':{'class' : 'form-control', 'placeholder' : 'Cantidad ingresada'}}) }}
+                    {{ form_label(form.materiaPrima, "Materia prima:") }}
+                    {{ form_widget(form.materiaPrima, {'id' : 'materiaPrima', 'attr':{'class' : 'form-control'}}) }}
                 </div>
                 <div class="form-group">
-                    {{ form_label(form.valor, "Valor") }}
+                    {{ form_label(form.cantidad, "Cantidad:") }} <span id="cargando"></span>
+                    {{ form_widget(form.cantidad, {'id' : 'cantidad', 'disabled' : 'true', 'attr':{'class' : 'form-control', 'placeholder' : 'Cantidad ingresada'}}) }}
+                    <p class="help-block" id="msjUnidad"></p>
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.valor, "Valor:") }}
                     {{ form_widget(form.valor, {'attr':{'class' : 'form-control', 'placeholder' : 'Valor total'}}) }}
                 </div>
                 <div class="form-group">
-                    {{ form_label(form.materiaPrima, "Materia prima") }}
-                    {{ form_widget(form.materiaPrima, {'attr':{'class' : 'form-control'}}) }}
-                </div>
-                <div class="form-group">
-                    {{ form_label(form.proveedor, "Proveedor") }}
+                    {{ form_label(form.proveedor, "Proveedor:") }}
                     {{ form_widget(form.proveedor, {'attr':{'class' : 'form-control'}}) }}
                 </div>
 
@@ -51,4 +52,40 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(document).on('ready', function () {
+            $('#materiaPrima').change(function () {
+                var idMateria = $(this).val();
+                console.log(idMateria);
+                $.ajax({
+                    url: "{{ path('buscarMateria') }}",
+                    data: ({id: idMateria}),
+                    method: 'POST',
+                    dataType: "json",
+                    beforeSend: function () {
+                        $('#cargando').addClass('fa fa-spinner fa-pulse');
+                    },
+                    success: function (data) {
+                        console.log('DATA:');
+                        console.log(data);
+                        console.log('------');
+                        if (data === -1) {
+                            $('#cargando').removeClass('fa fa-spinner fa-pulse');
+                            $('#cantidad').prop('disabled', true);
+                            $('#msjUnidad').text('');
+                            console.log('No encontro nada');
+                        } else {
+                            $('#cargando').removeClass('fa fa-spinner fa-pulse');
+                            $('#cantidad').prop('disabled', false);
+                            $('#msjUnidad').text('La cantidad debe ser en ' + data['unidadDeMedida']);
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 {% endblock %}

@@ -200,7 +200,7 @@ class Venta {
     }
 
     /**
-     * @ORM\OneToMany(targetEntity="DetalleVenta", mappedBy="venta",  cascade="persist")
+     * @ORM\OneToMany(targetEntity="DetalleVenta", mappedBy="venta",  cascade="all")
      */
     private $detalles;
     

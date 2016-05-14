@@ -18,19 +18,20 @@
                 {{ form_start(edit_form) }}
                 {#                {{ form_widget(edit_form) }}#}
                 <div class="form-group">
-                    {{ form_label(edit_form.cantidad, "Cantidad") }}
-                    {{ form_widget(edit_form.cantidad, {'attr':{'class' : 'form-control', 'placeholder' : 'Cantidad ingresada'}}) }}
+                    {{ form_label(edit_form.materiaPrima) }}
+                    {{ form_widget(edit_form.materiaPrima, {'disabled' : 'true', 'attr':{'class' : 'form-control'}}) }}
                 </div>
                 <div class="form-group">
-                    {{ form_label(edit_form.valor, "Valor") }}
+                    {{ form_label(edit_form.cantidad) }}
+                    {{ form_widget(edit_form.cantidad, {'attr':{'class' : 'form-control', 'placeholder' : 'Cantidad ingresada'}}) }}
+                    <p class="help-block" id="msjUnidad">La cantidad debe ser en {{ ingresoMateriaPrima.materiaPrima.unidadDeMedida }}</p>
+                </div>
+                <div class="form-group">
+                    {{ form_label(edit_form.valor) }}
                     {{ form_widget(edit_form.valor, {'attr':{'class' : 'form-control', 'placeholder' : 'Valor total'}}) }}
                 </div>
                 <div class="form-group">
-                    {{ form_label(edit_form.materiaPrima, "Materia prima") }}
-                    {{ form_widget(edit_form.materiaPrima, {'attr':{'class' : 'form-control'}}) }}
-                </div>
-                <div class="form-group">
-                    {{ form_label(edit_form.proveedor, "Proveedor") }}
+                    {{ form_label(edit_form.proveedor) }}
                     {{ form_widget(edit_form.proveedor, {'attr':{'class' : 'form-control'}}) }}
                 </div>
                 <div class="form-group text-center">
