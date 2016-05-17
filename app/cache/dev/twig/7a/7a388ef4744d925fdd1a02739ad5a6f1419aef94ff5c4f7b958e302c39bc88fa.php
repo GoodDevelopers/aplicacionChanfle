@@ -21,20 +21,20 @@ class __TwigTemplate_dd15e76c10bca295f915e66f01551b4a9e2ff4157ec0979b1904fc037f1
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_5deb5464f9c2a37b02cdfe64858d63316e70484eac6d6bd277765181ee74edb5 = $this->env->getExtension("native_profiler");
-        $__internal_5deb5464f9c2a37b02cdfe64858d63316e70484eac6d6bd277765181ee74edb5->enter($__internal_5deb5464f9c2a37b02cdfe64858d63316e70484eac6d6bd277765181ee74edb5_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", ":venta:index.html.twig"));
+        $__internal_09f6f0704fe6600343a9625651a8702d275f04b6808e8d95a92ee2e66251bc0a = $this->env->getExtension("native_profiler");
+        $__internal_09f6f0704fe6600343a9625651a8702d275f04b6808e8d95a92ee2e66251bc0a->enter($__internal_09f6f0704fe6600343a9625651a8702d275f04b6808e8d95a92ee2e66251bc0a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", ":venta:index.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_5deb5464f9c2a37b02cdfe64858d63316e70484eac6d6bd277765181ee74edb5->leave($__internal_5deb5464f9c2a37b02cdfe64858d63316e70484eac6d6bd277765181ee74edb5_prof);
+        $__internal_09f6f0704fe6600343a9625651a8702d275f04b6808e8d95a92ee2e66251bc0a->leave($__internal_09f6f0704fe6600343a9625651a8702d275f04b6808e8d95a92ee2e66251bc0a_prof);
 
     }
 
     // line 3
     public function block_body($context, array $blocks = array())
     {
-        $__internal_223bd0f8a999ac334e882d07151ad744eee2bc180a8c0e4ea02b702583ab675a = $this->env->getExtension("native_profiler");
-        $__internal_223bd0f8a999ac334e882d07151ad744eee2bc180a8c0e4ea02b702583ab675a->enter($__internal_223bd0f8a999ac334e882d07151ad744eee2bc180a8c0e4ea02b702583ab675a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_d29718f057fedd64fcdf7c90f56063c9f95fc03657b545dbb53a3a63c98f5f50 = $this->env->getExtension("native_profiler");
+        $__internal_d29718f057fedd64fcdf7c90f56063c9f95fc03657b545dbb53a3a63c98f5f50->enter($__internal_d29718f057fedd64fcdf7c90f56063c9f95fc03657b545dbb53a3a63c98f5f50_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
         echo "    <h1>Venta list</h1>
@@ -134,7 +134,7 @@ class __TwigTemplate_dd15e76c10bca295f915e66f01551b4a9e2ff4157ec0979b1904fc037f1
     </ul>
 ";
         
-        $__internal_223bd0f8a999ac334e882d07151ad744eee2bc180a8c0e4ea02b702583ab675a->leave($__internal_223bd0f8a999ac334e882d07151ad744eee2bc180a8c0e4ea02b702583ab675a_prof);
+        $__internal_d29718f057fedd64fcdf7c90f56063c9f95fc03657b545dbb53a3a63c98f5f50->leave($__internal_d29718f057fedd64fcdf7c90f56063c9f95fc03657b545dbb53a3a63c98f5f50_prof);
 
     }
 

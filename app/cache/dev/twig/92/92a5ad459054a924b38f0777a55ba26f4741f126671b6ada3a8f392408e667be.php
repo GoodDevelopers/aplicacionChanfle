@@ -21,20 +21,20 @@ class __TwigTemplate_09e3f9facb6ff37e787bebff207f8a32e767ebb6783bbdea01ce9bab8c3
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_eb4accf6b679a0f32279919b39971799a0c5be9ce05ed9171e8751993d81dd23 = $this->env->getExtension("native_profiler");
-        $__internal_eb4accf6b679a0f32279919b39971799a0c5be9ce05ed9171e8751993d81dd23->enter($__internal_eb4accf6b679a0f32279919b39971799a0c5be9ce05ed9171e8751993d81dd23_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "InventarioBundle:materiaprima:new.html.twig"));
+        $__internal_3ee164ebdcbeb8d2b601d121feb16e8ec04c6eef2ec620c14b18b4b8593053e7 = $this->env->getExtension("native_profiler");
+        $__internal_3ee164ebdcbeb8d2b601d121feb16e8ec04c6eef2ec620c14b18b4b8593053e7->enter($__internal_3ee164ebdcbeb8d2b601d121feb16e8ec04c6eef2ec620c14b18b4b8593053e7_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "InventarioBundle:materiaprima:new.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_eb4accf6b679a0f32279919b39971799a0c5be9ce05ed9171e8751993d81dd23->leave($__internal_eb4accf6b679a0f32279919b39971799a0c5be9ce05ed9171e8751993d81dd23_prof);
+        $__internal_3ee164ebdcbeb8d2b601d121feb16e8ec04c6eef2ec620c14b18b4b8593053e7->leave($__internal_3ee164ebdcbeb8d2b601d121feb16e8ec04c6eef2ec620c14b18b4b8593053e7_prof);
 
     }
 
     // line 3
     public function block_body($context, array $blocks = array())
     {
-        $__internal_a032aba3a357bce9073f9039100af1c7d39a7d2f66339b136fb9318bcc286c4f = $this->env->getExtension("native_profiler");
-        $__internal_a032aba3a357bce9073f9039100af1c7d39a7d2f66339b136fb9318bcc286c4f->enter($__internal_a032aba3a357bce9073f9039100af1c7d39a7d2f66339b136fb9318bcc286c4f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_eff8d731b6dca875879171676d8a56f5de9faa787ac0ef59fc35ef66568b788a = $this->env->getExtension("native_profiler");
+        $__internal_eff8d731b6dca875879171676d8a56f5de9faa787ac0ef59fc35ef66568b788a->enter($__internal_eff8d731b6dca875879171676d8a56f5de9faa787ac0ef59fc35ef66568b788a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
         echo "    <h1>MateriaPrima creation</h1>
@@ -63,7 +63,7 @@ class __TwigTemplate_09e3f9facb6ff37e787bebff207f8a32e767ebb6783bbdea01ce9bab8c3
     </ul>
 ";
         
-        $__internal_a032aba3a357bce9073f9039100af1c7d39a7d2f66339b136fb9318bcc286c4f->leave($__internal_a032aba3a357bce9073f9039100af1c7d39a7d2f66339b136fb9318bcc286c4f_prof);
+        $__internal_eff8d731b6dca875879171676d8a56f5de9faa787ac0ef59fc35ef66568b788a->leave($__internal_eff8d731b6dca875879171676d8a56f5de9faa787ac0ef59fc35ef66568b788a_prof);
 
     }
 

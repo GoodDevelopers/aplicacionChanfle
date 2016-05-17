@@ -22,20 +22,20 @@ class __TwigTemplate_d3ccafd1dd2234043a9c37c12e8cb53c49e8b402a03451c43dad75e5510
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_3079050478d920d919991bdef4dc0872952aadcca435586ed084598dc9764de2 = $this->env->getExtension("native_profiler");
-        $__internal_3079050478d920d919991bdef4dc0872952aadcca435586ed084598dc9764de2->enter($__internal_3079050478d920d919991bdef4dc0872952aadcca435586ed084598dc9764de2_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@Usuarios/cliente/index.html.twig"));
+        $__internal_b6c47534b9d041dbe3dd83968bb03b07d74fd104a16764a7b56a1c08bb9fbe97 = $this->env->getExtension("native_profiler");
+        $__internal_b6c47534b9d041dbe3dd83968bb03b07d74fd104a16764a7b56a1c08bb9fbe97->enter($__internal_b6c47534b9d041dbe3dd83968bb03b07d74fd104a16764a7b56a1c08bb9fbe97_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@Usuarios/cliente/index.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_3079050478d920d919991bdef4dc0872952aadcca435586ed084598dc9764de2->leave($__internal_3079050478d920d919991bdef4dc0872952aadcca435586ed084598dc9764de2_prof);
+        $__internal_b6c47534b9d041dbe3dd83968bb03b07d74fd104a16764a7b56a1c08bb9fbe97->leave($__internal_b6c47534b9d041dbe3dd83968bb03b07d74fd104a16764a7b56a1c08bb9fbe97_prof);
 
     }
 
     // line 3
     public function block_body($context, array $blocks = array())
     {
-        $__internal_7fa8327a4ab7fe8cd667f8f7efbe3f36bf070f296c00341333d7a5f7c7f07485 = $this->env->getExtension("native_profiler");
-        $__internal_7fa8327a4ab7fe8cd667f8f7efbe3f36bf070f296c00341333d7a5f7c7f07485->enter($__internal_7fa8327a4ab7fe8cd667f8f7efbe3f36bf070f296c00341333d7a5f7c7f07485_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_88a84a4c9932f319e64da13d4f62e86e0e298b83c126c53855d831e3804d925b = $this->env->getExtension("native_profiler");
+        $__internal_88a84a4c9932f319e64da13d4f62e86e0e298b83c126c53855d831e3804d925b->enter($__internal_88a84a4c9932f319e64da13d4f62e86e0e298b83c126c53855d831e3804d925b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
         echo "    <div class=\"container\">
@@ -77,7 +77,7 @@ class __TwigTemplate_d3ccafd1dd2234043a9c37c12e8cb53c49e8b402a03451c43dad75e5510
                     <div class=\"alert alert-warning alert-dismissible\" role=\"alert\" id=\"bloqueMensaje\" style=\"display: none;\">
                         ";
         // line 39
-        echo "                        <span id=\"mensaje\"><strong>No</strong> se ha encontrado un cliente con el dato ingresado.</span>
+        echo "                        <p id=\"mensaje\"></p>
                     </div>
                 </div>
             </div>
@@ -168,15 +168,15 @@ class __TwigTemplate_d3ccafd1dd2234043a9c37c12e8cb53c49e8b402a03451c43dad75e5510
 
 ";
         
-        $__internal_7fa8327a4ab7fe8cd667f8f7efbe3f36bf070f296c00341333d7a5f7c7f07485->leave($__internal_7fa8327a4ab7fe8cd667f8f7efbe3f36bf070f296c00341333d7a5f7c7f07485_prof);
+        $__internal_88a84a4c9932f319e64da13d4f62e86e0e298b83c126c53855d831e3804d925b->leave($__internal_88a84a4c9932f319e64da13d4f62e86e0e298b83c126c53855d831e3804d925b_prof);
 
     }
 
     // line 92
     public function block_javascripts($context, array $blocks = array())
     {
-        $__internal_2123d822deb8b2658bf5d3d3e3bc56a300a93f78f3ea2336d9fda0b0607267d1 = $this->env->getExtension("native_profiler");
-        $__internal_2123d822deb8b2658bf5d3d3e3bc56a300a93f78f3ea2336d9fda0b0607267d1->enter($__internal_2123d822deb8b2658bf5d3d3e3bc56a300a93f78f3ea2336d9fda0b0607267d1_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
+        $__internal_8272aedb0d73a7784ab1ef5782b620cf664926728d4bda4e3e14abe256e24226 = $this->env->getExtension("native_profiler");
+        $__internal_8272aedb0d73a7784ab1ef5782b620cf664926728d4bda4e3e14abe256e24226->enter($__internal_8272aedb0d73a7784ab1ef5782b620cf664926728d4bda4e3e14abe256e24226_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
         // line 93
         echo "    ";
@@ -288,7 +288,7 @@ class __TwigTemplate_d3ccafd1dd2234043a9c37c12e8cb53c49e8b402a03451c43dad75e5510
         function mensajeError(bloqueMsj, msj) {
             bloqueMsj.removeClass('alert-warning');
             bloqueMsj.addClass('alert-danger');
-            msj.html(\"<strong>Debe</strong> ingresar un dato para realizar la busqueda.\");
+            msj.html(\"<span class='glyphicon glyphicon-remove-sign'></span> <strong>Debe</strong> ingresar un dato para realizar la busqueda.\");
             bloqueMsj.css('display', 'block');
             asignarTiempo(bloqueMsj);
         }
@@ -296,7 +296,7 @@ class __TwigTemplate_d3ccafd1dd2234043a9c37c12e8cb53c49e8b402a03451c43dad75e5510
         function mensajeWarning(bloqueMsj, msj) {
             bloqueMsj.removeClass('alert-danger');
             bloqueMsj.addClass('alert-warning');
-            msj.html(\"<strong>No</strong> se ha encontrado un cliente con el dato ingresado.\");
+            msj.html(\"<span class='glyphicon glyphicon-remove-sign'></span> <strong>No</strong> se ha encontrado un cliente con el dato ingresado.\");
             bloqueMsj.css('display', 'block');
             asignarTiempo(bloqueMsj);
         }
@@ -310,7 +310,7 @@ class __TwigTemplate_d3ccafd1dd2234043a9c37c12e8cb53c49e8b402a03451c43dad75e5510
     </script>
 ";
         
-        $__internal_2123d822deb8b2658bf5d3d3e3bc56a300a93f78f3ea2336d9fda0b0607267d1->leave($__internal_2123d822deb8b2658bf5d3d3e3bc56a300a93f78f3ea2336d9fda0b0607267d1_prof);
+        $__internal_8272aedb0d73a7784ab1ef5782b620cf664926728d4bda4e3e14abe256e24226->leave($__internal_8272aedb0d73a7784ab1ef5782b620cf664926728d4bda4e3e14abe256e24226_prof);
 
     }
 
@@ -367,7 +367,7 @@ class __TwigTemplate_d3ccafd1dd2234043a9c37c12e8cb53c49e8b402a03451c43dad75e5510
 /*                 <div class="col-md-12">*/
 /*                     <div class="alert alert-warning alert-dismissible" role="alert" id="bloqueMensaje" style="display: none;">*/
 /*                         {#                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>#}*/
-/*                         <span id="mensaje"><strong>No</strong> se ha encontrado un cliente con el dato ingresado.</span>*/
+/*                         <p id="mensaje"></p>*/
 /*                     </div>*/
 /*                 </div>*/
 /*             </div>*/
@@ -519,7 +519,7 @@ class __TwigTemplate_d3ccafd1dd2234043a9c37c12e8cb53c49e8b402a03451c43dad75e5510
 /*         function mensajeError(bloqueMsj, msj) {*/
 /*             bloqueMsj.removeClass('alert-warning');*/
 /*             bloqueMsj.addClass('alert-danger');*/
-/*             msj.html("<strong>Debe</strong> ingresar un dato para realizar la busqueda.");*/
+/*             msj.html("<span class='glyphicon glyphicon-remove-sign'></span> <strong>Debe</strong> ingresar un dato para realizar la busqueda.");*/
 /*             bloqueMsj.css('display', 'block');*/
 /*             asignarTiempo(bloqueMsj);*/
 /*         }*/
@@ -527,7 +527,7 @@ class __TwigTemplate_d3ccafd1dd2234043a9c37c12e8cb53c49e8b402a03451c43dad75e5510
 /*         function mensajeWarning(bloqueMsj, msj) {*/
 /*             bloqueMsj.removeClass('alert-danger');*/
 /*             bloqueMsj.addClass('alert-warning');*/
-/*             msj.html("<strong>No</strong> se ha encontrado un cliente con el dato ingresado.");*/
+/*             msj.html("<span class='glyphicon glyphicon-remove-sign'></span> <strong>No</strong> se ha encontrado un cliente con el dato ingresado.");*/
 /*             bloqueMsj.css('display', 'block');*/
 /*             asignarTiempo(bloqueMsj);*/
 /*         }*/

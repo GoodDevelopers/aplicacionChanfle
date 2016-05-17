@@ -21,20 +21,20 @@ class __TwigTemplate_235ae24404a27f0aebb1ed992ca96eee5cdbfcebe089f57cc136dcd2869
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_1365f9bb5d8a838cb7e100e4e757bb7a2874d0f6a794af889aadb3c6b400f8a1 = $this->env->getExtension("native_profiler");
-        $__internal_1365f9bb5d8a838cb7e100e4e757bb7a2874d0f6a794af889aadb3c6b400f8a1->enter($__internal_1365f9bb5d8a838cb7e100e4e757bb7a2874d0f6a794af889aadb3c6b400f8a1_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@Inventario/materiaprima/index.html.twig"));
+        $__internal_aafbeb2e1ac4de70ec456bb2f5ddc0802ab0a6d6f4d9d3d446655345ddd98023 = $this->env->getExtension("native_profiler");
+        $__internal_aafbeb2e1ac4de70ec456bb2f5ddc0802ab0a6d6f4d9d3d446655345ddd98023->enter($__internal_aafbeb2e1ac4de70ec456bb2f5ddc0802ab0a6d6f4d9d3d446655345ddd98023_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@Inventario/materiaprima/index.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_1365f9bb5d8a838cb7e100e4e757bb7a2874d0f6a794af889aadb3c6b400f8a1->leave($__internal_1365f9bb5d8a838cb7e100e4e757bb7a2874d0f6a794af889aadb3c6b400f8a1_prof);
+        $__internal_aafbeb2e1ac4de70ec456bb2f5ddc0802ab0a6d6f4d9d3d446655345ddd98023->leave($__internal_aafbeb2e1ac4de70ec456bb2f5ddc0802ab0a6d6f4d9d3d446655345ddd98023_prof);
 
     }
 
     // line 3
     public function block_body($context, array $blocks = array())
     {
-        $__internal_1a57b78950890a1850406267fc88d445730b632dbf3db836d583d4c6380e3353 = $this->env->getExtension("native_profiler");
-        $__internal_1a57b78950890a1850406267fc88d445730b632dbf3db836d583d4c6380e3353->enter($__internal_1a57b78950890a1850406267fc88d445730b632dbf3db836d583d4c6380e3353_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_612814cf9f69ebf0dbcf05cfb91c64edf8a218b150729d0a73a4f13fb4988c4d = $this->env->getExtension("native_profiler");
+        $__internal_612814cf9f69ebf0dbcf05cfb91c64edf8a218b150729d0a73a4f13fb4988c4d->enter($__internal_612814cf9f69ebf0dbcf05cfb91c64edf8a218b150729d0a73a4f13fb4988c4d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
         echo "    <h1>MateriaPrima list</h1>
@@ -121,7 +121,7 @@ class __TwigTemplate_235ae24404a27f0aebb1ed992ca96eee5cdbfcebe089f57cc136dcd2869
     </ul>
 ";
         
-        $__internal_1a57b78950890a1850406267fc88d445730b632dbf3db836d583d4c6380e3353->leave($__internal_1a57b78950890a1850406267fc88d445730b632dbf3db836d583d4c6380e3353_prof);
+        $__internal_612814cf9f69ebf0dbcf05cfb91c64edf8a218b150729d0a73a4f13fb4988c4d->leave($__internal_612814cf9f69ebf0dbcf05cfb91c64edf8a218b150729d0a73a4f13fb4988c4d_prof);
 
     }
 

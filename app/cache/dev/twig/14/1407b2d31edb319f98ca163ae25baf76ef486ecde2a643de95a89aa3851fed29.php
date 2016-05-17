@@ -15,14 +15,14 @@ class __TwigTemplate_4215fd57f8ae1d0b2e6f974047a7ee25cef950ffbe7f7c47fcef4be42d6
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_c68607c85560ba9749426d4483eb733baaf230edc515ae4d7b627efde7330ca4 = $this->env->getExtension("native_profiler");
-        $__internal_c68607c85560ba9749426d4483eb733baaf230edc515ae4d7b627efde7330ca4->enter($__internal_c68607c85560ba9749426d4483eb733baaf230edc515ae4d7b627efde7330ca4_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "CostosBundle:Default:index.html.twig"));
+        $__internal_c6a8de2ac848d936b99e1948ab9d865f96a60b7dbe9bb328259378485e1aeda4 = $this->env->getExtension("native_profiler");
+        $__internal_c6a8de2ac848d936b99e1948ab9d865f96a60b7dbe9bb328259378485e1aeda4->enter($__internal_c6a8de2ac848d936b99e1948ab9d865f96a60b7dbe9bb328259378485e1aeda4_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "CostosBundle:Default:index.html.twig"));
 
         // line 1
         echo "Hello Costos!
 ";
         
-        $__internal_c68607c85560ba9749426d4483eb733baaf230edc515ae4d7b627efde7330ca4->leave($__internal_c68607c85560ba9749426d4483eb733baaf230edc515ae4d7b627efde7330ca4_prof);
+        $__internal_c6a8de2ac848d936b99e1948ab9d865f96a60b7dbe9bb328259378485e1aeda4->leave($__internal_c6a8de2ac848d936b99e1948ab9d865f96a60b7dbe9bb328259378485e1aeda4_prof);
 
     }
 
