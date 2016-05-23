@@ -1,36 +1,55 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Producto</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="h1 marginTitulo text-center">Producto <span class="icon-productos"></span></h1>
+            </div>
+        </div>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ producto.id }}</td>
-            </tr>
-            <tr>
-                <th>Nombre</th>
-                <td>{{ producto.nombre }}</td>
-            </tr>
-            <tr>
-                <th>Precio</th>
-                <td>{{ producto.precio }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4">
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <th>Número:</th>
+                            <td>{{ num }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nombre:</th>
+                            <td>{{ producto.nombre }}</td>
+                        </tr>
+                        <tr>
+                            <th>Precio:</th>
+                            <td>{{ producto.precio }}</td>
+                        </tr>
+                        <tr>
+                            <th>Descripción:</th>
+                            <td>{{ producto.descripcion }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('producto_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('producto_edit', { 'id': producto.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4">
+                <ul class="text-center list-inline">
+                    <li>
+                        <a href="{{ path('producto_index') }}" class="btn btn-info">Lista <span class="glyphicon glyphicon-th-list"></span></a>
+                    </li>
+                    <li>
+                        <a href="{{ path('producto_edit', { 'id': producto.id }) }}" class="btn btn-warning" role="button">Editar <span class="glyphicon glyphicon-edit"></span></a>
+                    </li>
+                    <li>
+                        {{ form_start(delete_form) }}
+                        {#                        <input type="submit" value="Delete">#}
+                        <button type="submit" class="btn btn-danger">Eliminar <span class="glyphicon glyphicon-floppy-remove"></span></button>
+                            {{ form_end(delete_form) }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -21,20 +21,20 @@ class __TwigTemplate_b584b8a843525d3e9299251a42430ca187fd7b9b9b95cc2ddff4f624bef
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_b8de9fc7d14734b717a70295fdec2f98e5b124ae3d070986fee38676d37fcb80 = $this->env->getExtension("native_profiler");
-        $__internal_b8de9fc7d14734b717a70295fdec2f98e5b124ae3d070986fee38676d37fcb80->enter($__internal_b8de9fc7d14734b717a70295fdec2f98e5b124ae3d070986fee38676d37fcb80_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UsuariosBundle:cliente:edit.html.twig"));
+        $__internal_de2b5acbf3e4bb0c6949dd23a2d99362e207baa7a9e84b0dff4e503178b9d609 = $this->env->getExtension("native_profiler");
+        $__internal_de2b5acbf3e4bb0c6949dd23a2d99362e207baa7a9e84b0dff4e503178b9d609->enter($__internal_de2b5acbf3e4bb0c6949dd23a2d99362e207baa7a9e84b0dff4e503178b9d609_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UsuariosBundle:cliente:edit.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_b8de9fc7d14734b717a70295fdec2f98e5b124ae3d070986fee38676d37fcb80->leave($__internal_b8de9fc7d14734b717a70295fdec2f98e5b124ae3d070986fee38676d37fcb80_prof);
+        $__internal_de2b5acbf3e4bb0c6949dd23a2d99362e207baa7a9e84b0dff4e503178b9d609->leave($__internal_de2b5acbf3e4bb0c6949dd23a2d99362e207baa7a9e84b0dff4e503178b9d609_prof);
 
     }
 
     // line 3
     public function block_body($context, array $blocks = array())
     {
-        $__internal_d3267013e291c1884914716d3c94dd5bede3f141b3942ba1cfc5d261a047f73a = $this->env->getExtension("native_profiler");
-        $__internal_d3267013e291c1884914716d3c94dd5bede3f141b3942ba1cfc5d261a047f73a->enter($__internal_d3267013e291c1884914716d3c94dd5bede3f141b3942ba1cfc5d261a047f73a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_f6e7852f1dd9762fcee4df4a45acadbb7d395bb2e332da984eb346c2bd8b1d2f = $this->env->getExtension("native_profiler");
+        $__internal_f6e7852f1dd9762fcee4df4a45acadbb7d395bb2e332da984eb346c2bd8b1d2f->enter($__internal_f6e7852f1dd9762fcee4df4a45acadbb7d395bb2e332da984eb346c2bd8b1d2f_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
         echo "    <div class=\"container\">
@@ -59,47 +59,51 @@ class __TwigTemplate_b584b8a843525d3e9299251a42430ca187fd7b9b9b95cc2ddff4f624bef
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["edit_form"]) ? $context["edit_form"] : $this->getContext($context, "edit_form")), "nuip", array()), 'widget', array("attr" => array("class" => "form-control", "placeholder" => "Numero de cedula del cliente")));
         echo "
                 </div>
+                    <input name=\"idviejo\" id=\"idviejo\" type=\"hidden\" value=\"";
+        // line 17
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["cliente"]) ? $context["cliente"] : $this->getContext($context, "cliente")), "nuip", array()), "html", null, true);
+        echo "\">
 
                 <div class=\"form-group\">
                     ";
-        // line 19
+        // line 20
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["edit_form"]) ? $context["edit_form"] : $this->getContext($context, "edit_form")), "nombre", array()), 'label', array("label" => "Nombre y apellidos:"));
         echo "
                     ";
-        // line 20
+        // line 21
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["edit_form"]) ? $context["edit_form"] : $this->getContext($context, "edit_form")), "nombre", array()), 'widget', array("attr" => array("class" => "form-control", "placeholder" => "Nombre y apellidos completos del cliente")));
         echo "
                 </div>
 
                 <div class=\"form-group\">
                     ";
-        // line 24
+        // line 25
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["edit_form"]) ? $context["edit_form"] : $this->getContext($context, "edit_form")), "fechaDeNacimiento", array()), 'label', array("label" => "Fecha de nacimiento:"));
         echo "
                     ";
-        // line 25
+        // line 26
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["edit_form"]) ? $context["edit_form"] : $this->getContext($context, "edit_form")), "fechaDeNacimiento", array()), 'widget', array("attr" => array("class" => "form-control", "placeholder" => "dd/MM/yyyy")));
         echo "
                 </div>
 
                 <div class=\"form-group\">
                     ";
-        // line 29
+        // line 30
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["edit_form"]) ? $context["edit_form"] : $this->getContext($context, "edit_form")), "puntosAcumulados", array()), 'label', array("label" => "Puntos acumulados:"));
         echo "
                     ";
-        // line 30
+        // line 31
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["edit_form"]) ? $context["edit_form"] : $this->getContext($context, "edit_form")), "puntosAcumulados", array()), 'widget', array("attr" => array("class" => "form-control")));
         echo "
                 </div>
 
                 <div class=\"form-group\">
                     ";
-        // line 34
+        // line 35
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["edit_form"]) ? $context["edit_form"] : $this->getContext($context, "edit_form")), "email", array()), 'label', array("label" => "Email:"));
         echo "
                     ";
-        // line 35
+        // line 36
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["edit_form"]) ? $context["edit_form"] : $this->getContext($context, "edit_form")), "email", array()), 'widget', array("attr" => array("class" => "form-control", "placeholder" => "Correo personal")));
         echo "
                 </div>
@@ -108,10 +112,10 @@ class __TwigTemplate_b584b8a843525d3e9299251a42430ca187fd7b9b9b95cc2ddff4f624bef
                     <button type=\"submit\" class=\"btn btn-lg btn-warning\">Editar <span class=\"glyphicon glyphicon-edit\"></span></button>
                 </div>
                 ";
-        // line 42
+        // line 43
         echo "
                 ";
-        // line 43
+        // line 44
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["edit_form"]) ? $context["edit_form"] : $this->getContext($context, "edit_form")), 'form_end');
         echo "
                 
@@ -119,22 +123,9 @@ class __TwigTemplate_b584b8a843525d3e9299251a42430ca187fd7b9b9b95cc2ddff4f624bef
                     <ul class=\"list-inline text-center\">
                         <li>
                             <a href=\"";
-        // line 48
+        // line 49
         echo $this->env->getExtension('routing')->getPath("clientes_index");
         echo "\" class=\"btn btn-info\">Lista <span class=\"glyphicon glyphicon-th-list\"></span></a>
-                        </li>
-                        <li>
-                            ";
-        // line 51
-        echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["delete_form"]) ? $context["delete_form"] : $this->getContext($context, "delete_form")), 'form_start');
-        echo "
-                            ";
-        // line 53
-        echo "                            <button type=\"submit\" class=\"btn btn-danger\">Eliminar <span class=\"glyphicon glyphicon-floppy-remove\"></span></button>
-                                ";
-        // line 54
-        echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["delete_form"]) ? $context["delete_form"] : $this->getContext($context, "delete_form")), 'form_end');
-        echo "
                         </li>
                     </ul>
                 </div>
@@ -144,7 +135,7 @@ class __TwigTemplate_b584b8a843525d3e9299251a42430ca187fd7b9b9b95cc2ddff4f624bef
 
 ";
         
-        $__internal_d3267013e291c1884914716d3c94dd5bede3f141b3942ba1cfc5d261a047f73a->leave($__internal_d3267013e291c1884914716d3c94dd5bede3f141b3942ba1cfc5d261a047f73a_prof);
+        $__internal_f6e7852f1dd9762fcee4df4a45acadbb7d395bb2e332da984eb346c2bd8b1d2f->leave($__internal_f6e7852f1dd9762fcee4df4a45acadbb7d395bb2e332da984eb346c2bd8b1d2f_prof);
 
     }
 
@@ -160,7 +151,7 @@ class __TwigTemplate_b584b8a843525d3e9299251a42430ca187fd7b9b9b95cc2ddff4f624bef
 
     public function getDebugInfo()
     {
-        return array (  136 => 54,  133 => 53,  129 => 51,  123 => 48,  115 => 43,  112 => 42,  103 => 35,  99 => 34,  92 => 30,  88 => 29,  81 => 25,  77 => 24,  70 => 20,  66 => 19,  59 => 15,  55 => 14,  49 => 11,  40 => 4,  34 => 3,  11 => 1,);
+        return array (  127 => 49,  119 => 44,  116 => 43,  107 => 36,  103 => 35,  96 => 31,  92 => 30,  85 => 26,  81 => 25,  74 => 21,  70 => 20,  64 => 17,  59 => 15,  55 => 14,  49 => 11,  40 => 4,  34 => 3,  11 => 1,);
     }
 }
 /* {% extends 'base.html.twig' %}*/
@@ -179,6 +170,7 @@ class __TwigTemplate_b584b8a843525d3e9299251a42430ca187fd7b9b9b95cc2ddff4f624bef
 /*                     {{ form_label(edit_form.nuip, 'No. de identificacion:')}}*/
 /*                     {{ form_widget(edit_form.nuip, {'attr':{'class' : 'form-control', 'placeholder' : 'Numero de cedula del cliente'}})}}*/
 /*                 </div>*/
+/*                     <input name="idviejo" id="idviejo" type="hidden" value="{{ cliente.nuip }}">*/
 /* */
 /*                 <div class="form-group">*/
 /*                     {{ form_label(edit_form.nombre, 'Nombre y apellidos:')}}*/
@@ -211,12 +203,6 @@ class __TwigTemplate_b584b8a843525d3e9299251a42430ca187fd7b9b9b95cc2ddff4f624bef
 /*                     <ul class="list-inline text-center">*/
 /*                         <li>*/
 /*                             <a href="{{ path('clientes_index') }}" class="btn btn-info">Lista <span class="glyphicon glyphicon-th-list"></span></a>*/
-/*                         </li>*/
-/*                         <li>*/
-/*                             {{ form_start(delete_form) }}*/
-/*                             {#                    <input type="submit" value="Delete">#}*/
-/*                             <button type="submit" class="btn btn-danger">Eliminar <span class="glyphicon glyphicon-floppy-remove"></span></button>*/
-/*                                 {{ form_end(delete_form) }}*/
 /*                         </li>*/
 /*                     </ul>*/
 /*                 </div>*/

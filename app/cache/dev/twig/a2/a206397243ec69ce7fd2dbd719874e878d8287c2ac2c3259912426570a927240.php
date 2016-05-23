@@ -22,20 +22,20 @@ class __TwigTemplate_1ced110c6bd9c68ec109cc8fea002479a3b4bb1f5910dc2621628d5e47d
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_98f63cf870ca47d976d3e1abe1cd37b515c02469923b09d051064a01b4c1edd8 = $this->env->getExtension("native_profiler");
-        $__internal_98f63cf870ca47d976d3e1abe1cd37b515c02469923b09d051064a01b4c1edd8->enter($__internal_98f63cf870ca47d976d3e1abe1cd37b515c02469923b09d051064a01b4c1edd8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "InventarioBundle:ingresomateriaprima:index.html.twig"));
+        $__internal_20e5ec37b3665d57dc2120e1edd810e438751e0ea1fd7d0c1c9583d1bacd79f2 = $this->env->getExtension("native_profiler");
+        $__internal_20e5ec37b3665d57dc2120e1edd810e438751e0ea1fd7d0c1c9583d1bacd79f2->enter($__internal_20e5ec37b3665d57dc2120e1edd810e438751e0ea1fd7d0c1c9583d1bacd79f2_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "InventarioBundle:ingresomateriaprima:index.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_98f63cf870ca47d976d3e1abe1cd37b515c02469923b09d051064a01b4c1edd8->leave($__internal_98f63cf870ca47d976d3e1abe1cd37b515c02469923b09d051064a01b4c1edd8_prof);
+        $__internal_20e5ec37b3665d57dc2120e1edd810e438751e0ea1fd7d0c1c9583d1bacd79f2->leave($__internal_20e5ec37b3665d57dc2120e1edd810e438751e0ea1fd7d0c1c9583d1bacd79f2_prof);
 
     }
 
     // line 3
     public function block_stylesheets($context, array $blocks = array())
     {
-        $__internal_3ce79ab5cba96a3ff5edc801380ca1eb6faa37c86af4078389ffff39f467212c = $this->env->getExtension("native_profiler");
-        $__internal_3ce79ab5cba96a3ff5edc801380ca1eb6faa37c86af4078389ffff39f467212c->enter($__internal_3ce79ab5cba96a3ff5edc801380ca1eb6faa37c86af4078389ffff39f467212c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheets"));
+        $__internal_4969f39a8f38323d9ca849563e8d8508333992a13ec14e6ca35aaa7cbc280f5e = $this->env->getExtension("native_profiler");
+        $__internal_4969f39a8f38323d9ca849563e8d8508333992a13ec14e6ca35aaa7cbc280f5e->enter($__internal_4969f39a8f38323d9ca849563e8d8508333992a13ec14e6ca35aaa7cbc280f5e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheets"));
 
         // line 4
         echo "    ";
@@ -47,21 +47,21 @@ class __TwigTemplate_1ced110c6bd9c68ec109cc8fea002479a3b4bb1f5910dc2621628d5e47d
         echo "\">
 ";
         
-        $__internal_3ce79ab5cba96a3ff5edc801380ca1eb6faa37c86af4078389ffff39f467212c->leave($__internal_3ce79ab5cba96a3ff5edc801380ca1eb6faa37c86af4078389ffff39f467212c_prof);
+        $__internal_4969f39a8f38323d9ca849563e8d8508333992a13ec14e6ca35aaa7cbc280f5e->leave($__internal_4969f39a8f38323d9ca849563e8d8508333992a13ec14e6ca35aaa7cbc280f5e_prof);
 
     }
 
     // line 8
     public function block_body($context, array $blocks = array())
     {
-        $__internal_3996c40cfb8147fd153224a46cd7b79f95c9fde71d094b0244ebb0edfd12562c = $this->env->getExtension("native_profiler");
-        $__internal_3996c40cfb8147fd153224a46cd7b79f95c9fde71d094b0244ebb0edfd12562c->enter($__internal_3996c40cfb8147fd153224a46cd7b79f95c9fde71d094b0244ebb0edfd12562c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_8e357db29b509ca9b2adc346ece052ba6bac8393bf040ab8474d747287fa1857 = $this->env->getExtension("native_profiler");
+        $__internal_8e357db29b509ca9b2adc346ece052ba6bac8393bf040ab8474d747287fa1857->enter($__internal_8e357db29b509ca9b2adc346ece052ba6bac8393bf040ab8474d747287fa1857_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 9
         echo "    <div class=\"container\">
         <div class=\"row\">
             <div class=\"col-md-12\">
-                <h1 class=\"h1 text-center marginTitulo\">Ingresos Materia Prima <span class=\"icon-listaIngresosMateria\"></span></h1>
+                <h1 class=\"h1 text-center marginTitulo\">Ingresos Materia Prima <span class=\"icon-ingresoMateria\"></span></h1>
             </div>
         </div>
 
@@ -177,7 +177,7 @@ class __TwigTemplate_1ced110c6bd9c68ec109cc8fea002479a3b4bb1f5910dc2621628d5e47d
     </div>
 ";
         
-        $__internal_3996c40cfb8147fd153224a46cd7b79f95c9fde71d094b0244ebb0edfd12562c->leave($__internal_3996c40cfb8147fd153224a46cd7b79f95c9fde71d094b0244ebb0edfd12562c_prof);
+        $__internal_8e357db29b509ca9b2adc346ece052ba6bac8393bf040ab8474d747287fa1857->leave($__internal_8e357db29b509ca9b2adc346ece052ba6bac8393bf040ab8474d747287fa1857_prof);
 
     }
 
@@ -207,7 +207,7 @@ class __TwigTemplate_1ced110c6bd9c68ec109cc8fea002479a3b4bb1f5910dc2621628d5e47d
 /*     <div class="container">*/
 /*         <div class="row">*/
 /*             <div class="col-md-12">*/
-/*                 <h1 class="h1 text-center marginTitulo">Ingresos Materia Prima <span class="icon-listaIngresosMateria"></span></h1>*/
+/*                 <h1 class="h1 text-center marginTitulo">Ingresos Materia Prima <span class="icon-ingresoMateria"></span></h1>*/
 /*             </div>*/
 /*         </div>*/
 /* */

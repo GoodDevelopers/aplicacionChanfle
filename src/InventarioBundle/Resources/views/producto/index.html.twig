@@ -1,41 +1,77 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Producto list</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="h1 marginTitulo text-center">Productos <span class="icon-productos"></span></h1>
+            </div>
+        </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nombre</th>
-                <th>Precio</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for producto in productos %}
-            <tr>
-                <td><a href="{{ path('producto_show', { 'id': producto.id }) }}">{{ producto.id }}</a></td>
-                <td>{{ producto.nombre }}</td>
-                <td>{{ producto.precio }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('producto_show', { 'id': producto.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('producto_edit', { 'id': producto.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <div class="row">
+            <div class="col-md-3">
+                <ul style="list-style-type: none; padding: 0px;">
+                    <li>
+                        <a href="{{ path('producto_new') }}" class="btn btn-lg btn-success">Registrar Producto <span class="glyphicon glyphicon-floppy-saved"></span></a>
+                    </li>
+                </ul>
+            </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('producto_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+            <div class="col-md-9">
+                <form action="" method="GET" class="form-inline">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">Producto</div>
+                            <input type="text" class="form-control" placeholder="Nombre del producto" id="nomMateria">
+                        </div>
+                        <button type="button" id="btnBuscar" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Buscar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="margenTopTablas">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-condensed text-center">
+                            <thead>
+                                <tr class="active info">
+                                    <th>NO.</th>
+                                    <th>NOMBRE</th>
+                                    <th>DESCRIPCION</th>
+                                    <th>PRECIO</th>
+                                    <th>ACCIONES</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cuerpoTabla">
+                                {% set num = 0 %}
+                                {% for producto in productos %}
+                                    {% set num = num + 1 %}
+                                    <tr>
+{#                                        <td><a href="{{ path('producto_show', { 'id': producto.id }) }}">{{ producto.id }}</a></td>#}
+                                        <td><a href="{{ path('producto_show', { 'id': producto.id , 'num': num}) }}">{{ num }}</a></td>
+                                        <td>{{ producto.nombre }}</td>
+                                        <td>{{ producto.DESCRIPCION }}</td>
+                                        <td>{{ producto.precio }}</td>
+                                        <td>
+                                            <ul class="list-inline text-center">
+                                                <li>
+                                                    <a href="{{ path('producto_edit', { 'id': producto.id }) }}" class="btn btn-warning" role="button">Editar <span class="glyphicon glyphicon-edit"></span></a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ path('producto_show', { 'id': producto.id }) }}" class="btn btn-danger" role="button">Eliminar <span class="glyphicon glyphicon-floppy-remove"></span></a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 {% endblock %}

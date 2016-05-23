@@ -21,78 +21,101 @@ class __TwigTemplate_7b24b87807eb80e2b91ca5ead26ece45f7c39e0c0ffb2992ee942575e20
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_981df9100dfd6e209a7085f20ff19ede0bca84803990d1769d66b0c8425accd4 = $this->env->getExtension("native_profiler");
-        $__internal_981df9100dfd6e209a7085f20ff19ede0bca84803990d1769d66b0c8425accd4->enter($__internal_981df9100dfd6e209a7085f20ff19ede0bca84803990d1769d66b0c8425accd4_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@Inventario/producto/show.html.twig"));
+        $__internal_25778d8ac41fabb9b511bd691eb6c08ad298023b84a20e994d5522b05ac0c2e2 = $this->env->getExtension("native_profiler");
+        $__internal_25778d8ac41fabb9b511bd691eb6c08ad298023b84a20e994d5522b05ac0c2e2->enter($__internal_25778d8ac41fabb9b511bd691eb6c08ad298023b84a20e994d5522b05ac0c2e2_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@Inventario/producto/show.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_981df9100dfd6e209a7085f20ff19ede0bca84803990d1769d66b0c8425accd4->leave($__internal_981df9100dfd6e209a7085f20ff19ede0bca84803990d1769d66b0c8425accd4_prof);
+        $__internal_25778d8ac41fabb9b511bd691eb6c08ad298023b84a20e994d5522b05ac0c2e2->leave($__internal_25778d8ac41fabb9b511bd691eb6c08ad298023b84a20e994d5522b05ac0c2e2_prof);
 
     }
 
     // line 3
     public function block_body($context, array $blocks = array())
     {
-        $__internal_98320faac4fdf19f82b6bb400775912c3ed5f286a6c3a0a51290774ead1e97e9 = $this->env->getExtension("native_profiler");
-        $__internal_98320faac4fdf19f82b6bb400775912c3ed5f286a6c3a0a51290774ead1e97e9->enter($__internal_98320faac4fdf19f82b6bb400775912c3ed5f286a6c3a0a51290774ead1e97e9_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_f0a80010fb404c5ab1a54964b36c340f9cc40a30634605b1ac484784aadc419e = $this->env->getExtension("native_profiler");
+        $__internal_f0a80010fb404c5ab1a54964b36c340f9cc40a30634605b1ac484784aadc419e->enter($__internal_f0a80010fb404c5ab1a54964b36c340f9cc40a30634605b1ac484784aadc419e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
-        echo "    <h1>Producto</h1>
+        echo "    <div class=\"container\">
+        <div class=\"row\">
+            <div class=\"col-md-12\">
+                <h1 class=\"h1 marginTitulo text-center\">Producto <span class=\"icon-productos\"></span></h1>
+            </div>
+        </div>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>";
-        // line 10
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["producto"]) ? $context["producto"] : $this->getContext($context, "producto")), "id", array()), "html", null, true);
+        <div class=\"row\">
+            <div class=\"col-lg-4 col-lg-offset-4\">
+                <table class=\"table table-hover\">
+                    <tbody>
+                        <tr>
+                            <th>Número:</th>
+                            <td>";
+        // line 17
+        echo twig_escape_filter($this->env, (isset($context["num"]) ? $context["num"] : $this->getContext($context, "num")), "html", null, true);
         echo "</td>
-            </tr>
-            <tr>
-                <th>Nombre</th>
-                <td>";
-        // line 14
+                        </tr>
+                        <tr>
+                            <th>Nombre:</th>
+                            <td>";
+        // line 21
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["producto"]) ? $context["producto"] : $this->getContext($context, "producto")), "nombre", array()), "html", null, true);
         echo "</td>
-            </tr>
-            <tr>
-                <th>Precio</th>
-                <td>";
-        // line 18
+                        </tr>
+                        <tr>
+                            <th>Precio:</th>
+                            <td>";
+        // line 25
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["producto"]) ? $context["producto"] : $this->getContext($context, "producto")), "precio", array()), "html", null, true);
         echo "</td>
-            </tr>
-        </tbody>
-    </table>
+                        </tr>
+                        <tr>
+                            <th>Descripción:</th>
+                            <td>";
+        // line 29
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["producto"]) ? $context["producto"] : $this->getContext($context, "producto")), "descripcion", array()), "html", null, true);
+        echo "</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-    <ul>
-        <li>
-            <a href=\"";
-        // line 25
+        <div class=\"row\">
+            <div class=\"col-lg-4 col-lg-offset-4\">
+                <ul class=\"text-center list-inline\">
+                    <li>
+                        <a href=\"";
+        // line 40
         echo $this->env->getExtension('routing')->getPath("producto_index");
-        echo "\">Back to the list</a>
-        </li>
-        <li>
-            <a href=\"";
-        // line 28
+        echo "\" class=\"btn btn-info\">Lista <span class=\"glyphicon glyphicon-th-list\"></span></a>
+                    </li>
+                    <li>
+                        <a href=\"";
+        // line 43
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("producto_edit", array("id" => $this->getAttribute((isset($context["producto"]) ? $context["producto"] : $this->getContext($context, "producto")), "id", array()))), "html", null, true);
-        echo "\">Edit</a>
-        </li>
-        <li>
-            ";
-        // line 31
+        echo "\" class=\"btn btn-warning\" role=\"button\">Editar <span class=\"glyphicon glyphicon-edit\"></span></a>
+                    </li>
+                    <li>
+                        ";
+        // line 46
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["delete_form"]) ? $context["delete_form"] : $this->getContext($context, "delete_form")), 'form_start');
         echo "
-                <input type=\"submit\" value=\"Delete\">
-            ";
-        // line 33
+                        ";
+        // line 48
+        echo "                        <button type=\"submit\" class=\"btn btn-danger\">Eliminar <span class=\"glyphicon glyphicon-floppy-remove\"></span></button>
+                            ";
+        // line 49
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["delete_form"]) ? $context["delete_form"] : $this->getContext($context, "delete_form")), 'form_end');
         echo "
-        </li>
-    </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 ";
         
-        $__internal_98320faac4fdf19f82b6bb400775912c3ed5f286a6c3a0a51290774ead1e97e9->leave($__internal_98320faac4fdf19f82b6bb400775912c3ed5f286a6c3a0a51290774ead1e97e9_prof);
+        $__internal_f0a80010fb404c5ab1a54964b36c340f9cc40a30634605b1ac484784aadc419e->leave($__internal_f0a80010fb404c5ab1a54964b36c340f9cc40a30634605b1ac484784aadc419e_prof);
 
     }
 
@@ -108,43 +131,62 @@ class __TwigTemplate_7b24b87807eb80e2b91ca5ead26ece45f7c39e0c0ffb2992ee942575e20
 
     public function getDebugInfo()
     {
-        return array (  89 => 33,  84 => 31,  78 => 28,  72 => 25,  62 => 18,  55 => 14,  48 => 10,  40 => 4,  34 => 3,  11 => 1,);
+        return array (  109 => 49,  106 => 48,  102 => 46,  96 => 43,  90 => 40,  76 => 29,  69 => 25,  62 => 21,  55 => 17,  40 => 4,  34 => 3,  11 => 1,);
     }
 }
 /* {% extends 'base.html.twig' %}*/
 /* */
 /* {% block body %}*/
-/*     <h1>Producto</h1>*/
+/*     <div class="container">*/
+/*         <div class="row">*/
+/*             <div class="col-md-12">*/
+/*                 <h1 class="h1 marginTitulo text-center">Producto <span class="icon-productos"></span></h1>*/
+/*             </div>*/
+/*         </div>*/
 /* */
-/*     <table>*/
-/*         <tbody>*/
-/*             <tr>*/
-/*                 <th>Id</th>*/
-/*                 <td>{{ producto.id }}</td>*/
-/*             </tr>*/
-/*             <tr>*/
-/*                 <th>Nombre</th>*/
-/*                 <td>{{ producto.nombre }}</td>*/
-/*             </tr>*/
-/*             <tr>*/
-/*                 <th>Precio</th>*/
-/*                 <td>{{ producto.precio }}</td>*/
-/*             </tr>*/
-/*         </tbody>*/
-/*     </table>*/
+/*         <div class="row">*/
+/*             <div class="col-lg-4 col-lg-offset-4">*/
+/*                 <table class="table table-hover">*/
+/*                     <tbody>*/
+/*                         <tr>*/
+/*                             <th>Número:</th>*/
+/*                             <td>{{ num }}</td>*/
+/*                         </tr>*/
+/*                         <tr>*/
+/*                             <th>Nombre:</th>*/
+/*                             <td>{{ producto.nombre }}</td>*/
+/*                         </tr>*/
+/*                         <tr>*/
+/*                             <th>Precio:</th>*/
+/*                             <td>{{ producto.precio }}</td>*/
+/*                         </tr>*/
+/*                         <tr>*/
+/*                             <th>Descripción:</th>*/
+/*                             <td>{{ producto.descripcion }}</td>*/
+/*                         </tr>*/
+/*                     </tbody>*/
+/*                 </table>*/
+/*             </div>*/
+/*         </div>*/
 /* */
-/*     <ul>*/
-/*         <li>*/
-/*             <a href="{{ path('producto_index') }}">Back to the list</a>*/
-/*         </li>*/
-/*         <li>*/
-/*             <a href="{{ path('producto_edit', { 'id': producto.id }) }}">Edit</a>*/
-/*         </li>*/
-/*         <li>*/
-/*             {{ form_start(delete_form) }}*/
-/*                 <input type="submit" value="Delete">*/
-/*             {{ form_end(delete_form) }}*/
-/*         </li>*/
-/*     </ul>*/
+/*         <div class="row">*/
+/*             <div class="col-lg-4 col-lg-offset-4">*/
+/*                 <ul class="text-center list-inline">*/
+/*                     <li>*/
+/*                         <a href="{{ path('producto_index') }}" class="btn btn-info">Lista <span class="glyphicon glyphicon-th-list"></span></a>*/
+/*                     </li>*/
+/*                     <li>*/
+/*                         <a href="{{ path('producto_edit', { 'id': producto.id }) }}" class="btn btn-warning" role="button">Editar <span class="glyphicon glyphicon-edit"></span></a>*/
+/*                     </li>*/
+/*                     <li>*/
+/*                         {{ form_start(delete_form) }}*/
+/*                         {#                        <input type="submit" value="Delete">#}*/
+/*                         <button type="submit" class="btn btn-danger">Eliminar <span class="glyphicon glyphicon-floppy-remove"></span></button>*/
+/*                             {{ form_end(delete_form) }}*/
+/*                     </li>*/
+/*                 </ul>*/
+/*             </div>*/
+/*         </div>*/
+/*     </div>*/
 /* {% endblock %}*/
 /* */

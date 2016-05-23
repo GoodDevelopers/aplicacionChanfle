@@ -21,20 +21,20 @@ class __TwigTemplate_29fb0dbc29b683a3e6af7e7782fa5ed5fac0c6c2d7c649b06f6f6f20083
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_3e1af8bce89c22812e1f07bd5833500cd97b628eec50c44a609cc6e215684875 = $this->env->getExtension("native_profiler");
-        $__internal_3e1af8bce89c22812e1f07bd5833500cd97b628eec50c44a609cc6e215684875->enter($__internal_3e1af8bce89c22812e1f07bd5833500cd97b628eec50c44a609cc6e215684875_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "InventarioBundle:tipoproducto:new.html.twig"));
+        $__internal_bcd62aa9da8bbe039154e571795b24c3a57f20b44f4d6ececadb438999dc3af3 = $this->env->getExtension("native_profiler");
+        $__internal_bcd62aa9da8bbe039154e571795b24c3a57f20b44f4d6ececadb438999dc3af3->enter($__internal_bcd62aa9da8bbe039154e571795b24c3a57f20b44f4d6ececadb438999dc3af3_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "InventarioBundle:tipoproducto:new.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_3e1af8bce89c22812e1f07bd5833500cd97b628eec50c44a609cc6e215684875->leave($__internal_3e1af8bce89c22812e1f07bd5833500cd97b628eec50c44a609cc6e215684875_prof);
+        $__internal_bcd62aa9da8bbe039154e571795b24c3a57f20b44f4d6ececadb438999dc3af3->leave($__internal_bcd62aa9da8bbe039154e571795b24c3a57f20b44f4d6ececadb438999dc3af3_prof);
 
     }
 
     // line 3
     public function block_body($context, array $blocks = array())
     {
-        $__internal_7f3a4438432491b2187f62b8ae416f06e2b17647af15a6d8e77b58173f05f544 = $this->env->getExtension("native_profiler");
-        $__internal_7f3a4438432491b2187f62b8ae416f06e2b17647af15a6d8e77b58173f05f544->enter($__internal_7f3a4438432491b2187f62b8ae416f06e2b17647af15a6d8e77b58173f05f544_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_93144e75c804611c0f9faf3a33ce7636fe7638e94045d70429018881f2cd499b = $this->env->getExtension("native_profiler");
+        $__internal_93144e75c804611c0f9faf3a33ce7636fe7638e94045d70429018881f2cd499b->enter($__internal_93144e75c804611c0f9faf3a33ce7636fe7638e94045d70429018881f2cd499b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
         echo "    <h1>TipoProducto creation</h1>
@@ -63,7 +63,7 @@ class __TwigTemplate_29fb0dbc29b683a3e6af7e7782fa5ed5fac0c6c2d7c649b06f6f6f20083
     </ul>
 ";
         
-        $__internal_7f3a4438432491b2187f62b8ae416f06e2b17647af15a6d8e77b58173f05f544->leave($__internal_7f3a4438432491b2187f62b8ae416f06e2b17647af15a6d8e77b58173f05f544_prof);
+        $__internal_93144e75c804611c0f9faf3a33ce7636fe7638e94045d70429018881f2cd499b->leave($__internal_93144e75c804611c0f9faf3a33ce7636fe7638e94045d70429018881f2cd499b_prof);
 
     }
 

@@ -69,7 +69,7 @@ class ClienteController extends Controller {
 
             $em->flush();
 
-            return $this->redirectToRoute('clientes_show', array('id' => $cliente->getId()));
+            return $this->redirectToRoute('clientes_index');
         }
 
         return array(
@@ -89,11 +89,15 @@ class ClienteController extends Controller {
     public function showAction(Cliente $cliente, Request $request) {
         $session = $request->getSession();
 
+        //para obtener el numero de la lista
+        $num = $_GET['num'];
+
         $deleteForm = $this->createDeleteForm($cliente);
 
         return array(
             'usuario' => $session->get('user'),
             'cliente' => $cliente,
+            'num' => $num,
             'delete_form' => $deleteForm->createView(),
         );
     }
@@ -108,12 +112,25 @@ class ClienteController extends Controller {
     public function editAction(Request $request, Cliente $cliente) {
         $session = $request->getSession();
 
-        $deleteForm = $this->createDeleteForm($cliente);
         $editForm = $this->createForm('UsuariosBundle\Form\ClienteType', $cliente);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            //Este es username del cliente antes de ser editado
+            $idViejo = $_POST['idviejo'];
+
+            $fosUserManager = $this->container->get('fos_user.user_manager');
+            //Obtenemos el usuario ya existente para modificarlo
+            $user = $fosUserManager->findUserByUsername($idViejo);
+
+            $user->setUsername($cliente->getNuip());
+            $user->setPlainPassword($cliente->getNuip());
+            $user->setEmail($cliente->getEmail());
+            $user->setEmailCanonical($cliente->getEmail());
+
+            $fosUserManager->updateUser($user);
             $em->persist($cliente);
             $em->flush();
 
@@ -124,7 +141,6 @@ class ClienteController extends Controller {
             'usuario' => $session->get('user'),
             'cliente' => $cliente,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
         );
     }
 

@@ -14,6 +14,7 @@
                     {{ form_label(edit_form.nuip, 'No. de identificacion:')}}
                     {{ form_widget(edit_form.nuip, {'attr':{'class' : 'form-control', 'placeholder' : 'Numero de cedula del cliente'}})}}
                 </div>
+                    <input name="idviejo" id="idviejo" type="hidden" value="{{ cliente.nuip }}">
 
                 <div class="form-group">
                     {{ form_label(edit_form.nombre, 'Nombre y apellidos:')}}
@@ -46,12 +47,6 @@
                     <ul class="list-inline text-center">
                         <li>
                             <a href="{{ path('clientes_index') }}" class="btn btn-info">Lista <span class="glyphicon glyphicon-th-list"></span></a>
-                        </li>
-                        <li>
-                            {{ form_start(delete_form) }}
-                            {#                    <input type="submit" value="Delete">#}
-                            <button type="submit" class="btn btn-danger">Eliminar <span class="glyphicon glyphicon-floppy-remove"></span></button>
-                                {{ form_end(delete_form) }}
                         </li>
                     </ul>
                 </div>

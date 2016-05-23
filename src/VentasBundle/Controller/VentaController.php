@@ -17,7 +17,7 @@ use UsuariosBundle\Entity\Cliente;
 /**
  * Venta controller.
  *
- * @Route("/venta")
+ * @Route("/ventas")
  */
 class VentaController extends Controller
 {

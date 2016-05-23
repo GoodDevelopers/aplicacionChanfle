@@ -47,7 +47,7 @@
                         <table class="table table-bordered table-hover table-condensed text-center">
                             <thead>
                                 <tr class="active info">
-                                    <th>ID</th>
+                                    <th>NO.</th>
                                     <th>NUIP</th>
                                     <th>NOMBRE</th>
                                     <th>FECHA DE NACIMIENTO</th>
@@ -57,10 +57,12 @@
                                 </tr>
                             </thead>
                             <tbody id="cuerpoTabla">
+                                {% set num = 0 %}
                                 {% for cliente in clientes %}
+                                    {% set num = num + 1 %}
                                     <tr>
                                         <td>
-                                            <a href="{{ path('clientes_show', { 'id': cliente.id }) }}">{{ cliente.id }}</a>
+                                            <a href="{{ path('clientes_show', { 'id': cliente.id, 'num': num }) }}">{{ num }}</a>
                                         </td>
                                         <td>{{ cliente.nuip }}</td>
                                         <td>{{ cliente.nombre }}</td>

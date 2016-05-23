@@ -1,21 +1,166 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .form-group{
+            margin-right: 15px;
+        }
+        .form-inline{
+            margin-bottom: 20px;
+        }
+        textarea {
+            resize: none;
+        }
+    </style>
+{% endblock %}
+
 {% block body %}
-    <h1>Producto edit</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="h1 marginTitulo text-center">Editar Producto <span class="icon-productos"></span></h1>
+            </div>
+        </div>
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+        {{ form_start(edit_form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('producto_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                {#                {{ form_widget(form) }}#}
+                <div class="row">
+                    <div class="form-inline text-center">
+                        <div class="form-group">
+                            {{ form_label(edit_form.nombre) }}
+                            {{ form_widget(edit_form.nombre, {'attr':{'class' : 'form-control'}}) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(edit_form.precio) }}
+                            {{ form_widget(edit_form.precio, {'attr':{'class' : 'form-control'}}) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(edit_form.tipoProducto) }}
+                            {{ form_widget(edit_form.tipoProducto, {'attr':{'class' : 'form-control'}}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-inline text-center">
+                        <div class="form-group">
+                            {{ form_label(edit_form.descripcion) }}
+                            {{ form_widget(edit_form.descripcion, {'attr':{'class' : 'form-control', 'rows' : '2', 'cols' : '103', 'placeholder' : 'Ingrese la descripcion del producto, la cual sera mostrada en la pagina web' }}) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="col-md-3">
+                    <button type="button" role="button" class="btn btn-primary" onclick="agregarItemMateria()">Agregar Materia Prima <span class="glyphicon glyphicon-plus-sign"></span></button>
+                        {#                <button type="button" role="button" class="btn btn-danger">Quitar <span class="glyphicon glyphicon-minus-sign"></span></button>#}
+                </div>
+                <div class="col-md-9">
+                    <div class="text-right">
+                        {#                <input type="submit" value="Registrar" />#}
+                        <ul class="list-inline text-center" style="display: inline-block">
+                            <li>
+                                <button type="submit" class="btn btn-lg btn-warning">Editar <span class="glyphicon glyphicon-edit"></span></button>
+                            </li>
+                            <li>
+                                <a href="{{ path('producto_index') }}" class="btn btn-info">Lista <span class="glyphicon glyphicon-th-list"></span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {#        {{ form_widget(edit_form) }}#}
+
+        <div class="row" style="margin-top: 20px;">
+            <div class="col-md-12">
+                <div class="row" id="itemsMaterias">
+                    {% set num = 0 %}
+                    {% for detalle in producto.detallesProducto %}
+                        {% set num = num + 1 %}
+                        <div class="form-inline text-center" id="{{ num }}">
+                            <div class="form-group">
+                                <label for="choiceMateria{{ num }}">Materia Prima:</label>
+                                <select id="choiceMateria{{ num }}" name="choiceMateria{{ num }}" required="required" class="form-control">
+                                    <option value="">Seleccione una opcion</option>
+                                    {% for materia in materias %}
+                                        {% if detalle.materiaPrima.id == materia.id %}
+                                            <option value="{{ materia.id }}" selected="selected">{{ materia.nombre }}</option>
+                                        {% else %}
+                                            <option value="{{ materia.id }}">{{ materia.nombre }}</option>
+                                        {% endif %}
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="cantidad{{ num }}">Cantidad:</label>
+                                <input type="number" id="cantidad{{ num }}" name="cantidad{{ num }}" class="form-control" required="required" value="{{ detalle.cantidadNecesaria }}">
+                            </div>
+                            <div class="form-group">
+                                <button type="button" role="button" class="btn btn-danger" id="quitar{{ num }}" name="quitar{{ num }}" onclick="quitar(this.id);">Quitar <span class="glyphicon glyphicon-minus-sign"></span></button>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <input type="hidden" id="cantMaterias" name="cantMaterias" value="{{ producto.detallesProducto|length }}">
+        </div>
+
+        {{ form_end(edit_form) }}
+
+
+
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+
+        $(document).on('ready', inicio());
+
+        function inicio() {
+        }
+
+        function agregarItemMateria() {
+            var items = $('#itemsMaterias');
+            var campoOculto = $('#cantMaterias');
+            var cant = (parseInt(campoOculto.val()) + 1);
+            var nuevoItem =
+                    "<div class='form-inline text-center' id='" + cant + "'>" +
+                    "<div class='form-group'>" +
+                    "<label for='choiceMateria" + cant + "'>Materia Prima:&nbsp;</label>" +
+                    "<select id='choiceMateria" + cant + "' name='choiceMateria" + cant + "' required='required' class='form-control'>" +
+                    "<option value='' selected='selected'>Seleccione una opcion</option>";
+            {% for materia in materias %} nuevoItem += "<option value='{{ materia.id }}'>{{ materia.nombre }}</option>";{% endfor %}
+            nuevoItem +=
+                    "</select>" +
+                    "</div>" +
+                    "<div class='form-group'>" +
+                    "<label for='cantidad" + cant + "'>&nbsp;Cantidad:&nbsp;</label>" +
+                    "<input type='number' id='cantidad" + cant + "' name='cantidad" + cant + "' class='form-control' required='required'>" +
+                    "</div>" +
+                    "<div class='form-group'>" +
+                    "<span>&nbsp;</span>" +
+                    "<button type='button' role='button' class='btn btn-danger' id='quitar" + cant + "' name='quitar" + cant + "' onclick='quitar(this.id);'>Quitar <span class='glyphicon glyphicon-minus-sign'></span></button>" +
+                    "<span>&nbsp;</span>" +
+                    "</div>" +
+                    "</div>";
+            items.append(nuevoItem);
+            campoOculto.val(cant);
+        }
+
+        function quitar(idQuitar) {
+            var id = "" + idQuitar;
+            id = id.substr(6, id.length);
+            $('#' + id).remove();
+        }
+
+    </script>
 {% endblock %}

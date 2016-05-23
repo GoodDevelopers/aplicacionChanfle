@@ -15,14 +15,14 @@ class __TwigTemplate_f65a4a774a9b002f4a02171ef4236f5c4884b96c76311341ead6da3f05d
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_519a175450e3492c88da9b0b3f50301b0badd5ac1d57064b3a50216663f8e128 = $this->env->getExtension("native_profiler");
-        $__internal_519a175450e3492c88da9b0b3f50301b0badd5ac1d57064b3a50216663f8e128->enter($__internal_519a175450e3492c88da9b0b3f50301b0badd5ac1d57064b3a50216663f8e128_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@Inventario/Default/index.html.twig"));
+        $__internal_d21fe3e217b61fe10d627399b68eb46d5c910e2b606a4f89995137b2177a88c3 = $this->env->getExtension("native_profiler");
+        $__internal_d21fe3e217b61fe10d627399b68eb46d5c910e2b606a4f89995137b2177a88c3->enter($__internal_d21fe3e217b61fe10d627399b68eb46d5c910e2b606a4f89995137b2177a88c3_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@Inventario/Default/index.html.twig"));
 
         // line 1
         echo "Hello Inventario!
 ";
         
-        $__internal_519a175450e3492c88da9b0b3f50301b0badd5ac1d57064b3a50216663f8e128->leave($__internal_519a175450e3492c88da9b0b3f50301b0badd5ac1d57064b3a50216663f8e128_prof);
+        $__internal_d21fe3e217b61fe10d627399b68eb46d5c910e2b606a4f89995137b2177a88c3->leave($__internal_d21fe3e217b61fe10d627399b68eb46d5c910e2b606a4f89995137b2177a88c3_prof);
 
     }
 

@@ -508,9 +508,9 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        if (0 === strpos($pathinfo, '/producto')) {
+        if (0 === strpos($pathinfo, '/productos')) {
             // producto_index
-            if (rtrim($pathinfo, '/') === '/producto') {
+            if (rtrim($pathinfo, '/') === '/productos') {
                 if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
                     $allow = array_merge($allow, array('GET', 'HEAD'));
                     goto not_producto_index;
@@ -525,7 +525,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             not_producto_index:
 
             // producto_new
-            if ($pathinfo === '/producto/new') {
+            if ($pathinfo === '/productos/new') {
                 if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
                     $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
                     goto not_producto_new;
@@ -536,7 +536,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             not_producto_new:
 
             // producto_show
-            if (preg_match('#^/producto/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            if (preg_match('#^/productos/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
                 if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
                     $allow = array_merge($allow, array('GET', 'HEAD'));
                     goto not_producto_show;
@@ -547,7 +547,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             not_producto_show:
 
             // producto_edit
-            if (preg_match('#^/producto/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+            if (preg_match('#^/productos/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
                 if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
                     $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
                     goto not_producto_edit;
@@ -558,7 +558,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             not_producto_edit:
 
             // producto_delete
-            if (preg_match('#^/producto/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            if (preg_match('#^/productos/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
                 if ($this->context->getMethod() != 'DELETE') {
                     $allow[] = 'DELETE';
                     goto not_producto_delete;
@@ -569,8 +569,13 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             not_producto_delete:
 
             // buscar_producto
-            if ($pathinfo === '/producto/buscar/producto') {
+            if ($pathinfo === '/productos/buscar/producto') {
                 return array (  '_controller' => 'InventarioBundle\\Controller\\ProductoController::buscarProdcuto',  '_route' => 'buscar_producto',);
+            }
+
+            // getMaterias
+            if ($pathinfo === '/productos/getMaterias') {
+                return array (  '_controller' => 'InventarioBundle\\Controller\\ProductoController::getMaterias',  '_route' => 'getMaterias',);
             }
 
         }
@@ -728,9 +733,9 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        if (0 === strpos($pathinfo, '/venta')) {
+        if (0 === strpos($pathinfo, '/ventas')) {
             // venta_index
-            if (rtrim($pathinfo, '/') === '/venta') {
+            if (rtrim($pathinfo, '/') === '/ventas') {
                 if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
                     $allow = array_merge($allow, array('GET', 'HEAD'));
                     goto not_venta_index;
@@ -745,7 +750,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             not_venta_index:
 
             // venta_new
-            if ($pathinfo === '/venta/new') {
+            if ($pathinfo === '/ventas/new') {
                 if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
                     $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
                     goto not_venta_new;
@@ -756,7 +761,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             not_venta_new:
 
             // venta_show
-            if (preg_match('#^/venta/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            if (preg_match('#^/ventas/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
                 if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
                     $allow = array_merge($allow, array('GET', 'HEAD'));
                     goto not_venta_show;
@@ -767,7 +772,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             not_venta_show:
 
             // venta_edit
-            if (preg_match('#^/venta/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+            if (preg_match('#^/ventas/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
                 if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
                     $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
                     goto not_venta_edit;
@@ -778,7 +783,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             not_venta_edit:
 
             // venta_delete
-            if (preg_match('#^/venta/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            if (preg_match('#^/ventas/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
                 if ($this->context->getMethod() != 'DELETE') {
                     $allow[] = 'DELETE';
                     goto not_venta_delete;
@@ -789,12 +794,12 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             not_venta_delete:
 
             // buscar_cliente_venta
-            if ($pathinfo === '/venta/buscarCliente') {
+            if ($pathinfo === '/ventas/buscarCliente') {
                 return array (  '_controller' => 'VentasBundle\\Controller\\VentaController::buscarCliente',  '_route' => 'buscar_cliente_venta',);
             }
 
             // venta_detalles
-            if (preg_match('#^/venta/(?P<id>[^/]++)/mostrarDetalles$#s', $pathinfo, $matches)) {
+            if (preg_match('#^/ventas/(?P<id>[^/]++)/mostrarDetalles$#s', $pathinfo, $matches)) {
                 if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
                     $allow = array_merge($allow, array('GET', 'HEAD'));
                     goto not_venta_detalles;

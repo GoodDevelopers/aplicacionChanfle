@@ -21,20 +21,20 @@ class __TwigTemplate_17a9be5b334b58f0d5d7634a3f5eeb6b374ab8f07dccf4e7560c72cbc5d
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_928f0773de9965d6a3d3adbeea01856742fc941eafdf9a7ac64151f7b55e6610 = $this->env->getExtension("native_profiler");
-        $__internal_928f0773de9965d6a3d3adbeea01856742fc941eafdf9a7ac64151f7b55e6610->enter($__internal_928f0773de9965d6a3d3adbeea01856742fc941eafdf9a7ac64151f7b55e6610_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "InventarioBundle:proveedor:edit.html.twig"));
+        $__internal_d944f449d0dadf95c89a9031c54cbd86bd67c63506db78eefdaf7904cd087144 = $this->env->getExtension("native_profiler");
+        $__internal_d944f449d0dadf95c89a9031c54cbd86bd67c63506db78eefdaf7904cd087144->enter($__internal_d944f449d0dadf95c89a9031c54cbd86bd67c63506db78eefdaf7904cd087144_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "InventarioBundle:proveedor:edit.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_928f0773de9965d6a3d3adbeea01856742fc941eafdf9a7ac64151f7b55e6610->leave($__internal_928f0773de9965d6a3d3adbeea01856742fc941eafdf9a7ac64151f7b55e6610_prof);
+        $__internal_d944f449d0dadf95c89a9031c54cbd86bd67c63506db78eefdaf7904cd087144->leave($__internal_d944f449d0dadf95c89a9031c54cbd86bd67c63506db78eefdaf7904cd087144_prof);
 
     }
 
     // line 3
     public function block_body($context, array $blocks = array())
     {
-        $__internal_2273494f103618940ea361a6e722470f84173631305a6aee6d223166e5314aa3 = $this->env->getExtension("native_profiler");
-        $__internal_2273494f103618940ea361a6e722470f84173631305a6aee6d223166e5314aa3->enter($__internal_2273494f103618940ea361a6e722470f84173631305a6aee6d223166e5314aa3_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_aa5f037d79dce9b40ef993ec14470c17e443b82156a63e3eb8a0ed3d2a7603fd = $this->env->getExtension("native_profiler");
+        $__internal_aa5f037d79dce9b40ef993ec14470c17e443b82156a63e3eb8a0ed3d2a7603fd->enter($__internal_aa5f037d79dce9b40ef993ec14470c17e443b82156a63e3eb8a0ed3d2a7603fd_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
         echo "    <h1>Proveedor edit</h1>
@@ -74,7 +74,7 @@ class __TwigTemplate_17a9be5b334b58f0d5d7634a3f5eeb6b374ab8f07dccf4e7560c72cbc5d
     </ul>
 ";
         
-        $__internal_2273494f103618940ea361a6e722470f84173631305a6aee6d223166e5314aa3->leave($__internal_2273494f103618940ea361a6e722470f84173631305a6aee6d223166e5314aa3_prof);
+        $__internal_aa5f037d79dce9b40ef993ec14470c17e443b82156a63e3eb8a0ed3d2a7603fd->leave($__internal_aa5f037d79dce9b40ef993ec14470c17e443b82156a63e3eb8a0ed3d2a7603fd_prof);
 
     }
 

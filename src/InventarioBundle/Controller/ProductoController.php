@@ -2,6 +2,7 @@
 
 namespace InventarioBundle\Controller;
 
+use InventarioBundle\Entity\DetalleProducto;
 use InventarioBundle\Entity\Producto;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -13,7 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Producto controller.
  *
- * @Route("/producto")
+ * @Route("/productos")
  */
 class ProductoController extends Controller {
 
@@ -46,16 +47,39 @@ class ProductoController extends Controller {
         $form = $this->createForm('InventarioBundle\Form\ProductoType', $producto);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($producto);
-            $em->flush();
+        $emMaterias = $this->getDoctrine()->getManager()->getRepository('InventarioBundle:MateriaPrima');
 
-            return $this->redirectToRoute('producto_show', array('id' => $producto->getId()));
+        if ($form->isSubmitted() && $form->isValid()) {
+            $emProductos = $this->getDoctrine()->getManager();
+
+            $cantMaterias = $request->get("cantMaterias");
+
+            for ($i = 1; $i <= $cantMaterias; $i++) {
+                $detalleProducto = new DetalleProducto();
+
+                $idMateria = $request->get("choiceMateria" . $i);
+                if ($idMateria != null) {
+                    $materia = $emMaterias->findOneBy(array('id' => $idMateria));
+                    $cantidad = $request->get("cantidad" . $i);
+
+                    $detalleProducto->setCantidadNecesaria($cantidad);
+                    $detalleProducto->setMateriaPrima($materia);
+                    $detalleProducto->setProducto($producto);
+
+                    $producto->addDetallesProducto($detalleProducto);
+                }
+            }
+            $emProductos->persist($producto);
+            $emProductos->flush();
+
+            return $this->redirectToRoute('producto_index');
         }
+
+        $materias = $emMaterias->findAllOrderedByNombre();
 
         return array(
             'producto' => $producto,
+            'materias' => $materias,
             'form' => $form->createView(),
         );
     }
@@ -69,9 +93,12 @@ class ProductoController extends Controller {
      */
     public function showAction(Producto $producto) {
         $deleteForm = $this->createDeleteForm($producto);
+        //para obtener el numero de la lista
+        $num = $_GET['num'];
 
         return array(
             'producto' => $producto,
+            'num' => $num,
             'delete_form' => $deleteForm->createView(),
         );
     }
@@ -84,22 +111,52 @@ class ProductoController extends Controller {
      * @Template()
      */
     public function editAction(Request $request, Producto $producto) {
-        $deleteForm = $this->createDeleteForm($producto);
         $editForm = $this->createForm('InventarioBundle\Form\ProductoType', $producto);
         $editForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($producto);
-            $em->flush();
+        $emMaterias = $this->getDoctrine()->getManager()->getRepository('InventarioBundle:MateriaPrima');
 
-            return $this->redirectToRoute('producto_edit', array('id' => $producto->getId()));
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $emProducto = $this->getDoctrine()->getManager();
+            $emProducto->remove($producto);
+            $emProducto->flush();
+
+            $productos = $producto->getDetallesProducto();
+            
+            foreach($productos as $detalle){
+                $producto->removeDetallesProducto($detalle);
+            }
+
+            $cantMaterias = $request->get("cantMaterias");
+
+            for ($i = 1; $i <= $cantMaterias; $i++) {
+                $detalleProducto = new DetalleProducto();
+
+                $idMateria = $request->get("choiceMateria" . $i);
+                if ($idMateria != null) {
+                    $materia = $emMaterias->findOneBy(array('id' => $idMateria));
+                    $cantidad = $request->get("cantidad" . $i);
+
+                    $detalleProducto->setCantidadNecesaria($cantidad);
+                    $detalleProducto->setMateriaPrima($materia);
+                    $detalleProducto->setProducto($producto);
+
+                    $producto->addDetallesProducto($detalleProducto);
+                }
+            }
+            
+            $emProducto->persist($producto);
+            $emProducto->flush();
+
+            return $this->redirectToRoute('producto_index');
         }
+
+        $materias = $emMaterias->findAllOrderedByNombre();
 
         return array(
             'producto' => $producto,
+            'materias' => $materias,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
         );
     }
 
@@ -136,34 +193,62 @@ class ProductoController extends Controller {
                         ->getForm()
         ;
     }
-    
+
     /**
      *
      *
      * @Route("/buscar/producto", name="buscar_producto")
      * 
      */
-    public function buscarProdcuto(Request $request)
-    {
+    public function buscarProdcuto(Request $request) {
         $nombre = $request->get("nombre_p");
         $em = $this->getDoctrine()->getManager();
 
-        $producto = $em->getRepository('InventarioBundle:Producto')->findOneBy(array("nombre"=> $nombre));
-        
+        $producto = $em->getRepository('InventarioBundle:Producto')->findOneBy(array("nombre" => $nombre));
 
 
 
-        $producto_response = (array('precio'=> $producto->getPrecio()));
-        
+
+        $producto_response = (array('precio' => $producto->getPrecio()));
+
         $response = new Response(\json_encode($producto_response));
         $response->headers->set('Content-Type', 'application/json');
-        
+
 
 
         return $response;
-
-       
     }
+
+    /**
+     *
+     * @Route("/getMaterias", name="getMaterias")
+     */
+    public function getMaterias(Request $request) {
+        $em = $this->getDoctrine()->getManager()->getRepository('InventarioBundle:MateriaPrima');
+
+//        Otra forma de hacer la busqueda ordenada, pero no es la recomendada
+//        $materias = $em->findBy(array(), array('nombre' => 'ASC'));
+
+        $materias = $em->findAllOrderedByNombre();  //Metodo creado en el MateriaPirmaRepository
+
+        $materiasResponse = array();
+
+        foreach ($materias as $mat) {
+            $materiasResponse[] = array('id' => $mat->getId(), 'nombre' => $mat->getNombre());
+        }
+
+//        asort($materiasResponse); //Otra forma de ordenar (averiguar mas sobre esto)
+
+        $response = new Response(\json_encode($materiasResponse));
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
+    
+//    public function getNumeroProducto(){
+//        $emProductos = $this->getDoctrine()->getManager();
+//        $productos = $emProductos->getRepository('InventarioBundle:Producto')->findAll();
+//        return count($productos);
+//    }
+
 }
-
-

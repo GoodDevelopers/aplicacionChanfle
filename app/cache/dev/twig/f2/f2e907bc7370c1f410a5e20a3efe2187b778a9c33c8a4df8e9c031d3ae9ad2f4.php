@@ -21,20 +21,20 @@ class __TwigTemplate_d4b7757bb60bb4c0bc8d57001c85cbf61c94b45b7c07778d807471370d9
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_aaf72f987e569374f73ac04253100bd2b84a8bc0224f9481db05182a6495cc88 = $this->env->getExtension("native_profiler");
-        $__internal_aaf72f987e569374f73ac04253100bd2b84a8bc0224f9481db05182a6495cc88->enter($__internal_aaf72f987e569374f73ac04253100bd2b84a8bc0224f9481db05182a6495cc88_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "InventarioBundle:proveedor:new.html.twig"));
+        $__internal_f08cdf9ba752bd4ba63964a56046cb21543eecf3ba93899cf0b40b3fcf142a15 = $this->env->getExtension("native_profiler");
+        $__internal_f08cdf9ba752bd4ba63964a56046cb21543eecf3ba93899cf0b40b3fcf142a15->enter($__internal_f08cdf9ba752bd4ba63964a56046cb21543eecf3ba93899cf0b40b3fcf142a15_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "InventarioBundle:proveedor:new.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_aaf72f987e569374f73ac04253100bd2b84a8bc0224f9481db05182a6495cc88->leave($__internal_aaf72f987e569374f73ac04253100bd2b84a8bc0224f9481db05182a6495cc88_prof);
+        $__internal_f08cdf9ba752bd4ba63964a56046cb21543eecf3ba93899cf0b40b3fcf142a15->leave($__internal_f08cdf9ba752bd4ba63964a56046cb21543eecf3ba93899cf0b40b3fcf142a15_prof);
 
     }
 
     // line 3
     public function block_body($context, array $blocks = array())
     {
-        $__internal_b7bfd3d494e9302583ce3dc9a2a4632398041714be085e2130b42ffb16f94096 = $this->env->getExtension("native_profiler");
-        $__internal_b7bfd3d494e9302583ce3dc9a2a4632398041714be085e2130b42ffb16f94096->enter($__internal_b7bfd3d494e9302583ce3dc9a2a4632398041714be085e2130b42ffb16f94096_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_6bca1c2a3011d62565af8bdbdf4d3aef4063b4a9400167ae99bd1f91d25c9508 = $this->env->getExtension("native_profiler");
+        $__internal_6bca1c2a3011d62565af8bdbdf4d3aef4063b4a9400167ae99bd1f91d25c9508->enter($__internal_6bca1c2a3011d62565af8bdbdf4d3aef4063b4a9400167ae99bd1f91d25c9508_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
         echo "    <h1>Proveedor creation</h1>
@@ -63,7 +63,7 @@ class __TwigTemplate_d4b7757bb60bb4c0bc8d57001c85cbf61c94b45b7c07778d807471370d9
     </ul>
 ";
         
-        $__internal_b7bfd3d494e9302583ce3dc9a2a4632398041714be085e2130b42ffb16f94096->leave($__internal_b7bfd3d494e9302583ce3dc9a2a4632398041714be085e2130b42ffb16f94096_prof);
+        $__internal_6bca1c2a3011d62565af8bdbdf4d3aef4063b4a9400167ae99bd1f91d25c9508->leave($__internal_6bca1c2a3011d62565af8bdbdf4d3aef4063b4a9400167ae99bd1f91d25c9508_prof);
 
     }
 

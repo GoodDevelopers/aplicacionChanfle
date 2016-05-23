@@ -21,20 +21,20 @@ class __TwigTemplate_4da5b1903eb3eefc1bf93a340d7db1c963d469602bb312e3d428992ac6b
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_d835732b816e66b031c11ad326e2070d25b04c9fb2da63fd7df568ec35a7cb09 = $this->env->getExtension("native_profiler");
-        $__internal_d835732b816e66b031c11ad326e2070d25b04c9fb2da63fd7df568ec35a7cb09->enter($__internal_d835732b816e66b031c11ad326e2070d25b04c9fb2da63fd7df568ec35a7cb09_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UsuariosBundle:cliente:show.html.twig"));
+        $__internal_7c69fe26d1b37fc66dc65adc092e7129c9f0e6d38976515cecd13c6b71d4a0bf = $this->env->getExtension("native_profiler");
+        $__internal_7c69fe26d1b37fc66dc65adc092e7129c9f0e6d38976515cecd13c6b71d4a0bf->enter($__internal_7c69fe26d1b37fc66dc65adc092e7129c9f0e6d38976515cecd13c6b71d4a0bf_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "UsuariosBundle:cliente:show.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_d835732b816e66b031c11ad326e2070d25b04c9fb2da63fd7df568ec35a7cb09->leave($__internal_d835732b816e66b031c11ad326e2070d25b04c9fb2da63fd7df568ec35a7cb09_prof);
+        $__internal_7c69fe26d1b37fc66dc65adc092e7129c9f0e6d38976515cecd13c6b71d4a0bf->leave($__internal_7c69fe26d1b37fc66dc65adc092e7129c9f0e6d38976515cecd13c6b71d4a0bf_prof);
 
     }
 
     // line 3
     public function block_body($context, array $blocks = array())
     {
-        $__internal_68e66a357fd35d7dee76bdb8288fa74fe51cf07c0c816b6580c3f3e4635d2f60 = $this->env->getExtension("native_profiler");
-        $__internal_68e66a357fd35d7dee76bdb8288fa74fe51cf07c0c816b6580c3f3e4635d2f60->enter($__internal_68e66a357fd35d7dee76bdb8288fa74fe51cf07c0c816b6580c3f3e4635d2f60_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_155ce1274f9e6d4df91286efab382ea672bcc96fbd753954bae62838de14ee28 = $this->env->getExtension("native_profiler");
+        $__internal_155ce1274f9e6d4df91286efab382ea672bcc96fbd753954bae62838de14ee28->enter($__internal_155ce1274f9e6d4df91286efab382ea672bcc96fbd753954bae62838de14ee28_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
         echo "    <div class=\"container\">
@@ -49,10 +49,10 @@ class __TwigTemplate_4da5b1903eb3eefc1bf93a340d7db1c963d469602bb312e3d428992ac6b
                 <table class=\"table table-hover\">
                     <tbody>
                         <tr>
-                            <th class=\"text-right\">ID:</th>
+                            <th class=\"text-right\">Número:</th>
                             <td>";
         // line 17
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["cliente"]) ? $context["cliente"] : $this->getContext($context, "cliente")), "id", array()), "html", null, true);
+        echo twig_escape_filter($this->env, (isset($context["num"]) ? $context["num"] : $this->getContext($context, "num")), "html", null, true);
         echo "</td>
                         </tr>
                         <tr>
@@ -129,7 +129,7 @@ class __TwigTemplate_4da5b1903eb3eefc1bf93a340d7db1c963d469602bb312e3d428992ac6b
     </div>
 ";
         
-        $__internal_68e66a357fd35d7dee76bdb8288fa74fe51cf07c0c816b6580c3f3e4635d2f60->leave($__internal_68e66a357fd35d7dee76bdb8288fa74fe51cf07c0c816b6580c3f3e4635d2f60_prof);
+        $__internal_155ce1274f9e6d4df91286efab382ea672bcc96fbd753954bae62838de14ee28->leave($__internal_155ce1274f9e6d4df91286efab382ea672bcc96fbd753954bae62838de14ee28_prof);
 
     }
 
@@ -163,8 +163,8 @@ class __TwigTemplate_4da5b1903eb3eefc1bf93a340d7db1c963d469602bb312e3d428992ac6b
 /*                 <table class="table table-hover">*/
 /*                     <tbody>*/
 /*                         <tr>*/
-/*                             <th class="text-right">ID:</th>*/
-/*                             <td>{{ cliente.id }}</td>*/
+/*                             <th class="text-right">Número:</th>*/
+/*                             <td>{{ num }}</td>*/
 /*                         </tr>*/
 /*                         <tr>*/
 /*                             <th class="text-right">No. de identificacion:</th>*/

@@ -99,7 +99,7 @@ class Producto
     private $detallesVentas;
     
     /**
-     * @ORM\OneToMany(targetEntity="DetalleProducto", mappedBy="producto")
+     * @ORM\OneToMany(targetEntity="DetalleProducto", mappedBy="producto", cascade="all")
      */
     private $detallesProducto;
     
@@ -108,6 +108,13 @@ class Producto
      * @ORM\JoinColumn(name="tipoProducto", referencedColumnName="id")
      */
     private $tipoProducto;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descripcion", type="string", length=255)
+     */
+    private $descripcion;
     
     function __construct() {
         $this->detallesVentas = new ArrayCollection();
@@ -202,5 +209,28 @@ class Producto
     public function getTipoProducto()
     {
         return $this->tipoProducto;
+    }
+
+    /**
+     * Set descripcion
+     *
+     * @param string $descripcion
+     * @return Producto
+     */
+    public function setDescripcion($descripcion)
+    {
+        $this->descripcion = $descripcion;
+    
+        return $this;
+    }
+
+    /**
+     * Get descripcion
+     *
+     * @return string 
+     */
+    public function getDescripcion()
+    {
+        return $this->descripcion;
     }
 }

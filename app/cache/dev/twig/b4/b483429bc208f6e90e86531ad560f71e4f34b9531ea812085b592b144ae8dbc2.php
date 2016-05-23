@@ -21,20 +21,20 @@ class __TwigTemplate_f72e8dbec4401c4e43098e1b90b7771902cd0cc25dc7ace1de235664785
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_1defac0be10b6af6d794b77b5fd43300d6fa21af156abc450a653b6d97b7d2c7 = $this->env->getExtension("native_profiler");
-        $__internal_1defac0be10b6af6d794b77b5fd43300d6fa21af156abc450a653b6d97b7d2c7->enter($__internal_1defac0be10b6af6d794b77b5fd43300d6fa21af156abc450a653b6d97b7d2c7_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "CostosBundle:costo:edit.html.twig"));
+        $__internal_aaba822097ed894e6d0be343bbdc695038a3a761d9f393541d852b9a4b71d0c3 = $this->env->getExtension("native_profiler");
+        $__internal_aaba822097ed894e6d0be343bbdc695038a3a761d9f393541d852b9a4b71d0c3->enter($__internal_aaba822097ed894e6d0be343bbdc695038a3a761d9f393541d852b9a4b71d0c3_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "CostosBundle:costo:edit.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_1defac0be10b6af6d794b77b5fd43300d6fa21af156abc450a653b6d97b7d2c7->leave($__internal_1defac0be10b6af6d794b77b5fd43300d6fa21af156abc450a653b6d97b7d2c7_prof);
+        $__internal_aaba822097ed894e6d0be343bbdc695038a3a761d9f393541d852b9a4b71d0c3->leave($__internal_aaba822097ed894e6d0be343bbdc695038a3a761d9f393541d852b9a4b71d0c3_prof);
 
     }
 
     // line 3
     public function block_body($context, array $blocks = array())
     {
-        $__internal_a8747a8e883477960c4657a15c39b903ff0637b62301741f614117c95e1689c1 = $this->env->getExtension("native_profiler");
-        $__internal_a8747a8e883477960c4657a15c39b903ff0637b62301741f614117c95e1689c1->enter($__internal_a8747a8e883477960c4657a15c39b903ff0637b62301741f614117c95e1689c1_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_7be32dbb09d547bc7754d62d272254b9dc66118eb7d7ae645669dab2089187c6 = $this->env->getExtension("native_profiler");
+        $__internal_7be32dbb09d547bc7754d62d272254b9dc66118eb7d7ae645669dab2089187c6->enter($__internal_7be32dbb09d547bc7754d62d272254b9dc66118eb7d7ae645669dab2089187c6_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
         echo "    <h1>Costo edit</h1>
@@ -74,7 +74,7 @@ class __TwigTemplate_f72e8dbec4401c4e43098e1b90b7771902cd0cc25dc7ace1de235664785
     </ul>
 ";
         
-        $__internal_a8747a8e883477960c4657a15c39b903ff0637b62301741f614117c95e1689c1->leave($__internal_a8747a8e883477960c4657a15c39b903ff0637b62301741f614117c95e1689c1_prof);
+        $__internal_7be32dbb09d547bc7754d62d272254b9dc66118eb7d7ae645669dab2089187c6->leave($__internal_7be32dbb09d547bc7754d62d272254b9dc66118eb7d7ae645669dab2089187c6_prof);
 
     }
 
