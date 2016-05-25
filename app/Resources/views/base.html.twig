@@ -10,6 +10,10 @@
             <link rel="stylesheet" href="{{ asset('bundles/app/css/font-awesome.css') }}" />
             <link rel="stylesheet" href="{{ asset('bundles/app/css/otrosIconos.css')}}">
             <style>
+                .navbar{
+                    margin-bottom: 10px;
+                    font-size: 16px;
+                }
                 .navbar-default{
                     background-color: #f0ad4e;
                     border-color: #eea236;
@@ -25,6 +29,20 @@
                 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus,
                 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus{
                     background-color: #e26d1e;
+                    color: white;
+                }
+
+                .navbar-default .navbar-nav > li > a, .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus{
+                    color: white;
+                }
+
+                .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus{
+                    background-color: #e26d1e;
+                    color: white;
+                }
+
+                .dropdown-menu{
+                    font-size: 16px;
                 }
 
                 @media (max-width: 767px){
@@ -37,43 +55,100 @@
                         background-color: transparent;
                     }
                 }
+
+                /* borde para los items del navbar */
+                .navbar-nav > li{
+                    border-radius: 5px;
+                    border-left: solid 1px #ec971f;
+                }
+                .navbar-default:hover .navbar-nav > li{
+                    border-left: solid 1px #e26d1e;
+                }
+
+                /* margen del separador de cerrar sesion */
+                .dropdown-menu .divider {
+                    margin: 2px;
+                }
+
             </style>
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {#<nav class="navbar navbar-default">
+        <nav class="navbar navbar-default">
             <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
+                <!-- Cabecera -->
+                <div class="navbar-header" style="margin-right: 15px;">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
                         <span class="sr-only">Menu</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="{{ path('homepage') }}" style="color: black; font-weight: bold;"><span class="glyphicon glyphicon-home"></span> Inicio</a>
+                    <a class="navbar-brand" href="{{ path('homepage') }}" style="color: black; font-weight: bold;"><img alt="chanfletaqueria" src="{{ asset('bundles/app/img/logo_20x20.png') }}" style="display: inline-block;"> Chanfletaqueria</a>
                 </div>
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
+                <!-- Items -->
                 <div class="collapse navbar-collapse" id="menu">
+                    <ul class="nav navbar-nav">
+                        <li id="costos">
+                            <a href="#"><span class="fa fa-line-chart"></span> Costos</a>
+                        </li>
+
+                        <li class="dropdown" id="inventario">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-archive"></span> Inventario <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#"><span class="icon-ingresoMateria"></span> Ingresos materia prima</a></li>
+                                {% if is_granted('ROLE_ADMIN') %}
+                                <li><a href="#"><span class="icon-listaMateria"></span> Materia prima</a></li>
+                                <li><a href="#"><span class="icon-productos"></span> Productos</a></li>
+                                <li><a href="#"><span class="icon-productos"></span> Proveedores</a></li>
+                                {% endif %}
+                            </ul>
+                        </li>
+
+                        <li class="dropdown" id="registros">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-calendar"></span> Registros <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#"><span class="fa fa-money"></span> Cajas</a></li>
+                                <li><a href="#"><span class="icon-empleado"></span> Turnos laborales</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown" id="usuarios">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-users"></span> Usuarios <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Clientes</a></li>
+                                {% if is_granted('ROLE_ADMIN') %}
+                                <li><a href="#"><span class="icon-empleado"></span> Empleados</a></li>
+                                {% endif %}
+                            </ul>
+                        </li>
+
+                        <li id="ventas">
+                            <a href="#"><span class="fa fa-shopping-basket"></span> Ventas</a>
+                        </li>
+
+                    </ul>
+
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown" style="font-size: 16px;">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: white;">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                 <span class="icon-empleado"></span> {{ usuario }} <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
+                                    {% if is_granted('ROLE_ADMIN') %}
+                                    <li><a href="#">Configuracion</a></li>
+                                    {% endif %}
                                 <li><a href="#">Perfil</a></li>
-                                <li><a href="#">Opcion</a></li>
-                                <li><a href="#">Opcion</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="#">Cerrar sesion</a></li>
+                                <li><a href="{{ path('fos_user_security_logout') }}">Cerrar sesion</a></li>
                             </ul>
                         </li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
-        </nav>#}
+        </nav>
         {% block body %}
         {% endblock %}
         {% block javascripts %}

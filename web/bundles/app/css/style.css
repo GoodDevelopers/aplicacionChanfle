@@ -26,6 +26,10 @@
 .input-group-addon{
     font-weight: bold;
 }
+/* Quitarle el margin al paginador */
+.pagination {
+    margin: 0px;
+}
 
 /* ------------- AGREGADAS ------------- */
 

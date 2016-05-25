@@ -22,17 +22,38 @@ class ClienteController extends Controller {
      * Lists all Cliente entities.
      *
      * @Route("/", name="clientes_index")
-     * @Method("GET")
+     * @Method("GET")$session = $request->getSession();
      * @Template()
      */
     public function indexAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
-        $clientes = $em->getRepository('UsuariosBundle:Cliente')->findAll();
+        $clientes = $em->getRepository('UsuariosBundle:Cliente')->findAllOrderedByPuntos();
 
-        $session = $request->getSession();
+        
+
+        //Mandar correo
+//        $message = \Swift_Message::newInstance()
+//                ->setSubject('Asunto')
+//                ->setFrom('goodevelopers@gmail.com')
+//                ->setTo('arias-a@hotmail.com')
+//                ->setBody(
+//                $this->renderView(
+//                        'email.html.twig', array('titulo' => "HOLIS")
+//                ), 'text/html'
+//                )
+//        ;
+//        $this->get('mailer')->send($message);
+        // Añadimos el paginador
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $clientes, //Query o registros
+                $this->get('request')->query->get('page', 1), //Iniciar en la pagina1
+                7   //Hasta la 8
+        );
 
         return array(
             'usuario' => $session->get('user'),
+            'pagination' => $pagination,
             'clientes' => $clientes,
         );
     }
@@ -89,15 +110,11 @@ class ClienteController extends Controller {
     public function showAction(Cliente $cliente, Request $request) {
         $session = $request->getSession();
 
-        //para obtener el numero de la lista
-        $num = $_GET['num'];
-
         $deleteForm = $this->createDeleteForm($cliente);
 
         return array(
             'usuario' => $session->get('user'),
             'cliente' => $cliente,
-            'num' => $num,
             'delete_form' => $deleteForm->createView(),
         );
     }
@@ -190,14 +207,15 @@ class ClienteController extends Controller {
     public function buscarAction(Request $request) {
         //Esto como que esta malo xD
         if (!$request->isXmlHttpRequest()) {
-            throw new \Exception($id);
+            throw new \Exception($dato);
         }
 
-        $id = $request->get('id');
+        $dato = $request->get('dato');
+        $criterio = $request->get('criterio');
 
         $em = $this->getDoctrine()->getManager();
 
-        $cliente = $em->getRepository('UsuariosBundle:Cliente')->findOneBy(array('nuip' => $id));
+        $cliente = $em->getRepository('UsuariosBundle:Cliente')->findOneBy(array("$criterio" => $dato));
 
         if ($cliente === null) {
             $response = new Response(-1);
@@ -213,6 +231,27 @@ class ClienteController extends Controller {
 
             return $response;
         }
+    }
+
+    /**
+     * @Route("/generar/pdf", name="generarPdf")
+     */
+    public function pdfAction() {
+        $em = $this->getDoctrine()->getManager();
+        $clientes = $em->getRepository('UsuariosBundle:Cliente')->findAllOrderedByPuntos();
+
+//        return array('clientes' => $clientes);
+        $html = $this->renderView('UsuariosBundle:cliente:pdf.html.twig', array(
+            'clientes' => $clientes
+        ));
+
+        return new Response(
+                $this->get('knp_snappy.pdf')->getOutputFromHtml($html, array(
+                    'orientation' => 'landscape',
+                )), 200, array(
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'attachment; filename="InformeClientes.pdf"'
+        ));
     }
 
 }

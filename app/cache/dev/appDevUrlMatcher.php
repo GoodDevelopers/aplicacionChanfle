@@ -305,6 +305,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     return array (  '_controller' => 'UsuariosBundle\\Controller\\ClienteController::buscarAction',  '_route' => 'buscarCliente',);
                 }
 
+                // generarPdf
+                if ($pathinfo === '/clientes/generar/pdf') {
+                    return array (  '_controller' => 'UsuariosBundle\\Controller\\ClienteController::pdfAction',  '_route' => 'generarPdf',);
+                }
+
             }
 
         }

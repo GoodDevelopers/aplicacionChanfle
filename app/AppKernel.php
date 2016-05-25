@@ -22,6 +22,8 @@ class AppKernel extends Kernel
             new UsuariosBundle\UsuariosBundle(),
             new CostosBundle\CostosBundle(),
             new JornadasLaboralesBundle\JornadasLaboralesBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

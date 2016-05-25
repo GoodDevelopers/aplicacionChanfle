@@ -9,21 +9,38 @@
         </div>
 
         <div class="row">
+
             <div class="col-md-3">
-                <ul>
-                    <li>
-                        <a href="{{ path('clientes_new') }}" class="btn btn-lg btn-success">Registrar Cliente <span class="glyphicon glyphicon-floppy-saved"></span></a>
-                    </li>
-                </ul>
+                <a href="{{ path('clientes_new') }}" class="btn btn-lg btn-success">Registrar Cliente <span class="glyphicon glyphicon-floppy-saved"></span></a>
             </div>
 
-            <div class="col-md-9">
+            <div class="col-md-1" style="padding: 0px;">
+                <div id="bloqueTotal">
+                    <div class="form-group">
+                        <label for="total" style="display: inline-block;">Total: </label>
+                        <input id="total" name="total" class="form-control" disabled="disabled" value="{{ pagination.getTotalItemCount }}" style="display: inline-block; width: 50%;">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 text-center">
+                <a href="{{ path('generarPdf') }}" class="btn btn-default"><span class="fa fa-file-pdf-o" style="color: red;"></span> Reporte</a>
+            </div>
+
+            <div class="col-md-7 text-right">
                 <form action="" method="GET" class="form-inline" onsubmit="buscar();
                         return false;">
                     <div class="form-group">
+                        <select class="form-control" id="criterio">
+                            <option value="">Seleccione el criterio de busqueda</option>
+                            <option value="email">Email</option>
+                            <option value="nombre">Nombre o apellido</option>
+                            <option value="nuip">Número de identificacion</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <div class="input-group">
-                            <div class="input-group-addon">Cliente</div>
-                            <input type="number" class="form-control" placeholder="No. de identificacion" id="idCliente">
+                            <div class="input-group-addon">Dato</div>
+                            <input type="text" class="form-control" placeholder="Dato para la busqueda" id="dato">
                         </div>
                         <button type="button" id="btnBuscar" class="btn btn-primary" onclick="buscar();"><span class="glyphicon glyphicon-search"></span> Buscar</button>
                     </div>
@@ -47,7 +64,6 @@
                         <table class="table table-bordered table-hover table-condensed text-center">
                             <thead>
                                 <tr class="active info">
-                                    <th>NO.</th>
                                     <th>NUIP</th>
                                     <th>NOMBRE</th>
                                     <th>FECHA DE NACIMIENTO</th>
@@ -57,14 +73,9 @@
                                 </tr>
                             </thead>
                             <tbody id="cuerpoTabla">
-                                {% set num = 0 %}
-                                {% for cliente in clientes %}
-                                    {% set num = num + 1 %}
+                                {% for cliente in pagination %}
                                     <tr>
-                                        <td>
-                                            <a href="{{ path('clientes_show', { 'id': cliente.id, 'num': num }) }}">{{ num }}</a>
-                                        </td>
-                                        <td>{{ cliente.nuip }}</td>
+                                        <td><a href="{{ path('clientes_show', { 'id': cliente.id }) }}">{{ cliente.nuip }}</a></td>
                                         <td>{{ cliente.nombre }}</td>
                                         <td>{% if cliente.fechaDeNacimiento %}{{ cliente.fechaDeNacimiento|date('d-m-Y') }}{% endif %}</td>
                                         <td>{{ cliente.puntosAcumulados }}</td>
@@ -82,9 +93,14 @@
                                     </tr>
                                 {% endfor %}
                             </tbody>
-                        </table>
+                        </table
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="paginacion col-md-12 text-center" id="paginador">
+                {{ knp_pagination_render(pagination) }}
             </div>
         </div>
     </div>
@@ -94,26 +110,60 @@
 {% block javascripts %}
     {{ parent() }}
     <script>
+
+        $(document).on('ready', inicio());
+
+        function inicio() {
+            $('#usuarios').addClass('active');
+            $("#criterio").change(function () {
+                var elemento = $('#dato');
+                switch ($("#criterio").val()) {
+                    case "nombre":
+                        elemento.attr('type', 'text');
+                        elemento.attr('placeholder', 'Nombre completo');
+                        break;
+                    case "nuip":
+                        elemento.attr('type', 'number');
+                        elemento.attr('placeholder', 'No. de identificacion');
+                        break;
+                    case "email":
+                        elemento.attr('type', 'email');
+                        elemento.attr('placeholder', 'Email');
+                        break;
+                    default:
+                        break;
+                }
+            });
+        }
+
         function buscar() {
-            var valor = $('#idCliente').val();
+            var valor = $('#dato').val();
             var btn = $('#btnBuscar');
             var bloqueMsj = $('#bloqueMensaje');
-            var msj = $('#mensaje');
+            var elementoMensaje = $('#mensaje');
+            var criterio = $('#criterio').val();
+            //Cuando no selecciona ningun criterio de busqueda
+            if (criterio == "") {
+                mensajeError(bloqueMsj, elementoMensaje, "seleccionar un criterio de busqueda.");
+                btn.blur();
+                return;
+            }
             //Esto es cuando no se ingresa ningun dato en el input
             if (valor.trim() == "") {
-                mensajeError(bloqueMsj, msj);
+                mensajeError(bloqueMsj, elementoMensaje, "ingresar un dato para realizar la busqueda.");
                 btn.blur();
                 return;
             }
             $.ajax({
                 url: "{{ path('buscarCliente') }}",
-                data: ({id: valor}),
+                data: ({dato: valor, criterio: criterio}),
                 method: 'POST',
                 dataType: "json",
                 //Esto sucede antes que empiece la busqueda
                 beforeSend: function () {
                     btn.addClass('disabled');
                     btn.html("<span class='fa fa-spinner fa-pulse'></span> Buscando");
+                    console.log('valor: ' + valor);
                 },
                 //Esto es cuando ya hay una respuesta
                 success: function (data) {
@@ -123,8 +173,9 @@
                     //Esto es cuando no encuentra ningun cliente
                     if (data === -1) {
                         console.log('No encontro nada');
-                        mensajeWarning(bloqueMsj, msj);
+                        mensajeWarning(bloqueMsj, elementoMensaje);
                     } else {
+                        $("#paginador").css('display', 'none');
                         bloqueMsj.css('display', 'none');
                         //Rutas para los botones edit y delete
                         var url1 = "{{path('clientes_edit', {'id':'parametro_cualquiera'})}}";
@@ -187,18 +238,18 @@
             return PersonaProcesar;
         }
 
-        function mensajeError(bloqueMsj, msj) {
+        function mensajeError(bloqueMsj, elementoMensaje, mensaje) {
             bloqueMsj.removeClass('alert-warning');
             bloqueMsj.addClass('alert-danger');
-            msj.html("<span class='glyphicon glyphicon-remove-sign'></span> <strong>Debe</strong> ingresar un dato para realizar la busqueda.");
+            elementoMensaje.html("<span class='glyphicon glyphicon-remove-sign'></span> <strong>Debe</strong> " + mensaje);
             bloqueMsj.css('display', 'block');
             asignarTiempo(bloqueMsj);
         }
 
-        function mensajeWarning(bloqueMsj, msj) {
+        function mensajeWarning(bloqueMsj, elementoMensaje) {
             bloqueMsj.removeClass('alert-danger');
             bloqueMsj.addClass('alert-warning');
-            msj.html("<span class='glyphicon glyphicon-remove-sign'></span> <strong>No</strong> se ha encontrado un cliente con el dato ingresado.");
+            elementoMensaje.html("<span class='glyphicon glyphicon-exclamation-sign'></span> <strong>No</strong> se ha encontrado un cliente con el dato ingresado.");
             bloqueMsj.css('display', 'block');
             asignarTiempo(bloqueMsj);
         }

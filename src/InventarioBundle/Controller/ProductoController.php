@@ -18,6 +18,8 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class ProductoController extends Controller {
 
+    private $session;
+    
     /**
      * Lists all Producto entities.
      *
@@ -25,12 +27,15 @@ class ProductoController extends Controller {
      * @Method("GET")
      * @Template()
      */
-    public function indexAction() {
+    public function indexAction(Request $request) {
+        $this->session = $request->getSession();
+        
         $em = $this->getDoctrine()->getManager();
 
         $productos = $em->getRepository('InventarioBundle:Producto')->findAll();
 
         return array(
+            'usuario' => $this->session->get('user'),
             'productos' => $productos,
         );
     }
@@ -78,6 +83,7 @@ class ProductoController extends Controller {
         $materias = $emMaterias->findAllOrderedByNombre();
 
         return array(
+            'usuario' => $this->session->get('user'),
             'producto' => $producto,
             'materias' => $materias,
             'form' => $form->createView(),

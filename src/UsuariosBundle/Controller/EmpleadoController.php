@@ -25,8 +25,13 @@ class EmpleadoController extends Controller {
      * @Template()
      */
     public function indexAction(Request $request) {
+
+//        if (false === $this->get('security.context')->isGranted('ROLE_ADMIN')) {
+//            return $this->redirectToRoute('homepage');
+//        }
+
         $session = $request->getSession();
-        
+
         $em = $this->getDoctrine()->getManager();
 
         $empleados = $em->getRepository('UsuariosBundle:Empleado')->findAll();
@@ -46,7 +51,7 @@ class EmpleadoController extends Controller {
      */
     public function newAction(Request $request) {
         $session = $request->getSession();
-        
+
         $empleado = new Empleado();
         $form = $this->createForm('UsuariosBundle\Form\EmpleadoType', $empleado);
         $form->handleRequest($request);
@@ -64,8 +69,8 @@ class EmpleadoController extends Controller {
                 $user = $fosUserManager->createUser();
                 $user->setUsername($empleado->getNuip());
                 $user->setPlainPassword($empleado->getNuip());
-                $user->setEmail("null" . $empleado->getNuip() ."@correo.com");
-                $user->setEmailCanonical("null". $empleado->getNuip() ."@correo.com");
+                $user->setEmail("null" . $empleado->getNuip() . "@correo.com");
+                $user->setEmailCanonical("null" . $empleado->getNuip() . "@correo.com");
                 $user->setEnabled(true);
                 //Revisamos si esta chequeado los privilegios de admin
                 $admin = $_POST['checkAdmin'];  //checkAdmin es el id del checkbox
@@ -96,7 +101,7 @@ class EmpleadoController extends Controller {
      */
     public function showAction(Empleado $empleado, Request $request) {
         $session = $request->getSession();
-        
+
         $deleteForm = $this->createDeleteForm($empleado);
 
         return array(
@@ -115,7 +120,7 @@ class EmpleadoController extends Controller {
      */
     public function editAction(Request $request, Empleado $empleado) {
         $session = $request->getSession();
-        
+
         $deleteForm = $this->createDeleteForm($empleado);
         $editForm = $this->createForm('UsuariosBundle\Form\EmpleadoType', $empleado);
         $editForm->handleRequest($request);
