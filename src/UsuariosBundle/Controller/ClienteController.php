@@ -253,5 +253,28 @@ class ClienteController extends Controller {
             'Content-Disposition' => 'attachment; filename="InformeClientes.pdf"'
         ));
     }
+    
+    
+    /**
+     *
+     * @Route("/ValidarCliente", name="validar_cliente")
+     */
+    public function validarCliente(Request $request) {
+
+
+        $nuip = $request->get('nuip');
+
+        $em = $this->getDoctrine()->getManager();
+
+        $cliente = $em->getRepository('UsuariosBundle:Cliente')->findOneBy(array('nuip' => $nuip));
+
+        if ($cliente == null) {
+            $data = true;
+        } else {
+            $data = false;
+        }
+        $response = new Response(\json_encode($data));
+         return $response;
+    }
 
 }

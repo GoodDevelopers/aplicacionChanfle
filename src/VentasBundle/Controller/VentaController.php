@@ -44,14 +44,14 @@ class VentaController extends Controller
      * @Route("/new", name="venta_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
-    {
+    public function newAction(Request $request) {
         $ventum = new Venta();
         $fecha = new \DateTime("now");
         $form = $this->createForm(new ventaType());
         $form->handleRequest($request);
-        
-     if ($form->isSubmitted() && $form->isValid()) {
+        $em = $this->getDoctrine()->getManager();
+        $Tipos = $em->getRepository('InventarioBundle:TipoProducto')->findAllOrderedByNombre();
+        if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
             $detalles = ($data['detalles']);
             $ventum->setFecha($fecha);
@@ -63,21 +63,19 @@ class VentaController extends Controller
             $ventum->setPuntosVenta($data['puntosVenta']);
             $ventum->setTipoVenta($data['tipoVenta']);
             $em = $this->getDoctrine()->getManager();
-            for ( $i = 1; $i <= count($detalles) ;$i++){
+            for ($i = 1; $i <= count($detalles); $i++) {
                 $detalle2 = new DetalleVenta();
-                $producto =$em->getRepository('InventarioBundle:Producto')->findOneBy(array('nombre' => $detalles[$i]['producto']['nombre']));
-                if($producto == null){
+                $producto = $em->getRepository('InventarioBundle:Producto')->findOneBy(array('nombre' => $detalles[$i]['producto']['nombre']));
+                if ($producto == null) {
                     
-                }else{
-                $detalle2->setProducto($producto);
-                $detalle2->setFecha($ventum->getFecha());
-                $detalle2->setCantidad($detalles[$i]['cantidad']);
-                $detalle2->setVenta($ventum);
-                $detalle2->setValorDetalle();
-                $ventum->addDetalle($detalle2);
+                } else {
+                    $detalle2->setProducto($producto);
+                    $detalle2->setFecha($ventum->getFecha());
+                    $detalle2->setCantidad($detalles[$i]['cantidad']);
+                    $detalle2->setVenta($ventum);
+                    $detalle2->setValorDetalle();
+                    $ventum->addDetalle($detalle2);
                 }
-              
-
             }
             $em->persist($ventum);
             $em->flush();
@@ -88,13 +86,14 @@ class VentaController extends Controller
         }
 
         return $this->render('venta/new.html.twig', array(
+                    'tipos' => $Tipos,
                     'ventum' => $ventum,
                     'fecha' => $fecha,
                     'form' => $form->createView(),
         ));
     }
-
-    /**
+    
+       /**
      * Finds and displays a Venta entity.
      *
      * @Route("/{id}", name="venta_show")
@@ -109,8 +108,8 @@ class VentaController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
-
-    /**
+    
+       /**
      * Displays a form to edit an existing Venta entity.
      *
      * @Route("/{id}/edit", name="venta_edit")

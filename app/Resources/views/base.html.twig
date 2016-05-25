@@ -99,11 +99,11 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-archive"></span> Inventario <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#"><span class="icon-ingresoMateria"></span> Ingresos materia prima</a></li>
-                                {% if is_granted('ROLE_ADMIN') %}
-                                <li><a href="#"><span class="icon-listaMateria"></span> Materia prima</a></li>
-                                <li><a href="#"><span class="icon-productos"></span> Productos</a></li>
-                                <li><a href="#"><span class="icon-productos"></span> Proveedores</a></li>
-                                {% endif %}
+                                    {% if is_granted('ROLE_ADMIN') %}
+                                    <li><a href="#"><span class="icon-listaMateria"></span> Materia prima</a></li>
+                                    <li><a href="#"><span class="icon-productos"></span> Productos</a></li>
+                                    <li><a href="#"><span class="icon-productos"></span> Proveedores</a></li>
+                                    {% endif %}
                             </ul>
                         </li>
 
@@ -119,9 +119,9 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-users"></span> Usuarios <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#"><span class="glyphicon glyphicon-user"></span> Clientes</a></li>
-                                {% if is_granted('ROLE_ADMIN') %}
-                                <li><a href="#"><span class="icon-empleado"></span> Empleados</a></li>
-                                {% endif %}
+                                    {% if is_granted('ROLE_ADMIN') %}
+                                    <li><a href="#"><span class="icon-empleado"></span> Empleados</a></li>
+                                    {% endif %}
                             </ul>
                         </li>
 
@@ -134,10 +134,10 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                <span class="icon-empleado"></span> {{ usuario }} <span class="caret"></span>
+{#                                <span class="icon-empleado"></span> {{ usuario }} <span class="caret"></span>#}
                             </a>
                             <ul class="dropdown-menu">
-                                    {% if is_granted('ROLE_ADMIN') %}
+                                {% if is_granted('ROLE_ADMIN') %}
                                     <li><a href="#">Configuracion</a></li>
                                     {% endif %}
                                 <li><a href="#">Perfil</a></li>
@@ -154,6 +154,9 @@
         {% block javascripts %}
             <script src="{{ asset('bundles/app/js/jquery.js') }}"></script>
             <script src="{{ asset('bundles/app/js/bootstrap.js') }}"></script>
+            <script src="{{ asset('bundles/app/js/jquery.validate.js') }}"></script>
+            <script src="{{ asset('bundles/app/js/jquery.validate.min.js') }}"></script>
+            <script src="{{ asset('bundles/app/js/additional-methods.min.js') }}"></script>
         {% endblock %}
     </body>
 </html>

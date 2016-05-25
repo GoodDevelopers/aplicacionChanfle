@@ -25,7 +25,7 @@ class Caja
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha", type="datetime", unique=true)
+     * @ORM\Column(name="fecha", type="date", unique=true)
      */
     private $fecha;
 

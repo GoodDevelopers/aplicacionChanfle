@@ -41,7 +41,13 @@ class Costo
      * @ORM\Column(name="valor", type="integer")
      */
     private $valor;
-
+    
+         /**
+     * @var string
+     *
+     * @ORM\Column(name="descripcion", type="string", nullable=true)
+     */
+    private $descripcion;
 
     /**
      * Get id
@@ -121,7 +127,27 @@ class Costo
     {
         return $this->valor;
     }
-    
+     /**
+     * Get descripcion
+     *
+     * @return string
+     */
+    public function getDescripcion() {
+        return $this->descripcion;
+    }
+
+    /**
+     * Set descripcion
+     *
+     * @param integer $descripcion
+     * @return Costo
+     */
+    public function setDescripcion($descripcion) {
+        $this->descripcion = $descripcion;
+
+        return $this;
+    }
+
     // --- Relacion Unidireccional ---
     /**
      * @ORM\ManyToOne(targetEntity="UsuariosBundle\Entity\Empleado")

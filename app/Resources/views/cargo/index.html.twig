@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="h1 text-center marginTitulo">Cargo list</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <ul>
+                    <li>
+                        <a href="{{ path('cargo_new') }}" class="btn btn-lg btn-success">Registrar Cargo <span class="glyphicon glyphicon-floppy-saved"></span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="margenTopTablas">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-condensed text-center">
+                            <thead>
+                                <tr class="active info">
+                                    <th>Id</th>
+                                    <th>Nombre</th>
+                                    <th>Salario</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for cargo in cargos %}
+                                    <tr>
+                                        <td><a href="{{ path('cargo_show', { 'id': cargo.id }) }}">{{ cargo.id }}</a></td>
+                                        <td>{{ cargo.nombre }}</td>
+                                        <td>{{ cargo.salario }}</td>
+                                        <td>
+                                            <ul class="list-inline text-center">
+                                                <li>
+                                                    <a href="{{ path('cargo_edit', { 'id': cargo.id })}}" class="btn btn-warning" role="button">Editar <span class="glyphicon glyphicon-edit"></span></a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ path('cargo_show', { 'id': cargo.id }) }}" class="btn btn-danger" role="button" >Eliminar <span class="glyphicon glyphicon-floppy-remove"></span></a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

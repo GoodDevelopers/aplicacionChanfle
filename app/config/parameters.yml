@@ -5,9 +5,12 @@ parameters:
     database_name: chanfle_bd
     database_user: chanfle
     database_password: chanfleTaqueria
-    mailer_transport: smtp
-    mailer_host: 127.0.0.1
-    mailer_user: null
-    mailer_password: null
+    mailer_host: ~
+    mailer_transport: gmail
+    mailer_encryption: ssl
+    mailer_auth_mode: login
+    mailer_user: goodevelopers@gmail.com
+    mailer_password: ProyectoAdmin
     secret: f54c7e558d91315af1536b71548080a614db37ad
     database_driver: pdo_mysql
+    

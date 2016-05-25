@@ -40,12 +40,16 @@ class CostoController extends Controller {
      * @Method({"GET", "POST"})
      * @Template()
      */
-    public function newAction(Request $request) {
+   public function newAction(Request $request) {
         $costo = new Costo();
         $form = $this->createForm('CostosBundle\Form\CostoType', $costo);
         $form->handleRequest($request);
+        $Date = new \DateTime("now");
+        $fecha = $Date->format('d/m/y');
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $costo->setFecha($Date);
+            $costo->setEmpleado($this->getEmpleadoLogueado());
             $em = $this->getDoctrine()->getManager();
             $em->persist($costo);
             $em->flush();
@@ -54,6 +58,7 @@ class CostoController extends Controller {
         }
 
         return array(
+            'fecha' => $fecha,
             'costo' => $costo,
             'form' => $form->createView(),
         );

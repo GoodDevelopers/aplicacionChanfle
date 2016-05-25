@@ -8,7 +8,7 @@
 
         <div class="row">
             <div class="col-sm-4 col-sm-offset-4">
-                {{ form_start(edit_form) }}
+                {{ form_start(edit_form , {'attr':{'id':'formulario'}}) }}
 
                 <div class="form-group">
                     {{ form_label(edit_form.nuip, 'No. de identificacion:')}}
@@ -55,3 +55,82 @@
     </div>
 
 {% endblock %}
+{% block javascripts %}
+    {{parent()}}
+    <script>
+        $('#formulario').validate({
+            highlight: function (element) {
+                $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+                $(element).fadeOut(function () {
+                    $(element).fadeIn();
+                });
+                },
+                unhighlight :  function (element)  {
+                $(element).closest('.control-group').removeClass('error').addClass('success');
+            }
+        });
+
+        $('#cliente_nuip').rules("add", {
+            required: true,
+            minlength: 6,
+            maxlength: 11,
+            min: 0,
+            number: true,
+            remote:
+            {
+                url:"{{path('validar_cliente')}}",
+                type: "post",
+                data: {
+                    nuip: function () {
+                        return $('#cliente_nuip').val();
+                    }
+                }
+
+            },
+            messages: {
+                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Este campo es requerido</label>",
+                maxlength: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Por favor no ingresar mas de 11 digitos</label>",
+                minlength: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Debes ingresar al menos 6 digitos</label>",
+                min: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> El valor de los puntos no debe ser menor a 0</label>",
+                number: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Ingresa solo numeros</label>",
+                remote: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> La identificacion ya esta registrada</label>"
+            }
+
+        });
+
+        $('#cliente_nombre').rules("add", {
+            required: true,
+            messages: {
+                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span>Este campo es requerido</label>"
+            }
+
+        });
+        $('#cliente_fechaDeNacimiento').rules("add", {
+            required: true,
+            messages: {
+                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span>Este campo es requerido</label>"
+            }
+
+        });
+        $('#cliente_puntosAcumulados').rules("add", {
+            required: true,
+            min: 0,
+            messages: {
+                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span>Este campo es requerido</label>",
+                min: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span>El valor de los puntos no debe ser menor a 0</label>"
+            }
+
+        });
+        $('#cliente_email').rules("add", {
+            required: true,
+            email: true,
+            messages: {
+                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span>Este campo es requerido</label>",
+                email: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span>El email ingresado no es un email valido</label>"
+            }
+
+        });
+
+    </script>
+{% endblock %}
+

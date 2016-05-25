@@ -16,7 +16,7 @@
         <div class="row">
             <div class="col-sm-4 col-sm-offset-4">
 
-                {{ form_start(form) }}
+                {{ form_start(form , {'attr':{'id':'formulario'}}) }}
 
                 <div class="form-group">
                     {{ form_label(form.nuip, 'No. de identificacion:')}}
@@ -94,5 +94,68 @@
                 }
             });
         });
+        $('#formulario').validate({
+            highlight: function (element) {
+                $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+                $(element).fadeOut(function () {
+                    $(element).fadeIn();
+                });
+
+
+            },
+            success: function (element) {
+                $(element).closest('.form-group').removeClass('has-error');
+            }
+        });
+
+        $('#empleado_nuip').rules("add", {
+            required: true,
+            minlength: 6,
+            maxlength: 11,
+            min: 0,
+            number: true,
+            remote:{
+                url:"{{path('validar_empleado')}}",
+                type:"post",
+                data:{
+                    nuip:function (){
+                        return $('#empleado_nuip').val();
+                    }
+                }
+                        
+            },
+            messages: {
+                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Este campo es requerido</label>",
+                maxlength: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Por favor no ingresar mas de 11 digitos</label>",
+                minlength: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Debes ingresar al menos 6 digitos</label>",
+                min: "<label class='control-label' for='inputError'><span class='gglyphicon glyphicon-remove-sign'></span> La identificacion no debe ser menor a 0</label>",
+                number: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Ingresa solo numeros</label>",
+                remote: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> La identificacion ya esta registrada</label>"
+            }
+        });
+
+        $('#empleado_nombre').rules("add", {
+            required: true,
+            messages: {
+                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span>Este campo es requerido</label>"
+            }
+
+        });
+
+        $('#empleado_telefono').rules("add", {
+            required: true,
+            minlenght: 7,
+            maxlenght: 13,
+            number:true,
+            min: 0,
+            messages: {
+                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span>Este campo es requerido</label>",
+                minlenght: "<label class='control-label' for='inputError'><span classs='glyphicon glyphicon-remove-sign'></span>Debes ingresar al menos 7 digitos</label>",
+                maxlength: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span>Por favor no ingresar mas de 13 digitos</label>",
+                number: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Ingresa solo numeros</label>",
+                min:"<label class='control-label' for='inputError'><span class='gglyphicon glyphicon-remove-sign'></span> El telefono no debe tener numeros negativos</label>"
+            }
+        });
     </script>
 {% endblock %}
+

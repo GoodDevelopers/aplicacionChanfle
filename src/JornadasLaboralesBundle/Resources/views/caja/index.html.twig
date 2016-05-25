@@ -1,47 +1,66 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Caja list</h1>
+    {{parent()}}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="h1 text-center marginTitulo">Caja list</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <ul>
+                    <li>
+                        <a href="{{ path('caja_new') }}" class="btn btn-lg btn-success">Registar caja <span class="glyphicon glyphicon-floppy-saved"></span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="margenTopTablas">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-condensed text-center">
+                            <thead>
+                                <tr class="active info">
+                                    <th>Id</th>
+                                    <th>Fecha</th>
+                                    <th>Cajainicial</th>
+                                    <th>Cajainicialjustificacion</th>
+                                    <th>Cajafinal</th>
+                                    <th>Cajafinaljustificacion</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for caja in cajas %}
+                                    <tr>
+                                        <td><a href="{{ path('caja_show', { 'id': caja.id }) }}">{{ caja.id }}</a></td>
+                                        <td>{% if caja.fecha %}{{ caja.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                        <td>{{ caja.cajaInicial }}</td>
+                                        <td>{{ caja.cajaInicialJustificacion }}</td>
+                                        <td>{{ caja.cajaFinal }}</td>
+                                        <td>{{ caja.cajaFinalJustificacion }}</td>
+                                        <td>
+                                            <ul class="list-inline text-center">
+                                                <li>
+                                                    <a href="{{ path('caja_edit', { 'id': caja.id }) }}" class="btn btn-warning" role="button">Editar <span class="glyphicon glyphicon-edit"></span></a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ path('caja_show', { 'id': caja.id }) }}" class="btn btn-danger" role="button">Eliminar <span class="glyphicon glyphicon-floppy-remove"></span></a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Fecha</th>
-                <th>Cajainicial</th>
-                <th>Cajainicialjustificacion</th>
-                <th>Cajafinal</th>
-                <th>Cajafinaljustificacion</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for caja in cajas %}
-            <tr>
-                <td><a href="{{ path('caja_show', { 'id': caja.id }) }}">{{ caja.id }}</a></td>
-                <td>{% if caja.fecha %}{{ caja.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ caja.cajaInicial }}</td>
-                <td>{{ caja.cajaInicialJustificacion }}</td>
-                <td>{{ caja.cajaFinal }}</td>
-                <td>{{ caja.cajaFinalJustificacion }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('caja_show', { 'id': caja.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('caja_edit', { 'id': caja.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('caja_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+    </div>
 {% endblock %}

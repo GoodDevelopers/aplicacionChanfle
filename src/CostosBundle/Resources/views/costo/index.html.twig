@@ -1,43 +1,66 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Costo list</h1>
+    <div class="container">
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Fecha</th>
-                <th>Tipocosto</th>
-                <th>Valor</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for costo in costos %}
-            <tr>
-                <td><a href="{{ path('costo_show', { 'id': costo.id }) }}">{{ costo.id }}</a></td>
-                <td>{% if costo.fecha %}{{ costo.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ costo.tipoCosto }}</td>
-                <td>{{ costo.valor }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('costo_show', { 'id': costo.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('costo_edit', { 'id': costo.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="h1 text-center marginTitulo">Costo list</h1>
+            </div>
+        </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('costo_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+
+        <div class="row">
+            <div class="col-md-3">
+                <ul>
+                    <li>
+                        <a class="btn btn-lg btn-success"href="{{ path('costo_new') }}">Registrar Costo <span class="glyphicon glyphicon-floppy-saved"></span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="margenTopTablas">        
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-condensed text-center">
+                            <thead>
+                                <tr class="active info">
+                                    <th>Id</th>
+                                    <th>Fecha</th>
+                                    <th>Tipocosto</th>
+                                    <th>Valor</th>
+                                    <th>Descripcion</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for costo in costos %}
+                                    <tr>
+                                        <td><a href="{{ path('costo_show', { 'id': costo.id }) }}">{{ costo.id }}</a></td>
+                                        <td>{% if costo.fecha %}{{ costo.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                        <td>{{ costo.tipoCosto }}</td>
+                                        <td>{{ costo.valor }}</td>
+                                        <td>{{ costo.descripcion }}</td>
+                                        <td>
+                                            <ul class="list-inline text-center">
+                                                <li>
+                                                    <a href="{{ path('costo_edit', { 'id': costo.id }) }}" class="btn btn-warning" role="button">Editar <span class="glyphicon glyphicon-edit"></span></a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ path('costo_show', { 'id': costo.id }) }}" class="btn btn-danger" role="button">Eliminar <span class="glyphicon glyphicon-floppy-remove"></span></a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 {% endblock %}

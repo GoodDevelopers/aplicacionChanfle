@@ -45,7 +45,10 @@ class CajaController extends Controller {
         $form = $this->createForm('JornadasLaboralesBundle\Form\CajaType', $caja);
         $form->handleRequest($request);
 
+        $Date = new DateTime("now");
+        $fecha = $Date->format('Y-m-d');
         if ($form->isSubmitted() && $form->isValid()) {
+            $caja->setFecha($Date);
             $em = $this->getDoctrine()->getManager();
             $em->persist($caja);
             $em->flush();
@@ -54,6 +57,7 @@ class CajaController extends Controller {
         }
 
         return array(
+            'fecha' => $fecha,
             'caja' => $caja,
             'form' => $form->createView(),
         );

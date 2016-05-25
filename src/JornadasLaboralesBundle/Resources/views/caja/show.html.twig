@@ -1,48 +1,62 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Caja</h1>
+    {{parent()}}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="h1 text-center marginTitulo">Caja</h1>
+            </div>
+        </div>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ caja.id }}</td>
-            </tr>
-            <tr>
-                <th>Fecha</th>
-                <td>{% if caja.fecha %}{{ caja.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Cajainicial</th>
-                <td>{{ caja.cajaInicial }}</td>
-            </tr>
-            <tr>
-                <th>Cajainicialjustificacion</th>
-                <td>{{ caja.cajaInicialJustificacion }}</td>
-            </tr>
-            <tr>
-                <th>Cajafinal</th>
-                <td>{{ caja.cajaFinal }}</td>
-            </tr>
-            <tr>
-                <th>Cajafinaljustificacion</th>
-                <td>{{ caja.cajaFinalJustificacion }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('caja_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('caja_edit', { 'id': caja.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4">
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <th class="text-right">Id</th>
+                            <td>{{ caja.id }}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">Fecha</th>
+                            <td>{% if caja.fecha %}{{ caja.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">Cajainicial</th>
+                            <td>{{ caja.cajaInicial }}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">Cajainicialjustificacion</th>
+                            <td>{{ caja.cajaInicialJustificacion }}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">Cajafinal</th>
+                            <td>{{ caja.cajaFinal }}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">Cajafinaljustificacion</th>
+                            <td>{{ caja.cajaFinalJustificacion }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4">
+                <ul class="text-center list-inline">
+                    <li>
+                        <a href="{{ path('caja_index') }}" class="btn btn-info">Lista <span class="glyphicon glyphicon-th-list"></span></a>
+                    </li>
+                    <li>
+                        <a href="{{ path('caja_edit', { 'id': caja.id }) }}" class="btn btn-warning" role="button">Editar<span class="glyphicon glyphicon-edit"></span></a>
+                    </li>
+                    <li>
+                        {{ form_start(delete_form) }}
+                      <button type="submit" class="btn btn-danger">Eliminar <span class="glyphicon glyphicon-floppy-remove"></span></button>
+                        {{ form_end(delete_form) }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 {% endblock %}

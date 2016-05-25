@@ -251,6 +251,35 @@ class ProductoController extends Controller {
         return $response;
     }
     
+       /**
+     *
+     *
+     * @Route("/buscar/productos", name="buscar_productos")
+     * 
+     */
+    public function buscarProdcutos(Request $request) {
+        $nombre = $request->get("tipoP");
+//        throw new \Exception($nombre);
+        $em = $this->getDoctrine()->getManager();
+
+        $tipo = $em->getRepository('InventarioBundle:TipoProducto')->findOneBy(array("nombre" => $nombre));
+        $productos = $em->getRepository('InventarioBundle:Producto')->findBy(array("tipoProducto" => $tipo->getId()));
+
+        for ($i = 0; $i < count($productos); $i ++){
+            $Nombres[$i] = $productos[$i]->getNombre();
+        }
+
+
+        $productos_response = (array('productos' => $Nombres));
+
+        $response = new Response(\json_encode($productos_response));
+        $response->headers->set('Content-Type', 'application/json');
+
+
+
+        return $response;
+    }
+    
 //    public function getNumeroProducto(){
 //        $emProductos = $this->getDoctrine()->getManager();
 //        $productos = $emProductos->getRepository('InventarioBundle:Producto')->findAll();

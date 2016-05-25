@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="h1 text-center marginTitulo">TurnoLaboral creation</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+                {{ form_start(form, {'attr':{'id':'formulario'}}) }}
+                <div class="form-group">
+                    <label>Caja:</label>
+                    <select id="Cajadia" class="form-control">
+                        {% if caja != null%}
+                            <option>{% if caja.fecha %}{{ caja.fecha|date('Y-m-d') }}{% endif %}</option>
+                        {% endif %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.empleado, 'Empleado:') }}
+                    {{ form_widget(form.empleado,{'attr':{'class':'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.cargo, 'Cargo:') }}
+                    {{ form_widget(form.cargo ,{'attr':{'class':'form-control'}}) }}
+                </div>
+                <div class="form-group text-center">
+
+                    <button type="submit" class="btn btn-lg btn-success">Registrar <span class="glyphicon glyphicon-floppy-saved"></span></button>
+                </div>
+                {{ form_end(form) }}
+
+                <ul class="form-group text-center">
+                    <li>
+                        <a href="{{ path('turnolaboral_index') }}" class="btn btn-info">Lista <span class="glyphicon glyphicon-th-list"></span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block  javascripts %}
+    {{parent()}}
+    <script>
+        $('#formulario').validate({
+            highlight: function (element) {
+                $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+                $(element).fadeOut(function () {
+                    $(element).fadeIn();
+                });
+            },
+            unhighlight: function (element) {
+                $(element).closest('.control-group').removeClass('error').addClass('success');
+            }
+        });
+
+        $('#turno_laboral_empleado').rules("add", {
+            required: true,
+            messages: {
+                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span>Seleccione un empleado</label>"
+            }
+        });
+        $('#turno_laboral_cargo').rules("add", {
+            required: true,
+            messages: {
+                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span>Seleccione un empleado</label>"
+            }
+        });
+        $('#Cajadia').rules("add", {
+            required: true,
+            messages: {
+                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span>No se ha creado una caja del dia</label>"
+            }
+        });
+    </script>
+{% endblock %}

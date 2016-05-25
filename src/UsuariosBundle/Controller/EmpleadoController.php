@@ -174,5 +174,28 @@ class EmpleadoController extends Controller {
                         ->getForm()
         ;
     }
+    
+       /**
+     *
+     * @Route("/validarEmpleado", name="validar_empleado")
+     */
+    public function validarEmpleado(Request $request) {
+      $nuip = $request->get('nuip');
+              
+      $em = $this->getDoctrine()->getManager();
+
+        $empleado = $em->getRepository('UsuariosBundle:Empleado')->findOneBy(array('nuip' => $nuip));
+
+        if ($empleado == null) {
+            $data = true;
+        } else {
+            $data = false;
+        }
+        $response = new Response(\json_encode($data));
+         return $response;
+     
+    }
+    
+    
 
 }

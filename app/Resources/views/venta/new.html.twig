@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+ {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
     {{parent()}}
@@ -9,7 +9,7 @@
 {% block body %}
     <div id="div_title" class="panel-primary"><h1>Nueva Venta</h1></div>
 
- 
+
 
     {{ form_start(form)}}
 
@@ -32,9 +32,21 @@
 
     </div>
 
-{{ form_widget(form.detalles)}}
+    {{ form_widget(form.detalles)}}
     <div class="form-control">
-        <label>Nombre Producto:</label><input type="text" placeholder="Nombre Producto" id="NombreProducto"/>
+
+        <select id="TipoProductos" name="thelist" class="dropdown form-group">
+            <option>seleccione tipo de producto</option>
+            {% for Tipo in tipos %}
+                <option>{{Tipo.nombre}}</option>
+            {% endfor %}
+        </select>
+
+        {#           <label>Nombre Producto:</label><input type="text" placeholder="Nombre Producto" id="NombreProducto"/>#}
+        <select id="ListaProductosC" class="dropdown form-group" disabled="true">
+            <option>No ha seleccionado un tipo de producto</option>
+
+        </select>
         <button type="button" onclick="buscarProducto();">Buscar Producto</button>
         <label>Precio:</label> <input type="number" placeholder="Precio" id="PrecioProducto" disabled="true"/>
         <label>Cantidad:</label><input type="number" placeholder="Cantidad" id="CantidadProducto"/>
@@ -45,7 +57,7 @@
     <ul id="productos" class="detalles" data-prototype="{{ form_widget(form.detalles.vars.prototype.producto.nombre)|e}}" ></ul>
     <ul id="cantidades" class="detalles" data-prototype="{{ form_widget(form.detalles.vars.prototype.cantidad)|e}}" ></ul>
 
-    <table class="table" id="Tabla_Productos" name="TablaProductos">
+    <table class="table table-bordered table-hover table-condensed text-center" id="Tabla_Productos">
         <thead>
             <tr>
                 <th>NOMBRE PRODUCTO</th>
@@ -68,8 +80,10 @@
     </div>
 
 
-    <div class="form-control"><button  class="btn-success" type="submit"> Aceptar </button>
-        <button class="btn-info"> <a class="EnlaceBoton" href="{{ path('venta_index') }}">Regresar</a></button></div>  
+    <div class="form-control">
+        <button  class="btn-success" type="submit"> Aceptar </button>
+        <button class="btn-info"><a class="EnlaceBoton" href="{{ path('venta_index') }}">Regresar</a></button>
+    </div>
 
 
     {{form_end(form)}}
@@ -86,10 +100,10 @@
         var Cantidades = [];
         var Precio = [];
         var total = 0;
- //numero de productos y cantidades que se han agregado
+        //numero de productos y cantidades que se han agregado
         var NumeroP = $('#productos').length;
         var NumeroC = $('#cantidades').length;
- //numero que sirve para crear el id de serie de los procutos
+        //numero que sirve para crear el id de serie de los procutos
         var numeroProducto = 1;
 
 
@@ -120,7 +134,7 @@
 
         function buscarProducto() {
 
-            var nombre = $("#NombreProducto").val();
+            var nombre = $("#ListaProductosC").val();
 
             $.ajax({
                 url: "{{path('buscar_producto')}}",
@@ -131,6 +145,7 @@
                     if (data == null) {
                         alert('datos no encontrados');
                     } else {
+
                         $("#PrecioProducto").val(data["precio"]);
                         $("#CantidadProducto").focus();
                     }
@@ -140,16 +155,16 @@
 
         function agregarProductoLogica() {
 
-            var nombreProducto = $('#NombreProducto').val();
+            var nombreProducto = $('#ListaProductosC').val();
             var cantidad = $('#CantidadProducto').val();
             var precio = $('#PrecioProducto').val();
             //obtiene las listas ocultas de productos y cantidades
             var ListaProductos = $('#productos');
-            var ListaCantidades = $('#cantidades');   
+            var ListaCantidades = $('#cantidades');
             //se crea la identificacion que tendra cada producto y campo
             var NumeroSerie = "" + nombreProducto + numeroProducto;
             //se agrega la nueva fila a la tabla
-            $('#CuerpoTabla').append(agregarProductoTabla(NumeroSerie,nombreProducto, precio, cantidad));
+            $('#CuerpoTabla').append(agregarProductoTabla(NumeroSerie, nombreProducto, precio, cantidad));
             //se suma el valor de los productos añadidos
             total = $('#venta_valorTotal').val();
             total = parseInt(total) + parseInt(precio) * parseInt(cantidad);
@@ -160,7 +175,7 @@
             $('#CantidadProducto').val("");
             $('#NombreProducto').focus();
             //se asigna el nuevo protoype,numero de serie y valor que tendra el campo
-            ListaProductos.data('prototype', '<input class="hidden" type="text" id="'+ NumeroSerie +'" name="venta[detalles][__name__][producto][nombre]" value="' + nombreProducto + '"/>');
+            ListaProductos.data('prototype', '<input class="hidden" type="text" id="' + NumeroSerie + '" name="venta[detalles][__name__][producto][nombre]" value="' + nombreProducto + '"/>');
             ListaCantidades.data('prototype', '<input class="hidden" type="text" id="venta_type2_detalles___name___cantidad" name="venta[detalles][__name__][cantidad]" value="' + cantidad + '"/>');
             //se obtiene el prototipo creado y se reemplazan las claves "name" con el indice 
             var prototype = ListaProductos.data('prototype');
@@ -178,12 +193,12 @@
             //se guardan las cantidades con los identificadores de cada producto     
             Cantidades[NumeroSerie] = cantidad;
             Precio[NumeroSerie] = precio;
-            numeroProducto ++;
-        
-         
-         }
+            numeroProducto++;
 
-        function agregarProductoTabla(nombreS,nombre, precioUnitario, cantidad) {
+
+        }
+
+        function agregarProductoTabla(nombreS, nombre, precioUnitario, cantidad) {
             Productos =
                     "<tr id=" + 'producto' + nombreS + ">" +
                     "<td>" + nombre + "</td>" +
@@ -207,6 +222,42 @@
             $("#CantidadProducto").focus();
         }
 
+
+        $('#TipoProductos').on('change', function () {
+            var tipo = $('#TipoProductos').val();
+               
+            $('#PrecioProducto').val("");
+            $('#CantidadProducto').val("");
+            $('#ListaProductosC').empty();
+            buscarProductos(tipo);
+
+        });
+
+
+        function buscarProductos(tipo) {
+            $.ajax({
+                url: "{{path('buscar_productos')}}",
+                data: ({tipoP: tipo}),
+                method: 'POST',
+                dataType: "json",
+                success: function (data) {
+                    if (data == null) {
+                        alert('datos no encontrados');
+                    } else {
+                        var nombres = data["productos"];
+                        nombres.sort();
+                       var primerOpt = "<option> Seleccione producto </option>"
+                       $('#ListaProductosC').append(primerOpt);
+                        for (var i = 0; i < nombres.length; i++){
+                            var newop = "<option>" + nombres[i] + "</option>";
+                            $('#ListaProductosC').append(newop);
+                            $('#ListaProductosC').attr('disabled', false);
+                           }
+                        
+                    }
+                }
+            });
+        }
 
 
     </script>

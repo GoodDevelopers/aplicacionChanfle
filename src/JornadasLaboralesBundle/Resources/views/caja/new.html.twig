@@ -1,16 +1,162 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Caja creation</h1>
+    {{parent()}}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="h1 text-center marginTitulo">Caja creation</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+                {{ form_start(form ,{'attr':{'id':'formulario'}}) }}
+                <div class="form-group">
+                    {{form_label(form.fecha,'Fecha:')}}
+                    {{ form_widget(form.fecha,{'attr':{'class':'form-control disabled','format' : 'dd-MM-yyyy', 'value':(fecha),'readonly':'readonly'}}) }}
+                    {{form_errors(form.fecha)}}
+                </div>
+                <div class="form-group">    
+                    {{form_label(form.cajaInicial,'Caja inicial:')}}
+                    {{ form_widget(form.cajaInicial,{'attr':{'class':'form-control', 'value':0}}) }}
+                    {%  if form_errors(form.cajaInicial)  != '' %}
+                        <div class="alert alert-danger fade in" role="alert">
+                            <a data-dismiss="alert" class="pull-right" href="" type="button">
+                                <i class="fa fa-times"></i>
+                            </a>
+                            <strong>Error</strong><br>
+                            {{ form_errors(form.cajaInicial)}}
+                        </div>
+                    {%  endif %}
+                </div>
+                <div class="form-group">    
+                    {{form_label(form.cajaInicialJustificacion,'Caja inicial justificacion:')}}
+                    {{ form_widget(form.cajaInicialJustificacion,{'attr':{'class':'form-control'}}) }}
+                    {%  if form_errors(form.cajaInicialJustificacion)  != '' %}
+                        <div class="alert alert-danger fade in" role="alert">
+                            <a data-dismiss="alert" class="pull-right" href="" type="button">
+                                <i class="fa fa-times"></i>
+                            </a>
+                            <strong>Error</strong><br>
+                            {{ form_errors(form.cajaInicialJustificacion)}}
+                        </div>
+                    {%  endif %}
+                </div>
+                <div class="form-group">    
+                    {{form_label(form.cajaFinal, 'Caja Final:')}}
+                    {{ form_widget(form.cajaFinal,{'attr':{'class':'form-control','value':0}}) }}
+                    {%  if form_errors(form.cajaFinal)  != '' %}
+                        <div class="alert alert-danger fade in" role="alert">
+                            <a data-dismiss="alert" class="pull-right" href="" type="button">
+                                <i class="fa fa-times"></i>
+                            </a>
+                            <strong>Error</strong><br>
+                            {{ form_errors(form.cajaFinal)}}
+                        </div>
+                    {%  endif %}
+                </div>
+                <div class="form-group">    
+                    {{form_label(form.cajaFinalJustificacion,'Caja final justificacion:')}}
+                    {{ form_widget(form.cajaFinalJustificacion,{'attr':{'class':'form-control'}}) }}
+                    {%  if form_errors(form.cajaFinalJustificacion)  != '' %}
+                        <div class="alert alert-danger fade in" role="alert">
+                            <a data-dismiss="alert" class="pull-right" href="" type="button">
+                                <i class="fa fa-times"></i>
+                            </a>
+                            <strong>Error</strong><br>
+                            {{ form_errors(form.cajaFinalJustificacion)}}
+                        </div>
+                    {%  endif %}
+                </div>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('caja_index') }}">Back to the list</a>
-        </li>
-    </ul>
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-lg btn-success">Registrar <span class="glyphicon glyphicon-floppy-saved"></span></button>
+                </div>
+
+                {{ form_end(form) }}
+                <div class="form-group text-center">
+                    <ul>
+                        <li>
+                            <a href="{{ path('caja_index') }} " class="btn btn-info">Lista <span class="glyphicon glyphicon-th-list"></span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+{% block javascripts %}
+    {{parent()}}
+    <script>
+
+
+        $('#formulario').validate({
+            highlight: function (element) {
+                $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+                $(element).fadeOut(function () {
+                    $(element).fadeIn();
+                });
+            },
+            unhighlight: function (element) {
+                $(element).closest('.control-group').removeClass('error').addClass('success');
+            }
+        });
+        $('#caja_cajaInicial').rules("add", {
+            required: true,
+            number: true,
+            min: 0,
+            messages: {
+                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Este campo es requerido</label>",
+                number: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Ingrese solo numeros</label>",
+                min: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> El valor de la caja inicial debe ser mayor o igual a 0</label>"
+            }
+        });
+        $('#caja_cajaInicialJustificacion').rules("add", {
+            required: true,
+            messages: {
+                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Este campo es requerido</label>"
+            }
+        });
+        $('#caja_cajaFinal').rules("add", {
+            required: true,
+            number: true,
+            min: 0,
+            messages: {
+                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Este campo es requerido</label>",
+                number: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Ingrese solo numeros</label>",
+                min: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> El valor de la caja final debe ser mayor o igual a 0</label>"
+            }
+        });
+        $('#caja_cajaFinalJustificacion').rules("add", {
+            required: true,
+            messages: {
+                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Este campo es requerido</label>"
+            }
+        });
+
+        $('#caja_fecha').rules("add", {
+            required: true,
+            remote: "{{path('validar_fecha')}}",
+            messages: {
+                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Este campo es requerido</label>",
+                remote: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> La caja del dia ya esta creada</label>"
+
+            }
+        });
+        $(document).on('ready', function () {
+            $('#caja_cajaFinalJustificacion').css('resize', 'none');
+            $('#caja_cajaInicialJustificacion').css('resize', 'none');
+            $('#caja_cajaFinalJustificacion').text("Sin justificacion");
+            $('#caja_cajaInicialJustificacion').text("Sin justificacion");
+
+
+
+        });
+
+
+    </script>
+
 {% endblock %}
