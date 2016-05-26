@@ -3,7 +3,7 @@
 {% block stylesheets %}
     {{parent()}}
 
-    <link rel="stylesheet" href="{{ asset('bundles/ventas/css/EstiloVentas.css') }}" />
+{#    <link rel="stylesheet" href="{{ asset('bundles/ventas/css/EstiloVentas.css') }}" />#}
 {% endblock %}
 
 {% block body %}
@@ -43,12 +43,12 @@
         </select>
 
         {#           <label>Nombre Producto:</label><input type="text" placeholder="Nombre Producto" id="NombreProducto"/>#}
-        <select id="ListaProductosC" class="dropdown form-group" disabled="true">
+        <select id="ListaProductosC" class="dropdown form-group disabled" disabled="true">
             <option>No ha seleccionado un tipo de producto</option>
 
         </select>
         <button type="button" onclick="buscarProducto();">Buscar Producto</button>
-        <label>Precio:</label> <input type="number" placeholder="Precio" id="PrecioProducto" disabled="true"/>
+        <label>Precio:</label> <input type="number" placeholder="Precio" id="PrecioProducto" />
         <label>Cantidad:</label><input type="number" placeholder="Cantidad" id="CantidadProducto"/>
         <button class="btn-success" type="button" onclick="agregarProductoLogica();">Agregar Producto</button>
 
@@ -225,7 +225,6 @@
 
         $('#TipoProductos').on('change', function () {
             var tipo = $('#TipoProductos').val();
-               
             $('#PrecioProducto').val("");
             $('#CantidadProducto').val("");
             $('#ListaProductosC').empty();
@@ -244,15 +243,16 @@
                     if (data == null) {
                         alert('datos no encontrados');
                     } else {
+      
                         var nombres = data["productos"];
                         nombres.sort();
-                       var primerOpt = "<option> Seleccione producto </option>"
+                       var primerOpt = "<option> Seleccione producto </option>";
                        $('#ListaProductosC').append(primerOpt);
                         for (var i = 0; i < nombres.length; i++){
                             var newop = "<option>" + nombres[i] + "</option>";
                             $('#ListaProductosC').append(newop);
-                            $('#ListaProductosC').attr('disabled', false);
                            }
+                            $('#ListaProductosC').attr('disabled', false);
                         
                     }
                 }

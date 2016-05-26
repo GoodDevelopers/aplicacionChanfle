@@ -1,16 +1,108 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>MateriaPrima creation</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="h1 text-center marginTitulo">MateriaPrima creation</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-4">
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+                {{ form_start(form,{'attr':{'id':'formulario'}}) }}
+                <div class="form-group">
+                    {{ form_label(form.nombre, 'Nombre:') }}
+                    {{ form_widget(form.nombre, {'attr':{'class':'form-control', 'placeholder':'Nombre'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.unidadDeMedida, 'Unidad de Medida:') }}
+                    {{ form_widget(form.unidadDeMedida, {'attr':{'class':'form-control', 'placeholder':'Unidad de Medida'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.cantidad, 'Cantidad:') }}
+                    {{ form_widget(form.cantidad, {'attr':{'class':'form-control', 'placeholder':'Cantidad'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.precio, 'Precio:') }}
+                    {{ form_widget(form.precio, {'attr':{'class':'form-control', 'placeholder':'Precio'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.stockMinimo, 'stockMinimo:') }}
+                    {{ form_widget(form.stockMinimo, {'attr':{'class':'form-control', 'placeholder':'StockMinimo'}}) }}
+                </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('materiaprima_index') }}">Back to the list</a>
-        </li>
-    </ul>
+                <div class="form-group text-center">
+                    <button class="btn btn-lg btn-success" type="submit">Registrar <span class="glyphicon glyphicon-floppy-saved"></span></button> 
+
+                </div>
+                {{ form_end(form) }}
+
+                <ul class="form-group text-center">
+                    <li>
+                        <a class="btn btn-info" href="{{ path('materiaprima_index') }}">Lista <span class="glyphicon glyphicon-th-list"></span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{parent()}}
+    <script>
+        $('#formulario').validate({
+            highlight: function (element) {
+                $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+                $(element).fadeOut(function () {
+                    $(element).fadeIn();
+                });
+            },
+            unhighlight: function (element) {
+                $(element).closest('.control-group').removeClass('error').addClass('success');
+            }
+        });
+
+        $('#materia_prima_nombre').rules("add", {
+            required: true,
+            messages: {
+                 required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Este campo es requerido</label>"
+            }
+        });
+        $('#materia_prima_unidadDeMedida').rules("add", {
+            required: true,
+            messages: {
+                 required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Este campo es requerido</label>"
+            }
+        });
+        $('#materia_prima_cantidad').rules("add", {
+            required: true,
+            number:true,
+            min:0,
+            messages: {
+                 required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Este campo es requerido</label>",
+                 number: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Solo digite numeros</label>",
+                 min: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> La cantidad no debe ser menor a 0</label>"
+            }
+        });
+        $('#materia_prima_precio').rules("add", {
+            required: true,
+            number:true,
+            min:0,
+            messages: {
+                 required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Este campo es requerido</label>",
+                 number: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Solo digite numeros</label>",
+                 min: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> El precio no debe ser menor a 0</label>"
+            }
+        });
+        $('#materia_prima_stockMinimo').rules("add", {
+            required: true,
+            number:true,
+            min:1,
+            messages: {
+                 required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Este campo es requerido</label>",
+                 number: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Solo digite numeros</label>",
+                 min: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> El stock minimo debe ser mayor a 0</label>"
+            }
+        });
+    </script>
 {% endblock %}

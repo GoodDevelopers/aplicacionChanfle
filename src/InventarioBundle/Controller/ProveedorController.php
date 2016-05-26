@@ -8,18 +8,19 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Proveedor controller.
  *
- * @Route("/yes")
+ * @Route("/proveedores")
  */
 class ProveedorController extends Controller {
 
     /**
      * Lists all Proveedor entities.
      *
-     * @Route("/", name="yes_index")
+     * @Route("/", name="proveedores_index")
      * @Method("GET")
      * @Template()
      */
@@ -36,7 +37,7 @@ class ProveedorController extends Controller {
     /**
      * Creates a new Proveedor entity.
      *
-     * @Route("/new", name="yes_new")
+     * @Route("/new", name="proveedores_new")
      * @Method({"GET", "POST"})
      * @Template()
      */
@@ -50,7 +51,7 @@ class ProveedorController extends Controller {
             $em->persist($proveedor);
             $em->flush();
 
-            return $this->redirectToRoute('yes_show', array('id' => $proveedor->getId()));
+            return $this->redirectToRoute('proveedores_show', array('id' => $proveedor->getId()));
         }
 
         return array(
@@ -62,7 +63,7 @@ class ProveedorController extends Controller {
     /**
      * Finds and displays a Proveedor entity.
      *
-     * @Route("/{id}", name="yes_show")
+     * @Route("/{id}", name="proveedores_show")
      * @Method("GET")
      * @Template()
      */
@@ -78,7 +79,7 @@ class ProveedorController extends Controller {
     /**
      * Displays a form to edit an existing Proveedor entity.
      *
-     * @Route("/{id}/edit", name="yes_edit")
+     * @Route("/{id}/edit", name="proveedores_edit")
      * @Method({"GET", "POST"})
      * @Template()
      */
@@ -92,7 +93,7 @@ class ProveedorController extends Controller {
             $em->persist($proveedor);
             $em->flush();
 
-            return $this->redirectToRoute('yes_edit', array('id' => $proveedor->getId()));
+            return $this->redirectToRoute('proveedores_edit', array('id' => $proveedor->getId()));
         }
 
         return array(
@@ -105,7 +106,7 @@ class ProveedorController extends Controller {
     /**
      * Deletes a Proveedor entity.
      *
-     * @Route("/{id}", name="yes_delete")
+     * @Route("/{id}", name="proveedores_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Proveedor $proveedor) {
@@ -118,7 +119,7 @@ class ProveedorController extends Controller {
             $em->flush();
         }
 
-        return $this->redirectToRoute('yes_index');
+        return $this->redirectToRoute('proveedores_index');
     }
 
     /**
@@ -130,10 +131,32 @@ class ProveedorController extends Controller {
      */
     private function createDeleteForm(Proveedor $proveedor) {
         return $this->createFormBuilder()
-                        ->setAction($this->generateUrl('yes_delete', array('id' => $proveedor->getId())))
+                        ->setAction($this->generateUrl('proveedores_delete', array('id' => $proveedor->getId())))
                         ->setMethod('DELETE')
                         ->getForm()
         ;
+    }
+    
+     /**
+     *
+     * @Route("/ValidarProveedor", name="validar_proveedor")
+     */
+    public function validarProveedor(Request $request) {
+
+
+        $nit = $request->get('nit');
+
+        $em = $this->getDoctrine()->getManager();
+
+        $proveedor = $em->getRepository('InventarioBundle:Proveedor')->findOneBy(array('nit' => $nit));
+
+        if ($proveedor == null) {
+            $data = true;
+        } else {
+            $data = false;
+        }
+        $response = new Response(\json_encode($data));
+         return $response;
     }
 
 }

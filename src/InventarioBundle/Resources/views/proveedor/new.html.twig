@@ -1,16 +1,118 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Proveedor creation</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="h1 text-center marginTitulo">Proveedor creation </h1>
+            </div>
+        </div>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-4">
 
-    <ul>
-        <li>
-            <a href="{{ path('yes_index') }}">Back to the list</a>
-        </li>
-    </ul>
+
+                {{ form_start(form, {'attr':{'id':'formulario'}}) }}
+                <div class="form-group">        
+                    {{ form_label(form.nit, 'Nit:') }}
+                    {{ form_widget(form.nit, {'attr':{'class':'form-control', 'placeholder':'No.Identificacion'}}) }}
+                </div>
+                <div class="form-group">   
+                    {{ form_label(form.nombre, 'Nombre:') }}
+                    {{ form_widget(form.nombre, {'attr':{'class':'form-control', 'placeholder':'Nombre y Apellido'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.correo, 'Correo:') }}
+                    {{ form_widget(form.correo, {'attr':{'class':'form-control','placeholder':'Correo electronico'}}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.telefono, 'Telefono:') }}
+                    {{ form_widget(form.telefono, {'attr':{'class':'form-control','placeholder':'Telefono'}}) }} 
+                </div>
+
+
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-lg btn-success">Registrar <span class="glyphicon glyphicon-floppy-saved"></span></button>
+                </div>
+                {{ form_end(form) }}
+                <div class="form-group text-center">
+                    <ul>
+                        <li>
+                            <a href="{{ path('proveedores_index') }}" class="btn btn-info">Lista <span class="glyphicon glyphicon-th-list"></span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{parent()}}
+    <script>
+        $('#formulario').validate({
+            highlight: function (element) {
+                $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+                $(element).fadeOut(function () {
+                    $(element).fadeIn();
+                });
+            },
+            unhighlight: function (element) {
+                $(element).closest('.control-group').removeClass('error').addClass('success');
+            }
+        });
+
+        $('#proveedor_nit').rules("add", {
+            required: true,
+            maxlength: 13,
+            minlength: 9,
+            remote: {
+                url: "{{path('validar_proveedor')}}",
+                type: "post",
+                data: {
+                    nit: function () {
+                        return $('#proveedor_nit').val();
+                    }
+                }
+            },
+            messages: {
+                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Este campo es requerido</label>",
+                maxlength: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Por favor no ingresar mas de 13 digitos</label>",
+                minlength: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Debes ingresar al menos 9 digitos</label>",
+                remote: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> El nit ya esta registrado</label>"
+            }
+
+
+        });
+
+        $('#proveedor_nombre').rules("add", {
+            required: true,
+            messages: {
+                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span>Este campo es requerido</label>"
+            }
+        });
+        $('#proveedor_correo').rules("add", {
+            required: true,
+            email: true,
+            messages: {
+                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span>Este campo es requerido</label>",
+                email: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span>El email ingresado no valido</label>"
+            }
+
+        });
+
+        $('#proveedor_telefono').rules("add", {
+            required: true,
+            minlength: 7,
+            maxlength: 13,
+            number: true,
+            min: 0,
+            messages: {
+                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span>Este campo es requerido</label>",
+                minlength: "<label class='control-label' for='inputError'><span classs='glyphicon glyphicon-remove-sign'></span>Debes ingresar al menos 7 digitos</label>",
+                maxlength: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span>Por favor no ingresar mas de 13 digitos</label>",
+                number: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Ingresa solo numeros</label>",
+                min: "<label class='control-label' for='inputError'><span class='gglyphicon glyphicon-remove-sign'></span> El telefono no debe tener numeros negativos</label>"
+            }
+        });
+    </script>
 {% endblock %}

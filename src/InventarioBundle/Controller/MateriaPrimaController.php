@@ -93,7 +93,7 @@ class MateriaPrimaController extends Controller {
             $em->persist($materiaPrima);
             $em->flush();
 
-            return $this->redirectToRoute('materiaprima_edit', array('id' => $materiaPrima->getId()));
+            return $this->redirectToRoute('materiaprima_index', array('id' => $materiaPrima->getId()));
         }
 
         return array(

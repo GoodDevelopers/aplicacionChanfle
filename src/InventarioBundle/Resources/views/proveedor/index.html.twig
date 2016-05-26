@@ -1,45 +1,61 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Proveedor list</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="h1 text-center marginTitulo">Proveedor list</h1>
+            </div>
+        </div>
+        <div class="row">
+        <div class="col-md-3">
+            <a href="{{ path('proveedores_new') }}" class="btn btn-lg btn-success">Registrar proveedor <span class="glyphicon glyphicon-floppy-saved"></span></a>
+        </div>
+        </div>
+        
+        
+        <div class="margenTopTablas">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-condensed text-center">
+                            <thead>
+                                <tr class="active info">
+                                    <th>Id</th>
+                                    <th>Nit</th>
+                                    <th>Nombre</th>
+                                    <th>Telefono</th>
+                                    <th>Correo</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for proveedor in proveedors %}
+                                    <tr>
+                                        <td><a href="{{ path('proveedores_show', { 'id': proveedor.id }) }}">{{ proveedor.id }}</a></td>
+                                        <td>{{ proveedor.nit }}</td>
+                                        <td>{{ proveedor.nombre }}</td>
+                                        <td>{{ proveedor.telefono }}</td>
+                                        <td>{{ proveedor.correo }}</td>
+                                        <td>
+                                            <ul class="list-inline text-center">
+                                                <li>
+                                                    <a href="{{ path('proveedores_edit', { 'id': proveedor.id }) }}"  class="btn btn-warning" role="button">Editar <span class="glyphicon glyphicon-edit"></span></a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ path('proveedores_show', { 'id': proveedor.id }) }}" class="btn btn-danger" role="button">Eliminar <span class="glyphicon glyphicon-floppy-remove"></span></a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nit</th>
-                <th>Nombre</th>
-                <th>Telefono</th>
-                <th>Correo</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for proveedor in proveedors %}
-            <tr>
-                <td><a href="{{ path('yes_show', { 'id': proveedor.id }) }}">{{ proveedor.id }}</a></td>
-                <td>{{ proveedor.nit }}</td>
-                <td>{{ proveedor.nombre }}</td>
-                <td>{{ proveedor.telefono }}</td>
-                <td>{{ proveedor.correo }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('yes_show', { 'id': proveedor.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('yes_edit', { 'id': proveedor.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('yes_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+    </div>
 {% endblock %}

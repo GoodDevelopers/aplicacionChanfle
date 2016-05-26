@@ -37,9 +37,9 @@ class MateriaPrima
     private $unidadDeMedida;
 
     /**
-     * @var int
+     * @var float
      *
-     * @ORM\Column(name="cantidad", type="integer")
+     * @ORM\Column(name="cantidad", type="float")
      */
     private $cantidad;
 
@@ -117,7 +117,7 @@ class MateriaPrima
     /**
      * Set cantidad
      *
-     * @param integer $cantidad
+     * @param float $cantidad
      * @return MateriaPrima
      */
     public function setCantidad($cantidad)
@@ -130,7 +130,7 @@ class MateriaPrima
     /**
      * Get cantidad
      *
-     * @return integer 
+     * @return float 
      */
     public function getCantidad()
     {

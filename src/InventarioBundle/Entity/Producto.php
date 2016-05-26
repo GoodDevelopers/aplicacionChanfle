@@ -112,6 +112,13 @@ class Producto
     /**
      * @var string
      *
+     * @ORM\Column(name="ruta", type="string", length=255)
+     */
+    private $ruta;
+    
+    /**
+     * @var string
+     *
      * @ORM\Column(name="descripcion", type="string", length=255)
      */
     private $descripcion;

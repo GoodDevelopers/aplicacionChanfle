@@ -1,47 +1,66 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>MateriaPrima list</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="h1 text-center marginTitulo">MateriaPrima list</h1>
+            </div>
+        </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nombre</th>
-                <th>Unidaddemedida</th>
-                <th>Cantidad</th>
-                <th>Precio</th>
-                <th>Stockminimo</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for materiaPrima in materiaPrimas %}
-            <tr>
-                <td><a href="{{ path('materiaprima_show', { 'id': materiaPrima.id }) }}">{{ materiaPrima.id }}</a></td>
-                <td>{{ materiaPrima.nombre }}</td>
-                <td>{{ materiaPrima.unidadDeMedida }}</td>
-                <td>{{ materiaPrima.cantidad }}</td>
-                <td>{{ materiaPrima.precio }}</td>
-                <td>{{ materiaPrima.stockMinimo }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('materiaprima_show', { 'id': materiaPrima.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('materiaprima_edit', { 'id': materiaPrima.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <div class="row">
+            <div class="col-md-3">
+                <ul>
+                    <li>
+                        <a href="{{ path('materiaprima_new') }}" class="btn btn-lg btn-success">Registrar Materia <span class="glyphicon glyphicon-floppy-saved"></span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="margenTopTablas">        
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-condensed text-center">
+                            <thead>
+                                <tr  class="active info">
+                                    <th>Id</th>
+                                    <th>Nombre</th>
+                                    <th>Unidaddemedida</th>
+                                    <th>Cantidad</th>
+                                    <th>Precio</th>
+                                    <th>Stockminimo</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for materiaPrima in materiaPrimas %}
+                                    <tr>
+                                        <td><a href="{{ path('materiaprima_show', { 'id': materiaPrima.id }) }}">{{ materiaPrima.id }}</a></td>
+                                        <td>{{ materiaPrima.nombre }}</td>
+                                        <td>{{ materiaPrima.unidadDeMedida }}</td>
+                                        <td>{{ materiaPrima.cantidad }}</td>
+                                        <td>{{ materiaPrima.precio }}</td>
+                                        <td>{{ materiaPrima.stockMinimo }}</td>
+                                        <td>
+                                            <ul class="list-inline text-center">
+                                                <li>
+                                                    <a href="{{ path('materiaprima_edit', { 'id': materiaPrima.id }) }}" class="btn btn-warning" role="button">Editar <span class="glyphicon glyphicon-edit"></span></a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ path('materiaprima_show', { 'id': materiaPrima.id }) }}" class="btn btn-danger" role="button">Eliminar <span class="glyphicon glyphicon-floppy-remove"></span></a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('materiaprima_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+
+    </div>
 {% endblock %}

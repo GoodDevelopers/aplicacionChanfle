@@ -64,7 +64,7 @@ class DetalleProducto
     
     /**
      * @ORM\ManyToOne(targetEntity="Producto", inversedBy="detallesProducto")
-     * @ORM\JoinColumn(name="idProducto", referencedColumnName="id")
+     * @ORM\JoinColumn(name="producto", referencedColumnName="id")
      */
     private $producto;
     

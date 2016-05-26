@@ -257,12 +257,12 @@ class ProductoController extends Controller {
      * @Route("/buscar/productos", name="buscar_productos")
      * 
      */
-    public function buscarProdcutos(Request $request) {
+    public function buscarProductos(Request $request) {
         $nombre = $request->get("tipoP");
-//        throw new \Exception($nombre);
         $em = $this->getDoctrine()->getManager();
 
         $tipo = $em->getRepository('InventarioBundle:TipoProducto')->findOneBy(array("nombre" => $nombre));
+//        throw new \Exception(count($tipo));
         $productos = $em->getRepository('InventarioBundle:Producto')->findBy(array("tipoProducto" => $tipo->getId()));
 
         for ($i = 0; $i < count($productos); $i ++){
@@ -280,10 +280,6 @@ class ProductoController extends Controller {
         return $response;
     }
     
-//    public function getNumeroProducto(){
-//        $emProductos = $this->getDoctrine()->getManager();
-//        $productos = $emProductos->getRepository('InventarioBundle:Producto')->findAll();
-//        return count($productos);
-//    }
+
 
 }
