@@ -1,0 +1,160 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{  parent() }}
+    <style>
+        select{
+            margin-right: 10px;
+            width: 40%;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="h1 text-center marginTitulo">Reportes <span class="fa fa-file-pdf-o"></span></h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 text-center">
+                <h2 class="h2 text-center">Costos </h2>
+                <div class="form-group form-inline">
+                    <select id="choiceCostos" class="form-control">
+                        <option value="">Seleccione un periodo...</option>
+                        <option value="dia">Dia</option>
+                        <option value="semana">Semana</option>
+                        <option value="mes">Mes</option>
+                        <option value="año">Año</option>
+                    </select>
+                    <label id="labelCostos" for="fechaCostos" hidden="hidden">Fecha: </label>
+                    <input id="fechaCostos" name="fechaCostos" type="hidden" class="form-control" disabled="disbled" placeholder="dd/mm/yyyy"/>
+                </div>
+                <div class="form-group form-inline text-center">
+                    <button type="button" class="btn btn-default">Generar <span class="fa fa-file-pdf-o" style="color: red;"></span></button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h2 class="h2 text-center">Gastos </h2>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 text-center">
+                <h2 class="h2 text-center">Utilidad </h2>
+                <form method="POST" action="{{ path('reportes_utilidad') }}">
+                    <div class="form-group form-inline">
+                        <select id="choiceUtilidad" name="choiceUtilidad" class="form-control">
+                            <option value="">Seleccione un periodo...</option>
+                            <option value="dia">Dia</option>
+                            <option value="semana">Semana</option>
+                            <option value="mes">Mes</option>
+                            <option value="año">Año</option>
+                        </select>
+                        <label id="labelUtilidad" for="fechaUtilidad" hidden="hidden">Fecha: </label>
+                        <input id="fechaUtilidad" name="fechaUtilidad" type="hidden" class="form-control" disabled="disbled" placeholder="dd/mm/yyyy"/>
+                    </div>
+                    <div class="form-group form-inline text-center">
+                        <button type="submit" class="btn btn-default">Generar <span class="fa fa-file-pdf-o" style="color: red;"></span></button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6 text-center">
+                <h2 class="h2 text-center">Ventas </h2>
+                <form method="POST" action="">
+                    <div class="form-group form-inline">
+                        <select id="choiceVentas" name="choiceVentas" class="form-control">
+                            <option value="">Seleccione un periodo...</option>
+                            <option value="dia">Dia</option>
+                            <option value="semana">Semana</option>
+                            <option value="mes">Mes</option>
+                            <option value="año">Año</option>
+                        </select>
+                        <label id="labelVentas" for="fechaVentas" hidden="hidden">Fecha: </label>
+                        <input id="fechaVentas" name="fechaVentas" type="hidden" class="form-control" disabled="disbled" placeholder="dd/mm/yyyy"/>
+                    </div>
+                    <div class="form-group form-inline text-center">
+                        <button type="submit" class="btn btn-default">Generar <span class="fa fa-file-pdf-o" style="color: red;"></span></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(document).on('ready', inicio());
+
+        function inicio() {
+            $('#choiceCostos').change(function () {
+                var inputFecha = $('#fechaCostos');
+                if ($(this).val() == "dia") {
+                    inputFecha.attr('placeholder', 'dd/mm/yyyy');
+                    inputFecha.datepicker({
+                        format: "dd/mm/yyyy",
+                        weekStart: 1,
+                        endDate: "+",
+                        language: "es",
+                        autoclose: true
+                    });
+                    $('#labelCostos').removeAttr('hidden');
+                    inputFecha.attr('type', 'text');
+                    inputFecha.attr('disabled', false);
+                } else {
+                    $('#labelCostos').attr('hidden', 'hidden');
+                    inputFecha.attr('type', 'hidden');
+                    inputFecha.attr('disabled', true);
+                }
+            });
+            
+            $('#choiceVentas').change(function () {
+                var inputFecha = $('#fechaVentas');
+                if ($(this).val() == "dia") {
+                    inputFecha.attr('placeholder', 'dd/mm/yyyy');
+                    inputFecha.datepicker({
+                        format: "dd/mm/yyyy",
+                        weekStart: 1,
+                        endDate: "+",
+                        language: "es",
+                        autoclose: true
+                    });
+                    $('#labelVentas').removeAttr('hidden');
+                    inputFecha.attr('type', 'text');
+                    inputFecha.attr('disabled', false);
+                } else {
+                    $('#labelVentas').attr('hidden', 'hidden');
+                    inputFecha.attr('type', 'hidden');
+                    inputFecha.attr('disabled', true);
+                }
+            });
+            
+            $('#choiceUtilidad').change(function () {
+                var inputFecha = $('#fechaUtilidad');
+                if ($(this).val() == "dia") {
+                    inputFecha.attr('placeholder', 'dd/mm/yyyy');
+                    inputFecha.datepicker({
+                        format: "dd/mm/yyyy",
+                        weekStart: 1,
+                        endDate: "+",
+                        language: "es",
+                        autoclose: true
+                    });
+                    $('#labelUtilidad').removeAttr('hidden');
+                    inputFecha.attr('type', 'text');
+                    inputFecha.attr('disabled', false);
+                } else {
+                    $('#labelUtilidad').attr('hidden', 'hidden');
+                    inputFecha.attr('type', 'hidden');
+                    inputFecha.attr('disabled', true);
+                }
+            });
+
+        }
+    </script>
+{% endblock %}

@@ -49,7 +49,7 @@ security:
                 always_use_default_target_path: true
                 #asignamos el name de la ruta al controlador por defecto a donde se 
                 #dirigirá nuestro usuario una vez sea autenticado
-                default_target_path: homepage
+                default_target_path: caja_index
             logout:       true
             anonymous:    true
 

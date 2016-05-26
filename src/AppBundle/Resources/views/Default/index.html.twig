@@ -5,10 +5,10 @@
 {% block stylesheets %}
     {{ parent() }}
     <style>
-        {#a{
+        a{
             text-decoration: none;
             color: black;
-        }#}
+        }
         {#a:hover{
             text-decoration: none;
             color: #ec971f;
@@ -28,94 +28,82 @@
             margin-bottom: 20px;
         }
 
+        .modulo{
+            margin: 20px;
+        }
+
+        .btn{
+            width: 80%;
+        }
     </style>
 {% endblock %}
 
+{% block navbar %}{% endblock %}
+
 {% block body %}
-    {#<header class="btn-warning">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-2">
-                </div>
-                <div class="col-sm-8 text-center">
-                    <h4><span class="glyphicon glyphicon-home"></span></h4>
-                </div>
-                <div class="col-sm-2 text-right" >
-                    <a href="#" style="text-decoration: none; color: white;"><h4><span class="icon-empleado"></span> Usuario</h4></a>
-                </div>
-            </div>
-        </div>
-    </header>#}
-    
 
     <div class="container" style="margin-top: 30px;">
         <div class="row center-block text-center" style="margin-bottom: 20px;">
             <h1 class="h1"><span class="glyphicon glyphicon-th-large"></span> Modulos</h1>
         </div>
         <div class="row center-block">
-            <div class="col-sm-1">
+            <div class="col-sm-2">
             </div>
-            <div class="col-sm-5">
-                <div class="tabla col-sm-12 text-center">
-                    <h2 class="h2"><span class="fa fa-money"></span> Costos</h2>
-                    <a href="#" class="btn btn-success" role="button"><span class="glyphicon glyphicon-plus-sign"></span> Registrar</a>
-                    <a href="" class="btn btn-info" role="button"><span class="glyphicon glyphicon-search"></span> Consultar</a>
-                    <a href="#" class="btn btn-danger" role="button"><span class="glyphicon glyphicon-minus-sign"></span> Eliminar</a>
-                </div>
+            <div class="col-sm-4 text-center">
+                <a href="#" class="btn" role="button">
+                    <div class="tabla col-sm-12 text-center">
+                        <h2 class="h2 modulo"><span class="fa fa-line-chart"></span></br> Costos</h2>
+                    </div>
+                </a>
             </div>
-            <div class="col-sm-5">
-                <div class="tabla col-sm-12 text-center">
-                    <h2 class="h2"><span class="fa fa-archive"></span> Inventario</h2>
-                    <a href="#" class="btn btn-success" role="button"><span class="glyphicon glyphicon-plus-sign"></span> Registrar</a>
-                    <a href="" class="btn btn-info" role="button"><span class="glyphicon glyphicon-search"></span> Consultar</a>
-                    <a href="#" class="btn btn-danger" role="button"><span class="glyphicon glyphicon-minus-sign"></span> Eliminar</a>
-                </div>
+            <div class="col-sm-4 text-center">
+                <a href="#" class="btn" role="button">
+                    <div class="tabla col-sm-12 text-center">
+                        <h2 class="h2 modulo"><span class="fa fa-archive"></span></br> Inventario</h2>
+                    </div>
+                </a>
             </div>
-            <div class="col-sm-1">
+            <div class="col-sm-2">
             </div>
         </div>
         <div class="row center-block">
-            <div class="col-sm-1">
+            <div class="col-sm-2">
             </div>
-            <div class="col-sm-5">
-                <div class="tabla col-sm-12 text-center">
-                    <h2 class="h2"><span class="fa fa-calendar"></span> Cajas</h2>
-                    <a href="#" class="btn btn-success" role="button"><span class="glyphicon glyphicon-plus-sign"></span> Registrar</a>
-                    <a href="" class="btn btn-info" role="button"><span class="glyphicon glyphicon-search"></span> Consultar</a>
-                    <a href="#" class="btn btn-danger" role="button"><span class="glyphicon glyphicon-minus-sign"></span> Eliminar</a>
-                </div>
+            <div class="col-sm-4 text-center">
+                <a href="#" class="btn" role="button">
+                    <div class="tabla col-sm-12 text-center">
+                        <h2 class="h2 modulo"><span class="fa fa-calendar"></span></br> Registros</h2>
+                    </div>
+                </a>
             </div>
-            <div class="col-sm-5">
-                <div class="tabla col-sm-12 text-center">
-                    <h2 class="h2"><span class="glyphicon glyphicon-user"></span> Clientes</h2>
-                    <a href="{{ path('clientes_new') }}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-plus-sign"></span> Registrar</a>
-                    <a href="{{ path('clientes_index') }}" class="btn btn-info" role="button"><span class="glyphicon glyphicon-search"></span> Consultar</a>
-                    <a href="#" class="btn btn-danger" role="button"><span class="glyphicon glyphicon-minus-sign"></span> Eliminar</a>
-                </div>
+            <div class="col-sm-4 text-center">
+                <a href="#" class="btn" role="button">
+                    <div class="tabla col-sm-12 text-center">
+                        <h2 class="h2 modulo"><span class="fa fa-users"></span></br> Usuarios</h2>
+                    </div>
+                </a>
             </div>
-            <div class="col-sm-1">
+            <div class="col-sm-2">
             </div>
         </div>
         <div class="row center-block">
-            <div class="col-sm-1">
+            <div class="col-sm-2">
             </div>
-            <div class="col-sm-5">
-                <div class="tabla col-sm-12 text-center">
-                    <h2 class="h2"><span class="fa fa-shopping-basket"></span> Ventas</h2>
-                    <a href="#" class="btn btn-success" role="button"><span class="glyphicon glyphicon-plus-sign"></span> Registrar</a>
-                    <a href="" class="btn btn-info" role="button"><span class="glyphicon glyphicon-search"></span> Consultar</a>
-                    <a href="#" class="btn btn-danger" role="button"><span class="glyphicon glyphicon-minus-sign"></span> Eliminar</a>
-                </div>
+            <div class="col-sm-4 text-center">
+                <a href="#" class="btn" role="button">
+                    <div class="tabla col-sm-12 text-center">
+                        <h2 class="h2 modulo"><span class="fa fa-shopping-basket"></span></br> Ventas</h2>
+                    </div>
+                </a>
             </div>
-            <div class="col-sm-5">
-                <div class="tabla col-sm-12 text-center">
-                    <h2 class="h2"><span class="fa fa-cogs"></span> Configuraciones</h2>
-                    <a href="#" class="btn btn-success" role="button"><span class="glyphicon glyphicon-plus-sign"></span> Registrar</a>
-                    <a href="" class="btn btn-info" role="button"><span class="glyphicon glyphicon-search"></span> Consultar</a>
-                    <a href="#" class="btn btn-danger" role="button"><span class="glyphicon glyphicon-minus-sign"></span> Eliminar</a>
-                </div>
+            <div class="col-sm-4 text-center">
+                <a href="#" class="btn" role="button">
+                    <div class="tabla col-sm-12 text-center">
+                        <h2 class="h2 modulo"><span class="fa fa-cogs"></span></br> Configuracion</h2>
+                    </div>
+                </a>
             </div>
-            <div class="col-sm-1">
+            <div class="col-sm-2">
             </div>
         </div>
     </div>
@@ -126,5 +114,5 @@
         console.log('{{ usuario }}');
     </script>
 {% endblock %}
-    
+
 

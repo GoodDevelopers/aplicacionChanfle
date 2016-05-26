@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Costo controller.
  *
- * @Route("/costo")
+ * @Route("/costos")
  */
 class CostoController extends Controller {
 

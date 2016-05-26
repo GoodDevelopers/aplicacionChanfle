@@ -19,5 +19,5 @@ class ClienteRepository extends EntityRepository {
 
         return $query->getResult();
     }
-
+    
 }

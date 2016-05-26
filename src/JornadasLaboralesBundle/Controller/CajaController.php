@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Caja controller.
  *
- * @Route("/caja")
+ * @Route("/registros")
  */
 class CajaController extends Controller {
 
@@ -23,12 +23,17 @@ class CajaController extends Controller {
      * @Method("GET")
      * @Template()
      */
-    public function indexAction() {
+    public function indexAction(Request $request) {
+        $session = $request->getSession();
+        $usuario = $this->buscarLogin();
+        $session->set('user', $usuario);
+        
         $em = $this->getDoctrine()->getManager();
 
         $cajas = $em->getRepository('JornadasLaboralesBundle:Caja')->findAll();
 
         return array(
+            'usuario' => $session->get('user'),
             'cajas' => $cajas,
         );
     }
@@ -138,6 +143,18 @@ class CajaController extends Controller {
                         ->setMethod('DELETE')
                         ->getForm()
         ;
+    }
+    
+    public function buscarLogin() {
+        $nuip = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
+        //Esto se debe cambiar por buscar en los empleados, no en los clientes
+        $usuario = $em->getRepository('UsuariosBundle:Empleado')->findOneBy(array('nuip' => $nuip->getUsername()));
+        if ($usuario == null) {
+            return $nuip;
+        } else {
+            return $usuario->getNombre();
+        }
     }
 
 }

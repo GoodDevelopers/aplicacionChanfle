@@ -29,7 +29,7 @@ class ClienteController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $clientes = $em->getRepository('UsuariosBundle:Cliente')->findAllOrderedByPuntos();
 
-        
+        $session = $request->getSession();
 
         //Mandar correo
 //        $message = \Swift_Message::newInstance()
@@ -73,6 +73,7 @@ class ClienteController extends Controller {
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $cliente->setPuntosAcumulados(0);
             $em = $this->getDoctrine()->getManager();
             $em->persist($cliente);
             $em->flush();
