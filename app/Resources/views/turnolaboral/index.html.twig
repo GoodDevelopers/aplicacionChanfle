@@ -24,14 +24,18 @@
                         <table class="table table-bordered table-hover table-condensed text-center">
                             <thead>
                                 <tr class="active info">
-                                    <th>Id</th>
-                                    <th>Actions</th>
+                                    <th>EMPLEADO</th>
+                                    <th>CARGO</th>
+{#                                    <th>FECHA</th>#}
+                                    <th>ACCCIONES</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {% for turnoLaboral in turnoLaborals %}
                                     <tr>
-                                        <td><a href="{{ path('turnolaboral_show', { 'id': turnoLaboral.id }) }}">{{ turnoLaboral.id }}</a></td>
+                                        <td><a href="{{ path('turnolaboral_show', { 'id': turnoLaboral.id }) }}">{{ turnoLaboral.empleado.nombre }}</a></td>
+                                        <td>{{ turnoLaboral.cargo.nombre }}</td>
+{#                                        <td>{% if turnoLaboral.caja.fecha %}{{ turnoLaboral.caja.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>#}
                                         <td>
                                             <ul class="list-inline text-center">
                                                 <li>

@@ -1,3 +1,7 @@
+ventas_detalle_venta:
+    resource: "@VentasBundle/Controller/DetalleVentaController.php"
+    type:     annotation
+
 jornadas_laborales_cargo:
     resource: "@JornadasLaboralesBundle/Controller/CargoController.php"
     type:     annotation

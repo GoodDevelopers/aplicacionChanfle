@@ -1,39 +1,49 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>TipoProducto list</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="h1 text-center marginTitulo">TipoProducto list</h1>
+            </div>
+        </div>
+        <div class="row">
+            <a href="{{ path('tipoproducto_new') }}" class="btn btn-lg btn-success">Registrar Tipo Producto  <span class="glyphicon glyphicon-floppy-saved"></span></a>
+        </div>
+        <div class="margenTopTablas">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-condensed text-center">
+                            <thead>
+                                <tr class="active info">
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nombre</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for tipoProducto in tipoProductos %}
-            <tr>
-                <td><a href="{{ path('tipoproducto_show', { 'id': tipoProducto.id }) }}">{{ tipoProducto.id }}</a></td>
-                <td>{{ tipoProducto.nombre }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('tipoproducto_show', { 'id': tipoProducto.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('tipoproducto_edit', { 'id': tipoProducto.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                                    <th>NOMBRE</th>
+                                    <th>ACCIONES</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for tipoProducto in tipoProductos %}
+                                    <tr>
+                                        <td><a href="{{ path('tipoproducto_show', { 'id': tipoProducto.id }) }}">{{ tipoProducto.nombre }}</a></td>
+                                        <td>
+                                            <ul class="list-inline text-center">
+                                                <li>
+                                                    <a href="{{ path('tipoproducto_edit', { 'id': tipoProducto.id }) }}"  class="btn btn-warning" role="button">Editar <span class="glyphicon glyphicon-edit"></span></a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ path('tipoproducto_show', { 'id': tipoProducto.id }) }}" class="btn btn-danger" role="button">Eliminar <span class="glyphicon glyphicon-floppy-remove"></span></a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('tipoproducto_new') }}">Create a new entry</a>
-        </li>
-    </ul>
 {% endblock %}

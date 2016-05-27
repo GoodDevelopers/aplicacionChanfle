@@ -56,7 +56,7 @@ class VentaController extends Controller {
             $data = $form->getData();
             $detalles = ($data['detalles']);
             $ventum->setFecha($fecha);
-            $ventum->setCliente($this->getCliente($data['cliente']));
+            $ventum->setCliente($data['cliente']);
             $ventum->setEmpleado($this->getEmpleadoLogueado());
             $ventum->setMesa($data['mesa']);
             $ventum->setPersonasPorMesa($data['personasPorMesa']);
@@ -217,8 +217,10 @@ class VentaController extends Controller {
         $em = $this->getDoctrine()->getManager();
 
         $detalleVentas = $em->getRepository('VentasBundle:DetalleVenta')->findBy(array('venta' => $id));
+        $venta = $em->getRepository('VentasBundle:Venta')->findOneBy(array('id' => $id));
 
         return $this->render('venta/show_detalles.html.twig', array(
+                    'venta' => $venta,
                     'detalleVentas' => $detalleVentas,
         ));
     }
@@ -247,11 +249,17 @@ class VentaController extends Controller {
                 $em->persist($materiaprima);
                 $em->flush($materiaprima);
             } else {
-
-                $nuevaCantidad = $materiaprima->getCantidad() - $cantidadnecesaria;
-                $materiaprima->setCantidad($nuevaCantidad);
-                $em->persist($materiaprima);
-                $em->flush($materiaprima);
+                if ($materiaprima->getUnidadDeMedida() == 'libra') {
+                    $nuevaCantidad = $materiaprima->getCantidad() - $cantidadnecesaria / 453.592;
+                    $materiaprima->setCantidad($nuevaCantidad);
+                    $em->persist($materiaprima);
+                    $em->flush($materiaprima);
+                } else {
+                    $nuevaCantidad = $materiaprima->getCantidad() - $cantidadnecesaria;
+                    $materiaprima->setCantidad($nuevaCantidad);
+                    $em->persist($materiaprima);
+                    $em->flush($materiaprima);
+                }
             }
         }
     }

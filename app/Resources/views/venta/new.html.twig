@@ -52,18 +52,21 @@
                     {{form_widget(form.tipoVenta,{'attr':{'class':'form-control', 'placeholder':'Tipo de Venta'}})}}
                 </div>
             </div>
-
+                    
             <div>
                 <h4 class="h4">Cliente:</h4>
             </div>
             <div class="form-inline text-center">
                 <div class="form-group">
                     {{form_label(form.cliente)}}
-                    {{form_widget(form.cliente , {'attr':{'class': 'form-control', 'placeholder':'Identificacion del Cliente'}})}}
+                    
+                     <input type="number" id="identificacion_cliente" placeholder="Identificacion del Cliente" class="form-control" />
+
                     <button  type="button" id="boton_buscar_cliente" onclick="buscarCliente();" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Buscar</button>
                 </div>
                 <div class="form-group">
-                    <label for="Nombre_cliente">Cliente:</label>  
+                    <label for="Nombre_cliente">Cliente:</label>
+                    {{form_widget(form.cliente , {'attr':{'class': 'form-control hidden', 'placeholder':'Nombre cliente'}})}}
                     <input type="text" id="Nombre_cliente" placeholder="Nombre del Cliente" class="form-control" disabled="true"/>
                 </div>
                 <div class="form-group">
@@ -87,7 +90,7 @@
                     </select>
                 </div>
 
-                {#           <label>Nombre Producto:</label><input type="text" placeholder="Nombre Producto" id="NombreProducto"/>#}
+{#               <label>Nombre Producto:</label><input type="text" placeholder="Nombre Producto" id="NombreProducto"/>#}
                 <div class="form-group">
                     <select id="ListaProductosC" class="form-control" disabled="true">
                         <option>Seleccione un Producto</option>
@@ -172,7 +175,7 @@
 
         function buscarCliente() {
 
-            var id = $('#venta_cliente').val();
+            var id = $('#identificacion_cliente').val();
             if(id == ''){
            swal({title: "Identificacion no ingresada", text: "Debes ingresar un numero de identificacion", type: "error",ButtonClass:"error", confirmButtonText: "OK"}); 
             }else{
@@ -191,6 +194,7 @@
                     if (data === -1) {
                         swal({title: "Cliente no encontrado", text: "El cliente no existe", type: "info", confirmButtonText: "OK"});
                     } else {
+                        $('#venta_cliente').val(data["id"]);
                         $('#Nombre_cliente').val(data["nombre"]);
                         $('#Puntos_cliente').val(data["Puntos"]);
                             $('#TipoProductos').focus();
@@ -198,6 +202,7 @@
                     }
                 });
 
+            }
             }
 
             function buscarProducto() {
@@ -225,7 +230,7 @@
                 }); 
             }
             
-            }
+            
 
             function agregarProductoLogica() {
 

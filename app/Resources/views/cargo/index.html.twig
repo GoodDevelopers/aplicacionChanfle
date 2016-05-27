@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="h1 text-center marginTitulo">Cargo list</h1>
+                <h1 class="h1 text-center marginTitulo">Cargos</h1>
             </div>
         </div>
         <div class="row">
@@ -23,7 +23,7 @@
                         <table class="table table-bordered table-hover table-condensed text-center">
                             <thead>
                                 <tr class="active info">
-                                    <th>Id</th>
+{#                                    <th>Id</th>#}
                                     <th>Nombre</th>
                                     <th>Salario</th>
                                     <th>Actions</th>
@@ -32,8 +32,8 @@
                             <tbody>
                                 {% for cargo in cargos %}
                                     <tr>
-                                        <td><a href="{{ path('cargo_show', { 'id': cargo.id }) }}">{{ cargo.id }}</a></td>
-                                        <td>{{ cargo.nombre }}</td>
+{#                                        <td></td>#}
+                                        <td><a href="{{ path('cargo_show', { 'id': cargo.id }) }}">{{ cargo.nombre }}</a></td>
                                         <td>{{ cargo.salario }}</td>
                                         <td>
                                             <ul class="list-inline text-center">

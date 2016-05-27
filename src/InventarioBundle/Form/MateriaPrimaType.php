@@ -5,6 +5,8 @@ namespace InventarioBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use InventarioBundle\Entity\TipoUnidadDeMedida;
 
 class MateriaPrimaType extends AbstractType
 {
@@ -16,7 +18,7 @@ class MateriaPrimaType extends AbstractType
     {
         $builder
             ->add('nombre')
-            ->add('unidadDeMedida')
+            ->add('unidadDeMedida',ChoiceType::class, array('attr'=> array('class' => 'form-control'), 'choices'=>TipoUnidadDeMedida::getTipoUnidadDeMedida(),'placeholder' => 'Seleccione la unidad de medida'))
             ->add('cantidad')
             ->add('precio')
             ->add('stockMinimo')

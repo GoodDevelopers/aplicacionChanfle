@@ -8,11 +8,11 @@ class TipoVenta {
     const DOMICILIO = "domicilio";
 
     
-    static function getTiposCosto(){
+    static function getTiposVenta(){
         return array(
-        TipoCosto::NORMAL => "Normal",
-        TipoCosto::PUNTOS => "Por Puntos",
-        TipoCosto::DOMICILIO => "Domicilio",
+            TipoVenta::NORMAL => "Normal",
+            TipoVenta::PUNTOS => "Por Puntos",
+            TipoVenta::DOMICILIO => "Domicilio",
 
         );
     }

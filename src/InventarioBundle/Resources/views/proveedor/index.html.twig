@@ -21,19 +21,18 @@
                         <table class="table table-bordered table-hover table-condensed text-center">
                             <thead>
                                 <tr class="active info">
-                                    <th>Id</th>
-                                    <th>Nit</th>
-                                    <th>Nombre</th>
-                                    <th>Telefono</th>
-                                    <th>Correo</th>
-                                    <th>Actions</th>
+                               
+                                    <th>NIT</th>
+                                    <th>NOMBRE</th>
+                                    <th>TELEFONO</th>
+                                    <th>CORREO</th>
+                                    <th>ACCIONES</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {% for proveedor in proveedors %}
                                     <tr>
-                                        <td><a href="{{ path('proveedores_show', { 'id': proveedor.id }) }}">{{ proveedor.id }}</a></td>
-                                        <td>{{ proveedor.nit }}</td>
+                                        <td><a href="{{ path('proveedores_show', { 'id': proveedor.id }) }}">{{ proveedor.nit }}</a></td>
                                         <td>{{ proveedor.nombre }}</td>
                                         <td>{{ proveedor.telefono }}</td>
                                         <td>{{ proveedor.correo }}</td>
