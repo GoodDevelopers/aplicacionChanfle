@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use VentasBundle\Form\DetalleVentaType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class VentaType extends AbstractType
 {
@@ -20,7 +21,7 @@ class VentaType extends AbstractType
     {
 
         $builder
-            ->add('cliente', IntegerType::class, array('label' => 'No. de Identificacion:'))
+            ->add('cliente',  IntegerType::class, array('label' => 'No. de Identificacion:'))
             ->add('valorTotal', IntegerType::class, array('label' => 'Valor Total:'))
             ->add('tipoVenta', TextType::class, array('label' => 'Tipo Venta:'))
             ->add('puntosVenta', IntegerType::class, array('label' => 'Puntos Venta:'))

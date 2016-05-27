@@ -1,52 +1,67 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Venta</h1>
+    <div  class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="h1 text-center marginTitulo">Venta</h1>
+            </div>
+        </div>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ ventum.id }}</td>
-            </tr>
-            <tr>
-                <th>Fecha</th>
-                <td>{% if ventum.fecha %}{{ ventum.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Valortotal</th>
-                <td>{{ ventum.valorTotal }}</td>
-            </tr>
-            <tr>
-                <th>Tipoventa</th>
-                <td>{{ ventum.tipoVenta }}</td>
-            </tr>
-            <tr>
-                <th>Puntosventa</th>
-                <td>{{ ventum.puntosVenta }}</td>
-            </tr>
-            <tr>
-                <th>Mesa</th>
-                <td>{{ ventum.mesa }}</td>
-            </tr>
-            <tr>
-                <th>Personaspormesa</th>
-                <td>{{ ventum.personasPorMesa }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4">
+                <table class="table table-hover">
 
-    <ul>
-        <li>
-            <a href="{{ path('venta_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('venta_edit', { 'id': ventum.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+                    <tbody>
+                        <tr>
+                            <th class="text-right">Id</th>
+                            <td>{{ ventum.id }}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">Fecha</th>
+                            <td>{% if ventum.fecha %}{{ ventum.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">Valortotal</th>
+                            <td>{{ ventum.valorTotal }}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">Tipoventa</th>
+                            <td>{{ ventum.tipoVenta }}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">Puntosventa</th>
+                            <td>{{ ventum.puntosVenta }}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">Mesa</th>
+                            <td>{{ ventum.mesa }}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">Personaspormesa</th>
+                            <td>{{ ventum.personasPorMesa }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4">
+                <ul class="text-center list-inline">
+                    <li>
+                        <a href="{{ path('venta_index') }}" class="btn btn-info">Lista <span class="glyphicon glyphicon-th-list"></span></a>
+                    </li>
+                    <li>
+                        <a href="{{ path('venta_edit', { 'id': ventum.id }) }}" class="btn btn-warning" role="button">Editar <span class="glyphicon glyphicon-edit"></span></a>
+                    </li>
+                    <li>
+                        {{ form_start(delete_form) }}
+                        <button type="submit" class="btn btn-danger">Eliminar <span class="glyphicon glyphicon-floppy-remove"></span></button>
+
+                        {{ form_end(delete_form) }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -156,7 +156,7 @@
     {{ parent() }}
 
     <script type="text/javascript">
-        
+
 //variables que se usan durante todo el proceso de ventas
 // arrays asociativos que guardan los productos y cantidades agregados, se usan para recuperar rapidamente los datos y obtenerlos
         var Productos = [];
@@ -173,7 +173,10 @@
         function buscarCliente() {
 
             var id = $('#venta_cliente').val();
-            var btnBuscar = $('#boton_buscar_cliente');
+            if(id == ''){
+           swal({title: "Identificacion no ingresada", text: "Debes ingresar un numero de identificacion", type: "error",ButtonClass:"error", confirmButtonText: "OK"}); 
+            }else{
+               var btnBuscar = $('#boton_buscar_cliente');
             $.ajax({
                 url: "{{ path('buscar_cliente_venta') }}",
                 data: ({id: id}),
@@ -185,12 +188,11 @@
                 success: function (data) {
                     btnBuscar.text('Buscar');
                     btnBuscar.blur();
-                    if (data == null) {
-                        alert('datos no encontrados');
+                    if (data === -1) {
+                        swal({title: "Cliente no encontrado", text: "El cliente no existe", type: "info", confirmButtonText: "OK"});
                     } else {
                         $('#Nombre_cliente').val(data["nombre"]);
                         $('#Puntos_cliente').val(data["Puntos"]);
-        {#                        $('#venta_type2_mesa').focus();#}
                             $('#TipoProductos').focus();
                         }
                     }
@@ -220,51 +222,58 @@
                             $("#CantidadProducto").focus();
                         }
                     }
-                });
+                }); 
+            }
+            
             }
 
             function agregarProductoLogica() {
 
                 var nombreProducto = $('#ListaProductosC').val();
                 var cantidad = $('#CantidadProducto').val();
-                var precio = $('#PrecioProducto').val();
-                var valorTotal = precio * cantidad;
-                //obtiene las listas ocultas de productos y cantidades
-                var ListaProductos = $('#productos');
-                var ListaCantidades = $('#cantidades');
-                //se crea la identificacion que tendra cada producto y campo
-                var NumeroSerie = "" + nombreProducto + numeroProducto;
-                //se agrega la nueva fila a la tabla
-                $('#CuerpoTabla').append(agregarProductoTabla(NumeroSerie, nombreProducto, precio, cantidad, valorTotal));
-                //se suma el valor de los productos añadidos
-                total = $('#venta_valorTotal').val();
-                total = parseInt(total) + parseInt(precio) * parseInt(cantidad);
-                $('#venta_valorTotal').val(total);
-                //se limpian los campos
-                $('#NombreProducto').val("");
-                $('#PrecioProducto').val("");
-                $('#CantidadProducto').val("");
-                $('#NombreProducto').focus();
-                //se asigna el nuevo protoype,numero de serie y valor que tendra el campo
-                ListaProductos.data('prototype', '<input class="hidden" type="text" id="' + NumeroSerie + '" name="venta[detalles][__name__][producto][nombre]" value="' + nombreProducto + '"/>');
-                ListaCantidades.data('prototype', '<input class="hidden" type="text" id="venta_type2_detalles___name___cantidad" name="venta[detalles][__name__][cantidad]" value="' + cantidad + '"/>');
-                //se obtiene el prototipo creado y se reemplazan las claves "name" con el indice 
-                var prototype = ListaProductos.data('prototype');
-                var prototype2 = ListaCantidades.data('prototype');
-                var newform = prototype.replace(/__name__/g, NumeroP);
-                var newform2 = prototype2.replace(/__name__/g, NumeroC);
+                if (cantidad == '') {
+                    swal({title: "Cantidad no ingresada", text: "Debes ingresar una cantidad primero", type: "error", confirmButtonText: "OK"});
+                } else {
+                    var precio = $('#PrecioProducto').val();
+                    var valorTotal = precio * cantidad;
+                    //obtiene las listas ocultas de productos y cantidades
+                    var ListaProductos = $('#productos');
+                    var ListaCantidades = $('#cantidades');
+                    //se crea la identificacion que tendra cada producto y campo
+                    var NumeroSerie = "" + nombreProducto + numeroProducto;
+                    //se agrega la nueva fila a la tabla
+                    $('#CuerpoTabla').append(agregarProductoTabla(NumeroSerie, nombreProducto, precio, cantidad, valorTotal));
+                    //se suma el valor de los productos añadidos
+                    total = $('#venta_valorTotal').val();
+                    total = parseInt(total) + parseInt(precio) * parseInt(cantidad);
+                    $('#venta_valorTotal').val(total);
+                    //se limpian los campos
+                    $('#NombreProducto').val("");
+                    $('#PrecioProducto').val("");
+                    $('#CantidadProducto').val("");
+                    $('#NombreProducto').focus();
+                    //se asigna el nuevo protoype,numero de serie y valor que tendra el campo
+                    ListaProductos.data('prototype', '<input class="hidden" type="text" id="' + NumeroSerie + '" name="venta[detalles][__name__][producto][nombre]" value="' + nombreProducto + '"/>');
+                    ListaCantidades.data('prototype', '<input class="hidden" type="text" id="venta_type2_detalles___name___cantidad" name="venta[detalles][__name__][cantidad]" value="' + cantidad + '"/>');
+                    //se obtiene el prototipo creado y se reemplazan las claves "name" con el indice 
+                    var prototype = ListaProductos.data('prototype');
+                    var prototype2 = ListaCantidades.data('prototype');
+                    var newform = prototype.replace(/__name__/g, NumeroP);
+                    var newform2 = prototype2.replace(/__name__/g, NumeroC);
 
-                NumeroP++;
-                NumeroC++;
-                //se asigna los campos creados a las listas ocultas de cantidades y productos
-                var NewLi = $('<li class="hidden"></li>').append(newform);
-                var NewLi2 = $('<li class="hidden"></li>').append(newform2);
-                NewLi.appendTo(ListaProductos);
-                NewLi2.appendTo(ListaCantidades);
-                //se guardan las cantidades con los identificadores de cada producto     
-                Cantidades[NumeroSerie] = cantidad;
-                Precio[NumeroSerie] = precio;
-                numeroProducto++;
+                    NumeroP++;
+                    NumeroC++;
+                    //se asigna los campos creados a las listas ocultas de cantidades y productos
+                    var NewLi = $('<li class="hidden"></li>').append(newform);
+                    var NewLi2 = $('<li class="hidden"></li>').append(newform2);
+                    NewLi.appendTo(ListaProductos);
+                    NewLi2.appendTo(ListaCantidades);
+                    //se guardan las cantidades con los identificadores de cada producto     
+                    Cantidades[NumeroSerie] = cantidad;
+                    Precio[NumeroSerie] = precio;
+                    numeroProducto++;
+                }
+
 
 
             }
@@ -337,7 +346,7 @@
                     }
                 });
             }
-            
+
     </script>
 
 {% endblock %}

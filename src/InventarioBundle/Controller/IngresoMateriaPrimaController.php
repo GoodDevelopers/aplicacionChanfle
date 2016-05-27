@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use InventarioBundle\Entity\MateriaPrima;
 
 /**
  * IngresoMateriaPrima controller.
@@ -54,7 +55,11 @@ class IngresoMateriaPrimaController extends Controller {
             $ingresoMateriaPrima->setEmpleado($this->getEmpleadoLogueado());
             $ingresoMateriaPrima->setFecha(new \DateTime());
             $em = $this->getDoctrine()->getManager();
+            $materia = $em->getRepository('InventarioBundle:MateriaPrima')->findOneBy(array("id" => $ingresoMateriaPrima->getMateriaPrima()));
+            $nuevacantidad = $materia->getCantidad() + $ingresoMateriaPrima->getCantidad();
+            $materia->setCantidad($nuevacantidad);
             $em->persist($ingresoMateriaPrima);
+            $em->persist($materia);
             $em->flush();
 
             return $this->redirectToRoute('ingresomateriaprima_show', array('id' => $ingresoMateriaPrima->getId()));

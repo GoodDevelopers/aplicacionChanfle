@@ -1,52 +1,63 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Venta list</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="h1 text-center marginTitulo">Venta list</h1>
+            </div>
+        </div>
+        <div class="row">
+            <a href="{{ path('venta_new') }}" class="btn btn-lg btn-success">Registrar Venta<span class="glyphicon glyphicon-floppy-saved"></span></a>
+        </div>
+        <div class="margenTopTablas">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table  class="table table-bordered table-hover table-condensed text-center">
+                            <thead>
+                                <tr class="active info">
+                                    <th>Id</th>
+                                    <th>Fecha</th>
+                                    <th>Valortotal</th>
+                                    <th>Tipoventa</th>
+                                    <th>Puntosventa</th>
+                                    <th>Mesa</th>
+                                    <th>Personaspormesa</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cuerpoTabla">
+                                {% for ventum in ventas %}
+                                    <tr>
+                                        <td><a href="{{ path('venta_show', { 'id': ventum.id }) }}">{{ ventum.id }}</a></td>
+                                        <td>{% if ventum.fecha %}{{ ventum.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                        <td>{{ ventum.valorTotal }}</td>
+                                        <td>{{ ventum.tipoVenta }}</td>
+                                        <td>{{ ventum.puntosVenta }}</td>
+                                        <td>{{ ventum.mesa }}</td>
+                                        <td>{{ ventum.personasPorMesa }}</td>
+                                        <td>
+                                            <ul class="list-inline text-center">
+                                                <li>
+                                                    <a href="{{ path('venta_edit', { 'id': ventum.id }) }}" class="btn btn-warning" role="button">Editar <span class="glyphicon glyphicon-edit"></span></a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ path('venta_show', { 'id': ventum.id }) }}" class="btn btn-danger" role="button">Eliminar <span class="glyphicon glyphicon-floppy-remove"></span></a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ path('venta_detalles', { 'id': ventum.id }) }}" class="btn btn-success">Detalles</a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Fecha</th>
-                <th>Valortotal</th>
-                <th>Tipoventa</th>
-                <th>Puntosventa</th>
-                <th>Mesa</th>
-                <th>Personaspormesa</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for ventum in ventas %}
-            <tr>
-                <td><a href="{{ path('venta_show', { 'id': ventum.id }) }}">{{ ventum.id }}</a></td>
-                <td>{% if ventum.fecha %}{{ ventum.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ ventum.valorTotal }}</td>
-                <td>{{ ventum.tipoVenta }}</td>
-                <td>{{ ventum.puntosVenta }}</td>
-                <td>{{ ventum.mesa }}</td>
-                <td>{{ ventum.personasPorMesa }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('venta_show', { 'id': ventum.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('venta_edit', { 'id': ventum.id }) }}">edit</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('venta_detalles', { 'id': ventum.id }) }}">detalles</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('venta_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+    </div>
 {% endblock %}

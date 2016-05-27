@@ -192,14 +192,18 @@ class VentaController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $cliente = $em->getRepository('UsuariosBundle:Cliente')->findOneBy(array('nuip' => $id));
 
+        if ($cliente == null) {
+            $response = new Response(-1);
+            return $response;
+        } else {
+            $cliente_response = ( array("id" => $cliente->getId(), "nombre" => $cliente->getNombre(), "Puntos" => $cliente->getPuntosAcumulados()));
 
-        $cliente_response = ( array("id" => $cliente->getId(), "nombre" => $cliente->getNombre(), "Puntos" => $cliente->getPuntosAcumulados()));
-
-        $response = new Response(\json_encode($cliente_response));
-        $response->headers->set('Content-Type', 'application/json');
+            $response = new Response(\json_encode($cliente_response));
+            $response->headers->set('Content-Type', 'application/json');
 
 
-        return $response;
+            return $response;
+        }
     }
 
     /**
@@ -244,13 +248,10 @@ class VentaController extends Controller {
                 $em->flush($materiaprima);
             } else {
 
-                    $nuevaCantidad = $materiaprima->getCantidad() - $cantidadnecesaria;
-                    $materiaprima->setCantidad($nuevaCantidad);
-                    $em->persist($materiaprima);
-                    $em->flush($materiaprima);
-                
-
-                
+                $nuevaCantidad = $materiaprima->getCantidad() - $cantidadnecesaria;
+                $materiaprima->setCantidad($nuevaCantidad);
+                $em->persist($materiaprima);
+                $em->flush($materiaprima);
             }
         }
     }
