@@ -23,12 +23,15 @@ class CostoController extends Controller {
      * @Method("GET")
      * @Template()
      */
-    public function indexAction() {
+    public function indexAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
 
         $costos = $em->getRepository('CostosBundle:Costo')->findAll();
-
+        
+        $session = $request->getSession();
+        
         return array(
+            'usuario' => $session->get('user'),
             'costos' => $costos,
         );
     }
@@ -40,7 +43,9 @@ class CostoController extends Controller {
      * @Method({"GET", "POST"})
      * @Template()
      */
-   public function newAction(Request $request) {
+    public function newAction(Request $request) {
+        $session = $request->getSession();
+        
         $costo = new Costo();
         $form = $this->createForm('CostosBundle\Form\CostoType', $costo);
         $form->handleRequest($request);
@@ -58,6 +63,7 @@ class CostoController extends Controller {
         }
 
         return array(
+            'usuario' => $session->get('user'),
             'fecha' => $fecha,
             'costo' => $costo,
             'form' => $form->createView(),
@@ -71,10 +77,13 @@ class CostoController extends Controller {
      * @Method("GET")
      * @Template()
      */
-    public function showAction(Costo $costo) {
+    public function showAction(Costo $costo, Request $request) {
+        $session = $request->getSession();
+        
         $deleteForm = $this->createDeleteForm($costo);
 
         return array(
+            'usuario' => $session->get('user'),
             'costo' => $costo,
             'delete_form' => $deleteForm->createView(),
         );
@@ -88,6 +97,8 @@ class CostoController extends Controller {
      * @Template()
      */
     public function editAction(Request $request, Costo $costo) {
+        $session = $request->getSession();
+        
         $deleteForm = $this->createDeleteForm($costo);
         $editForm = $this->createForm('CostosBundle\Form\CostoType', $costo);
         $editForm->handleRequest($request);
@@ -101,6 +112,7 @@ class CostoController extends Controller {
         }
 
         return array(
+            'usuario' => 'user',
             'costo' => $costo,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

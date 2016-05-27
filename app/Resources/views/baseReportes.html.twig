@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        {% block stylesheets %}
+            <link type="text/css" rel="stylesheet" href="{{app.request.scheme ~'://' ~ app.request.httpHost ~ asset ('bundles/app/css/bootstrap.css')}}" />
+            {#            <link rel="stylesheet" href="{{ asset('bundles/app/css/style.css') }}" />#}
+            <link type="text/css" rel="stylesheet" href="{{app.request.scheme ~'://' ~ app.request.httpHost ~ asset('bundles/app/css/font-awesome.css')}}" />
+            <link type="text/css" rel="stylesheet" href="{{app.request.scheme ~'://' ~ app.request.httpHost ~ asset('bundles/app/css/otrosIconos.css')}}">
+            <style>
+                .h2, .h3{
+                    color: black;
+                    font-weight: bold;
+                    margin-bottom: 10px;
+                    margin-top: 10px;
+                }
+                .label{
+                    color: black;
+                    font-size: 14px;
+                    padding: 0px;
+                }
+                .noLabel{
+                    font-weight: normal;
+                    margin-right: 20px;
+                    padding: 0px;
+                }
+            </style>
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-right">
+                    <p>{{ fecha }}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4 col-xs-offset-4 text-center">
+                    <img class="img-responsive" src="{{app.request.scheme ~'://' ~ app.request.httpHost ~ asset('bundles/app/img/logo.png')}}"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <h2 class="h2" style="font-weight: bold; margin-top: 30px; margin-bottom: 15px;">Reporte <span class="fa fa-line-chart"></span></h2>
+                </div>
+            </div>
+            <div class="row" style="border: solid 1px #dff0d8;">
+                <div class="row" style="background-color: #dff0d8; margin-bottom: 20px;">
+                    <div class="col-xs-12">
+                        <h3 class="h3">{{ tipo }}</h3>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom: 30px;">
+                    <div class="col-xs-12 text-center">
+                        <label class="label">Usuario:</label>
+                        <label class="noLabel">{{ usuario }}</label>
+                        <label class="label">Periodo:</label>
+                        <label class="noLabel">{{ periodo }}</label>
+                    </div>
+                </div>
+                {% block body %}
+                {% endblock %}
+            </div>
+            </br>
+            </br>
+            </br>
+            </br>
+            <div>
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <p>© 2016 Chanfle Taqueria. (Palmira Colombia) | Desarrollado por: <strong>Good Developers</strong> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% block javascripts %}
+            <script src="{{ asset('bundles/app/js/jquery.js') }}"></script>
+            <script src="{{ asset('bundles/app/js/bootstrap.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>

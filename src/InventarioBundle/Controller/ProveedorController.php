@@ -24,12 +24,15 @@ class ProveedorController extends Controller {
      * @Method("GET")
      * @Template()
      */
-    public function indexAction() {
+    public function indexAction(Request $request) {
+        $session = $request->getSession();
+        
         $em = $this->getDoctrine()->getManager();
 
         $proveedors = $em->getRepository('InventarioBundle:Proveedor')->findAll();
 
         return array(
+            'usuario' => $session->get('user'),
             'proveedors' => $proveedors,
         );
     }
@@ -42,6 +45,8 @@ class ProveedorController extends Controller {
      * @Template()
      */
     public function newAction(Request $request) {
+        $session = $request->getSession();
+        
         $proveedor = new Proveedor();
         $form = $this->createForm('InventarioBundle\Form\ProveedorType', $proveedor);
         $form->handleRequest($request);
@@ -55,6 +60,7 @@ class ProveedorController extends Controller {
         }
 
         return array(
+            'usuario' => $session->get('user'),
             'proveedor' => $proveedor,
             'form' => $form->createView(),
         );
@@ -67,10 +73,13 @@ class ProveedorController extends Controller {
      * @Method("GET")
      * @Template()
      */
-    public function showAction(Proveedor $proveedor) {
+    public function showAction(Proveedor $proveedor, Request $request) {
+        $session = $request->getSession();
+        
         $deleteForm = $this->createDeleteForm($proveedor);
 
         return array(
+            'usuario' => $session->get('user'),
             'proveedor' => $proveedor,
             'delete_form' => $deleteForm->createView(),
         );
@@ -84,6 +93,8 @@ class ProveedorController extends Controller {
      * @Template()
      */
     public function editAction(Request $request, Proveedor $proveedor) {
+        $session = $request->getSession();
+        
         $deleteForm = $this->createDeleteForm($proveedor);
         $editForm = $this->createForm('InventarioBundle\Form\ProveedorType', $proveedor);
         $editForm->handleRequest($request);
@@ -97,6 +108,7 @@ class ProveedorController extends Controller {
         }
 
         return array(
+            'usuario' => $session->get('user'),
             'proveedor' => $proveedor,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

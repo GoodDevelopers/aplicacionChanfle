@@ -46,7 +46,7 @@ class MateriaPrima
     /**
      * @var int
      *
-     * @ORM\Column(name="precio", type="integer")
+     * @ORM\Column(name="precio", type="float")
      */
     private $precio;
 
@@ -140,7 +140,7 @@ class MateriaPrima
     /**
      * Set precio
      *
-     * @param integer $precio
+     * @param float $precio
      * @return MateriaPrima
      */
     public function setPrecio($precio)
@@ -153,7 +153,7 @@ class MateriaPrima
     /**
      * Get precio
      *
-     * @return integer 
+     * @return float 
      */
     public function getPrecio()
     {

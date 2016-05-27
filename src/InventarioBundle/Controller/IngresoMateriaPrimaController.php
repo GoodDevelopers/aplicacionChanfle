@@ -52,12 +52,21 @@ class IngresoMateriaPrimaController extends Controller {
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            
             $ingresoMateriaPrima->setEmpleado($this->getEmpleadoLogueado());
             $ingresoMateriaPrima->setFecha(new \DateTime());
-            $em = $this->getDoctrine()->getManager();
+            
+            $valor = $_POST['ingreso_materia_prima']['valor'];
+            $cantidad = $_POST['ingreso_materia_prima']['cantidad'];
+            
+            $valorPorUnidad = floatval($valor / $cantidad);
+            
             $materia = $em->getRepository('InventarioBundle:MateriaPrima')->findOneBy(array("id" => $ingresoMateriaPrima->getMateriaPrima()));
             $nuevacantidad = $materia->getCantidad() + $ingresoMateriaPrima->getCantidad();
             $materia->setCantidad($nuevacantidad);
+            $materia->setPrecio($valorPorUnidad);
+            
             $em->persist($ingresoMateriaPrima);
             $em->persist($materia);
             $em->flush();

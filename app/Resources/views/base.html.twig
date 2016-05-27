@@ -10,7 +10,8 @@
             <link rel="stylesheet" href="{{ asset('bundles/app/css/font-awesome.css') }}" />
             <link rel="stylesheet" href="{{ asset('bundles/app/css/otrosIconos.css')}}">
             <link rel="stylesheet" href="{{ asset('bundles/app/css/sweetalert.css')}}">
-        
+            <link rel="stylesheet" href="{{ asset('bundles/app/css/bootstrap-datepicker.css')}}">
+
             <style>
                 .navbar{
                     margin-bottom: 10px;
@@ -87,24 +88,28 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="{{ path('homepage') }}" style="color: black; font-weight: bold;"><img alt="chanfletaqueria" src="{{ asset('bundles/app/img/logo_20x20.png') }}" style="display: inline-block;"> Chanfletaqueria</a>
+                    <a class="navbar-brand" href="#" style="color: black; font-weight: bold;"><img alt="chanfletaqueria" src="{{ asset('bundles/app/img/logo_20x20.png') }}" style="display: inline-block;"> Chanfletaqueria</a>
                 </div>
 
                 <!-- Items -->
                 <div class="collapse navbar-collapse" id="menu">
                     <ul class="nav navbar-nav">
-                        <li id="costos">
-                            <a href="#"><span class="fa fa-line-chart"></span> Costos</a>
+                        <li class="dropdown" id="costos">
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-line-chart"></span> Costos <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ path('costo_index') }}"><span class="fa fa-money"></span> Costos</a></li>
+                                <li><a href="{{ path('reportes_index') }}"><span class="fa fa-file-pdf-o"></span> Reportes</a></li>
+                            </ul>
                         </li>
 
                         <li class="dropdown" id="inventario">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-archive"></span> Inventario <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#"><span class="icon-ingresoMateria"></span> Ingresos materia prima</a></li>
+                                <li><a href="{{ path('ingresomateriaprima_index') }}"><span class="icon-ingresoMateria"></span> Ingresos materia prima</a></li>
                                     {% if is_granted('ROLE_ADMIN') %}
-                                    <li><a href="#"><span class="icon-listaMateria"></span> Materia prima</a></li>
-                                    <li><a href="#"><span class="icon-productos"></span> Productos</a></li>
-                                    <li><a href="#"><span class="icon-productos"></span> Proveedores</a></li>
+                                    <li><a href="{{ path('materiaprima_index') }}"><span class="icon-listaMateria"></span> Materia prima</a></li>
+                                    <li><a href="{{ path('producto_index') }}"><span class="icon-productos"></span> Productos</a></li>
+                                    <li><a href="{{ path('proveedores_index') }}"><span class="icon-productos"></span> Proveedores</a></li>
                                     {% endif %}
                             </ul>
                         </li>
@@ -112,23 +117,23 @@
                         <li class="dropdown" id="registros">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-calendar"></span> Registros <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#"><span class="fa fa-money"></span> Cajas</a></li>
-                                <li><a href="#"><span class="icon-empleado"></span> Turnos laborales</a></li>
+                                <li><a href="{{ path('caja_index') }}"><span class="fa fa-suitcase"></span> Cajas</a></li>
+                                <li><a href="{{ path('turnolaboral_index') }}"><span class="icon-empleado"></span> Turnos laborales</a></li>
                             </ul>
                         </li>
 
                         <li class="dropdown" id="usuarios">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-users"></span> Usuarios <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Clientes</a></li>
+                                <li><a href="{{ path('clientes_index') }}"><span class="glyphicon glyphicon-user"></span> Clientes</a></li>
                                     {% if is_granted('ROLE_ADMIN') %}
-                                    <li><a href="#"><span class="icon-empleado"></span> Empleados</a></li>
+                                    <li><a href="{{ path('UsuariosBundle_empleado_index') }}"><span class="icon-empleado"></span> Empleados</a></li>
                                     {% endif %}
                             </ul>
                         </li>
 
                         <li id="ventas">
-                            <a href="#"><span class="fa fa-shopping-basket"></span> Ventas</a>
+                            <a href="{{ path('venta_index') }}"><span class="fa fa-shopping-basket"></span> Ventas</a>
                         </li>
 
                     </ul>
@@ -136,15 +141,14 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-{#                                <span class="icon-empleado"></span> {{ usuario }} <span class="caret"></span>#}
+                                                                <span class="icon-empleado"></span> {{ usuario }} <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
                                 {% if is_granted('ROLE_ADMIN') %}
-                                    <li><a href="#">Configuracion</a></li>
+                                    <li><a href="#"><span class="fa fa-cogs"></span> Configuracion</a></li>
                                     {% endif %}
-                                <li><a href="#">Perfil</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="{{ path('fos_user_security_logout') }}">Cerrar sesion</a></li>
+                                <li><a href="{{ path('fos_user_security_logout') }}"><span class="glyphicon glyphicon-log-out"></span> Cerrar sesion</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -160,7 +164,7 @@
             <script src="{{ asset('bundles/app/js/additional-methods.min.js') }}"></script>
             <script src="{{ asset('bundles/app/js/bootstrap-datepicker.js') }}"></script>
             <script src="{{ asset('bundles/app/js/sweetalert.min.js') }}"></script>
-  
+
         {% endblock %}
     </body>
 </html>

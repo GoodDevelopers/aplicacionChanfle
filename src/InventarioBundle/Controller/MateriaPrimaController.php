@@ -24,12 +24,15 @@ class MateriaPrimaController extends Controller {
      * @Method("GET")
      * @Template()
      */
-    public function indexAction() {
+    public function indexAction(Request $request) {
+        $session = $request->getSession();
+        
         $em = $this->getDoctrine()->getManager();
 
         $materiaPrimas = $em->getRepository('InventarioBundle:MateriaPrima')->findAll();
 
         return array(
+            'usuario' => $session->get('user'),
             'materiaPrimas' => $materiaPrimas,
         );
     }
@@ -42,6 +45,8 @@ class MateriaPrimaController extends Controller {
      * @Template()
      */
     public function newAction(Request $request) {
+        $session = $request->getSession();
+        
         $materiaPrima = new MateriaPrima();
         $form = $this->createForm('InventarioBundle\Form\MateriaPrimaType', $materiaPrima);
         $form->handleRequest($request);
@@ -55,6 +60,7 @@ class MateriaPrimaController extends Controller {
         }
 
         return array(
+            'usuario' => $session->get('user'),
             'materiaPrima' => $materiaPrima,
             'form' => $form->createView(),
         );
@@ -67,10 +73,13 @@ class MateriaPrimaController extends Controller {
      * @Method("GET")
      * @Template()
      */
-    public function showAction(MateriaPrima $materiaPrima) {
+    public function showAction(MateriaPrima $materiaPrima, Request $request) {
+        $session = $request->getSession();
+        
         $deleteForm = $this->createDeleteForm($materiaPrima);
 
         return array(
+            'usuario' => $session->get('user'),
             'materiaPrima' => $materiaPrima,
             'delete_form' => $deleteForm->createView(),
         );
@@ -84,6 +93,8 @@ class MateriaPrimaController extends Controller {
      * @Template()
      */
     public function editAction(Request $request, MateriaPrima $materiaPrima) {
+        $session = $request->getSession();
+        
         $deleteForm = $this->createDeleteForm($materiaPrima);
         $editForm = $this->createForm('InventarioBundle\Form\MateriaPrimaType', $materiaPrima);
         $editForm->handleRequest($request);
@@ -97,6 +108,7 @@ class MateriaPrimaController extends Controller {
         }
 
         return array(
+            'usuario' => $session->get('user'),
             'materiaPrima' => $materiaPrima,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

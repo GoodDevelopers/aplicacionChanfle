@@ -1,0 +1,152 @@
+{% extends 'baseReportes.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .labelInfo{
+            font-size: 18px;
+        }
+        .col-xs-2, .col-xs-3, .col-xs-1, .col-xs-11{
+            padding: 0px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-xs-2 col-xs-offset-2 text-right">
+            <label class="label labelInfo">Ventas:</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-2 col-xs-offset-4 text-left">
+            <label class="label">Cantidad:</label>
+            <label class="noLabel">{{ cantVentas }}</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-2 col-xs-offset-6 text-left">
+            <label class="label">Total:</label>
+        </div>
+        <div class="col-xs-2 text-center">
+            <label class="noLabel"><strong>$</strong>{{ totalVentas }}</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-2 col-xs-offset-6 text-right">
+            <label class="label"><span class="glyphicon glyphicon-minus"></span></label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-3 col-xs-offset-1 text-right">
+            <label class="label labelInfo">Costos de Venta:</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-2 col-xs-offset-4 text-left">
+            <label class="label">Cantidad:</label>
+            <label class="noLabel">{{ cantCostos }}</label></br>
+            <label class="label">Produccion:</label>
+            <label class="noLabel">${{ produccion }}</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-2 col-xs-offset-6 text-left">
+            <label class="label">Total:</label>
+        </div>
+        <div class="col-xs-2 text-center" style="border-bottom: solid 1px;">
+            <label class="noLabel"><strong>$</strong>{{ totalCostos }}</label>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 10px;">
+        <div class="col-xs-2 col-xs-offset-6">
+            <div class="col-xs-11 text-left">
+                <label class="label">Utilidad Bruta</label>
+            </div>
+            <div class="col-xs-1 text-right">
+                <label class="label">=</label>
+            </div>
+        </div>
+        <div class="col-xs-2 text-center">
+            <label class="noLabel"><strong>$</strong>{{ utilidadBruta }}</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-2 col-xs-offset-6 text-right">
+            <label class="label"><span class="glyphicon glyphicon-minus"></span></label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-3 col-xs-offset-1 text-right">
+            <label class="label labelInfo">Gastos Operacionales:</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-2 col-xs-offset-4 text-left">
+            <label class="label">Cantidad:</label>
+            <label class="noLabel">{{ cantOperacionales }}</label></br>
+            <label class="label">Empleados:</label>
+            <label class="noLabel">${{ salarios }}</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-2 col-xs-offset-6 text-left">
+            <label class="label">Total:</label>
+        </div>
+        <div class="col-xs-2 text-center" style="border-bottom: solid 1px;">
+            <label class="noLabel"><strong>$</strong>{{ totalGastosOpe }}</label>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 10px;">
+        <div class="col-xs-2 col-xs-offset-6">
+            <div class="col-xs-11 text-left">
+                <label class="label">Utilidad Operac</label>
+            </div>
+            <div class="col-xs-1 text-right">
+                <label class="label">=</label>
+            </div>
+        </div>
+        <div class="col-xs-2 text-center">
+            <label class="noLabel"><strong>$</strong>{{ utilidadOpe }}</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-2 col-xs-offset-6 text-right">
+            <label class="label"><span class="glyphicon glyphicon-minus"></span></label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-3 col-xs-offset-1 text-right">
+            <label class="label labelInfo">Gastos No Operac:</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-2 col-xs-offset-4 text-left">
+            <label class="label">Cantidad:</label>
+            <label class="noLabel">{{ cantGastosNoOpe }}</label></br>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-2 col-xs-offset-6 text-left">
+            <label class="label">Total:</label>
+        </div>
+        <div class="col-xs-2 text-center" style="border-bottom: solid 1px;">
+            <label class="noLabel"><strong>$</strong>{{ totalGastosNoOpe }}</label>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 20px;">
+        <div class="col-xs-12" style="background-color: #d9edf7;">
+            <div class="col-xs-2 col-xs-offset-6">
+                <div class="col-xs-11 text-left">
+                    <label class="label">UTILIDAD NETA</label>
+                </div>
+                <div class="col-xs-1 text-right">
+                    <label class="label">=</label>
+                </div>
+            </div>
+            <div class="col-xs-2 text-center">
+                <label class="noLabel"><strong>$</strong>{{ utilidadNeta }}</label>
+            </div>
+        </div>
+    </div>
+{% endblock %}

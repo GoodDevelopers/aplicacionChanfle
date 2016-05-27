@@ -173,40 +173,13 @@
         function buscarCliente() {
 
             var id = $('#venta_cliente').val();
-            if(id == ''){
-           swal({title: "Identificacion no ingresada", text: "Debes ingresar un numero de identificacion", type: "error",ButtonClass:"error", confirmButtonText: "OK"}); 
-            }else{
-               var btnBuscar = $('#boton_buscar_cliente');
-            $.ajax({
-                url: "{{ path('buscar_cliente_venta') }}",
-                data: ({id: id}),
-                method: 'POST',
-                dataType: "json",
-                beforeSend: function (data) {
-                    btnBuscar.text('Buscando');
-                },
-                success: function (data) {
-                    btnBuscar.text('Buscar');
-                    btnBuscar.blur();
-                    if (data === -1) {
-                        swal({title: "Cliente no encontrado", text: "El cliente no existe", type: "info", confirmButtonText: "OK"});
-                    } else {
-                        $('#Nombre_cliente').val(data["nombre"]);
-                        $('#Puntos_cliente').val(data["Puntos"]);
-                            $('#TipoProductos').focus();
-                        }
-                    }
-                });
-
-            }
-
-            function buscarProducto() {
-
-                var nombre = $("#ListaProductosC").val();
-                var btnBuscar = $('#btnBuscarProducto');
+            if (id == '') {
+                swal({title: "Identificacion no ingresada", text: "Debes ingresar un numero de identificacion", type: "error", ButtonClass: "error", confirmButtonText: "OK"});
+            } else {
+                var btnBuscar = $('#boton_buscar_cliente');
                 $.ajax({
-                    url: "{{path('buscar_producto')}}",
-                    data: ({nombre_p: nombre}),
+                    url: "{{ path('buscar_cliente_venta') }}",
+                    data: ({id: id}),
                     method: 'POST',
                     dataType: "json",
                     beforeSend: function (data) {
@@ -215,137 +188,163 @@
                     success: function (data) {
                         btnBuscar.text('Buscar');
                         btnBuscar.blur();
-                        if (data == null) {
-                            alert('datos no encontrados');
+                        if (data === -1) {
+                            swal({title: "Cliente no encontrado", text: "El cliente no existe", type: "info", confirmButtonText: "OK"});
                         } else {
-                            $("#PrecioProducto").val(data["precio"]);
-                            $("#CantidadProducto").focus();
-                        }
-                    }
-                }); 
-            }
-            
-            }
-
-            function agregarProductoLogica() {
-
-                var nombreProducto = $('#ListaProductosC').val();
-                var cantidad = $('#CantidadProducto').val();
-                if (cantidad == '') {
-                    swal({title: "Cantidad no ingresada", text: "Debes ingresar una cantidad primero", type: "error", confirmButtonText: "OK"});
-                } else {
-                    var precio = $('#PrecioProducto').val();
-                    var valorTotal = precio * cantidad;
-                    //obtiene las listas ocultas de productos y cantidades
-                    var ListaProductos = $('#productos');
-                    var ListaCantidades = $('#cantidades');
-                    //se crea la identificacion que tendra cada producto y campo
-                    var NumeroSerie = "" + nombreProducto + numeroProducto;
-                    //se agrega la nueva fila a la tabla
-                    $('#CuerpoTabla').append(agregarProductoTabla(NumeroSerie, nombreProducto, precio, cantidad, valorTotal));
-                    //se suma el valor de los productos añadidos
-                    total = $('#venta_valorTotal').val();
-                    total = parseInt(total) + parseInt(precio) * parseInt(cantidad);
-                    $('#venta_valorTotal').val(total);
-                    //se limpian los campos
-                    $('#NombreProducto').val("");
-                    $('#PrecioProducto').val("");
-                    $('#CantidadProducto').val("");
-                    $('#NombreProducto').focus();
-                    //se asigna el nuevo protoype,numero de serie y valor que tendra el campo
-                    ListaProductos.data('prototype', '<input class="hidden" type="text" id="' + NumeroSerie + '" name="venta[detalles][__name__][producto][nombre]" value="' + nombreProducto + '"/>');
-                    ListaCantidades.data('prototype', '<input class="hidden" type="text" id="venta_type2_detalles___name___cantidad" name="venta[detalles][__name__][cantidad]" value="' + cantidad + '"/>');
-                    //se obtiene el prototipo creado y se reemplazan las claves "name" con el indice 
-                    var prototype = ListaProductos.data('prototype');
-                    var prototype2 = ListaCantidades.data('prototype');
-                    var newform = prototype.replace(/__name__/g, NumeroP);
-                    var newform2 = prototype2.replace(/__name__/g, NumeroC);
-
-                    NumeroP++;
-                    NumeroC++;
-                    //se asigna los campos creados a las listas ocultas de cantidades y productos
-                    var NewLi = $('<li class="hidden"></li>').append(newform);
-                    var NewLi2 = $('<li class="hidden"></li>').append(newform2);
-                    NewLi.appendTo(ListaProductos);
-                    NewLi2.appendTo(ListaCantidades);
-                    //se guardan las cantidades con los identificadores de cada producto     
-                    Cantidades[NumeroSerie] = cantidad;
-                    Precio[NumeroSerie] = precio;
-                    numeroProducto++;
-                }
-
-
-
-            }
-
-            function agregarProductoTabla(nombreS, nombre, precioUnitario, cantidad, valorTotal) {
-                Productos =
-                        "<tr id=" + 'producto' + nombreS + ">" +
-                        "<td>" + nombre + "</td>" +
-                        "<td>" + precioUnitario + "</td>" +
-                        "<td>" + cantidad + "</td>" +
-                        "<td>" + valorTotal + "</td>" +
-                        "<td>" + "<button id=" + nombreS + " type='button' class='btn btn-danger' onclick='quitarTablaProducto(this.id);'>Remover <span class='glyphicon glyphicon-minus-sign'></span></button>" + "</td>" +
-                        "</tr>";
-                return Productos;
-            }
-
-            function quitarTablaProducto(clicked_id) {
-                //se obtiene el id del boton presionado, que es igual al campo y a la fila que se va a remover
-                var id = clicked_id;
-                //removiendpo fila
-                $('#producto' + id).remove();
-                //removiendo campo con el id
-                $('#productos :input[id=' + id + ']').remove();
-                // se resta las cantidades de los productos eliminados, seleccionandolo del array que ayuda a recuperar datos
-                var valorActual = $('#venta_valorTotal').val();
-                $("#venta_valorTotal").val(valorActual - Precio[id] * Cantidades[id]);
-                $("#CantidadProducto").focus();
-            }
-
-
-            $('#TipoProductos').on('change', function () {
-                var tipo = $('#TipoProductos').val();
-
-                $('#PrecioProducto').val("");
-                $('#CantidadProducto').val("");
-                $('#ListaProductosC').empty();
-                buscarProductos(tipo);
-
-            });
-
-
-            function buscarProductos(tipo) {
-                var listaProductosC = $('#ListaProductosC');
-                $.ajax({
-                    url: "{{path('buscar_productos')}}",
-                    data: ({tipoP: tipo}),
-                    method: 'POST',
-                    dataType: "json",
-                    beforeSend: function () {
-                        var primerOpt = "<option>Cargando Productos</option>";
-                        listaProductosC.append(primerOpt);
-                        listaProductosC.attr('disabled', true);
-                    },
-                    success: function (data) {
-                        if (data == null) {
-                            alert('datos no encontrados');
-                        } else {
-                            var nombres = data["productos"];
-                            nombres.sort();
-                            listaProductosC.empty();
-                            var primerOpt = "<option>Seleccione un Producto</option>";
-                            listaProductosC.append(primerOpt);
-                            for (var i = 0; i < nombres.length; i++) {
-                                var newop = "<option>" + nombres[i] + "</option>";
-                                listaProductosC.append(newop);
-                                listaProductosC.attr('disabled', false);
-                            }
-
+                            $('#Nombre_cliente').val(data["nombre"]);
+                            $('#Puntos_cliente').val(data["Puntos"]);
+                            $('#TipoProductos').focus();
                         }
                     }
                 });
+
             }
+        }
+
+        function buscarProducto() {
+            var nombre = $("#ListaProductosC").val();
+            var btnBuscar = $('#btnBuscarProducto');
+            $.ajax({
+                url: "{{path('buscar_producto')}}",
+                data: ({nombre_p: nombre}),
+                method: 'POST',
+                dataType: "json",
+                beforeSend: function (data) {
+                    btnBuscar.text('Buscando');
+                },
+                success: function (data) {
+                    btnBuscar.text('Buscar');
+                    btnBuscar.blur();
+                    if (data == null) {
+                        alert('datos no encontrados');
+                    } else {
+                        $("#PrecioProducto").val(data["precio"]);
+                        $("#CantidadProducto").focus();
+                    }
+                }
+            });
+        }
+
+
+        function agregarProductoLogica() {
+
+            var nombreProducto = $('#ListaProductosC').val();
+            var cantidad = $('#CantidadProducto').val();
+            if (cantidad == '') {
+                swal({title: "Cantidad no ingresada", text: "Debes ingresar una cantidad primero", type: "error", confirmButtonText: "OK"});
+            } else {
+                var precio = $('#PrecioProducto').val();
+                var valorTotal = precio * cantidad;
+                //obtiene las listas ocultas de productos y cantidades
+                var ListaProductos = $('#productos');
+                var ListaCantidades = $('#cantidades');
+                //se crea la identificacion que tendra cada producto y campo
+                var NumeroSerie = "" + nombreProducto + numeroProducto;
+                //se agrega la nueva fila a la tabla
+                $('#CuerpoTabla').append(agregarProductoTabla(NumeroSerie, nombreProducto, precio, cantidad, valorTotal));
+                //se suma el valor de los productos añadidos
+                total = $('#venta_valorTotal').val();
+                total = parseInt(total) + parseInt(precio) * parseInt(cantidad);
+                $('#venta_valorTotal').val(total);
+                //se limpian los campos
+                $('#NombreProducto').val("");
+                $('#PrecioProducto').val("");
+                $('#CantidadProducto').val("");
+                $('#NombreProducto').focus();
+                //se asigna el nuevo protoype,numero de serie y valor que tendra el campo
+                ListaProductos.data('prototype', '<input class="hidden" type="text" id="' + NumeroSerie + '" name="venta[detalles][__name__][producto][nombre]" value="' + nombreProducto + '"/>');
+                ListaCantidades.data('prototype', '<input class="hidden" type="text" id="venta_type2_detalles___name___cantidad" name="venta[detalles][__name__][cantidad]" value="' + cantidad + '"/>');
+                //se obtiene el prototipo creado y se reemplazan las claves "name" con el indice 
+                var prototype = ListaProductos.data('prototype');
+                var prototype2 = ListaCantidades.data('prototype');
+                var newform = prototype.replace(/__name__/g, NumeroP);
+                var newform2 = prototype2.replace(/__name__/g, NumeroC);
+
+                NumeroP++;
+                NumeroC++;
+                //se asigna los campos creados a las listas ocultas de cantidades y productos
+                var NewLi = $('<li class="hidden"></li>').append(newform);
+                var NewLi2 = $('<li class="hidden"></li>').append(newform2);
+                NewLi.appendTo(ListaProductos);
+                NewLi2.appendTo(ListaCantidades);
+                //se guardan las cantidades con los identificadores de cada producto     
+                Cantidades[NumeroSerie] = cantidad;
+                Precio[NumeroSerie] = precio;
+                numeroProducto++;
+            }
+
+
+
+        }
+
+        function agregarProductoTabla(nombreS, nombre, precioUnitario, cantidad, valorTotal) {
+            Productos =
+                    "<tr id=" + 'producto' + nombreS + ">" +
+                    "<td>" + nombre + "</td>" +
+                    "<td>" + precioUnitario + "</td>" +
+                    "<td>" + cantidad + "</td>" +
+                    "<td>" + valorTotal + "</td>" +
+                    "<td>" + "<button id=" + nombreS + " type='button' class='btn btn-danger' onclick='quitarTablaProducto(this.id);'>Remover <span class='glyphicon glyphicon-minus-sign'></span></button>" + "</td>" +
+                    "</tr>";
+            return Productos;
+        }
+
+        function quitarTablaProducto(clicked_id) {
+            //se obtiene el id del boton presionado, que es igual al campo y a la fila que se va a remover
+            var id = clicked_id;
+            //removiendpo fila
+            $('#producto' + id).remove();
+            //removiendo campo con el id
+            $('#productos :input[id=' + id + ']').remove();
+            // se resta las cantidades de los productos eliminados, seleccionandolo del array que ayuda a recuperar datos
+            var valorActual = $('#venta_valorTotal').val();
+            $("#venta_valorTotal").val(valorActual - Precio[id] * Cantidades[id]);
+            $("#CantidadProducto").focus();
+        }
+
+
+        $('#TipoProductos').on('change', function () {
+            var tipo = $('#TipoProductos').val();
+
+            $('#PrecioProducto').val("");
+            $('#CantidadProducto').val("");
+            $('#ListaProductosC').empty();
+            buscarProductos(tipo);
+
+        });
+
+
+        function buscarProductos(tipo) {
+            var listaProductosC = $('#ListaProductosC');
+            $.ajax({
+                url: "{{path('buscar_productos')}}",
+                data: ({tipoP: tipo}),
+                method: 'POST',
+                dataType: "json",
+                beforeSend: function () {
+                    var primerOpt = "<option>Cargando Productos</option>";
+                    listaProductosC.append(primerOpt);
+                    listaProductosC.attr('disabled', true);
+                },
+                success: function (data) {
+                    if (data == null) {
+                        alert('datos no encontrados');
+                    } else {
+                        var nombres = data["productos"];
+                        nombres.sort();
+                        listaProductosC.empty();
+                        var primerOpt = "<option>Seleccione un Producto</option>";
+                        listaProductosC.append(primerOpt);
+                        for (var i = 0; i < nombres.length; i++) {
+                            var newop = "<option>" + nombres[i] + "</option>";
+                            listaProductosC.append(newop);
+                            listaProductosC.attr('disabled', false);
+                        }
+
+                    }
+                }
+            });
+        }
 
     </script>
 

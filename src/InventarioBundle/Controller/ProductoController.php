@@ -47,6 +47,7 @@ class ProductoController extends Controller {
      */
     public function newAction(Request $request) {
         $session = $request->getSession();
+        
         $producto = new Producto();
         $form = $this->createForm('InventarioBundle\Form\ProductoType', $producto);
         $form->handleRequest($request);
@@ -97,12 +98,15 @@ class ProductoController extends Controller {
      * @Method("GET")
      * @Template()
      */
-    public function showAction(Producto $producto) {
+    public function showAction(Producto $producto, Request $request) {
+        $session = $request->getSession();
+        
         $deleteForm = $this->createDeleteForm($producto);
         //para obtener el numero de la lista
         $num = $_GET['num'];
 
         return array(
+            'usuario' => $session->get('user'),
             'producto' => $producto,
             'num' => $num,
             'delete_form' => $deleteForm->createView(),
@@ -117,6 +121,8 @@ class ProductoController extends Controller {
      * @Template()
      */
     public function editAction(Request $request, Producto $producto) {
+        $session = $request->getSession();
+        
         $editForm = $this->createForm('InventarioBundle\Form\ProductoType', $producto);
         $editForm->handleRequest($request);
 
@@ -160,6 +166,7 @@ class ProductoController extends Controller {
         $materias = $emMaterias->findAllOrderedByNombre();
 
         return array(
+            'usuario' => $session->get('user'),
             'producto' => $producto,
             'materias' => $materias,
             'edit_form' => $editForm->createView(),

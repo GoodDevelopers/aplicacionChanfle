@@ -15,22 +15,24 @@ use DateTime;
  *
  * @Route("/turnolaboral")
  */
-class TurnoLaboralController extends Controller
-{
+class TurnoLaboralController extends Controller {
+
     /**
      * Lists all TurnoLaboral entities.
      *
      * @Route("/", name="turnolaboral_index")
      * @Method("GET")
      */
-    public function indexAction()
-    {
+    public function indexAction(Request $request) {
+        $session = $request->getSession();
+
         $em = $this->getDoctrine()->getManager();
 
         $turnoLaborals = $em->getRepository('JornadasLaboralesBundle:TurnoLaboral')->findAll();
 
         return $this->render('turnolaboral/index.html.twig', array(
-            'turnoLaborals' => $turnoLaborals,
+                    'usuario' => $session->get('user'),
+                    'turnoLaborals' => $turnoLaborals,
         ));
     }
 
@@ -40,7 +42,9 @@ class TurnoLaboralController extends Controller
      * @Route("/new", name="turnolaboral_new")
      * @Method({"GET", "POST"})
      */
-      public function newAction(Request $request) {
+    public function newAction(Request $request) {
+        $session = $request->getSession();
+
         $turnoLaboral = new TurnoLaboral();
         $form = $this->createForm('JornadasLaboralesBundle\Form\TurnoLaboralType', $turnoLaboral);
         $form->handleRequest($request);
@@ -58,6 +62,7 @@ class TurnoLaboralController extends Controller
         }
 
         return $this->render('turnolaboral/new.html.twig', array(
+                    'usuario' => $session->get('user'),
                     'caja' => $caja,
                     'turnoLaboral' => $turnoLaboral,
                     'form' => $form->createView(),
@@ -70,13 +75,15 @@ class TurnoLaboralController extends Controller
      * @Route("/{id}", name="turnolaboral_show")
      * @Method("GET")
      */
-    public function showAction(TurnoLaboral $turnoLaboral)
-    {
+    public function showAction(TurnoLaboral $turnoLaboral, Request $request) {
+        $session = $request->getSession();
+
         $deleteForm = $this->createDeleteForm($turnoLaboral);
 
         return $this->render('turnolaboral/show.html.twig', array(
-            'turnoLaboral' => $turnoLaboral,
-            'delete_form' => $deleteForm->createView(),
+                    'usuario' => $session->get('user'),
+                    'turnoLaboral' => $turnoLaboral,
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -86,8 +93,9 @@ class TurnoLaboralController extends Controller
      * @Route("/{id}/edit", name="turnolaboral_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, TurnoLaboral $turnoLaboral)
-    {
+    public function editAction(Request $request, TurnoLaboral $turnoLaboral) {
+        $session = $request->getSession();
+
         $deleteForm = $this->createDeleteForm($turnoLaboral);
         $editForm = $this->createForm('JornadasLaboralesBundle\Form\TurnoLaboralType', $turnoLaboral);
         $editForm->handleRequest($request);
@@ -101,9 +109,10 @@ class TurnoLaboralController extends Controller
         }
 
         return $this->render('turnolaboral/edit.html.twig', array(
-            'turnoLaboral' => $turnoLaboral,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'usuario' => $session->get('user'),
+                    'turnoLaboral' => $turnoLaboral,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -113,8 +122,7 @@ class TurnoLaboralController extends Controller
      * @Route("/{id}", name="turnolaboral_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, TurnoLaboral $turnoLaboral)
-    {
+    public function deleteAction(Request $request, TurnoLaboral $turnoLaboral) {
         $form = $this->createDeleteForm($turnoLaboral);
         $form->handleRequest($request);
 
@@ -134,12 +142,12 @@ class TurnoLaboralController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(TurnoLaboral $turnoLaboral)
-    {
+    private function createDeleteForm(TurnoLaboral $turnoLaboral) {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('turnolaboral_delete', array('id' => $turnoLaboral->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
+                        ->setAction($this->generateUrl('turnolaboral_delete', array('id' => $turnoLaboral->getId())))
+                        ->setMethod('DELETE')
+                        ->getForm()
         ;
     }
+
 }

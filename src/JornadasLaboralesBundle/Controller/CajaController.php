@@ -2,6 +2,7 @@
 
 namespace JornadasLaboralesBundle\Controller;
 
+use DateTime;
 use JornadasLaboralesBundle\Entity\Caja;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -25,6 +26,7 @@ class CajaController extends Controller {
      */
     public function indexAction(Request $request) {
         $session = $request->getSession();
+        //Creamos la variable usuario
         $usuario = $this->buscarLogin();
         $session->set('user', $usuario);
         
@@ -46,6 +48,8 @@ class CajaController extends Controller {
      * @Template()
      */
     public function newAction(Request $request) {
+        $session = $request->getSession();
+        
         $caja = new Caja();
         $form = $this->createForm('JornadasLaboralesBundle\Form\CajaType', $caja);
         $form->handleRequest($request);
@@ -62,6 +66,7 @@ class CajaController extends Controller {
         }
 
         return array(
+            'usuario' => $session->get('user'),
             'fecha' => $fecha,
             'caja' => $caja,
             'form' => $form->createView(),
@@ -75,10 +80,13 @@ class CajaController extends Controller {
      * @Method("GET")
      * @Template()
      */
-    public function showAction(Caja $caja) {
+    public function showAction(Caja $caja, Request $request) {
+        $session = $request->getSession();
+        
         $deleteForm = $this->createDeleteForm($caja);
 
         return array(
+            'usuario' => $session->get('user'),
             'caja' => $caja,
             'delete_form' => $deleteForm->createView(),
         );
@@ -92,6 +100,8 @@ class CajaController extends Controller {
      * @Template()
      */
     public function editAction(Request $request, Caja $caja) {
+        $session = $request->getSession();
+        
         $deleteForm = $this->createDeleteForm($caja);
         $editForm = $this->createForm('JornadasLaboralesBundle\Form\CajaType', $caja);
         $editForm->handleRequest($request);
@@ -105,6 +115,7 @@ class CajaController extends Controller {
         }
 
         return array(
+            'usuario' => $session->get('user'),
             'caja' => $caja,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

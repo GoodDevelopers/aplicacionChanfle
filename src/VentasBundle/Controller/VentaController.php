@@ -29,12 +29,15 @@ class VentaController extends Controller {
      * @Route("/", name="venta_index")
      * @Method("GET")
      */
-    public function indexAction() {
+    public function indexAction(Request $request) {
+        $session = $request->getSession();
+
         $em = $this->getDoctrine()->getManager();
 
         $ventas = $em->getRepository('VentasBundle:Venta')->findAll();
 
         return $this->render('venta/index.html.twig', array(
+                    'usuario' => $session->get('user'),
                     'ventas' => $ventas,
         ));
     }
@@ -46,6 +49,8 @@ class VentaController extends Controller {
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request) {
+        $session = $request->getSession();
+
         $ventum = new Venta();
         $fecha = new \DateTime("now");
         $form = $this->createForm(new ventaType());
@@ -88,6 +93,7 @@ class VentaController extends Controller {
         }
 
         return $this->render('venta/new.html.twig', array(
+                    'usuario' => $session->get('user'),
                     'tipos' => $Tipos,
                     'ventum' => $ventum,
                     'fecha' => $fecha,
@@ -101,10 +107,13 @@ class VentaController extends Controller {
      * @Route("/{id}", name="venta_show")
      * @Method("GET")
      */
-    public function showAction(Venta $ventum) {
+    public function showAction(Venta $ventum, Request $request) {
+        $session = $request->getSession();
+
         $deleteForm = $this->createDeleteForm($ventum);
 
         return $this->render('venta/show.html.twig', array(
+                    'usuario' => $session->get('user'),
                     'ventum' => $ventum,
                     'delete_form' => $deleteForm->createView(),
         ));
@@ -117,6 +126,8 @@ class VentaController extends Controller {
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Venta $ventum) {
+        $session = $request->getSession();
+
         $deleteForm = $this->createDeleteForm($ventum);
         $editForm = $this->createForm('VentasBundle\Form\VentaType', $ventum);
         $editForm->handleRequest($request);
@@ -130,6 +141,7 @@ class VentaController extends Controller {
         }
 
         return $this->render('venta/edit.html.twig', array(
+                    'usuario' => $session->get('user'),
                     'ventum' => $ventum,
                     'edit_form' => $editForm->createView(),
                     'delete_form' => $deleteForm->createView(),
