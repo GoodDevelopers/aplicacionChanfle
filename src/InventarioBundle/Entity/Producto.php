@@ -240,4 +240,27 @@ class Producto
     {
         return $this->descripcion;
     }
+
+    /**
+     * Set ruta
+     *
+     * @param string $ruta
+     * @return Producto
+     */
+    public function setRuta($ruta)
+    {
+        $this->ruta = $ruta;
+    
+        return $this;
+    }
+
+    /**
+     * Get ruta
+     *
+     * @return string 
+     */
+    public function getRuta()
+    {
+        return $this->ruta;
+    }
 }

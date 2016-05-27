@@ -18,8 +18,6 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class ProductoController extends Controller {
 
-    private $session;
-    
     /**
      * Lists all Producto entities.
      *
@@ -28,14 +26,14 @@ class ProductoController extends Controller {
      * @Template()
      */
     public function indexAction(Request $request) {
-        $this->session = $request->getSession();
+        $session = $request->getSession();
         
         $em = $this->getDoctrine()->getManager();
 
         $productos = $em->getRepository('InventarioBundle:Producto')->findAll();
 
         return array(
-            'usuario' => $this->session->get('user'),
+            'usuario' => $session->get('user'),
             'productos' => $productos,
         );
     }
@@ -48,6 +46,7 @@ class ProductoController extends Controller {
      * @Template()
      */
     public function newAction(Request $request) {
+        $session = $request->getSession();
         $producto = new Producto();
         $form = $this->createForm('InventarioBundle\Form\ProductoType', $producto);
         $form->handleRequest($request);
@@ -55,6 +54,7 @@ class ProductoController extends Controller {
         $emMaterias = $this->getDoctrine()->getManager()->getRepository('InventarioBundle:MateriaPrima');
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $producto->setRuta('');
             $emProductos = $this->getDoctrine()->getManager();
 
             $cantMaterias = $request->get("cantMaterias");
@@ -83,7 +83,7 @@ class ProductoController extends Controller {
         $materias = $emMaterias->findAllOrderedByNombre();
 
         return array(
-            'usuario' => $this->session->get('user'),
+            'usuario' => $session->get('user'),
             'producto' => $producto,
             'materias' => $materias,
             'form' => $form->createView(),
