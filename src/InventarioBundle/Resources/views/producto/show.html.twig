@@ -13,19 +13,15 @@
                 <table class="table table-hover">
                     <tbody>
                         <tr>
-                            <th>Número:</th>
-                            <td>{{ num }}</td>
-                        </tr>
-                        <tr>
-                            <th>Nombre:</th>
+                            <th class="text-right">Nombre:</th>
                             <td>{{ producto.nombre }}</td>
                         </tr>
                         <tr>
-                            <th>Precio:</th>
+                            <th class="text-right">Precio:</th>
                             <td>{{ producto.precio }}</td>
                         </tr>
                         <tr>
-                            <th>Descripción:</th>
+                            <th class="text-right">Descripción:</th>
                             <td>{{ producto.descripcion }}</td>
                         </tr>
                     </tbody>
@@ -53,3 +49,15 @@
         </div>
     </div>
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+
+        $(document).on('ready', inicio());
+
+        function inicio() {
+            $('#inventario').addClass('active');
+        }
+    </script>
+{% endblock%}

@@ -31,7 +31,15 @@ class IngresoMateriaPrimaController extends Controller {
 
         $ingresoMateriaPrimas = $em->getRepository('InventarioBundle:IngresoMateriaPrima')->findAll();
 
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $ingresoMateriaPrimas, //Query o registros
+                $this->get('request')->query->get('page', 1), //Iniciar en la pagina1
+                7   //Hasta la 8
+        );
+        
         return array(
+            'pagination' => $pagination,
             'usuario' => $session->get('user'),
             'ingresoMateriaPrimas' => $ingresoMateriaPrimas,
         );

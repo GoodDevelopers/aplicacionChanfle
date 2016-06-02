@@ -25,6 +25,9 @@
                         <li>
                             <a href="{{ path('detalleventa_show', { 'id': detalleVentum.id }) }}">show</a>
                         </li>
+                        <li>
+                            <a href="{{ path('detalleventa_edit', { 'id': detalleVentum.id }) }}">edit</a>
+                        </li>
                     </ul>
                 </td>
             </tr>
@@ -32,5 +35,9 @@
         </tbody>
     </table>
 
-    
+    <ul>
+        <li>
+            <a href="{{ path('detalleventa_new') }}">Create a new entry</a>
+        </li>
+    </ul>
 {% endblock %}

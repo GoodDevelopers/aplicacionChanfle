@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Reporte controller.
@@ -24,9 +25,9 @@ class ReporteController extends Controller {
      * @Template()
      */
     public function indexAction(Request $request) {
-        
+
         $session = $request->getSession();
-        
+
         return array(
             'usuario' => $session->get('user'),
         );
@@ -193,39 +194,40 @@ class ReporteController extends Controller {
         }
 
         $totalGastosOpe += $salarios;
+        $totalCostos += $produccion;
 
         $utilidadBruta = $totalVentas - $totalCostos;
         $utilidadOpe = $utilidadBruta - $totalGastosOpe;
         $utilidadNeta = $utilidadOpe - $totalGastosNoOpe;
 
         $fecha = new \DateTime("now");
-//
-//        $html = $this->renderView('CostosBundle:reporte:utilidad.html.twig', array(
-////            'clientes' => $clientes
-//            'tipo' => 'Utilidad',
-//            'fecha' => $fecha->format('d-m-Y H:i:s'),
-//            'periodo' => $criterio,
-//            'usuario' => $session->get('user'),
-//            'cantVentas' => $cantidadVentas,
-//            'totalVentas' => $totalVentas,
-//            'cantCostos' => $cantidadCostos,
-//            'produccion' => $produccion,
-//            'totalCostos' => $totalCostos,
-//            'utilidadBruta' => $utilidadBruta,
-//            'cantOperacionales' => $cantGastosOpe,
-//            'salarios' => $salarios,
-//            'totalGastosOpe' => $totalGastosOpe,
-//            'utilidadOpe' => $utilidadOpe,
-//            'cantGastosNoOpe' => $cantGastosNoOpe,
-//            'totalGastosNoOpe' => $totalGastosNoOpe,
-//            'utilidadNeta' => $utilidadNeta,
-//        ));
-//
-//        return new Response(
-//                $this->get('knp_snappy.pdf')->getOutputFromHtml($html), 200, array(
-//            'Content-Type' => 'application/pdf',
-//            'Content-Disposition' => 'attachment; filename="InformeClientes.pdf"'
-//        ));
+
+        $html = $this->renderView('CostosBundle:reporte:utilidad.html.twig', array(
+//            'clientes' => $clientes
+            'tipo' => 'Utilidad',
+            'fecha' => $fecha->format('d-m-Y H:i:s'),
+            'periodo' => $criterio,
+            'usuario' => $session->get('user'),
+            'cantVentas' => $cantidadVentas,
+            'totalVentas' => $totalVentas,
+            'cantCostos' => $cantidadCostos,
+            'produccion' => $produccion,
+            'totalCostos' => $totalCostos,
+            'utilidadBruta' => $utilidadBruta,
+            'cantOperacionales' => $cantGastosOpe,
+            'salarios' => $salarios,
+            'totalGastosOpe' => $totalGastosOpe,
+            'utilidadOpe' => $utilidadOpe,
+            'cantGastosNoOpe' => $cantGastosNoOpe,
+            'totalGastosNoOpe' => $totalGastosNoOpe,
+            'utilidadNeta' => $utilidadNeta,
+        ));
+
+        return new Response(
+                $this->get('knp_snappy.pdf')->getOutputFromHtml($html), 200, array(
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'attachment; filename="InformeClientes.pdf"'
+        ));
 //        return array(
 //            'tipo' => 'Utilidad',
 //            'periodo' => $criterio,

@@ -4,30 +4,28 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="h1 text-center marginTitulo">Proveedor creation </h1>
+                <h1 class="h1 text-center marginTitulo">Registrar Proveedor <span class="icon-proveedor"></span></h1>
             </div>
         </div>
 
         <div class="row">
             <div class="col-sm-4 col-sm-offset-4">
-
-
                 {{ form_start(form, {'attr':{'id':'formulario'}}) }}
                 <div class="form-group">        
-                    {{ form_label(form.nit, 'Nit:') }}
-                    {{ form_widget(form.nit, {'attr':{'class':'form-control', 'placeholder':'No.Identificacion'}}) }}
+                    {{ form_label(form.nit) }}
+                    {{ form_widget(form.nit, {'attr':{'class':'form-control', 'placeholder':'No. de Identificacion'}}) }}
                 </div>
                 <div class="form-group">   
-                    {{ form_label(form.nombre, 'Nombre:') }}
-                    {{ form_widget(form.nombre, {'attr':{'class':'form-control', 'placeholder':'Nombre y Apellido'}}) }}
+                    {{ form_label(form.nombre) }}
+                    {{ form_widget(form.nombre, {'attr':{'class':'form-control', 'placeholder':'Nombre de la empresa'}}) }}
                 </div>
                 <div class="form-group">
-                    {{ form_label(form.correo, 'Correo:') }}
-                    {{ form_widget(form.correo, {'attr':{'class':'form-control','placeholder':'Correo electronico'}}) }}
+                    {{ form_label(form.correo) }}
+                    {{ form_widget(form.correo, {'attr':{'class':'form-control','placeholder':'Correo corporativo'}}) }}
                 </div>
                 <div class="form-group">
-                    {{ form_label(form.telefono, 'Telefono:') }}
-                    {{ form_widget(form.telefono, {'attr':{'class':'form-control','placeholder':'Telefono'}}) }} 
+                    {{ form_label(form.telefono) }}
+                    {{ form_widget(form.telefono, {'attr':{'class':'form-control','placeholder':'Teléfono fijo o celular corporativo'}}) }} 
                 </div>
 
 
@@ -49,6 +47,13 @@
 {% block javascripts %}
     {{parent()}}
     <script>
+        
+        $(document).on('ready', inicio());
+
+        function inicio() {
+            $('#inventario').addClass('active');
+        }
+        
         $('#formulario').validate({
             highlight: function (element) {
                 $(element).closest('.form-group').removeClass('has-success').addClass('has-error');

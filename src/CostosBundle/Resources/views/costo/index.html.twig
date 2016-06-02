@@ -5,20 +5,50 @@
 
         <div class="row">
             <div class="col-md-12">
-                <h1 class="h1 text-center marginTitulo">Costo list</h1>
+                <h1 class="h1 text-center marginTitulo">Costos <span class="fa fa-money"></span></h1>
             </div>
         </div>
 
 
         <div class="row">
             <div class="col-md-3">
-                <ul>
-                    <li>
-                        <a class="btn btn-lg btn-success"href="{{ path('costo_new') }}">Registrar Costo <span class="glyphicon glyphicon-floppy-saved"></span></a>
-                    </li>
-                </ul>
+                <a class="btn btn-lg btn-success"href="{{ path('costo_new') }}">Registrar Costo <span class="glyphicon glyphicon-floppy-saved"></span></a>
+            </div>
+
+            <div class="col-md-1" style="padding: 0px;">
+                <div id="bloqueTotal">
+                    <div class="form-group">
+                        <label for="total" style="display: inline-block;">Total: </label>
+                        <input id="total" name="total" class="form-control" disabled="disabled" value="{{ pagination.getTotalItemCount }}" style="display: inline-block; width: 50%;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-1 text-center">
+                {#                Boton de reporte#}
+            </div>
+
+            <div class="col-md-7 text-right">
+                <form action="" method="GET" class="form-inline" onsubmit="buscar();
+                        return false;">
+                    <div class="form-group">
+                        <select class="form-control" id="criterio">
+                            <option value="">Seleccione el criterio de búsqueda</option>
+                            <option value="fecha">Fecha</option>
+                            <option value="tipo">Tipo</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">Dato</div>
+                            <input type="text" class="form-control" placeholder="Dato para la búsqueda" id="dato">
+                        </div>
+                        <button type="button" id="btnBuscar" class="btn btn-primary" onclick="buscar();"><span class="glyphicon glyphicon-search"></span> Buscar</button>
+                    </div>
+                </form>
             </div>
         </div>
+
         <div class="margenTopTablas">        
             <div class="row">
                 <div class="col-md-12">
@@ -26,19 +56,18 @@
                         <table class="table table-bordered table-hover table-condensed text-center">
                             <thead>
                                 <tr class="active info">
-                                    <th>Id</th>
-                                    <th>Fecha</th>
-                                    <th>Tipocosto</th>
-                                    <th>Valor</th>
-                                    <th>Descripcion</th>
-                                    <th>Actions</th>
+                                    {#                                    <th>Id</th>#}
+                                    <th>FECHA</th>
+                                    <th>TIPO COSTO</th>
+                                    <th>VALOR</th>
+                                    <th>DESCRIPCIÓN</th>
+                                    <th>ACCIONES</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for costo in costos %}
+                                {% for costo in pagination %}
                                     <tr>
-                                        <td><a href="{{ path('costo_show', { 'id': costo.id }) }}">{{ costo.id }}</a></td>
-                                        <td>{% if costo.fecha %}{{ costo.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                        <td><a href="{{ path('costo_show', { 'id': costo.id }) }}">{% if costo.fecha %}{{ costo.fecha|date('Y-m-d H:i:s') }}{% endif %}</a></td>
                                         <td>{{ costo.tipoCosto }}</td>
                                         <td>{{ costo.valor }}</td>
                                         <td>{{ costo.descripcion }}</td>
@@ -60,7 +89,24 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="paginacion col-md-12 text-center" id="paginador">
+                {{ knp_pagination_render(pagination) }}
+            </div>
+        </div>
+            
     </div>
 
-
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+
+        $(document).on('ready', inicio());
+
+        function inicio() {
+            $('#costos').addClass('active');
+        }
+    </script>
+{% endblock%}

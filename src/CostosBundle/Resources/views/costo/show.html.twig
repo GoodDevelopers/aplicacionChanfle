@@ -2,54 +2,66 @@
 
 {% block body %}
 
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h1 class="h1 text-center marginTitulo">Costo</h1>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-4 col-lg-offset-4">
-                    <table class="table table-hover">
-                        <tbody>
-                            <tr>
-                                <th class="text-right">Id</th>
-                                <td>{{ costo.id }}</td>
-                            </tr>
-                            <tr>
-                                <th class="text-right">Fecha</th>
-                                <td>{% if costo.fecha %}{{ costo.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
-                            </tr>
-                            <tr>
-                                <th class="text-right">Tipocosto</th>
-                                <td>{{ costo.tipoCosto }}</td>
-                            </tr>
-                            <tr>
-                                <th class="text-right">Valor</th>
-                                <td>{{ costo.valor }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-lg-offset-4">
-                    <ul class="text-center list-inline">
-                        <li>
-                            <a href="{{ path('costo_index') }}"  class="btn btn-info">Lista  <span class="glyphicon glyphicon-th-list"></span></a>
-                        </li>
-                        <li>
-                            <a href="{{ path('costo_edit', { 'id': costo.id }) }}"  class="btn btn-warning" role="button">Editar <span class="glyphicon glyphicon-edit"></span></a>
-                        </li>
-                        <li>
-                            {{ form_start(delete_form) }}
-                            <button type="submit" class="btn btn-danger">Eliminar <span class="glyphicon glyphicon-floppy-remove"></span></button>
-                                {{ form_end(delete_form) }}
-                        </li>
-                    </ul>
-                </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="h1 text-center marginTitulo">Costo <span class="fa fa-money"></span></h1>
             </div>
         </div>
 
-    {% endblock %}
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4">
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <th class="text-right">Fecha:</th>
+                            <td>{% if costo.fecha %}{{ costo.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">Tipo Costo:</th>
+                            <td>{{ costo.tipoCosto }}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">Valor:</th>
+                            <td>{{ costo.valor }}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">Descripción:</th>
+                            <td>{{ costo.descripcion }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4">
+                <ul class="text-center list-inline">
+                    <li>
+                        <a href="{{ path('costo_index') }}"  class="btn btn-info">Lista  <span class="glyphicon glyphicon-th-list"></span></a>
+                    </li>
+                    <li>
+                        <a href="{{ path('costo_edit', { 'id': costo.id }) }}"  class="btn btn-warning" role="button">Editar <span class="glyphicon glyphicon-edit"></span></a>
+                    </li>
+                    <li>
+                        {{ form_start(delete_form) }}
+                        <button type="submit" class="btn btn-danger">Eliminar <span class="glyphicon glyphicon-floppy-remove"></span></button>
+                            {{ form_end(delete_form) }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+
+        $(document).on('ready', inicio());
+
+        function inicio() {
+            $('#costos').addClass('active');
+        }
+    </script>
+{% endblock%}

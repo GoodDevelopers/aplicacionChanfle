@@ -36,7 +36,15 @@ class EmpleadoController extends Controller {
 
         $empleados = $em->getRepository('UsuariosBundle:Empleado')->findAll();
 
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $empleados, //Query o registros
+                $this->get('request')->query->get('page', 1), //Iniciar en la pagina1
+                8   //Hasta la 8
+        );
+
         return array(
+            'pagination' => $pagination,
             'usuario' => $session->get('user'),
             'empleados' => $empleados,
         );
@@ -125,15 +133,43 @@ class EmpleadoController extends Controller {
         $editForm = $this->createForm('UsuariosBundle\Form\EmpleadoType', $empleado);
         $editForm->handleRequest($request);
 
+        $fosUserManager = $this->container->get('fos_user.user_manager');
+        //Usuario inicial
+        $user = $fosUserManager->findUserByUsername($empleado->getNuip());
+
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            //Este es username del cliente antes de ser editado
+            $idViejo = $_POST['idviejo'];
+
+            //Obtenemos el usuario ya existente para modificarlo
+            $user = $fosUserManager->findUserByUsername($idViejo);
+
+            $user->setUsername($empleado->getNuip());
+            $user->setPlainPassword($empleado->getNuip());
+            $user->setEmail("null" . $empleado->getNuip() . "@correo.com");
+            $user->setEmailCanonical("null" . $empleado->getNuip() . "@correo.com");
+            $user->setEnabled(true);
+
+            //Revisamos si esta chequeado los privilegios de admin
+            $admin = $_POST['checkAdmin'];  //checkAdmin es el id del checkbox
+            if ($admin == 1) {  //1 significa que esta chequeado
+                $user->setRoles(array(RolesUsuarios::RolAdmin));
+            } else {
+                $user->setRoles(array(RolesUsuarios::RolEmpleado));
+            }
+
+            $fosUserManager->updateUser($user);
+
             $em->persist($empleado);
             $em->flush();
 
-            return $this->redirectToRoute('UsuariosBundle_empleado_edit', array('id' => $empleado->getId()));
+            return $this->redirectToRoute('UsuariosBundle_empleado_index', array('id' => $empleado->getId()));
         }
 
         return array(
+            'empleadoFos' => $user,
             'usuario' => $session->get('user'),
             'empleado' => $empleado,
             'edit_form' => $editForm->createView(),
@@ -174,15 +210,15 @@ class EmpleadoController extends Controller {
                         ->getForm()
         ;
     }
-    
-       /**
+
+    /**
      *
      * @Route("/validarEmpleado", name="validar_empleado")
      */
     public function validarEmpleado(Request $request) {
-      $nuip = $request->get('nuip');
-              
-      $em = $this->getDoctrine()->getManager();
+        $nuip = $request->get('nuip');
+
+        $em = $this->getDoctrine()->getManager();
 
         $empleado = $em->getRepository('UsuariosBundle:Empleado')->findOneBy(array('nuip' => $nuip));
 
@@ -192,10 +228,7 @@ class EmpleadoController extends Controller {
             $data = false;
         }
         $response = new Response(\json_encode($data));
-         return $response;
-     
+        return $response;
     }
-    
-    
 
 }

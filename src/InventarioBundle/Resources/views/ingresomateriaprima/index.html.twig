@@ -17,19 +17,40 @@
             <div class="col-md-3">
                 <ul style="list-style-type: none; padding: 0px;">
                     <li>
-                        <a href="{{ path('ingresomateriaprima_new') }}" class="btn btn-lg btn-success">Registrar ingreso <span class="glyphicon glyphicon-floppy-saved"></span></a>
+                        <a href="{{ path('ingresomateriaprima_new') }}" class="btn btn-lg btn-success">Registrar Ingreso <span class="glyphicon glyphicon-floppy-saved"></span></a>
                     </li>
                 </ul>
             </div>
-                    
-            <div class="col-md-9">
-                <form action="" method="GET" class="form-inline">
+
+            <div class="col-md-1" style="padding: 0px;">
+                <div id="bloqueTotal">
+                    <div class="form-group">
+                        <label for="total" style="display: inline-block;">Total: </label>
+                        <input id="total" name="total" class="form-control" disabled="disabled" value="{{ pagination.getTotalItemCount }}" style="display: inline-block; width: 50%;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-1 text-center">
+                {#                Aqui va el boton de reporte#}
+            </div>
+
+            <div class="col-md-7 text-right">
+                <form action="" method="GET" class="form-inline" onsubmit="buscar();
+                        return false;">
+                    <div class="form-group">
+                        <select class="form-control" id="criterio">
+                            <option value="">Seleccione el criterio de búsqueda</option>
+                            <option value="email">Fecha de ingreso</option>
+                            <option value="nombre">Nombre de la materia prima</option>
+                        </select>
+                    </div>
                     <div class="form-group">
                         <div class="input-group">
-                            <div class="input-group-addon">Materia prima</div>
-                            <input type="text" class="form-control" placeholder="Nombre materia prima" id="nomMateria">
+                            <div class="input-group-addon">Dato</div>
+                            <input type="text" class="form-control" placeholder="Dato para la busqueda" id="dato">
                         </div>
-                        <button type="button" id="btnBuscar" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Buscar</button>
+                        <button type="button" id="btnBuscar" class="btn btn-primary" onclick="buscar();"><span class="glyphicon glyphicon-search"></span> Buscar</button>
                     </div>
                 </form>
             </div>
@@ -42,7 +63,6 @@
                         <table class="table table-bordered table-hover table-condensed text-center">
                             <thead>
                                 <tr class="active info">
-                                    <th>ID</th>
                                     <th>MATERIA PRIMA</th>
                                     <th>FECHA</th>
                                     <th>CANTIDAD</th>
@@ -52,14 +72,13 @@
                                 </tr>
                             </thead>
                             <tbody id="cuerpoTabla">
-                                {% for ingresoMateriaPrima in ingresoMateriaPrimas %}
+                                {% for ingresoMateriaPrima in pagination %}
                                     <tr>
-                                        <td><a href="{{ path('ingresomateriaprima_show', { 'id': ingresoMateriaPrima.id }) }}">{{ ingresoMateriaPrima.id }}</a></td>
-                                        <td>{{ ingresoMateriaPrima.materiaPrima.nombre }}</td>
+                                        <td><a href="{{ path('ingresomateriaprima_show', { 'id': ingresoMateriaPrima.id }) }}">{{ ingresoMateriaPrima.materiaPrima.nombre }}</a></td>
                                         <td>{% if ingresoMateriaPrima.fecha %}{{ ingresoMateriaPrima.fecha|date('d-m-Y H:i:s') }}{% endif %}</td>
-                                        <td>{{ ingresoMateriaPrima.cantidad }} {{ ingresoMateriaPrima.materiaPrima.unidadDeMedida }}</td>
+                                        <td>{{ ingresoMateriaPrima.cantidad }} {{ ingresoMateriaPrima.materiaPrima.unidadDeMedida }}s</td>
+                                        <td>{{ ingresoMateriaPrima.valor / ingresoMateriaPrima.cantidad}}</td>
                                         <td>{{ ingresoMateriaPrima.valor }}</td>
-                                        <td>{{ ingresoMateriaPrima.valor * ingresoMateriaPrima.cantidad}}</td>
                                         <td>
                                             <ul class="list-inline text-center">
                                                 <li>
@@ -78,6 +97,23 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="paginacion col-md-12 text-center" id="paginador">
+                {{ knp_pagination_render(pagination) }}
+            </div>
+        </div>
 
     </div>
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+
+        $(document).on('ready', inicio());
+        
+        function inicio(){
+            $('#inventario').addClass('active');
+        }
+    </script>
+{% endblock%}

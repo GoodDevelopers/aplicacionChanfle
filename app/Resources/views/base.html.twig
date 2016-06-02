@@ -109,7 +109,7 @@
                                     {% if is_granted('ROLE_ADMIN') %}
                                     <li><a href="{{ path('materiaprima_index') }}"><span class="icon-listaMateria"></span> Materia prima</a></li>
                                     <li><a href="{{ path('producto_index') }}"><span class="icon-productos"></span> Productos</a></li>
-                                    <li><a href="{{ path('proveedores_index') }}"><span class="icon-productos"></span> Proveedores</a></li>
+                                    <li><a href="{{ path('proveedores_index') }}"><span class="icon-proveedor"></span> Proveedores</a></li>
                                     {% endif %}
                             </ul>
                         </li>
@@ -117,7 +117,7 @@
                         <li class="dropdown" id="registros">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-calendar"></span> Registros <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="{{ path('caja_index') }}"><span class="fa fa-suitcase"></span> Cajas</a></li>
+                                <li><a href="{{ path('caja_index') }}"><span class="glyphicon glyphicon-briefcase"></span> Cajas</a></li>
                                 <li><a href="{{ path('turnolaboral_index') }}"><span class="icon-empleado"></span> Turnos laborales</a></li>
                             </ul>
                         </li>

@@ -3,52 +3,60 @@
 {% block body %}
     <div class="container">
         <div class="row">
-            <h1 class="h1 text-center marginTitulo">Proveedor edit <span class="glyphicon glyphicon-user"></span></h1>
+            <h1 class="h1 text-center marginTitulo">Editar Proveedor <span class="icon-proveedor"></span></h1>
         </div>
 
 
         <div class="row">
             <div class="col-sm-4 col-sm-offset-4">
                 {{ form_start(edit_form, {'attr':{'id':'formulario'}}) }}
+
                 <div class="form-group">        
-                    {{ form_label(edit_form.nit , 'Nit:') }}
-                    {{ form_widget(edit_form.nit, {'attr':{'class':'form-control'}}) }}
+                    {{ form_label(edit_form.nit) }}
+                    {{ form_widget(edit_form.nit, {'attr':{'class':'form-control', 'placeholder':'No. de Identificacion'}}) }}
                 </div>
-                <div class="form-group">        
-                    {{ form_label(edit_form.nit , 'Nit:') }}
-                    {{ form_widget(edit_form.nit, {'attr':{'class':'form-control'}}) }}
+                <div class="form-group">   
+                    {{ form_label(edit_form.nombre) }}
+                    {{ form_widget(edit_form.nombre, {'attr':{'class':'form-control', 'placeholder':'Nombre de la empresa'}}) }}
                 </div>
-                <div class="form-group">       
-                    {{ form_label(edit_form.nit , 'Nit:') }}
-                    {{ form_widget(edit_form.nit, {'attr':{'class':'form-control'}}) }}
+                <div class="form-group">
+                    {{ form_label(edit_form.correo) }}
+                    {{ form_widget(edit_form.correo, {'attr':{'class':'form-control','placeholder':'Correo corporativo'}}) }}
                 </div>
-                <div class="form-group">        
-                    {{ form_label(edit_form.nit , 'Nit:') }}
-                    {{ form_widget(edit_form.nit, {'attr':{'class':'form-control'}}) }}
+                <div class="form-group">
+                    {{ form_label(edit_form.telefono) }}
+                    {{ form_widget(edit_form.telefono, {'attr':{'class':'form-control','placeholder':'Teléfono fijo o celular corporativo'}}) }} 
                 </div>
+
                 <div class="form-group text-center">
-                <button type="submit" class="btn btn-lg btn-warning">Editar <span class="glyphicon glyphicon-edit"></span></button>
+                    <button type="submit" class="btn btn-lg btn-warning">Editar <span class="glyphicon glyphicon-edit"></span></button>
                 </div>
-                    {{ form_end(edit_form) }}
-                
-                    <ul class="list-inline text-center">
-                        <li>
-                            <a href="{{ path('proveedores_index') }}" class="btn btn-info">Lista <span class="glyphicon glyphicon-th-list"></span></a>
-                        </li>
-                        <li>
-                            {{ form_start(delete_form) }}
-                            <button type="submit" class="btn btn-danger">Eliminar <span class="glyphicon glyphicon-floppy-remove"></span></button>
+                {{ form_end(edit_form) }}
+
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="{{ path('proveedores_index') }}" class="btn btn-info">Lista <span class="glyphicon glyphicon-th-list"></span></a>
+                    </li>
+                    <li>
+                        {{ form_start(delete_form) }}
+                        <button type="submit" class="btn btn-danger">Eliminar <span class="glyphicon glyphicon-floppy-remove"></span></button>
                             {{ form_end(delete_form) }}
-                        </li>
-                    </ul>
-           
+                    </li>
+                </ul>
+
             </div>
         </div>
     </div>
 {% endblock %}
-% block javascripts %}
-    {{parent()}}
+{% block javascripts %}
+    {{ parent() }}
     <script>
+        $(document).on('ready', inicio());
+
+        function inicio() {
+            $('#inventario').addClass('active');
+        }
+        
         $('#formulario').validate({
             highlight: function (element) {
                 $(element).closest('.form-group').removeClass('has-success').addClass('has-error');

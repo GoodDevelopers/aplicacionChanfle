@@ -3,6 +3,9 @@
 namespace InventarioBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,10 +18,10 @@ class ProveedorType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nit')
-            ->add('nombre')
-            ->add('telefono')
-            ->add('correo')
+            ->add('nit', TextType::class, array('label' => 'Nit:'))
+            ->add('nombre', TextType::class, array('label' => 'Nombre:'))
+            ->add('telefono', IntegerType::class, array('label' => 'Teléfono:'))
+            ->add('correo', EmailType::class, array('label' => 'Email:'))
         ;
     }
     

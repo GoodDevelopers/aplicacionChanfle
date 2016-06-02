@@ -19,18 +19,18 @@
                 {{ form_start(form , {'attr':{'id':'formulario'}}) }}
 
                 <div class="form-group">
-                    {{ form_label(form.nuip, 'No. de identificacion:')}}
-                    {{ form_widget(form.nuip, {'attr':{'class' : 'form-control', 'placeholder' : 'Numero de cedula del cliente'}})}}
+                    {{ form_label(form.nuip)}}
+                    {{ form_widget(form.nuip, {'attr':{'class' : 'form-control', 'placeholder' : 'Número de cédula'}})}}
                 </div>
 
                 <div class="form-group">
-                    {{ form_label(form.nombre, 'Nombre y apellidos:')}}
-                    {{ form_widget(form.nombre, {'attr':{'class' : 'form-control', 'placeholder' : 'Nombre y apellidos completos del cliente'}})}}
+                    {{ form_label(form.nombre)}}
+                    {{ form_widget(form.nombre, {'attr':{'class' : 'form-control', 'placeholder' : 'Nombre y apellidos completos'}})}}
                 </div>
 
                 <div class="form-group">
-                    {{ form_label(form.telefono, 'Telefono:')}}
-                    {{ form_widget(form.telefono, {'attr':{'class' : 'form-control', 'placeholder' : 'Telefono fijo o celular'}})}}
+                    {{ form_label(form.telefono)}}
+                    {{ form_widget(form.telefono, {'attr':{'class' : 'form-control', 'placeholder' : 'Teléfono fijo o celular'}})}}
                 </div>
 
                 <div class="form-group">
@@ -44,7 +44,7 @@
                 <div class="form-group" style="display: none;" id="bloqueCheckAdmin">
                     <label class="checkbox2-inline">
                         <input type="checkbox2" data-toggle="toggle" id="checkAdmin" name="checkAdmin" value="0">
-                        Privilegios de administrador
+                        Privilegios de Administrador
                     </label>
                 </div>
 
@@ -71,6 +71,12 @@
     {{ parent() }}
     <script src="{{ asset('bundles/usuarios/js/bootstrap-toggle.js') }}"></script>
     <script>
+
+        $(document).on('ready', inicio());
+
+        function inicio() {
+            $('#usuarios').addClass('active');
+        }
         /* Esta funcion es para mostrar el check de admin */
         $(function () {
             $('#empleado_esUsuario').click(function () {
@@ -94,6 +100,7 @@
                 }
             });
         });
+        
         $('#formulario').validate({
             highlight: function (element) {
                 $(element).closest('.form-group').removeClass('has-success').addClass('has-error');

@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="h1 text-center marginTitulo">MateriaPrima</h1>
+                <h1 class="h1 text-center marginTitulo">Materia Prima <span class="icon-listaMateria"></span></h1>
             </div>
         </div>
 
@@ -13,27 +13,23 @@
                 <table class="table table-hover">
                     <tbody>
                         <tr>
-                            <th class="text-right">Id</th>
-                            <td>{{ materiaPrima.id }}</td>
-                        </tr>
-                        <tr>
-                            <th class="text-right">Nombre</th>
+                            <th class="text-right">Nombre:</th>
                             <td>{{ materiaPrima.nombre }}</td>
                         </tr>
                         <tr>
-                            <th class="text-right">Unidaddemedida</th>
+                            <th class="text-right">Unidad de Medida:</th>
                             <td>{{ materiaPrima.unidadDeMedida }}</td>
                         </tr>
                         <tr>
-                            <th class="text-right">Cantidad</th>
+                            <th class="text-right">Cantidad:</th>
                             <td>{{ materiaPrima.cantidad }}</td>
                         </tr>
                         <tr>
-                            <th class="text-right">Precio</th>
+                            <th class="text-right">Valor Unitario:</th>
                             <td>{{ materiaPrima.precio }}</td>
                         </tr>
                         <tr>
-                            <th class="text-right">Stockminimo</th>
+                            <th class="text-right">Stock Mínimo:</th>
                             <td>{{ materiaPrima.stockMinimo }}</td>
                         </tr>
                     </tbody>
@@ -42,7 +38,7 @@
         </div>
         <div class="row">
             <div class="col-lg-4 col-lg-offset-4">
-                <ul>
+                <ul class="list-inline text-center">
                     <li>
                         <a href="{{ path('materiaprima_index') }}" class="btn btn-info">Lista <span class="glyphicon glyphicon-th-list"></span></a>
                     </li>
@@ -60,3 +56,15 @@
     </div>
 
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+
+        $(document).on('ready', inicio());
+
+        function inicio() {
+            $('#inventario').addClass('active');
+        }
+    </script>
+{% endblock%}

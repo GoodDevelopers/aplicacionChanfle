@@ -1,21 +1,60 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>TipoProducto edit</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="h1 text-center marginTitulo">TipoProducto edit</h1>
+            </div>
+        </div>
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-4"> 
+                {{ form_start(edit_form, {'attr':{'id':'formulario'}}) }}
+                <div class="form-group">
+                    {{ form_label(edit_form.nombre,'Nombre') }}
+                    {{ form_widget(edit_form.nombre,{'attr':{'class':'form-control'}}) }}
+                </div>
+                <input type="submit" value="Edit" />
+                {{ form_end(edit_form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('tipoproducto_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="{{ path('tipoproducto_index') }}" lass="btn btn-info">Lista <span class="glyphicon glyphicon-th-list"></span></a>
+                    </li>
+                    <li>
+                        {{ form_start(delete_form) }}
+                        <button type="submit" class="btn btn-danger">Eliminar <span class="glyphicon glyphicon-floppy-remove"></span></button>
+                        {{ form_end(delete_form) }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 {% endblock %}
+{% block  javascripts %}
+    {{parent()}}
+    <script>
+        $('#formulario').validate({
+            highlight: function (element) {
+                $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+                $(element).fadeOut(function () {
+                    $(element).fadeIn();
+                });
+            },
+            unhighlight: function (element) {
+                $(element).closest('.control-group').removeClass('error').addClass('success');
+            }
+        });
+
+        $('#tipo_producto_nombre').rules("add", {
+            required: true,
+            messages: {
+                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span>Este campo es requerido</label>"
+            }
+        });
+
+    </script>
+{% endblock %}
+
+

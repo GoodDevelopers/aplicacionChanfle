@@ -26,11 +26,19 @@ class CostoController extends Controller {
     public function indexAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
 
-        $costos = $em->getRepository('CostosBundle:Costo')->findAll();
-        
         $session = $request->getSession();
-        
+
+        $costos = $em->getRepository('CostosBundle:Costo')->findAll();
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $costos, //Query o registros
+                $this->get('request')->query->get('page', 1), //Iniciar en la pagina1
+                8   //Hasta la 8
+        );
+
         return array(
+            'pagination' => $pagination,
             'usuario' => $session->get('user'),
             'costos' => $costos,
         );
@@ -45,7 +53,7 @@ class CostoController extends Controller {
      */
     public function newAction(Request $request) {
         $session = $request->getSession();
-        
+
         $costo = new Costo();
         $form = $this->createForm('CostosBundle\Form\CostoType', $costo);
         $form->handleRequest($request);
@@ -79,7 +87,7 @@ class CostoController extends Controller {
      */
     public function showAction(Costo $costo, Request $request) {
         $session = $request->getSession();
-        
+
         $deleteForm = $this->createDeleteForm($costo);
 
         return array(
@@ -98,7 +106,7 @@ class CostoController extends Controller {
      */
     public function editAction(Request $request, Costo $costo) {
         $session = $request->getSession();
-        
+
         $deleteForm = $this->createDeleteForm($costo);
         $editForm = $this->createForm('CostosBundle\Form\CostoType', $costo);
         $editForm->handleRequest($request);
@@ -151,6 +159,15 @@ class CostoController extends Controller {
                         ->setMethod('DELETE')
                         ->getForm()
         ;
+    }
+
+    private function getEmpleadoLogueado() {
+        $nuip = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
+        //Esto se debe cambiar por buscar en los empleados, no en los clientes
+        $usuario = $em->getRepository('UsuariosBundle:Empleado')->findOneBy(array('nuip' => $nuip->getUsername()));
+        
+        return $usuario;
     }
 
 }

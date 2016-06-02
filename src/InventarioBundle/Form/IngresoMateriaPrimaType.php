@@ -28,7 +28,7 @@ class IngresoMateriaPrimaType extends AbstractType {
                         return $er->createQueryBuilder('materia')
                                 ->orderBy('materia.nombre', 'ASC');
                     },
-                    'placeholder' => 'Seleccione una opcion',
+                    'placeholder' => 'Seleccione una opción',
                     'choice_label' => 'nombre',))
                 //El empleado es el que esta logueado
 //                ->add('empleado')

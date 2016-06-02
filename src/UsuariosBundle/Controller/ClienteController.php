@@ -48,7 +48,7 @@ class ClienteController extends Controller {
         $pagination = $paginator->paginate(
                 $clientes, //Query o registros
                 $this->get('request')->query->get('page', 1), //Iniciar en la pagina1
-                7   //Hasta la 8
+                8   //Hasta la 8
         );
 
         return array(
@@ -130,6 +130,7 @@ class ClienteController extends Controller {
     public function editAction(Request $request, Cliente $cliente) {
         $session = $request->getSession();
 
+        $deleteForm = $this->createDeleteForm($cliente);
         $editForm = $this->createForm('UsuariosBundle\Form\ClienteType', $cliente);
         $editForm->handleRequest($request);
 
@@ -149,6 +150,7 @@ class ClienteController extends Controller {
             $user->setEmailCanonical($cliente->getEmail());
 
             $fosUserManager->updateUser($user);
+            
             $em->persist($cliente);
             $em->flush();
 
@@ -159,6 +161,7 @@ class ClienteController extends Controller {
             'usuario' => $session->get('user'),
             'cliente' => $cliente,
             'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
         );
     }
 

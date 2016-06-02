@@ -32,7 +32,15 @@ class ProductoController extends Controller {
 
         $productos = $em->getRepository('InventarioBundle:Producto')->findAll();
 
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $productos, //Query o registros
+                $this->get('request')->query->get('page', 1), //Iniciar en la pagina1
+                8   //Hasta la 8
+        );
+        
         return array(
+            'pagination' => $pagination,
             'usuario' => $session->get('user'),
             'productos' => $productos,
         );
@@ -102,13 +110,10 @@ class ProductoController extends Controller {
         $session = $request->getSession();
         
         $deleteForm = $this->createDeleteForm($producto);
-        //para obtener el numero de la lista
-        $num = $_GET['num'];
 
         return array(
             'usuario' => $session->get('user'),
             'producto' => $producto,
-            'num' => $num,
             'delete_form' => $deleteForm->createView(),
         );
     }

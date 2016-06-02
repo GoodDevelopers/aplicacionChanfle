@@ -1,32 +1,54 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>DetalleVenta</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="h1 text-center marginTitulo">DetalleVenta</h1>
+            </div>
+        </div>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ detalleVentum.id }}</td>
-            </tr>
-            <tr>
-                <th>Fecha</th>
-                <td>{% if detalleVentum.fecha %}{{ detalleVentum.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Cantidad</th>
-                <td>{{ detalleVentum.cantidad }}</td>
-            </tr>
-            <tr>
-                <th>Valordetalle</th>
-                <td>{{ detalleVentum.valorDetalle }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4">
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <th class="text-right">Id</th>
+                            <td>{{ detalleVentum.id }}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">Fecha</th>
+                            <td>{% if detalleVentum.fecha %}{{ detalleVentum.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">Cantidad</th>
+                            <td>{{ detalleVentum.cantidad }}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">Valordetalle</th>
+                            <td>{{ detalleVentum.valorDetalle }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4">
+                <ul class="text-center list-inline">
 
-    <ul>
-        <li>
-            <a href="{{ path('detalleventa_index') }}">Back to the list</a>
-        </li>
-    </ul>
+                    <li>
+                        <a href="{{ path('venta_index') }}" class="btn btn-info">Lista ventas <span class="glyphicon glyphicon-th-list"></span></a>
+                    </li>
+                    <li>
+                        <a href="{{ path('detalleventa_edit', { 'id': detalleVentum.id, 'id2': venta.id}) }}" class="btn btn-warning" role="button">Editar <span class="glyphicon glyphicon-edit"></span></a>
+                    </li>
+                    <li>
+                        {{ form_start(delete_form) }}
+                                            <button type="submit" class="btn btn-danger">Eliminar <span class="glyphicon glyphicon-floppy-remove"></span></button>
+                        {{ form_end(delete_form) }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 {% endblock %}

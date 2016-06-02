@@ -1,36 +1,67 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-  <h1>DetalleVenta list</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="h1 text-center marginTitulo">Detalles Venta <span class="fa fa-shopping-basket"></span></h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <ul>
+                    <li>
+                        <a href="{{ path('detalleventa_new',{'id':venta.id}) }}" class="btn btn-lg btn-primary">Agregar Detalle <span class="glyphicon glyphicon-plus-sign"></span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="margenTopTablas">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-condensed text-center">
+                            <thead>
+                                <tr class="active info">
+                                    <th>FECHA</th>
+                                    <th>PRODUCTO</th>
+                                    <th>CANTIDAD</th>
+                                    <th>VALOR DETALLE</th>
+                                    <th>ACCIONES</th>
 
-    <table class="table table-striped">
-        <thead >
-            <tr>
-                <th>Id</th>
-                <th>Fecha</th>
-                <th>Producto</th>
-                <th>Cantidad</th>
-                <th>Valordetalle</th>
-              
-            </tr>
-        </thead>
-        <tbody>
-        {% for detalleVentum in detalleVentas %}
-            <tr>
-                <td><a href="{{ path('detalleventa_show', { 'id': detalleVentum.id }) }}">{{ detalleVentum.id }}</a></td>
-                <td>{% if detalleVentum.fecha %}{{ detalleVentum.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td> {{detalleVentum.producto.nombre}} </td>
-                <td>{{ detalleVentum.cantidad }}</td>
-                <td>{{ detalleVentum.valorDetalle }}</td>
-
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-           
-        </li>
-    </ul>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for detalleVentum in detalleVentas %}
+                                    <tr>
+                                        <td>{% if detalleVentum.fecha %}{{ detalleVentum.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                        <td><a href="{{ path('detalleventa_show', { 'id': detalleVentum.id }) }}">{{ detalleVentum.producto.nombre }}</a></td>
+                                        <td>{{ detalleVentum.cantidad }}</td>
+                                        <td>{{ detalleVentum.valorDetalle }}</td>
+                                        <td>
+                                            <ul class="list-inline text-center">
+                                                <li>
+                                                    <a href="{{ path('detalleventa_edit', { 'id': detalleVentum.id, 'id2': venta.id }) }}" class="btn btn-warning" role="button">Editar Detalle <span class="glyphicon glyphicon-edit"></span></a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ path('detalleventa_show', { 'id': detalleVentum.id }) }}" class="btn btn-danger" role="button">Remover Detalle <span class="glyphicon glyphicon-minus-sign"></span></a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="{{ path('venta_index') }}" role="button" class="btn btn-info">Lista Ventas <span class="glyphicon glyphicon-th-list"></span></a>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

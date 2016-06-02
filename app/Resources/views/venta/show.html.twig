@@ -4,7 +4,7 @@
     <div  class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="h1 text-center marginTitulo">Venta</h1>
+                <h1 class="h1 text-center marginTitulo">Venta <span class="fa fa-shopping-basket"></span></h1>
             </div>
         </div>
 
@@ -13,10 +13,6 @@
                 <table class="table table-hover">
 
                     <tbody>
-                        <tr>
-                            <th class="text-right">Id</th>
-                            <td>{{ ventum.id }}</td>
-                        </tr>
                         <tr>
                             <th class="text-right">Fecha</th>
                             <td>{% if ventum.fecha %}{{ ventum.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
@@ -52,7 +48,7 @@
                         <a href="{{ path('venta_index') }}" class="btn btn-info">Lista <span class="glyphicon glyphicon-th-list"></span></a>
                     </li>
                     <li>
-                        <a href="{{ path('venta_edit', { 'id': ventum.id }) }}" class="btn btn-warning" role="button">Editar <span class="glyphicon glyphicon-edit"></span></a>
+                        <a href="{{ path('venta_detalles', { 'id': ventum.id }) }}" class="btn btn-warning" role="button">Editar <span class="glyphicon glyphicon-edit"></span></a>
                     </li>
                     <li>
                         {{ form_start(delete_form) }}

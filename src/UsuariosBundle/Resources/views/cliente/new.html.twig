@@ -14,27 +14,27 @@
                 {{ form_start(form, {'attr':{'id':'formulario'}}) }}
 
                 <div class="form-group">
-                    {{ form_label(form.nuip, 'No. de identificacion:')}}
-                    {{ form_widget(form.nuip, {'attr':{'class' : 'form-control', 'placeholder' : 'Numero de cedula del cliente'}})}}
+                    {{ form_label(form.nuip)}}
+                    {{ form_widget(form.nuip, {'attr':{'class' : 'form-control', 'placeholder' : 'Número de cédula'}})}}
                 </div>
 
                 <div class="form-group">
-                    {{ form_label(form.nombre, 'Nombre y apellidos:')}}
-                    {{ form_widget(form.nombre, {'attr':{'class' : 'form-control', 'placeholder' : 'Nombre y apellidos completos del cliente', 'maxlength' : '45'}})}}
+                    {{ form_label(form.nombre)}}
+                    {{ form_widget(form.nombre, {'attr':{'class' : 'form-control', 'placeholder' : 'Nombre y apellidos completos', 'maxlength' : '45'}})}}
                 </div>
 
                 <div class="form-group">
-                    {{ form_label(form.fechaDeNacimiento, 'Fecha de nacimiento:')}}
+                    {{ form_label(form.fechaDeNacimiento)}}
                     {{ form_widget(form.fechaDeNacimiento, {'attr':{'class' : 'form-control', 'placeholder' : 'dd/MM/yyyy', 'format' : 'dd-MM-yyyy'}})}}
                 </div>
 
-                <div class="form-group">
-                    {{ form_label(form.puntosAcumulados, 'Puntos acumulados:')}}
+                {#<div class="form-group">
+                    {{ form_label(form.puntosAcumulados)}}
                     {{ form_widget(form.puntosAcumulados, {'attr':{'class' : 'form-control', 'value' : 0}})}}
-                </div>
+                </div>#}
 
                 <div class="form-group">
-                    {{ form_label(form.email, 'Email:')}}
+                    {{ form_label(form.email)}}
                     {{ form_widget(form.email, {'attr':{'class' : 'form-control', 'placeholder' : 'Correo personal'}})}}
                 </div>
 

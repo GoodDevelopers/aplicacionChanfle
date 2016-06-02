@@ -20,7 +20,7 @@ class ProductoType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
                 ->add('nombre', TextType::class, array('label' => 'Nombre:'))
-                ->add('precio', IntegerType::class, array('label' => 'Valor:'))
+                ->add('precio', IntegerType::class, array('label' => 'Precio:'))
                 ->add('tipoProducto', EntityType::class, array(
                     'label' => 'Tipo de Producto:',
                     'class' => 'InventarioBundle:TipoProducto',
