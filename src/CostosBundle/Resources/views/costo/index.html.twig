@@ -67,6 +67,8 @@
                             <tbody>
                                 {% for costo in pagination %}
                                     <tr>
+                                        <td><a href="{{ path('costo_show', { 'id': costo.id }) }}">{% if costo.fecha %}{{ costo.fecha|date('Y-m-d H:i:s') }}{% endif %}</a></td>
+                                        <td>{{ costo.tipoCosto }}</td>
                                         <td>{{ costo.valor }}</td>
                                         <td>{{ costo.descripcion }}</td>
                                         <td>
@@ -108,5 +110,3 @@
         }
     </script>
 {% endblock%}
-                                        <td><a href="{{ path('costo_show', { 'id': costo.id }) }}">{% if costo.fecha %}{{ costo.fecha|date('Y-m-d H:i:s') }}{% endif %}</a></td>
-                                        <td>{{ costo.tipoCosto }}</td>

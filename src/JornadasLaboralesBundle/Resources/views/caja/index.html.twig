@@ -5,14 +5,14 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="h1 text-center marginTitulo">Cajas <span class=""></span></h1>
+                <h1 class="h1 text-center marginTitulo">Cajas <span class="glyphicon glyphicon-briefcase"></span></h1>
             </div>
         </div>
         <div class="row">
             <div class="col-md-3">
                 <ul>
                     <li>
-                        <a href="{{ path('caja_new') }}" class="btn btn-lg btn-success">Registar caja <span class="glyphicon glyphicon-floppy-saved"></span></a>
+                        <a href="{{ path('caja_new') }}" class="btn btn-lg btn-success">Registar Caja <span class="glyphicon glyphicon-floppy-saved"></span></a>
                     </li>
                 </ul>
             </div>
@@ -36,7 +36,7 @@
                             <tbody>
                                 {% for caja in cajas %}
                                     <tr>
-                                        <td><a href="{{ path('caja_show', { 'id': caja.id }) }}">{% if caja.fecha %}{{ caja.fecha|date('Y-m-d H:i:s') }}{% endif %}}</a></td>
+                                        <td><a href="{{ path('caja_show', { 'id': caja.id }) }}">{% if caja.fecha %}{{ caja.fecha|date('Y-m-d H:i:s') }}{% endif %}</a></td>
                                         <td>{{ caja.cajaInicial }}</td>
                                         <td>{{ caja.cajaInicialJustificacion }}</td>
                                         <td>{{ caja.cajaFinal }}</td>

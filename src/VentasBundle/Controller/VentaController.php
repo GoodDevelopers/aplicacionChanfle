@@ -2,6 +2,7 @@
 
 namespace VentasBundle\Controller;
 
+use InventarioBundle\Entity\MateriaPrima;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -10,11 +11,6 @@ use Symfony\Component\HttpFoundation\Response;
 use VentasBundle\Entity\DetalleVenta;
 use VentasBundle\Entity\Venta;
 use VentasBundle\Form\VentaType;
-use InventarioBundle\Entity\Producto;
-use Doctrine\Common\Collections\ArrayCollection;
-use UsuariosBundle\Entity\Cliente;
-use \InventarioBundle\Entity\MateriaPrima;
-use InventarioBundle\Entity\DetalleProducto;
 
 /**
  * Venta controller.
@@ -53,7 +49,7 @@ class VentaController extends Controller {
 
         $ventum = new Venta();
         $fecha = new \DateTime("now");
-        $form = $this->createForm(new ventaType());
+        $form = $this->createForm(new VentaType());
         $form->handleRequest($request);
         $em = $this->getDoctrine()->getManager();
         $Tipos = $em->getRepository('InventarioBundle:TipoProducto')->findAllOrderedByNombre();

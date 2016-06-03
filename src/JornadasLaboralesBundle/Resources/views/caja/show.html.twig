@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="h1 text-center marginTitulo">Caja</h1>
+                <h1 class="h1 text-center marginTitulo">Caja <span class="glyphicon glyphicon-briefcase"></span></h1>
             </div>
         </div>
 
@@ -18,23 +18,23 @@
                             <td>{{ caja.id }}</td>
                         </tr>
                         <tr>
-                            <th class="text-right">Fecha</th>
+                            <th class="text-right">Fecha:</th>
                             <td>{% if caja.fecha %}{{ caja.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
                         </tr>
                         <tr>
-                            <th class="text-right">Cajainicial</th>
+                            <th class="text-right">Caja Inicial:</th>
                             <td>{{ caja.cajaInicial }}</td>
                         </tr>
                         <tr>
-                            <th class="text-right">Cajainicialjustificacion</th>
+                            <th class="text-right">Justificacion Caja Inicial:</th>
                             <td>{{ caja.cajaInicialJustificacion }}</td>
                         </tr>
                         <tr>
-                            <th class="text-right">Cajafinal</th>
+                            <th class="text-right">Caja Final:</th>
                             <td>{{ caja.cajaFinal }}</td>
                         </tr>
                         <tr>
-                            <th class="text-right">Cajafinaljustificacion</th>
+                            <th class="text-right">Justificacion Caja Final:</th>
                             <td>{{ caja.cajaFinalJustificacion }}</td>
                         </tr>
                     </tbody>
