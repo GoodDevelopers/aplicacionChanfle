@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use DateTime;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -72,6 +73,35 @@ class CajaController extends Controller {
             'caja' => $caja,
             'form' => $form->createView(),
         );
+    }
+    
+        /**
+     *
+     *
+     * @Route("/validarFecha", name="validar_fecha")
+     * 
+     */
+    public function validarfecha(Request $request) {
+
+        $date = new \DateTime("now");
+//        $fecha = $date->format('Y-m-d');
+        $em = $this->getDoctrine()->getManager();
+        $caja = $em->getRepository('JornadasLaboralesBundle:Caja')->findOneBy(array('fecha' => $date));
+        if ($caja == null) {
+            $data = true;
+        } else {
+            $data = false;
+        }
+
+
+
+//        $resultado = ( array("resultado" => $data));
+//
+        $response = new Response(\json_encode($data));
+//        $response->headers->set('Content-Type', 'application/json');
+//
+//       
+        return $response;
     }
     
         /**

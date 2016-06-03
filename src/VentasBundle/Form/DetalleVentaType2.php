@@ -2,12 +2,11 @@
 
 namespace VentasBundle\Form;
 
-use Doctrine\ORM\EntityRepository;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Doctrine\ORM\EntityRepository;
 
 class DetalleVentaType2 extends AbstractType {
 
@@ -18,7 +17,7 @@ class DetalleVentaType2 extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
 //                ->add('fecha', 'datetime')
-                ->add('cantidad', IntegerType::class, array('label' => 'Cantidad:'))
+                ->add('cantidad')
 //                ->add('valorDetalle')
 //                ->add('venta', EntityType::class, array(
 //                    'label' => 'Venta',
@@ -30,7 +29,7 @@ class DetalleVentaType2 extends AbstractType {
 //                    'choice_label' => 'cliente.nombre',
 //                ))
                 ->add('producto', EntityType::class, array(
-                    'label' => 'Producto:',
+                    'label' => 'Producto',
                     'class' => 'InventarioBundle:Producto',
                     'query_builder' => function (EntityRepository $er) {
                         return $er->createQueryBuilder('producto')->orderBy('producto.nombre', 'ASC');
