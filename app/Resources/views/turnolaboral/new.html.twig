@@ -45,6 +45,13 @@
 {% block  javascripts %}
     {{parent()}}
     <script>
+        
+        $(document).on('ready', inicio());
+
+        function inicio() {
+            $('#registros').addClass('active');
+        }
+        
         $('#formulario').validate({
             highlight: function (element) {
                 $(element).closest('.form-group').removeClass('has-success').addClass('has-error');

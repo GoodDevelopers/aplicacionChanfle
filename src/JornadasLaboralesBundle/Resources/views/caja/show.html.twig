@@ -60,3 +60,15 @@
         </div>
     </div>
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+
+        $(document).on('ready', inicio());
+        
+        function inicio(){
+            $('#registros').addClass('active');
+        }
+    </script>
+{% endblock%}

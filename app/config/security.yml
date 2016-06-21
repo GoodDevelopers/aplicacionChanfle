@@ -55,9 +55,9 @@ security:
 
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/registros, role: ROLE_USER }
         - { path: ^/clientes/, role: ROLE_USER }
         - { path: ^/ingresosMateriaPrima/, role: ROLE_USER }
-        - { path: ^/registros, role: ROLE_USER }
         - { path: ^/register, role: ROLE_ADMIN }
         - { path: ^/resetting, role: ROLE_ADMIN }
         - { path: ^/admin/, role: ROLE_ADMIN }
@@ -65,4 +65,4 @@ security:
         - { path: ^/reportes/, role: ROLE_ADMIN }
         - { path: ^/materiaprima/, role: ROLE_ADMIN }
 #        - { path: ^/clientes/new, role: ROLE_ADMIN }
-        - { path: ^/, role: ROLE_USER }
+        - { path: ^/, role: ROLE_USER } 

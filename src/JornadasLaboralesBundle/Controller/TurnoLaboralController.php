@@ -30,7 +30,16 @@ class TurnoLaboralController extends Controller {
 
         $turnoLaborals = $em->getRepository('JornadasLaboralesBundle:TurnoLaboral')->findAll();
 
+        // Añadimos el paginador
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $turnoLaborals, //Query o registros
+                $this->get('request')->query->get('page', 1), //Iniciar en la pagina1
+                8   //Hasta la 8
+        );
+
         return $this->render('turnolaboral/index.html.twig', array(
+                    'pagination' => $pagination,
                     'usuario' => $session->get('user'),
                     'turnoLaborals' => $turnoLaborals,
         ));

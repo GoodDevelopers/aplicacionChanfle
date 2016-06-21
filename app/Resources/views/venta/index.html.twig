@@ -8,10 +8,47 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-3">
                 <a href="{{ path('venta_new') }}" class="btn btn-lg btn-success">Registrar Venta  <span class="glyphicon glyphicon-floppy-saved"></span></a>
             </div>
+
+            <div class="col-md-1" style="padding: 0px;">
+                <div id="bloqueTotal">
+                    <div class="form-group">
+                        <label for="total" style="display: inline-block;">Total: </label>
+                        <input id="total" name="total" class="form-control" disabled="disabled" value="{{ pagination.getTotalItemCount }}" style="display: inline-block; width: 50%;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-1 text-center">
+                {#                Aqui va el boton de reporte#}
+            </div> 
+
+            <div class="col-md-7 text-right">
+                <form action="" method="GET" class="form-inline" onsubmit="buscar();
+                        return false;">
+                    <div class="form-group">
+                        <select class="form-control" id="criterio">
+                            <option value="">Seleccione el criterio de búsqueda</option>
+                            <option value="fecha">Fecha de la venta</option>
+                            <option value="mesa">Mesa</option>
+                            <option value="nuipCliente">No. de identificacion del cliente</option>
+                            <option value="nomCliente">Nombre o apellido del cliente</option>
+                            <option value="tipo">Tipo de venta</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">Dato</div>
+                            <input type="text" class="form-control" placeholder="Dato para la búsqueda" id="dato">
+                        </div>
+                        <button type="button" id="btnBuscar" class="btn btn-primary" onclick="buscar();"><span class="glyphicon glyphicon-search"></span> Buscar</button>
+                    </div>
+                </form>
+            </div>
         </div>
+
         <div class="margenTopTablas">
             <div class="row">
                 <div class="col-md-12">
@@ -55,6 +92,12 @@
                         </table>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="paginacion col-md-12 text-center" id="paginador">
+                {{ knp_pagination_render(pagination) }}
             </div>
         </div>
 

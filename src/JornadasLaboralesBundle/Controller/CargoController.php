@@ -12,24 +12,26 @@ use JornadasLaboralesBundle\Form\CargoType;
 /**
  * Cargo controller.
  *
- * @Route("/cargo")
+ * @Route("/cargos")
  */
-class CargoController extends Controller
-{
+class CargoController extends Controller {
+
     /**
      * Lists all Cargo entities.
      *
      * @Route("/", name="cargo_index")
      * @Method("GET")
      */
-    public function indexAction()
-    {
+    public function indexAction(Request $request) {
+        $session = $request->getSession();
+
         $em = $this->getDoctrine()->getManager();
 
         $cargos = $em->getRepository('JornadasLaboralesBundle:Cargo')->findAll();
 
         return $this->render('cargo/index.html.twig', array(
-            'cargos' => $cargos,
+                    'usuario' => $session->get('user'),
+                    'cargos' => $cargos,
         ));
     }
 
@@ -39,8 +41,9 @@ class CargoController extends Controller
      * @Route("/new", name="cargo_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
-    {
+    public function newAction(Request $request) {
+        $session = $request->getSession();
+
         $cargo = new Cargo();
         $form = $this->createForm('JornadasLaboralesBundle\Form\CargoType', $cargo);
         $form->handleRequest($request);
@@ -54,8 +57,9 @@ class CargoController extends Controller
         }
 
         return $this->render('cargo/new.html.twig', array(
-            'cargo' => $cargo,
-            'form' => $form->createView(),
+                    'usuario' => $session->get('user'),
+                    'cargo' => $cargo,
+                    'form' => $form->createView(),
         ));
     }
 
@@ -65,13 +69,15 @@ class CargoController extends Controller
      * @Route("/{id}", name="cargo_show")
      * @Method("GET")
      */
-    public function showAction(Cargo $cargo)
-    {
+    public function showAction(Cargo $cargo, Request $request) {
+        $session = $request->getSession();
+
         $deleteForm = $this->createDeleteForm($cargo);
 
         return $this->render('cargo/show.html.twig', array(
-            'cargo' => $cargo,
-            'delete_form' => $deleteForm->createView(),
+                    'usuario' => $session->get('user'),
+                    'cargo' => $cargo,
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -81,8 +87,9 @@ class CargoController extends Controller
      * @Route("/{id}/edit", name="cargo_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Cargo $cargo)
-    {
+    public function editAction(Request $request, Cargo $cargo) {
+        $session = $request->getSession();
+
         $deleteForm = $this->createDeleteForm($cargo);
         $editForm = $this->createForm('JornadasLaboralesBundle\Form\CargoType', $cargo);
         $editForm->handleRequest($request);
@@ -92,13 +99,14 @@ class CargoController extends Controller
             $em->persist($cargo);
             $em->flush();
 
-            return $this->redirectToRoute('cargo_edit', array('id' => $cargo->getId()));
+            return $this->redirectToRoute('cargo_index', array('id' => $cargo->getId()));
         }
 
         return $this->render('cargo/edit.html.twig', array(
-            'cargo' => $cargo,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'usuario' => $session->get('user'),
+                    'cargo' => $cargo,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -108,8 +116,7 @@ class CargoController extends Controller
      * @Route("/{id}", name="cargo_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Cargo $cargo)
-    {
+    public function deleteAction(Request $request, Cargo $cargo) {
         $form = $this->createDeleteForm($cargo);
         $form->handleRequest($request);
 
@@ -129,12 +136,12 @@ class CargoController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Cargo $cargo)
-    {
+    private function createDeleteForm(Cargo $cargo) {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('cargo_delete', array('id' => $cargo->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
+                        ->setAction($this->generateUrl('cargo_delete', array('id' => $cargo->getId())))
+                        ->setMethod('DELETE')
+                        ->getForm()
         ;
     }
+
 }

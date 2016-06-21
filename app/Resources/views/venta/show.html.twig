@@ -14,28 +14,28 @@
 
                     <tbody>
                         <tr>
-                            <th class="text-right">Fecha</th>
+                            <th class="text-right">Fecha:</th>
                             <td>{% if ventum.fecha %}{{ ventum.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
                         </tr>
                         <tr>
-                            <th class="text-right">Valortotal</th>
-                            <td>{{ ventum.valorTotal }}</td>
-                        </tr>
-                        <tr>
-                            <th class="text-right">Tipoventa</th>
-                            <td>{{ ventum.tipoVenta }}</td>
-                        </tr>
-                        <tr>
-                            <th class="text-right">Puntosventa</th>
-                            <td>{{ ventum.puntosVenta }}</td>
-                        </tr>
-                        <tr>
-                            <th class="text-right">Mesa</th>
+                            <th class="text-right">Mesa:</th>
                             <td>{{ ventum.mesa }}</td>
                         </tr>
                         <tr>
-                            <th class="text-right">Personaspormesa</th>
+                            <th class="text-right">No. de Personas:</th>
                             <td>{{ ventum.personasPorMesa }}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">Tipo Venta:</th>
+                            <td>{{ ventum.tipoVenta }}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">Valor Total:</th>
+                            <td>{{ ventum.valorTotal }}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">Puntos:</th>
+                            <td>{{ ventum.puntosVenta }}</td>
                         </tr>
                     </tbody>
                 </table>

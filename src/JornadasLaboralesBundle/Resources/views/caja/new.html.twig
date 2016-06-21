@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="h1 text-center marginTitulo">Registrar Caja</h1>
+                <h1 class="h1 text-center marginTitulo">Registrar Caja <span class="glyphicon glyphicon-briefcase"></span></h1>
             </div>
         </div>
         <div class="row">
@@ -92,6 +92,11 @@
     {{parent()}}
     <script>
 
+        $(document).on('ready', inicio());
+
+        function inicio() {
+            $('#registros').addClass('active');
+        }
 
         $('#formulario').validate({
             highlight: function (element) {

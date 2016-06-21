@@ -8,15 +8,39 @@
                 <h1 class="h1 text-center marginTitulo">Cajas <span class="glyphicon glyphicon-briefcase"></span></h1>
             </div>
         </div>
+
         <div class="row">
             <div class="col-md-3">
-                <ul>
-                    <li>
-                        <a href="{{ path('caja_new') }}" class="btn btn-lg btn-success">Registar Caja <span class="glyphicon glyphicon-floppy-saved"></span></a>
-                    </li>
-                </ul>
+                <a href="{{ path('caja_new') }}" class="btn btn-lg btn-success">Registar Caja <span class="glyphicon glyphicon-floppy-saved"></span></a>
+            </div>
+
+            <div class="col-md-1" style="padding: 0px;">
+                <div id="bloqueTotal">
+                    <div class="form-group">
+                        <label for="total" style="display: inline-block;">Total: </label>
+                        <input id="total" name="total" class="form-control" disabled="disabled" value="{{ pagination.getTotalItemCount }}" style="display: inline-block; width: 50%;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-1 text-center">
+                {#                Aqui va el boton de reporte#}
+            </div> 
+
+            <div class="col-md-7 text-right">
+                <form action="" method="GET" class="form-inline" onsubmit="buscar();
+                        return false;">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">Dato</div>
+                            <input type="text" class="form-control" placeholder="Fecha de la caja" id="dato">
+                        </div>
+                        <button type="button" id="btnBuscar" class="btn btn-primary" onclick="buscar();"><span class="glyphicon glyphicon-search"></span> Buscar</button>
+                    </div>
+                </form>
             </div>
         </div>
+
         <div class="margenTopTablas">
             <div class="row">
                 <div class="col-md-12">
@@ -24,7 +48,7 @@
                         <table class="table table-bordered table-hover table-condensed text-center">
                             <thead>
                                 <tr class="active info">
-                                    
+
                                     <th>FECHA</th>
                                     <th>CAJA INICIAL</th>
                                     <th>CAJA INICIAL JUSTIFICACION</th>
@@ -60,6 +84,23 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="paginacion col-md-12 text-center" id="paginador">
+                {{ knp_pagination_render(pagination) }}
+            </div>
+        </div>
 
     </div>
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+
+        $(document).on('ready', inicio());
+
+        function inicio() {
+            $('#registros').addClass('active');
+        }
+    </script>
+{% endblock%}

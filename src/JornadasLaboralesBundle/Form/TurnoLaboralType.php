@@ -23,7 +23,7 @@ class TurnoLaboralType extends AbstractType
                     'query_builder' => function (EntityRepository $er) {
                         return $er->createQueryBuilder('empleado')->orderBy('empleado.nombre', 'ASC');
                     },
-                    'placeholder' => 'seleccione un empleado',
+                    'placeholder' => 'Seleccione un empleado',
                     'choice_label' => 'nombre',
                 ))
                 ->add('cargo', EntityType::class, array(
@@ -32,7 +32,7 @@ class TurnoLaboralType extends AbstractType
                     'query_builder' => function (EntityRepository $er) {
                         return $er->createQueryBuilder('cargo')->orderBy('cargo.nombre', 'ASC');
                     },
-                    'placeholder' => 'seleccione un cargo',
+                    'placeholder' => 'Seleccione un cargo',
                     'choice_label' => 'nombre',
                 ))
         ;

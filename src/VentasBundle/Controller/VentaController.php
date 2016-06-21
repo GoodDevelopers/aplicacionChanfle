@@ -32,7 +32,16 @@ class VentaController extends Controller {
 
         $ventas = $em->getRepository('VentasBundle:Venta')->findAll();
 
+        // Añadimos el paginador
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $ventas, //Query o registros
+                $this->get('request')->query->get('page', 1), //Iniciar en la pagina1
+                8   //Hasta la 8
+        );
+
         return $this->render('venta/index.html.twig', array(
+                    'pagination' => $pagination,
                     'usuario' => $session->get('user'),
                     'ventas' => $ventas,
         ));
