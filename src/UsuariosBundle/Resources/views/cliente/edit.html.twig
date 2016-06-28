@@ -73,9 +73,7 @@
         $('#formulario').validate({
             highlight: function (element) {
                 $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
-                $(element).fadeOut(function () {
-                    $(element).fadeIn();
-                });
+
             },
             unhighlight: function (element) {
                 $(element).closest('.control-group').removeClass('error').addClass('success');
@@ -104,8 +102,8 @@
                 maxlength: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Por favor no ingresar mas de 11 digitos</label>",
                 minlength: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Debes ingresar al menos 6 digitos</label>",
                 min: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> El valor de los puntos no debe ser menor a 0</label>",
-                number: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Ingresa solo numeros</label>",
-                remote: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> La identificacion ya esta registrada</label>"
+                number: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Ingresa solo numeros</label>"
+               
             }
 
         });
@@ -113,14 +111,14 @@
         $('#cliente_nombre').rules("add", {
             required: true,
             messages: {
-                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span>Este campo es requerido</label>"
+                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Este campo es requerido</label>"
             }
 
         });
         $('#cliente_fechaDeNacimiento').rules("add", {
             required: true,
             messages: {
-                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span>Este campo es requerido</label>"
+                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Este campo es requerido</label>"
             }
 
         });
@@ -128,8 +126,8 @@
             required: true,
             min: 0,
             messages: {
-                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span>Este campo es requerido</label>",
-                min: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span>El valor de los puntos no debe ser menor a 0</label>"
+                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Este campo es requerido</label>",
+                min: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> El valor de los puntos no debe ser menor a 0</label>"
             }
 
         });
@@ -137,8 +135,8 @@
             required: true,
             email: true,
             messages: {
-                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span>Este campo es requerido</label>",
-                email: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span>El email ingresado no es un email valido</label>"
+                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Este campo es requerido</label>",
+                email: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> El email ingresado no es un email valido</label>"
             }
 
         });

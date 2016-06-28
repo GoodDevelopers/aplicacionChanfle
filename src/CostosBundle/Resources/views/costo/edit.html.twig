@@ -55,9 +55,7 @@
         $('#formulario').validate({
             highlight: function (element) {
                 $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
-                $(element).fadeOut(function () {
-                    $(element).fadeIn();
-                });
+
             },
             unhighlight: function (element) {
                 $(element).closest('.control-group').removeClass('error').addClass('success');
@@ -73,7 +71,7 @@
             required: true,
             min: 1,
             messages: {
-                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span>Este campo es requerido</label>",
+                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Este campo es requerido</label>",
                 min: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> El valor debe ser mayor a 0</label>"
             }
         });

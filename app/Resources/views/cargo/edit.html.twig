@@ -45,9 +45,7 @@
         $('#formulario').validate({
             highlight: function (element) {
                 $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
-                $(element).fadeOut(function () {
-                    $(element).fadeIn();
-                });
+
             },
             unhighlight: function (element) {
                 $(element).closest('.control-group').removeClass('error').addClass('success');

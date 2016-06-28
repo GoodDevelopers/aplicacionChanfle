@@ -59,9 +59,7 @@
         $('#formulario').validate({
             highlight: function (element) {
                 $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
-                $(element).fadeOut(function () {
-                    $(element).fadeIn();
-                });
+
             },
             unhighlight: function (element) {
                 $(element).closest('.control-group').removeClass('error').addClass('success');
@@ -104,8 +102,8 @@
             required: true,
             remote: "{{path('validar_fecha')}}",
             messages: {
-                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Este campo es requerido</label>",
-                remote: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> La caja del dia ya esta creada</label>"
+                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Este campo es requerido</label>"
+                
             }
         });
         $(document).on('ready', function () {

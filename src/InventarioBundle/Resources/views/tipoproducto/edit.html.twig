@@ -38,9 +38,7 @@
         $('#formulario').validate({
             highlight: function (element) {
                 $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
-                $(element).fadeOut(function () {
-                    $(element).fadeIn();
-                });
+
             },
             unhighlight: function (element) {
                 $(element).closest('.control-group').removeClass('error').addClass('success');
@@ -50,7 +48,7 @@
         $('#tipo_producto_nombre').rules("add", {
             required: true,
             messages: {
-                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span>Este campo es requerido</label>"
+                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Este campo es requerido</label>"
             }
         });
 

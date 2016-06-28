@@ -57,9 +57,7 @@
         $('#formulario').validate({
             highlight: function (element) {
                 $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
-                $(element).fadeOut(function () {
-                    $(element).fadeIn();
-                });
+
             },
             unhighlight: function (element) {
                 $(element).closest('.control-group').removeClass('error').addClass('success');
@@ -92,15 +90,15 @@
         $('#proveedor_nombre').rules("add", {
             required: true,
             messages: {
-                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span>Este campo es requerido</label>"
+                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Este campo es requerido</label>"
             }
         });
         $('#proveedor_correo').rules("add", {
             required: true,
             email: true,
             messages: {
-                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span>Este campo es requerido</label>",
-                email: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span>El email ingresado no valido</label>"
+                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Este campo es requerido</label>",
+                email: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> El email ingresado no valido</label>"
             }
 
         });
@@ -112,9 +110,9 @@
             number: true,
             min: 0,
             messages: {
-                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span>Este campo es requerido</label>",
-                minlength: "<label class='control-label' for='inputError'><span classs='glyphicon glyphicon-remove-sign'></span>Debes ingresar al menos 7 digitos</label>",
-                maxlength: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span>Por favor no ingresar mas de 13 digitos</label>",
+                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Este campo es requerido</label>",
+                minlength: "<label class='control-label' for='inputError'><span classs='glyphicon glyphicon-remove-sign'></span> Debes ingresar al menos 7 digitos</label>",
+                maxlength: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Por favor no ingresar mas de 13 digitos</label>",
                 number: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Ingresa solo numeros</label>",
                 min: "<label class='control-label' for='inputError'><span class='gglyphicon glyphicon-remove-sign'></span> El telefono no debe tener numeros negativos</label>"
             }

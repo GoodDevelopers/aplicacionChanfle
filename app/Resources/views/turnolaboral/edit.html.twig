@@ -43,9 +43,7 @@
         $('#formulario').validate({
             highlight: function (element) {
                 $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
-                $(element).fadeOut(function () {
-                    $(element).fadeIn();
-                });
+
             },
             unhighlight: function (element) {
                 $(element).closest('.control-group').removeClass('error').addClass('success');
@@ -55,13 +53,13 @@
         $('#turno_laboral_empleado').rules("add", {
             required: true,
             messages: {
-                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span>Seleccione un empleado</label>"
+                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Seleccione un empleado</label>"
             }
         });
         $('#turno_laboral_cargo').rules("add", {
             required: true,
             messages: {
-                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span>Seleccione un empleado</label>"
+                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Seleccione un empleado</label>"
             }
         });
     </script>
