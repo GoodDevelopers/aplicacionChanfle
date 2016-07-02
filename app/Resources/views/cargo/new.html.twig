@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="h1 text-center marginTitulo">Cargo creation</h1>
+                <h1 class="h1 text-center marginTitulo">Registrar Cargo</h1>
             </div>
         </div>
 
@@ -41,11 +41,11 @@
     <script>
         $('#formulario').validate({
             highlight: function (element) {
-                $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+                $(element).closest('.form-group').removeClass('validClass').addClass('has-error');
 
             },
             unhighlight: function (element) {
-                $(element).closest('.control-group').removeClass('error').addClass('success');
+                $(element).closest('.form-group').removeClass('has-error').addClass('validClass');
             }
         });
         $('#cargo_nombre').rules("add", {

@@ -42,7 +42,7 @@
                     <li>
                         {{ form_start(delete_form) }}
                         <button type="submit" class="btn btn-danger">Eliminar <span class="glyphicon glyphicon-floppy-remove"></span></button>
-                        {{ form_end(delete_form) }}
+                            {{ form_end(delete_form) }}
                     </li>
                 </ul>
             </div>
@@ -57,57 +57,57 @@
         function inicio() {
             $('#inventario').addClass('active');
         }
-        
+
         $('#formulario').validate({
             highlight: function (element) {
-                $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+                $(element).closest('.form-group').removeClass('validClass').addClass('has-error');
 
             },
             unhighlight: function (element) {
-                $(element).closest('.control-group').removeClass('error').addClass('success');
+                $(element).closest('.form-group').removeClass('has-error').addClass('validClass');
             }
         });
 
         $('#materia_prima_nombre').rules("add", {
             required: true,
             messages: {
-                 required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Este campo es requerido</label>"
+                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Este campo es requerido</label>"
             }
         });
         $('#materia_prima_unidadDeMedida').rules("add", {
             required: true,
             messages: {
-                 required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Este campo es requerido</label>"
+                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Este campo es requerido</label>"
             }
         });
         $('#materia_prima_cantidad').rules("add", {
             required: true,
-            number:true,
-            min:0,
+            number: true,
+            min: 0,
             messages: {
-                 required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Este campo es requerido</label>",
-                 number: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Solo digite numeros</label>",
-                 min: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> La cantidad no debe ser menor a 0</label>"
+                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Este campo es requerido</label>",
+                number: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Solo digite numeros</label>",
+                min: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> La cantidad no debe ser menor a 0</label>"
             }
         });
         $('#materia_prima_precio').rules("add", {
             required: true,
-            number:true,
-            min:0,
+            number: true,
+            min: 0,
             messages: {
-                 required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Este campo es requerido</label>",
-                 number: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Solo digite numeros</label>",
-                 min: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> El precio no debe ser menor a 0</label>"
+                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Este campo es requerido</label>",
+                number: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Solo digite numeros</label>",
+                min: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> El precio no debe ser menor a 0</label>"
             }
         });
         $('#materia_prima_stockMinimo').rules("add", {
             required: true,
-            number:true,
-            min:1,
+            number: true,
+            min: 1,
             messages: {
-                 required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Este campo es requerido</label>",
-                 number: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Solo digite numeros</label>",
-                 min: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> El stock minimo debe ser mayor a 0</label>"
+                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Este campo es requerido</label>",
+                number: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Solo digite numeros</label>",
+                min: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> El stock minimo debe ser mayor a 0</label>"
             }
         });
     </script>

@@ -100,16 +100,14 @@
                 }
             });
         });
-        
+
         $('#formulario').validate({
             highlight: function (element) {
-                $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
-
-
+                $(element).closest('.form-group').removeClass('validClass').addClass('has-error');
 
             },
-            success: function (element) {
-                $(element).closest('.form-group').removeClass('has-error');
+            unhighlight: function (element) {
+                $(element).closest('.form-group').removeClass('has-error').addClass('validClass');
             }
         });
 
@@ -119,15 +117,15 @@
             maxlength: 11,
             min: 0,
             number: true,
-            remote:{
-                url:"{{path('validar_empleado')}}",
-                type:"post",
-                data:{
-                    nuip:function (){
+            remote: {
+                url: "{{path('validar_empleado')}}",
+                type: "post",
+                data: {
+                    nuip: function () {
                         return $('#empleado_nuip').val();
                     }
                 }
-                        
+
             },
             messages: {
                 required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Este campo es requerido</label>",
@@ -151,14 +149,14 @@
             required: true,
             minlength: 7,
             maxlength: 13,
-            number:true,
+            number: true,
             min: 0,
             messages: {
                 required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Este campo es requerido</label>",
                 minlength: "<label class='control-label' for='inputError'><span classs='glyphicon glyphicon-remove-sign'></span> Debes ingresar al menos 7 digitos</label>",
                 maxlength: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Por favor no ingresar mas de 13 digitos</label>",
                 number: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Ingresa solo numeros</label>",
-                min:"<label class='control-label' for='inputError'><span class='gglyphicon glyphicon-remove-sign'></span> El telefono no debe tener numeros negativos</label>"
+                min: "<label class='control-label' for='inputError'><span class='gglyphicon glyphicon-remove-sign'></span> El telefono no debe tener numeros negativos</label>"
             }
         });
     </script>

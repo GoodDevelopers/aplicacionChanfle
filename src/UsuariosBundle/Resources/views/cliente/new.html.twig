@@ -61,20 +61,20 @@
 {% block javascripts %}
     {{parent()}}
     <script>
-        
+
         $(document).on('ready', inicio());
 
         function inicio() {
             $('#usuarios').addClass('active');
         }
-        
+
         $('#formulario').validate({
             highlight: function (element) {
-                $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+                $(element).closest('.form-group').removeClass('validClass').addClass('has-error');
 
-                },
-                unhighlight :  function (element)  {
-                $(element).closest('.control-group').removeClass('error').addClass('success');
+            },
+            unhighlight: function (element) {
+                $(element).closest('.form-group').removeClass('has-error').addClass('validClass');
             }
         });
 
@@ -85,16 +85,16 @@
             min: 0,
             number: true,
             remote:
-            {
-                url:"{{path('validar_cliente')}}",
-                type: "post",
-                data: {
-                    nuip: function () {
-                        return $('#cliente_nuip').val();
-                    }
-                }
+                    {
+                        url: "{{path('validar_cliente')}}",
+                        type: "post",
+                        data: {
+                            nuip: function () {
+                                return $('#cliente_nuip').val();
+                            }
+                        }
 
-            },
+                    },
             messages: {
                 required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Este campo es requerido</label>",
                 maxlength: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Por favor no ingresar mas de 11 digitos</label>",

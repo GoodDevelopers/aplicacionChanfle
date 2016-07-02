@@ -3,7 +3,7 @@
 {% block body %}
     <div class="container">
         <div class="row">
-            <h1 class="h1 text-center marginTitulo">Cargo edit</h1>
+            <h1 class="h1 text-center marginTitulo">Editar Cargo</h1>
         </div>
 
         <div class="row">
@@ -44,11 +44,11 @@
     <script>
         $('#formulario').validate({
             highlight: function (element) {
-                $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+                $(element).closest('.form-group').removeClass('validClass').addClass('has-error');
 
             },
             unhighlight: function (element) {
-                $(element).closest('.control-group').removeClass('error').addClass('success');
+                $(element).closest('.form-group').removeClass('has-error').addClass('validClass');
             }
         });
 

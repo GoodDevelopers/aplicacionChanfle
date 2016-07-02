@@ -72,11 +72,11 @@
 
         $('#formulario').validate({
             highlight: function (element) {
-                $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+                $(element).closest('.form-group').removeClass('validClass').addClass('has-error');
 
             },
             unhighlight: function (element) {
-                $(element).closest('.control-group').removeClass('error').addClass('success');
+                $(element).closest('.form-group').removeClass('has-error').addClass('validClass');
             }
         });
 
@@ -103,7 +103,7 @@
                 minlength: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Debes ingresar al menos 6 digitos</label>",
                 min: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> El valor de los puntos no debe ser menor a 0</label>",
                 number: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Ingresa solo numeros</label>"
-               
+
             }
 
         });

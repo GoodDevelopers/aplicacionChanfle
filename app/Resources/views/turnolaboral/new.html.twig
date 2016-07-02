@@ -45,20 +45,20 @@
 {% block  javascripts %}
     {{parent()}}
     <script>
-        
+
         $(document).on('ready', inicio());
 
         function inicio() {
             $('#registros').addClass('active');
         }
-        
+
         $('#formulario').validate({
             highlight: function (element) {
-                $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+                $(element).closest('.form-group').removeClass('validClass').addClass('has-error');
 
             },
             unhighlight: function (element) {
-                $(element).closest('.control-group').removeClass('error').addClass('success');
+                $(element).closest('.form-group').removeClass('has-error').addClass('validClass');
             }
         });
 

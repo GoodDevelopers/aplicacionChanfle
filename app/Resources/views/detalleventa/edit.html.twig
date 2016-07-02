@@ -43,11 +43,11 @@
     <script>
         $('#formulario').validate({
             highlight: function (element) {
-                $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
-                
+                $(element).closest('.form-group').removeClass('validClass').addClass('has-error');
+
             },
             unhighlight: function (element) {
-                $(element).closest('.control-group').removeClass('error').addClass('success');
+                $(element).closest('.form-group').removeClass('has-error').addClass('validClass');
             }
         });
         
@@ -57,10 +57,14 @@
                  required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Seleccione un prodcuto</label>"
             }
         });
-        $('#detalle_venta_type2_cantidad').rules("add",{
-            required:true,
-            messages:{
-                 required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Este campo es requerido</label>"
+        $('#detalle_venta_type2_cantidad').rules("add", {
+            required: true,
+            number: true,
+            min: 0,
+            messages: {
+                required: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Este campo es requerido</label>",
+                min: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> El valor de la cantidad no debe ser menor a 0</label>",
+                number: "<label class='control-label' for='inputError'><span class='glyphicon glyphicon-remove-sign'></span> Ingresa solo numeros</label>"
             }
         });
     </script>
