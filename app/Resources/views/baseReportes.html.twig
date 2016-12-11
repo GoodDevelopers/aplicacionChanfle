@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Informe de utilidad{% endblock %}</title>
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         {% block stylesheets %}
             <link type="text/css" rel="stylesheet" href="{{app.request.scheme ~'://' ~ app.request.httpHost ~ asset ('bundles/app/css/bootstrap.css')}}" />
@@ -10,6 +10,10 @@
             <link type="text/css" rel="stylesheet" href="{{app.request.scheme ~'://' ~ app.request.httpHost ~ asset('bundles/app/css/font-awesome.css')}}" />
             <link type="text/css" rel="stylesheet" href="{{app.request.scheme ~'://' ~ app.request.httpHost ~ asset('bundles/app/css/otrosIconos.css')}}">
             <style>
+                tr > th {
+                    text-align: center;
+                }
+                
                 .h2, .h3{
                     color: black;
                     font-weight: bold;
@@ -25,6 +29,9 @@
                     font-weight: normal;
                     margin-right: 20px;
                     padding: 0px;
+                }
+                .panel{
+                    border: 2px solid transparent;
                 }
             </style>
         {% endblock %}
@@ -47,22 +54,26 @@
                     <h2 class="h2" style="font-weight: bold; margin-top: 30px; margin-bottom: 15px;">Reporte <span class="fa fa-line-chart"></span></h2>
                 </div>
             </div>
-            <div class="row" style="border: solid 1px #dff0d8;">
-                <div class="row" style="background-color: #dff0d8; margin-bottom: 20px;">
-                    <div class="col-xs-12">
-                        <h3 class="h3">{{ tipo }}</h3>
-                    </div>
+            <div class="row panel panel-success" style="border-color: #dff0d8;">
+                <div class="panel-heading" style="margin-bottom: 20px; border-color: #dff0d8; padding: 5px 15px;">
+                    <h3 class="h3">{{ tipo }}</h3>
                 </div>
-                <div class="row" style="margin-bottom: 30px;">
-                    <div class="col-xs-12 text-center">
-                        <label class="label">Usuario:</label>
-                        <label class="noLabel">{{ usuario }}</label>
-                        <label class="label">Periodo:</label>
-                        <label class="noLabel">{{ periodo }}</label>
+                <div class="panel-body">
+                    <div class="row" style="margin-bottom: 30px;">
+                        <div class="col-xs-12 text-center">
+                            <label class="label">Usuario:</label>
+                            <label class="noLabel">{{ usuario }}</label>
+                            <label class="label">Periodo:</label>
+                            <label class="noLabel">{{ periodo }} ({{ fechaInicial }} - {{ fechaFinal }})</label>
+                        </div>
                     </div>
+                    {% block body %}
+                    {% endblock %}
                 </div>
-                {% block body %}
-                {% endblock %}
+                <div class="panel-footer panel-success" style="border-color: #dff0d8; background-color: #dff0d8">
+                    {% block footer %}
+                    {% endblock %}
+                </div>
             </div>
             </br>
             </br>
@@ -71,7 +82,7 @@
             <div>
                 <div class="row">
                     <div class="col-xs-12 text-center">
-                        <p>© 2016 Chanfle Taqueria. (Palmira Colombia) | Desarrollado por: <strong>Good Developers</strong> </p>
+                        <p>© 2016 Chanfletaqueria. (Palmira Colombia) | Desarrollado por: <strong>Good Developers</strong> </p>
                     </div>
                 </div>
             </div>

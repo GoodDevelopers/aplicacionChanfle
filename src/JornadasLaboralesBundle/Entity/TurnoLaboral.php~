@@ -1,0 +1,55 @@
+<?php
+
+namespace JornadasLaboralesBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * TurnoLaboral
+ *
+ * @ORM\Table(name="turnosLaborales")
+ * @ORM\Entity(repositoryClass="JornadasLaboralesBundle\Repository\TurnoLaboralRepository")
+ */
+class TurnoLaboral
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Caja", inversedBy="turnos")
+     * @ORM\JoinColumn(name="idCaja", referencedColumnName="id")
+     */
+    private $caja;
+    
+    // --- Relacion Unidireccional ---
+    /**
+     * @ORM\ManyToOne(targetEntity="UsuariosBundle\Entity\Empleado")
+     * @ORM\JoinColumn(name="idEmpleado", referencedColumnName="id")
+     */
+    private $empleado;
+    
+    // --- Relacion Unidireccional ---
+    /**
+     * @ORM\ManyToOne(targetEntity="Cargo")
+     * @ORM\JoinColumn(name="idCargo", referencedColumnName="id")
+     */
+    private $cargo;
+    
+}

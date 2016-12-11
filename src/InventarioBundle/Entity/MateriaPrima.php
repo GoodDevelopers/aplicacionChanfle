@@ -44,7 +44,7 @@ class MateriaPrima
     private $cantidad;
 
     /**
-     * @var int
+     * @var float
      *
      * @ORM\Column(name="precio", type="float")
      */

@@ -15,18 +15,15 @@ class __TwigTemplate_099f1e4988db96892c613073a4e63705b7238a1f7dc4fc4c37c16002702
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_7a2c340594d457304701aa17f526ab82ed243229c8bba6ee408509481ca71a00 = $this->env->getExtension("native_profiler");
-        $__internal_7a2c340594d457304701aa17f526ab82ed243229c8bba6ee408509481ca71a00->enter($__internal_7a2c340594d457304701aa17f526ab82ed243229c8bba6ee408509481ca71a00_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "email.html.twig"));
+        $__internal_9adb90ace089659358657dd264830476cabbc6b263bea08132f0abdde3c058d9 = $this->env->getExtension("native_profiler");
+        $__internal_9adb90ace089659358657dd264830476cabbc6b263bea08132f0abdde3c058d9->enter($__internal_9adb90ace089659358657dd264830476cabbc6b263bea08132f0abdde3c058d9_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "email.html.twig"));
 
-        // line 1
-        echo "<h2>";
-        echo twig_escape_filter($this->env, (isset($context["titulo"]) ? $context["titulo"] : $this->getContext($context, "titulo")), "html", null, true);
-        echo "</h2>
-<p>Este es mi primer email :v</p>
+        // line 2
+        echo "<p>Este es mi primer email :v</p>
 
 ";
         
-        $__internal_7a2c340594d457304701aa17f526ab82ed243229c8bba6ee408509481ca71a00->leave($__internal_7a2c340594d457304701aa17f526ab82ed243229c8bba6ee408509481ca71a00_prof);
+        $__internal_9adb90ace089659358657dd264830476cabbc6b263bea08132f0abdde3c058d9->leave($__internal_9adb90ace089659358657dd264830476cabbc6b263bea08132f0abdde3c058d9_prof);
 
     }
 
@@ -35,17 +32,12 @@ class __TwigTemplate_099f1e4988db96892c613073a4e63705b7238a1f7dc4fc4c37c16002702
         return "email.html.twig";
     }
 
-    public function isTraitable()
-    {
-        return false;
-    }
-
     public function getDebugInfo()
     {
-        return array (  22 => 1,);
+        return array (  22 => 2,);
     }
 }
-/* <h2>{{ titulo }}</h2>*/
+/* {#<h2>{{ titulo }}</h2>#}*/
 /* <p>Este es mi primer email :v</p>*/
 /* */
 /* */

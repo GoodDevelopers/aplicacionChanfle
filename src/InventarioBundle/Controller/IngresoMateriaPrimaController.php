@@ -73,7 +73,7 @@ class IngresoMateriaPrimaController extends Controller {
             $materia = $em->getRepository('InventarioBundle:MateriaPrima')->findOneBy(array("id" => $ingresoMateriaPrima->getMateriaPrima()));
             $nuevacantidad = $materia->getCantidad() + $ingresoMateriaPrima->getCantidad();
             $materia->setCantidad($nuevacantidad);
-            $materia->setPrecio($valorPorUnidad);
+            $materia->setPrecio(floatval($valorPorUnidad));
             
             $em->persist($ingresoMateriaPrima);
             $em->persist($materia);
@@ -123,7 +123,23 @@ class IngresoMateriaPrimaController extends Controller {
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            
+            $idMateriaPrima = $_POST['idMateria'];
+            
             $em = $this->getDoctrine()->getManager();
+
+            $materiaPrima = $em->getRepository('InventarioBundle:MateriaPrima')->findOneBy(array('id' => $idMateriaPrima));
+            
+            $ingresoMateriaPrima->setMateriaPrima($materiaPrima);
+            
+            $valor = $ingresoMateriaPrima->getValor();
+            $cantidad = $ingresoMateriaPrima->getCantidad();
+            
+            $valorUnitario = floatval($valor / $cantidad);
+            
+            $materiaPrima->setPrecio(floatval($valorUnitario));
+            
+            $em->persist($materiaPrima);
             $em->persist($ingresoMateriaPrima);
             $em->flush();
 

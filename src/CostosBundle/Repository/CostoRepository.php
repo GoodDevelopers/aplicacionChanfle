@@ -12,7 +12,7 @@ use Doctrine\ORM\EntityRepository;
  */
 class CostoRepository extends EntityRepository
 {
-    public function findCostosMes($fechaInicial, $fechaFinal) {
+    public function findCostosIntervalo($fechaInicial, $fechaFinal) {
         $query = $this->createQueryBuilder('costo')
                 ->where('costo.fecha BETWEEN :inicial AND :final')
                 ->setParameter('inicial', $fechaInicial)

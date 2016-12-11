@@ -21,108 +21,116 @@ class __TwigTemplate_2ac2b55e5d69cd1f7aa0c88241168f72edd97aa5bfaae3aaf610c87a338
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_d786ee3df527826a59042b94930492c7dd529ea627920bdd754a2bfae7642147 = $this->env->getExtension("native_profiler");
-        $__internal_d786ee3df527826a59042b94930492c7dd529ea627920bdd754a2bfae7642147->enter($__internal_d786ee3df527826a59042b94930492c7dd529ea627920bdd754a2bfae7642147_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "venta/show.html.twig"));
+        $__internal_c4ad377f45e48614acdfa228143743254d8871354230e39c4f648208e73342d2 = $this->env->getExtension("native_profiler");
+        $__internal_c4ad377f45e48614acdfa228143743254d8871354230e39c4f648208e73342d2->enter($__internal_c4ad377f45e48614acdfa228143743254d8871354230e39c4f648208e73342d2_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "venta/show.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_d786ee3df527826a59042b94930492c7dd529ea627920bdd754a2bfae7642147->leave($__internal_d786ee3df527826a59042b94930492c7dd529ea627920bdd754a2bfae7642147_prof);
+        $__internal_c4ad377f45e48614acdfa228143743254d8871354230e39c4f648208e73342d2->leave($__internal_c4ad377f45e48614acdfa228143743254d8871354230e39c4f648208e73342d2_prof);
 
     }
 
     // line 3
     public function block_body($context, array $blocks = array())
     {
-        $__internal_eed2daca3fe5ac08523aa41d5b15211b76df9989aae6a3931567f7634ee6b874 = $this->env->getExtension("native_profiler");
-        $__internal_eed2daca3fe5ac08523aa41d5b15211b76df9989aae6a3931567f7634ee6b874->enter($__internal_eed2daca3fe5ac08523aa41d5b15211b76df9989aae6a3931567f7634ee6b874_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_4b96adf961dab567478eee2656c56f1a10974c11df2d5e516491c86e4c771e56 = $this->env->getExtension("native_profiler");
+        $__internal_4b96adf961dab567478eee2656c56f1a10974c11df2d5e516491c86e4c771e56->enter($__internal_4b96adf961dab567478eee2656c56f1a10974c11df2d5e516491c86e4c771e56_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
-        echo "    <h1>Venta</h1>
+        echo "    <div  class=\"container\">
+        <div class=\"row\">
+            <div class=\"col-md-12\">
+                <h1 class=\"h1 text-center marginTitulo\">Venta <span class=\"fa fa-shopping-basket\"></span></h1>
+            </div>
+        </div>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>";
-        // line 10
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["ventum"]) ? $context["ventum"] : $this->getContext($context, "ventum")), "id", array()), "html", null, true);
-        echo "</td>
-            </tr>
-            <tr>
-                <th>Fecha</th>
-                <td>";
-        // line 14
+        <div class=\"row\">
+            <div class=\"col-lg-4 col-lg-offset-4\">
+                <table class=\"table table-hover\">
+
+                    <tbody>
+                        <tr>
+                            <th class=\"text-right\">Fecha:</th>
+                            <td>";
+        // line 18
         if ($this->getAttribute((isset($context["ventum"]) ? $context["ventum"] : $this->getContext($context, "ventum")), "fecha", array())) {
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute((isset($context["ventum"]) ? $context["ventum"] : $this->getContext($context, "ventum")), "fecha", array()), "Y-m-d H:i:s"), "html", null, true);
         }
         echo "</td>
-            </tr>
-            <tr>
-                <th>Valortotal</th>
-                <td>";
-        // line 18
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["ventum"]) ? $context["ventum"] : $this->getContext($context, "ventum")), "valorTotal", array()), "html", null, true);
-        echo "</td>
-            </tr>
-            <tr>
-                <th>Tipoventa</th>
-                <td>";
+                        </tr>
+                        <tr>
+                            <th class=\"text-right\">Mesa:</th>
+                            <td>";
         // line 22
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["ventum"]) ? $context["ventum"] : $this->getContext($context, "ventum")), "tipoVenta", array()), "html", null, true);
-        echo "</td>
-            </tr>
-            <tr>
-                <th>Puntosventa</th>
-                <td>";
-        // line 26
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["ventum"]) ? $context["ventum"] : $this->getContext($context, "ventum")), "puntosVenta", array()), "html", null, true);
-        echo "</td>
-            </tr>
-            <tr>
-                <th>Mesa</th>
-                <td>";
-        // line 30
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["ventum"]) ? $context["ventum"] : $this->getContext($context, "ventum")), "mesa", array()), "html", null, true);
         echo "</td>
-            </tr>
-            <tr>
-                <th>Personaspormesa</th>
-                <td>";
-        // line 34
+                        </tr>
+                        <tr>
+                            <th class=\"text-right\">No. de Personas:</th>
+                            <td>";
+        // line 26
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["ventum"]) ? $context["ventum"] : $this->getContext($context, "ventum")), "personasPorMesa", array()), "html", null, true);
         echo "</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href=\"";
-        // line 41
+                        </tr>
+                        <tr>
+                            <th class=\"text-right\">Tipo Venta:</th>
+                            <td>";
+        // line 30
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["ventum"]) ? $context["ventum"] : $this->getContext($context, "ventum")), "tipoVenta", array()), "html", null, true);
+        echo "</td>
+                        </tr>
+                        <tr>
+                            <th class=\"text-right\">Valor Total:</th>
+                            <td>";
+        // line 34
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["ventum"]) ? $context["ventum"] : $this->getContext($context, "ventum")), "valorTotal", array()), "html", null, true);
+        echo "</td>
+                        </tr>
+                        <tr>
+                            <th class=\"text-right\">Puntos:</th>
+                            <td>";
+        // line 38
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["ventum"]) ? $context["ventum"] : $this->getContext($context, "ventum")), "puntosVenta", array()), "html", null, true);
+        echo "</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class=\"row\">
+            <div class=\"col-lg-4 col-lg-offset-4\">
+                <ul class=\"text-center list-inline\">
+                    <li>
+                        <a href=\"";
+        // line 48
         echo $this->env->getExtension('routing')->getPath("venta_index");
-        echo "\">Back to the list</a>
-        </li>
-        <li>
-            <a href=\"";
-        // line 44
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("venta_edit", array("id" => $this->getAttribute((isset($context["ventum"]) ? $context["ventum"] : $this->getContext($context, "ventum")), "id", array()))), "html", null, true);
-        echo "\">Edit</a>
-        </li>
-        <li>
-            ";
-        // line 47
+        echo "\" class=\"btn btn-info\">Lista <span class=\"glyphicon glyphicon-th-list\"></span></a>
+                    </li>
+                    <li>
+                        <a href=\"";
+        // line 51
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("venta_detalles", array("id" => $this->getAttribute((isset($context["ventum"]) ? $context["ventum"] : $this->getContext($context, "ventum")), "id", array()))), "html", null, true);
+        echo "\" class=\"btn btn-warning\" role=\"button\">Editar <span class=\"glyphicon glyphicon-edit\"></span></a>
+                    </li>
+                    <li>
+                        ";
+        // line 54
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["delete_form"]) ? $context["delete_form"] : $this->getContext($context, "delete_form")), 'form_start');
         echo "
-                <input type=\"submit\" value=\"Delete\">
-            ";
-        // line 49
+                        <button type=\"submit\" class=\"btn btn-danger\">Eliminar <span class=\"glyphicon glyphicon-floppy-remove\"></span></button>
+
+                        ";
+        // line 57
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["delete_form"]) ? $context["delete_form"] : $this->getContext($context, "delete_form")), 'form_end');
         echo "
-        </li>
-    </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 ";
         
-        $__internal_eed2daca3fe5ac08523aa41d5b15211b76df9989aae6a3931567f7634ee6b874->leave($__internal_eed2daca3fe5ac08523aa41d5b15211b76df9989aae6a3931567f7634ee6b874_prof);
+        $__internal_4b96adf961dab567478eee2656c56f1a10974c11df2d5e516491c86e4c771e56->leave($__internal_4b96adf961dab567478eee2656c56f1a10974c11df2d5e516491c86e4c771e56_prof);
 
     }
 
@@ -138,59 +146,70 @@ class __TwigTemplate_2ac2b55e5d69cd1f7aa0c88241168f72edd97aa5bfaae3aaf610c87a338
 
     public function getDebugInfo()
     {
-        return array (  119 => 49,  114 => 47,  108 => 44,  102 => 41,  92 => 34,  85 => 30,  78 => 26,  71 => 22,  64 => 18,  55 => 14,  48 => 10,  40 => 4,  34 => 3,  11 => 1,);
+        return array (  124 => 57,  118 => 54,  112 => 51,  106 => 48,  93 => 38,  86 => 34,  79 => 30,  72 => 26,  65 => 22,  56 => 18,  40 => 4,  34 => 3,  11 => 1,);
     }
 }
 /* {% extends 'base.html.twig' %}*/
 /* */
 /* {% block body %}*/
-/*     <h1>Venta</h1>*/
+/*     <div  class="container">*/
+/*         <div class="row">*/
+/*             <div class="col-md-12">*/
+/*                 <h1 class="h1 text-center marginTitulo">Venta <span class="fa fa-shopping-basket"></span></h1>*/
+/*             </div>*/
+/*         </div>*/
 /* */
-/*     <table>*/
-/*         <tbody>*/
-/*             <tr>*/
-/*                 <th>Id</th>*/
-/*                 <td>{{ ventum.id }}</td>*/
-/*             </tr>*/
-/*             <tr>*/
-/*                 <th>Fecha</th>*/
-/*                 <td>{% if ventum.fecha %}{{ ventum.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>*/
-/*             </tr>*/
-/*             <tr>*/
-/*                 <th>Valortotal</th>*/
-/*                 <td>{{ ventum.valorTotal }}</td>*/
-/*             </tr>*/
-/*             <tr>*/
-/*                 <th>Tipoventa</th>*/
-/*                 <td>{{ ventum.tipoVenta }}</td>*/
-/*             </tr>*/
-/*             <tr>*/
-/*                 <th>Puntosventa</th>*/
-/*                 <td>{{ ventum.puntosVenta }}</td>*/
-/*             </tr>*/
-/*             <tr>*/
-/*                 <th>Mesa</th>*/
-/*                 <td>{{ ventum.mesa }}</td>*/
-/*             </tr>*/
-/*             <tr>*/
-/*                 <th>Personaspormesa</th>*/
-/*                 <td>{{ ventum.personasPorMesa }}</td>*/
-/*             </tr>*/
-/*         </tbody>*/
-/*     </table>*/
+/*         <div class="row">*/
+/*             <div class="col-lg-4 col-lg-offset-4">*/
+/*                 <table class="table table-hover">*/
 /* */
-/*     <ul>*/
-/*         <li>*/
-/*             <a href="{{ path('venta_index') }}">Back to the list</a>*/
-/*         </li>*/
-/*         <li>*/
-/*             <a href="{{ path('venta_edit', { 'id': ventum.id }) }}">Edit</a>*/
-/*         </li>*/
-/*         <li>*/
-/*             {{ form_start(delete_form) }}*/
-/*                 <input type="submit" value="Delete">*/
-/*             {{ form_end(delete_form) }}*/
-/*         </li>*/
-/*     </ul>*/
+/*                     <tbody>*/
+/*                         <tr>*/
+/*                             <th class="text-right">Fecha:</th>*/
+/*                             <td>{% if ventum.fecha %}{{ ventum.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>*/
+/*                         </tr>*/
+/*                         <tr>*/
+/*                             <th class="text-right">Mesa:</th>*/
+/*                             <td>{{ ventum.mesa }}</td>*/
+/*                         </tr>*/
+/*                         <tr>*/
+/*                             <th class="text-right">No. de Personas:</th>*/
+/*                             <td>{{ ventum.personasPorMesa }}</td>*/
+/*                         </tr>*/
+/*                         <tr>*/
+/*                             <th class="text-right">Tipo Venta:</th>*/
+/*                             <td>{{ ventum.tipoVenta }}</td>*/
+/*                         </tr>*/
+/*                         <tr>*/
+/*                             <th class="text-right">Valor Total:</th>*/
+/*                             <td>{{ ventum.valorTotal }}</td>*/
+/*                         </tr>*/
+/*                         <tr>*/
+/*                             <th class="text-right">Puntos:</th>*/
+/*                             <td>{{ ventum.puntosVenta }}</td>*/
+/*                         </tr>*/
+/*                     </tbody>*/
+/*                 </table>*/
+/*             </div>*/
+/*         </div>*/
+/*         <div class="row">*/
+/*             <div class="col-lg-4 col-lg-offset-4">*/
+/*                 <ul class="text-center list-inline">*/
+/*                     <li>*/
+/*                         <a href="{{ path('venta_index') }}" class="btn btn-info">Lista <span class="glyphicon glyphicon-th-list"></span></a>*/
+/*                     </li>*/
+/*                     <li>*/
+/*                         <a href="{{ path('venta_detalles', { 'id': ventum.id }) }}" class="btn btn-warning" role="button">Editar <span class="glyphicon glyphicon-edit"></span></a>*/
+/*                     </li>*/
+/*                     <li>*/
+/*                         {{ form_start(delete_form) }}*/
+/*                         <button type="submit" class="btn btn-danger">Eliminar <span class="glyphicon glyphicon-floppy-remove"></span></button>*/
+/* */
+/*                         {{ form_end(delete_form) }}*/
+/*                     </li>*/
+/*                 </ul>*/
+/*             </div>*/
+/*         </div>*/
+/*     </div>*/
 /* {% endblock %}*/
 /* */

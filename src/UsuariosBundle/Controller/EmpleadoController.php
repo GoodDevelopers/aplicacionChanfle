@@ -140,7 +140,7 @@ class EmpleadoController extends Controller {
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
-            //Este es username del cliente antes de ser editado
+            //Este es username del empleado antes de ser editado
             $idViejo = $_POST['idviejo'];
 
             //Obtenemos el usuario ya existente para modificarlo

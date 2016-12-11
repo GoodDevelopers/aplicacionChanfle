@@ -4,7 +4,6 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "40937bc222a49155eb1e1d4398bdd2b3",
     "content-hash": "71143bd88f9e98ae12c76edeb852dab0",
     "packages": [
         {
@@ -726,7 +725,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/abb35b94ed8ec78a504c9e1a2cd803d85d3ffad9",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/16b04c49af05dd3fb381e4abe04f0e5e231ac76d",
                 "reference": "16b04c49af05dd3fb381e4abe04f0e5e231ac76d",
                 "shasum": ""
             },
@@ -1211,12 +1210,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpSnappyBundle.git",
-                "reference": "ead0b44c6a9a96c1817710cd854665ee755afe04"
+                "reference": "f32454f8505dffae3414a771494da5d694177d41"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpSnappyBundle/zipball/ead0b44c6a9a96c1817710cd854665ee755afe04",
-                "reference": "ead0b44c6a9a96c1817710cd854665ee755afe04",
+                "url": "https://api.github.com/repos/KnpLabs/KnpSnappyBundle/zipball/f32454f8505dffae3414a771494da5d694177d41",
+                "reference": "f32454f8505dffae3414a771494da5d694177d41",
                 "shasum": ""
             },
             "require": {
@@ -1260,7 +1259,7 @@
                 "pdf",
                 "snappy"
             ],
-            "time": "2015-12-15 10:11:19"
+            "time": "2016-05-26 11:25:10"
         },
         {
             "name": "monolog/monolog",

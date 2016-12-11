@@ -12,14 +12,17 @@ use Doctrine\ORM\EntityRepository;
  */
 class VentaRepository extends EntityRepository {
 
-    public function findVentasMes($fechaInicial, $fechaFinal) {
+    public function findVentasIntervalo($fechaInicial, $fechaFinal) {
         $query = $this->createQueryBuilder('venta')
                 ->where('venta.fecha BETWEEN :inicial AND :final')
                 ->setParameter('inicial', $fechaInicial)
                 ->setParameter('final', $fechaFinal)
                 ->getQuery();
 
+        echo " Holis - " . date_format($fechaInicial, 'd-m-Y');
+        
         return $query->getResult();
     }
+    
 
 }

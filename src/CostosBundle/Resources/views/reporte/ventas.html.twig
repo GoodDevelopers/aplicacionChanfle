@@ -1,0 +1,34 @@
+{% extends 'baseReportes.html.twig' %}
+
+{% block title %}
+    Informe de ventas
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table table-bordered table-hover table-condensed text-center">
+                <thead>
+                    <tr class="active">
+                        <th>PRODUCTO</th>
+                        <th>CANTIDAD</th>
+                        <th>PRODUCCION</th>
+                        <th>VENTAS</th>
+                        <th>UTILIDAD</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for producto in productos %}
+                        <tr>
+                            <td>{{ producto.nombre }}</td>
+                            <td>{{ producto.cantidad }}</td>
+                            <td>{{ producto.produccion }}</td>
+                            <td>{{ producto.ventas }}</td>
+                            <td>{{ producto.utilidad }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

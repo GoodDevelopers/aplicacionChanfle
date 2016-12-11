@@ -67,7 +67,7 @@
                                 </tr>
                             </thead>
                             <tbody id="cuerpoTabla">
-                                {% for ventum in ventas %}
+                                {% for ventum in pagination %}
                                     <tr>
                                         <td><a href="{{ path('venta_show', { 'id': ventum.id }) }}">{{ ventum.cliente.nombre }}</a></td>
                                         <td>{% if ventum.fecha %}{{ ventum.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
